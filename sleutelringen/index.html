@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"../vendor/react/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"../vendor/react-dom/react-dom.production.min.js"};</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+<!-- Cookie-consent + GA4 (laadt GA4 alleen na toestemming) -->
+<script>
+(function () {
+  var GA_ID = 'G-XXXXXXXXXX'; // <-- VERVANG door jullie GA4 meet-ID
+  var KEY = 'delphi-consent';
+
+  function loadGA() {
+    if (!GA_ID || GA_ID.indexOf('XXXX') !== -1) return; // niet laden zonder echt ID
+    if (window.__gaLoaded) return; window.__gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  window.__delphiConsent = { granted: false };
+  try {
+    var saved = localStorage.getItem(KEY);
+    if (saved === 'accepted') { window.__delphiConsent.granted = true; loadGA(); return; }
+    if (saved === 'declined') { return; }
+  } catch (e) {}
+
+  function showBanner() {
+    var bar = document.createElement('div');
+    bar.setAttribute('role', 'dialog');
+    bar.setAttribute('aria-label', 'Cookievoorkeuren');
+    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;background:rgba(250,250,252,0.96);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #d6d6d6;padding:18px 24px;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:center;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif';
+    var txt = document.createElement('p');
+    txt.style.cssText = 'margin:0;font-size:14px;line-height:1.4;color:#1d1d1f;max-width:640px';
+    txt.innerHTML = 'Wij gebruiken analytische cookies om onze website te verbeteren. U kunt dit accepteren of weigeren. Meer leest u in onze <a href="../privacy/" style="color:#0066cc">privacyverklaring</a>.';
+    var btns = document.createElement('div');
+    btns.style.cssText = 'display:flex;gap:10px;flex-wrap:wrap';
+    function mkBtn(label, primary) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = label;
+      b.style.cssText = 'font-family:inherit;font-size:15px;padding:9px 20px;border-radius:980px;cursor:pointer;border:0;' +
+        (primary ? 'background:#0071e3;color:#fff' : 'background:#e8e8ed;color:#1d1d1f');
+      return b;
+    }
+    var accept = mkBtn('Accepteren', true);
+    var decline = mkBtn('Weigeren', false);
+    function close() { if (bar.parentNode) bar.parentNode.removeChild(bar); }
+    accept.onclick = function () { try { localStorage.setItem(KEY, 'accepted'); } catch (e) {} window.__delphiConsent.granted = true; loadGA(); close(); };
+    decline.onclick = function () { try { localStorage.setItem(KEY, 'declined'); } catch (e) {} close(); };
+    btns.appendChild(accept); btns.appendChild(decline);
+    bar.appendChild(txt); bar.appendChild(btns);
+    document.body.appendChild(bar);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showBanner);
+  else showBanner();
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script>window.DELPHI_BASIS = "../";</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sleutelringen — RVS keyrings, Flex keyrings, Morse en Rivet | DELPHI</title>
+<meta name="description" content="Verzegelde sleutelringen: RVS keyrings en Flex keyrings met eigen serienummer, plus Morse, Rivet en flexibele ringen met coating. Vijf maten, uit voorraad leverbaar.">
+<link rel="canonical" href="https://www.sleutelbeheersystemen.nl/sleutelringen/">
+<link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/sleutelringen/">
+<link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/sleutelringen/">
+<link rel="alternate" hreflang="x-default" href="https://www.sleutelbeheersystemen.nl/sleutelringen/">
+<meta property="og:url" content="https://www.sleutelbeheersystemen.nl/sleutelringen/">
+<meta property="og:site_name" content="DELPHI Sleutelbeheersystemen">
+<meta property="og:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sleutelringen — RVS keyrings, Flex keyrings, Morse en Rivet | DELPHI">
+<meta name="twitter:description" content="Verzegelde sleutelringen: RVS keyrings en Flex keyrings met eigen serienummer, plus Morse, Rivet en flexibele ringen met coating. Vijf maten, uit voorraad leverbaar.">
+<meta name="twitter:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
+<link rel="preload" href="../fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face { font-family: Inter; font-style: normal; font-weight: 100 900; font-display: swap;
+    src: url("../fonts/InterVariable.woff2") format("woff2"); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: #1d1d1f;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* Chrome blaast losse alinea's in brede containers op ("font boosting");
+       dat maakte de inleiding op de voorwaardenpagina 27px in plaats van 17px. */
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { color: #0071e3; text-decoration: underline; }
+  h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  ::selection { background: #d6e4f7; }
+  html { scroll-behavior: smooth; }
+  a, button, li { transition: color .22s ease, background-color .22s ease, opacity .35s ease; }
+  [data-hide-scrollbar] { scrollbar-width: none; -ms-overflow-style: none; }
+  @media (max-width: 760px) { [data-video-desktop] { display: none !important; } [data-video-mobile] { display: block !important; } [data-video-section] { display: none !important; } }
+  [data-hide-scrollbar]::-webkit-scrollbar { display: none; }
+  @keyframes flyIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+  @keyframes flyOpen { from { grid-template-rows: 0fr; opacity: .4; } to { grid-template-rows: 1fr; opacity: 1; } }
+  [data-nav-row] svg { opacity: 0; transition: opacity .2s ease; }
+  [data-nav-row]:hover svg, [data-nav-row]:focus svg, [data-nav-row]:active svg { opacity: 1; }
+  @media (max-width: 900px) { [data-crosssell-grid] { grid-template-columns: repeat(2, minmax(0,1fr)) !important; } }
+  @media (max-width: 600px) { [data-crosssell-grid] { grid-template-columns: minmax(0,1fr) !important; } }
+  /* Raakvlakken op aanraakschermen minimaal 44px: subnav, kruimelpad en
+     tekst-CTA’s zijn inline links en daardoor van zichzelf maar 16-34px hoog. */
+  @media (max-width: 900px) {
+    [data-subnav] a, [data-breadcrumb] a, [data-card-cta] a {
+      display: inline-flex; align-items: center; min-height: 44px;
+    }
+  }
+  /* Voettekstregel met privacy- en voorwaardenlink: op aanraakschermen minimaal 44px hoog. */
+  @media (max-width: 900px) {
+    [data-legal] a { display: inline-flex; align-items: center; min-height: 44px; }
+  }
+  @keyframes floatIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 680px) {
+    [data-card-cta] { gap: 12px !important; flex-wrap: wrap !important; justify-content: center !important; margin-top: 18px !important; }
+    [data-card-cta] a { font-size: 15px !important; padding: 8px 18px !important; white-space: nowrap; text-align: center; }
+  }
+  @media (max-width: 700px) {
+    [data-compare-table] { display: none !important; }
+    [data-compare-cards] { display: flex !important; }
+  }
+  @media (max-width: 760px) {
+    [data-hero-bleed] { margin-left: -24px !important; margin-right: -24px !important; }
+  }
+  @media (max-width: 1000px) {
+    [data-subnav] { top: 75px !important; }
+  }
+  @media (max-width: 700px) {
+    [data-subnav] > div { height: 44px !important; }
+    [data-subnav] a { font-size: 14px !important; }
+    [data-subnav] > div > span, [data-subnav] span { font-size: 14px !important; }
+    [data-subnav-rail] { -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%); mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%); }
+  }
+  @media (max-width: 760px) {
+    [data-table-scroll] { -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 32px), transparent 100%); mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 32px), transparent 100%); }
+  }
+  @keyframes barIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 680px) { [data-mobile-1col] { grid-template-columns: minmax(0,1fr) !important; } }
+  @media (max-width: 900px) { [data-2col] { grid-template-columns: minmax(0,1fr) !important; } }
+  @media (max-width: 820px) { [data-3col] { grid-template-columns: minmax(0,1fr) !important; } }
+  @media (max-width: 1150px) { [data-kit] { grid-template-columns: repeat(2, minmax(0,1fr)) !important; } }
+  @media (max-width: 760px) { [data-kit] { grid-template-columns: minmax(0,1fr) !important; } }
+  [data-kit] span { overflow-wrap: anywhere; }
+  @media (max-width: 1200px) {
+    [data-rvs-overlay] { position: static !important; padding: 0 !important; pointer-events: auto !important; }
+    [data-rvs-top] { margin-bottom: clamp(24px,4vw,40px); }
+    [data-rvs-bottom] { margin-top: clamp(24px,4vw,40px); }
+    [data-rvs-wrap] { display: flex; flex-direction: column; padding: clamp(32px,5vw,48px) 24px 0; }
+    [data-rvs-wrap] img, [data-rvs-wrap] video { order: 2; }
+    [data-rvs-top] { order: 1; }
+    [data-rvs-bottom] { order: 3; }
+  }
+  @media (max-width: 700px) { [data-bc-home] { display: none !important; } }
+
+</style>
+<script>
+(function () {
+  function init() {
+    var bar = document.querySelector('[id$="-subnav"]');
+    if (!bar) return;
+    var links = [].slice.call(bar.querySelectorAll('a[href^="#"]'));
+    if (!links.length) return;
+    var targets = links.map(function (a) {
+      return { link: a, el: document.getElementById(a.getAttribute('href').slice(1)) };
+    }).filter(function (t) { return t.el; });
+    if (!targets.length) return;
+    var current = null;
+    function update() {
+      var line = bar.getBoundingClientRect().bottom + 24;
+      var active = null;
+      for (var i = 0; i < targets.length; i++) {
+        if (targets[i].el.getBoundingClientRect().top <= line) active = targets[i];
+      }
+      if (active === current) return;
+      current = active;
+      targets.forEach(function (t) {
+        var on = t === active;
+        t.link.style.color = on ? '#0071e3' : '#1d1d1f';
+        t.link.style.fontWeight = on ? '600' : '400';
+      });
+    }
+    update();
+    var tick = false;
+    window.addEventListener('scroll', function () {
+      if (tick) return;
+      tick = true;
+      requestAnimationFrame(function () { update(); tick = false; });
+    }, { passive: true });
+    window.addEventListener('resize', update);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else setTimeout(init, 0);
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DELPHI Sleutelbeheersystemen",
+  "url": "https://www.sleutelbeheersystemen.nl",
+  "logo": "https://www.sleutelbeheersystemen.nl/logos/delphi-wordmark.png",
+  "telephone": "+31183648851",
+  "email": "info@sleutelbeheersystemen.nl",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Einsteinstraat 3e",
+    "postalCode": "4207 HW",
+    "addressLocality": "Gorinchem",
+    "addressCountry": "NL"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Sleutelringen",
+  "description": "Verzegelde sleutelringen: RVS keyrings en Flex keyrings met eigen serienummer, plus Morse, Rivet en flexibele ringen met coating. Vijf maten, uit voorraad leverbaar.",
+  "image": "https://www.sleutelbeheersystemen.nl/photos/ring-hero-serienummer.webp",
+  "category": "Sleutelbeheer",
+  "brand": { "@type": "Brand", "name": "DELPHI Sleutelbeheersystemen" },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.sleutelbeheersystemen.nl/sleutelringen/",
+    "seller": { "@type": "Organization", "name": "DELPHI Sleutelbeheersystemen" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Kan een sleutelring opnieuw worden geopend?", "acceptedAnswer": { "@type": "Answer", "text": "Dat verschilt per uitvoering, en dat is precies het punt. De RVS keyring en de flex keyring worden gefelst en gaan daarna alleen open met het bijbehorende snijgereedschap — een geopende ring is dus altijd een zichtbaar geopende ring. Bij de Rivet keyring moet de klinknagel worden verbroken. De Morse keyring klikt met handkracht dicht en is opnieuw te gebruiken. De flexibele ring met coating heeft een schroefsluiting die opengaat voor het wisselen van sleutels: handig bij een wisselende indeling, maar niet bedoeld als verzegeling." } },
+    { "@type": "Question", "name": "Hoe werkt de nummering?", "acceptedAnswer": { "@type": "Answer", "text": "Een serienummer zit op drie uitvoeringen: de <a href="#rvs" style="color:#0066cc">RVS keyring</a> en de <a href="#flex" style="color:#0066cc">flex keyring</a> hebben het nummer in het staal ingeslagen en gebruiken hetzelfde nummersysteem; bij de <a href="#morse" style="color:#0066cc">Morse keyring</a> staat het nummer op de sluitdop, waarvan elk exemplaar een eigen nummer heeft. Het nummer hoort dus bij de ring zelf en niet bij een label dat eraf kan vallen — daardoor blijft de sleutelbos herleidbaar. De Rivet keyring, de flexibele ring met coating en de losse staaldraadset hebben géén serienummer. In de <a href="#vergelijken" style="color:#0066cc">vergelijking</a> staat per uitvoering wat u krijgt." } },
+    { "@type": "Question", "name": "Welke maat heb ik nodig?", "acceptedAnswer": { "@type": "Answer", "text": "Er zijn vijf vaste maten, van één tot vier inch. Hoeveel sleutels erop passen hangt af van de dikte van die sleutels, dus een vast aantal is niet te geven. Twijfelt u: print de productsheet op ware grootte en leg uw huidige ring erop. Bij een prijsopgave kijken we mee." } },
+    { "@type": "Question", "name": "Heb ik gereedschap nodig?", "acceptedAnswer": { "@type": "Answer", "text": "Voor de RVS keyring drie stukken: dichtdrukken, felsen en openen. Handmatig, zonder stroom of instellingen. De flex keyring heeft eigen fels- en snijgereedschap, twee stuks. De Morse keyring sluit met handkracht en heeft geen gereedschap nodig. Er is ook een starterkit met ringen, gereedschap en ID-hulzen in één koffer." } },
+    { "@type": "Question", "name": "Beschadigt de ring het slot of de sleutelkast?", "acceptedAnswer": { "@type": "Answer", "text": "Na het felsen is de ring volkomen glad: geen uitstekende rand en geen naad waar een sleutel achter blijft haken. Voor situaties waarin een dunnere ring nodig is, of waarin sloten en oppervlakken extra ontzien moeten worden, is er de flexibele ring met kunststof coating." } },
+    { "@type": "Question", "name": "Wat is de levertijd?", "acceptedAnswer": { "@type": "Answer", "text": "Alle vijf maten liggen op voorraad, per 10 stuks per maat. Geef door welke maat en hoeveel ringen u nodig heeft, dan sturen we een prijsopgave." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sleutelbeheersystemen.nl/" },
+    { "@type": "ListItem", "position": 2, "name": "Sleutelringen", "item": "https://www.sleutelbeheersystemen.nl/sleutelringen/" }
+  ]
+}
+</script>
+<script src="../zoekindex.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+
+<nav onMouseLeave="{{ closeMenu }}" style="position:sticky;top:0;z-index:200;background:rgba(250,250,252,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid #d6d6d6">
+  <div style="max-width:1200px;margin:0 auto;padding:18px 24px;min-height:72px;display:flex;flex-wrap:nowrap;align-items:center;gap:24px">
+    <a href="../" style="display:flex;align-items:center;min-height:44px;text-decoration:none;flex:0 0 auto">
+      <img width="250" height="92" src="../logos/delphi-wordmark.png" alt="DELPHI" style="height:38px;width:104px;display:block;margin-top:-14px">
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <ul data-hide-scrollbar="1" style="display:flex;flex-wrap:nowrap;align-items:center;gap:20px;flex:1 1 auto;min-width:0;overflow-x:auto">
+        <li onMouseEnter="{{ hoverSystemen }}" style="flex:0 0 auto"><a href="../#sam" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Sleutelbeheer</a></li>
+        <li onMouseEnter="{{ hoverOpberg }}" style="flex:0 0 auto"><a href="../#opberg" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Opbergsystemen</a></li>
+        <li onMouseEnter="{{ hoverRingen }}" style="flex:0 0 auto"><a href="../#ringen" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Sleutelringen</a></li>
+        <li onMouseEnter="{{ closeMenu }}" style="flex:0 0 auto"><a href="../documentatie/" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Documentatie</a></li>
+        <li onMouseEnter="{{ hoverContact }}" style="flex:0 0 auto"><a href="../contact/?p=ringen" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Contact</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:16px;flex:0 0 auto">
+        <button type="button" aria-label="Zoeken" onClick="{{ toggleSearch }}" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:none;border:0;padding:0;cursor:pointer;color:#1d1d1f" style-hover="color:#0071e3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:18px;height:18px;display:block"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+        </button>
+        <a href="../contact/?p=ringen" style="display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-size:16px;font-weight:400;padding:9px 18px;border-radius:980px;text-decoration:none" style-hover="text-decoration:none">Offerte aanvragen</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:0 0 auto;display:flex;align-items:center;gap:7px;font-size:14px;letter-spacing:0.3px">
+        <span style="color:#1d1d1f;font-weight:600">NL</span>
+        <span aria-hidden="true" style="color:#c7c7cc">/</span>
+        <a href="../en/sleutelringen/" hreflang="en" style="color:#707070;text-decoration:none" style-hover="color:#0066cc">EN</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-left:auto;display:flex;align-items:center;gap:2px">
+        <div style="display:flex;align-items:center;gap:6px;font-size:14px;letter-spacing:0.3px;padding:0 6px 0 2px">
+          <span style="color:#1d1d1f;font-weight:600">NL</span>
+          <span aria-hidden="true" style="color:#c7c7cc">/</span>
+          <a href="../en/sleutelringen/" hreflang="en" style="display:inline-flex;align-items:center;min-height:44px;padding:0 12px;margin:0 -12px;color:#707070;text-decoration:none">EN</a>
+        </div>
+        <button type="button" aria-label="Zoeken" onClick="{{ toggleSearch }}" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:20px;height:20px;display:block"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+        </button>
+        <button type="button" aria-label="{{ navLabel }}" aria-expanded="{{ navOpen }}" onClick="{{ toggleNav }}" style="width:44px;height:44px;position:relative;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer">
+          <span style="position:absolute;width:18px;height:1.2px;border-radius:1px;background:#1d1d1f;transform:{{ barTop }};transition:transform .4s cubic-bezier(0.4,0.01,0.2,1)"></span>
+          <span style="position:absolute;width:18px;height:1.2px;border-radius:1px;background:#1d1d1f;transform:{{ barBottom }};transition:transform .4s cubic-bezier(0.4,0.01,0.2,1)"></span>
+        </button>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:100%;left:0;right:0;z-index:300;display:grid;grid-template-rows:1fr;animation:flyOpen .4s cubic-bezier(0.25,0.1,0.25,1) both"><div style="min-height:0;overflow:hidden"><div style="background:#fafafc;border-top:1px solid #d6d6d6;box-shadow:0 18px 34px rgba(0,0,0,0.07);max-height:calc(100dvh - 81px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain">
+      <sc-if value="{{ navRoot }}" hint-placeholder-val="{{ true }}">
+      <ul style="max-width:1200px;margin:0 auto;padding:12px 24px 8px;display:flex;flex-direction:column">
+        <li><a href="../" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Home<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToSystemen }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Sleutelbeheer<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToOpberg }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Opbergsystemen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToRingen }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Sleutelringen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><a href="../documentatie/" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Documentatie<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToContact }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Contact<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><a href="../contact/#faq" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Veelgestelde vragen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+      </ul>
+      <div style="max-width:1200px;margin:0 auto;padding:12px 24px 28px;display:flex;flex-direction:column;gap:14px">
+        <a href="../contact/" onClick="{{ closeNav }}" style="align-self:flex-start;background:#0071e3;color:#ffffff;font-size:17px;padding:12px 22px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Offerte aanvragen</a>
+        <a href="tel:+31183648851" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">+31 (0)183 648851</a>
+      </div>
+      </sc-if>
+      <sc-if value="{{ navSystemen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../sam/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Security Asset Manager (SAM)</a>
+        <a href="../keybox/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Keybox</a>
+        <a href="../keytracker/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">KeyTracker</a>
+        <a href="../keycontroller/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Keycontroller</a>
+        <a href="../swat-box/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">SWAT-box</a>
+        <a href="../surface-vault/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Surface Vault</a>
+        <a href="../safebox/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Safebox</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navOpberg }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../sam-lockers/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">SAM lockers</a>
+        <a href="../oc-spray-station/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">OC Spray Station</a>
+        <a href="../keytracker-opbergkasten/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">KeyTracker opbergkasten</a>
+        <a href="../vel-key/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Vel-Key</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navRingen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../sleutelringen/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">RVS keyrings</a>
+        <a href="../sleutelringen/#flex" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Flex keyrings</a>
+        <a href="../sleutelringen/#morse" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Morse keyrings</a>
+        <a href="../sleutelringen/#rivet" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Rivet keyrings</a>
+        <a href="../sleutelringen/#coating" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Flexibel met coating</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navContact }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../contact/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Offerte aanvragen</a>
+        <a href="../contact/#faq" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Veelgestelde vragen</a>
+        <a href="../contact/#contactgegevens" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Contactgegevens</a>
+        <a href="../over/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Over DELPHI</a>
+        <a href="../contact/#dealership" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Dealership</a>
+        </div>
+      </sc-if>
+    </div></div></div>
+  </sc-if>
+
+  <div style="position:absolute;top:100%;left:0;right:0;z-index:310;display:grid;grid-template-rows:{{ searchRows }};transition:grid-template-rows .4s cubic-bezier(0.25,0.1,0.25,1);pointer-events:{{ searchEvents }};visibility:{{ searchVis }}">
+    <div style="min-height:0;overflow:hidden">
+      <div style="background:#fafafc;border-top:1px solid #d6d6d6;max-height:calc(100vh - 74px);overflow-y:auto">
+      <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:flex;flex-direction:column;gap:clamp(20px,2.2vw,28px)">
+        <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px">Zoeken</span>
+        <div style="display:flex;align-items:center;gap:10px;max-width:560px;background:#ffffff;border:1px solid #d2d2d7;border-radius:12px;padding:10px 14px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:18px;height:18px;flex:0 0 auto"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+          <input type="search" placeholder="Zoek een product of onderwerp" ref="{{ searchRef }}" onInput="{{ onSearch }}" style="flex:1;min-width:0;border:0;outline:none;background:none;font-size:17px;color:#1d1d1f">
+        </div>
+        <ul style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="4">
+            <li>
+              <a href="{{ r.u }}" onClick="{{ closeSearch }}" style="display:flex;flex-direction:column;gap:2px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#86868b">{{ r.g }}</span>
+                <span style="font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">{{ r.t }}</span>
+                <span style="font-size:14px;color:#707070">{{ r.s }}</span>
+              </a>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;top:100%;left:0;right:0;z-index:300;display:grid;grid-template-rows:{{ flyRows }};transition:grid-template-rows .4s cubic-bezier(0.25,0.1,0.25,1);pointer-events:{{ flyEvents }}">
+    <div style="min-height:0;overflow:hidden">
+      <div style="border-top:1px solid #d6d6d6;background:#fafafc;border-bottom:1px solid #d6d6d6">
+      <sc-if value="{{ openSystemen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Sleutelbeheer</span>
+          <a href="../sam/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Security Asset Manager</a>
+          <a href="../keybox/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Keybox</a>
+          <a href="../keytracker/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">KeyTracker</a>
+          <a href="../keycontroller/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Keycontroller</a>
+          <a href="../swat-box/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">SWAT-box</a>
+          <a href="../surface-vault/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Surface Vault</a>
+          <a href="../safebox/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Safebox</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openOpberg }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Opbergsystemen</span>
+          <a href="../sam-lockers/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">SAM lockers</a>
+          <a href="../oc-spray-station/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">OC Spray Station</a>
+          <a href="../keytracker-opbergkasten/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">KeyTracker opbergkasten</a>
+          <a href="../vel-key/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Vel-Key</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openRingen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Sleutelringen</span>
+          <a href="../sleutelringen/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">RVS keyrings</a>
+          <a href="../sleutelringen/#flex" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Flex keyrings</a>
+          <a href="../sleutelringen/#morse" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Morse keyrings</a>
+          <a href="../sleutelringen/#rivet" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Rivet keyrings</a>
+          <a href="../sleutelringen/#coating" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Flexibel met coating</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openContact }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Contact</span>
+          <a href="../contact/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Offerte aanvragen</a>
+          <a href="../contact/#faq" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Veelgestelde vragen</a>
+          <a href="../contact/#contactgegevens" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Contactgegevens</a>
+          <a href="../over/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Over DELPHI</a>
+          <a href="../contact/#dealership" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Dealership</a>
+          </div>
+        </div>
+      </sc-if>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section style="background:#ffffff;padding:clamp(40px,5vw,72px) 24px clamp(56px,7vw,88px)">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">Sleutelringen</p>
+    <h1 style="margin-top:8px;font-size:clamp(40px,6.2vw,84px);line-height:1.04;font-weight:700;letter-spacing:-1.44px;max-width:860px;margin-left:auto;margin-right:auto;text-wrap:balance">De sleutel blijft aan de bos.</h1>
+    <p style="margin:20px auto 0;max-width:560px;font-size:19px;line-height:1.38;color:#707070;letter-spacing:0.231px;text-wrap:pretty">Verzegelde keyrings in massief RVS en flexibel staaldraad. Gefelst met gereedschap — daarna alleen los door de ring door te knippen.</p>
+    <div data-card-cta="1" style="display:flex;justify-content:center;align-items:center;gap:28px;margin-top:28px;flex-wrap:wrap">
+      <a href="../contact/?p=ringen" style="background:#0071e3;color:#ffffff;font-size:17px;padding:12px 22px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Prijs opvragen</a>
+      <a href="#maten" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">Bekijk de maten&nbsp;›</a>
+    </div>
+  </div>
+  <div data-reveal style="margin:clamp(24px,3vw,40px) auto 0;max-width:440px">
+    <img width="1000" height="1113" src="../photos/cut/sleutelring-hero.webp" alt="Geopende RVS sleutelring met verzegelde sluiting" style="width:100%;height:auto;display:block" fetchpriority="high">
+  </div>
+</section>
+
+<div id="ring-subnav" style="position:sticky;top:75px;z-index:60;background:#fafafc;border-bottom:1px solid #d6d6d6" data-subnav="1">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;gap:24px">
+    <div data-hide-scrollbar="1" data-subnav-rail="1" style="display:flex;align-items:center;gap:24px;overflow-x:auto;width:100%">
+      <nav data-breadcrumb="1" aria-label="Kruimelpad" style="display:flex;align-items:center;gap:8px;white-space:nowrap;flex:0 0 auto;margin-right:auto">
+        <a href="../" style="font-size:15px;color:#707070;text-decoration:none" style-hover="color:#0066cc;text-decoration:none">Home</a>
+        <span aria-hidden="true" style="font-size:15px;color:#8a8a8e">›</span>
+        <span aria-current="page" style="font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Sleutelringen</span>
+      </nav>
+      <a href="#rvs" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">RVS keyrings</a>
+      <a href="#flex" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Flex keyrings</a>
+      <a href="#morse" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Morse keyrings</a>
+      <a href="#rivet" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Rivet keyrings</a>
+      <a href="#coating" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Flexibel met coating</a>
+      <a href="#vergelijken" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Vergelijken</a>
+      <a href="#faq" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Vragen</a>
+    </div>
+  </div>
+</div>
+
+<section style="background:#ffffff;padding:0">
+  <div data-reveal data-rvs-wrap="1" style="position:relative;overflow:hidden">
+    <video data-video-desktop="1" width="1280" height="542" src="../video/sleutelringen-serienummer.mp4" poster="../photos/ring-hero-serienummer.webp" data-video-once="1" muted playsinline preload="none" disablepictureinpicture aria-label="Uniek serienummer ingeslagen in een RVS sleutelring" style="width:100%;height:auto;display:block;background:#ffffff;order:2"></video><img data-video-mobile="1" width="1280" height="542" src="../photos/ring-hero-serienummer.webp" alt="Uniek serienummer ingeslagen in een RVS sleutelring" style="width:100%;height:auto;display:block;background:#ffffff;order:2;display:none" loading="lazy">
+    <div data-rvs-overlay="1" data-rvs-top="1" style="position:absolute;left:0;right:0;top:0;padding:clamp(20px,3.5vw,56px) 24px 0;display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none">
+      <h2 style="font-size:clamp(22px,3.2vw,44px);line-height:1.12;font-weight:600;color:#1d1d1f;letter-spacing:0.007em;text-wrap:balance">Elke ring een eigen nummer.</h2>
+      <p style="margin-top:clamp(8px,1.2vw,16px);max-width:520px;font-size:clamp(14px,1.3vw,19px);line-height:1.42;color:#4d4d52;letter-spacing:-0.374px;text-wrap:pretty">In de ring staat een uniek nummer. Daarmee is een sleutelbos administratief te koppelen aan een positie, een afdeling of een persoon.</p>
+    </div>
+    <div data-rvs-overlay="1" data-rvs-bottom="1" style="position:absolute;left:0;right:0;bottom:0;padding:0 24px clamp(20px,3.5vw,56px);display:flex;justify-content:center;gap:clamp(28px,5vw,88px);flex-wrap:wrap;pointer-events:none">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;max-width:280px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:clamp(28px,2.6vw,40px);height:clamp(28px,2.6vw,40px);display:block;margin-bottom:4px"><circle cx="22" cy="22" r="14"/><path d="M15 26v-8l4 6 4-6v8"/><path d="M27 18v8h3"/></svg>
+        <span style="font-size:clamp(15px,1.5vw,21px);font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Ingeslagen in het staal</span>
+        <span style="font-size:clamp(13px,1.2vw,17px);line-height:1.47;color:#4d4d52;letter-spacing:-0.374px">Geen sticker, geen label. Blijft leesbaar, ook na jaren.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;max-width:280px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:clamp(28px,2.6vw,40px);height:clamp(28px,2.6vw,40px);display:block;margin-bottom:4px"><path d="M8 30h28"/><path d="M14 30V20a8 8 0 0 1 16 0v10"/><path d="M18 20h8"/></svg>
+        <span style="font-size:clamp(15px,1.5vw,21px);font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Vlakke sluiting</span>
+        <span style="font-size:clamp(13px,1.2vw,17px);line-height:1.47;color:#4d4d52;letter-spacing:-0.374px">Geen uitstekende delen die sloten of oppervlakken beschadigen.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;max-width:280px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:clamp(28px,2.6vw,40px);height:clamp(28px,2.6vw,40px);display:block;margin-bottom:4px"><circle cx="15" cy="17" r="6"/><circle cx="29" cy="17" r="6"/><circle cx="22" cy="29" r="6"/></svg>
+        <span style="font-size:clamp(15px,1.5vw,21px);font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Kleurcodering</span>
+        <span style="font-size:clamp(13px,1.2vw,17px);line-height:1.47;color:#4d4d52;letter-spacing:-0.374px">Vijf kleuren om bossen per gebouw of team te scheiden.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="rvs" style="scroll-margin-top:180px;background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px;margin-top:12px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:center" data-2col>
+    <div>
+      <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">RVS keyrings</p>
+      <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Eén stuk staal, één nummer.</h2>
+      <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Massieve ring van 4&nbsp;mm in geborsteld RVS. Dichtdrukken, felsen, en daarna alleen los door de ring door te knippen.</p>
+      <p style="margin-top:14px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Ontwikkeld voor gebruik in de <a href="../sam/">Security Asset Manager</a> en de <a href="../keycontroller/">Keycontroller</a> &mdash; en net zo goed als zelfstandige sleutelring. Leverbaar per 10 stuks per maat.</p>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center">
+      <img width="1600" height="1422" src="../photos/cut/ring-rvs.webp" alt="Massieve RVS keyring van 4 mm met serienummer in het staal" style="width:100%;max-width:340px;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" style-hover="transform:scale(1.03)">
+    </div>
+  </div>
+</section>
+
+<section id="maten" style="scroll-margin-top:180px;background:#ffffff;padding:clamp(64px,8vw,100px) 0">
+  <div style="max-width:820px;margin:0 auto;padding:0 24px;text-align:center">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Vijf vaste maten.</h2>
+    <p style="margin-top:16px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Van één tot vier inch, gemeten als binnendiameter. Hoeveel sleutels erop passen hangt af van hun dikte; hieronder staat het aantal voor standaard bouwsleutels.</p>
+  </div>
+  <div style="margin:clamp(32px,4vw,56px) auto 0;width:100%;max-width:1680px">
+    <img width="1500" height="473" src="../photos/ring-maten-solid-v5.webp" alt="Vijf maten RVS keyrings naast elkaar: 1, 1⅝, 2, 3 en 4 inch" style="width:100%;height:auto;display:block">
+    <div style="position:relative;height:42px;margin-top:clamp(8px,1vw,14px)">
+      <span style="position:absolute;left:6.9%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap"><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">1"</span><span style="font-size:14px;color:#8a8a8e;letter-spacing:-0.08px">3 cm</span></span>
+      <span style="position:absolute;left:20.6%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap"><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">1⅝"</span><span style="font-size:14px;color:#8a8a8e;letter-spacing:-0.08px">4 cm</span></span>
+      <span style="position:absolute;left:37.7%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap"><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">2"</span><span style="font-size:14px;color:#8a8a8e;letter-spacing:-0.08px">5 cm</span></span>
+      <span style="position:absolute;left:58.2%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap"><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">3"</span><span style="font-size:14px;color:#8a8a8e;letter-spacing:-0.08px">7 cm</span></span>
+      <span style="position:absolute;left:84.4%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap"><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">4"</span><span style="font-size:14px;color:#8a8a8e;letter-spacing:-0.08px">9 cm</span></span>
+    </div>
+    <div style="position:relative;height:62px;margin-top:clamp(14px,1.8vw,22px)">
+      <div style="position:absolute;left:6.9%;transform:translateX(-50%);display:flex;flex-direction:row;align-items:center;gap:7px;white-space:nowrap"><svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:block;flex:0 0 auto"><circle cx="9" cy="9" r="4.2"/><path d="M12 12l7 7"/><path d="M15.5 15.5l-1.8 1.8"/><path d="M17.8 17.8l-1.8 1.8"/></svg><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">14</span></div>
+      <div style="position:absolute;left:20.6%;transform:translateX(-50%);display:flex;flex-direction:row;align-items:center;gap:7px;white-space:nowrap"><svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:block;flex:0 0 auto"><circle cx="9" cy="9" r="4.2"/><path d="M12 12l7 7"/><path d="M15.5 15.5l-1.8 1.8"/><path d="M17.8 17.8l-1.8 1.8"/></svg><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">22</span></div>
+      <div style="position:absolute;left:37.7%;transform:translateX(-50%);display:flex;flex-direction:row;align-items:center;gap:7px;white-space:nowrap"><svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:block;flex:0 0 auto"><circle cx="9" cy="9" r="4.2"/><path d="M12 12l7 7"/><path d="M15.5 15.5l-1.8 1.8"/><path d="M17.8 17.8l-1.8 1.8"/></svg><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">28</span></div>
+      <div style="position:absolute;left:58.2%;transform:translateX(-50%);display:flex;flex-direction:row;align-items:center;gap:7px;white-space:nowrap"><svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:block;flex:0 0 auto"><circle cx="9" cy="9" r="4.2"/><path d="M12 12l7 7"/><path d="M15.5 15.5l-1.8 1.8"/><path d="M17.8 17.8l-1.8 1.8"/></svg><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">46</span></div>
+      <div style="position:absolute;left:84.4%;transform:translateX(-50%);display:flex;flex-direction:row;align-items:center;gap:7px;white-space:nowrap"><svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:block;flex:0 0 auto"><circle cx="9" cy="9" r="4.2"/><path d="M12 12l7 7"/><path d="M15.5 15.5l-1.8 1.8"/><path d="M17.8 17.8l-1.8 1.8"/></svg><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">66</span></div>
+    </div>
+    <p style="max-width:520px;margin:clamp(10px,1.4vw,16px) auto 0;padding:0 24px;text-align:center;font-size:14px;line-height:1.47;color:#8a8a8e;letter-spacing:-0.08px">Aantal sleutels per ring, indicatief.</p>
+  </div>
+  <p style="max-width:520px;margin:clamp(18px,2.2vw,28px) auto 0;padding:0 24px;text-align:center;font-size:17px"><a href="#bestellen" style="color:#0066cc">Maten, bestelcodes en specificaties&nbsp;&rsaquo;</a></p>
+</section>
+
+<section id="bestellen" style="scroll-margin-top:180px;background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;max-width:620px;text-wrap:pretty">Maten en bestelcodes.</h2>
+    <p style="margin-top:16px;max-width:560px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Alle vijf maten uit voorraad, per 10 stuks per maat.</p>
+  </div>
+  <div style="max-width:1200px;margin:clamp(32px,4vw,52px) auto 0;overflow-x:auto" data-table-scroll="1">
+    <table style="width:100%;min-width:520px;border-collapse:collapse;background:#ffffff;border-radius:18px">
+      <thead>
+        <tr>
+            <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Maat</th>
+            <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Binnendiameter</th>
+            <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Sleutels</th>
+            <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Bestelcode</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">1&quot;</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">3 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">14</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">KR3</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">1⅝&quot;</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">4 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">22</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">KR4</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">2&quot;</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">5 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">28</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">KR5</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">3&quot;</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">7 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">46</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">KR7</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">4&quot;</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">9 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">66</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">KR9</td>
+          </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px;font-size:14px;line-height:1.47;color:#8a8a8e;letter-spacing:-0.08px">Ringdikte 4 mm massief RVS, geborsteld, met ingeslagen serienummer. Leverbaar per 10 stuks per maat.</p>
+  </div>
+</section>
+
+<section style="background:#ffffff;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;max-width:620px;text-wrap:pretty">Drie stukken gereedschap.</h2>
+    <p style="margin-top:16px;max-width:560px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Dichtdrukken, felsen, openen. Handmatig, zonder stroom of instelling. Voor de RVS keyring zijn het sluit- en felsgereedschap het minimum.</p>
+    <div style="margin-top:clamp(32px,4vw,52px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.5vw,32px)" data-3col>
+      <div style="background:#f5f5f7;border-radius:28px;padding:clamp(28px,3vw,44px) clamp(20px,2vw,32px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+        <span style="font-size:14px;font-weight:600;letter-spacing:0.2px;color:#8a8a8e">01</span>
+        <span style="font-size:clamp(21px,2.2vw,26px);line-height:1.14;font-weight:600;color:#1d1d1f;letter-spacing:0.007em">Dichtdrukken.</span>
+        <span style="max-width:300px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">De ring gaat in de kerf van zijn eigen maat en wordt dichtgedrukt tot de uiteinden tegen elkaar staan.</span>
+        <div style="margin-top:clamp(14px,2vw,26px);height:min(22vw,240px);width:100%;display:flex;align-items:center;justify-content:center"><img width="1600" height="1257" src="../photos/cut/tool-zwart.webp" alt="Sluitgereedschap met gekerfd profiel voor de vijf ringmaten" style="width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)"></div>
+        <span style="font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Sluitgereedschap</span>
+        <span style="max-width:280px;font-size:15px;line-height:1.47;color:#707070;letter-spacing:-0.224px">Eén kerf per ringmaat, van 1 tot 4 inch.</span>
+      </div>
+      <div style="background:#f5f5f7;border-radius:28px;padding:clamp(28px,3vw,44px) clamp(20px,2vw,32px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+        <span style="font-size:14px;font-weight:600;letter-spacing:0.2px;color:#8a8a8e">02</span>
+        <span style="font-size:clamp(21px,2.2vw,26px);line-height:1.14;font-weight:600;color:#1d1d1f;letter-spacing:0.007em">Felsen.</span>
+        <span style="max-width:300px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">De sluiting wordt definitief vastgezet en wordt volkomen glad. Daarna is de ring niet meer met de hand te openen.</span>
+        <div style="margin-top:clamp(14px,2vw,26px);height:min(22vw,240px);width:100%;display:flex;align-items:center;justify-content:center"><img width="1600" height="1206" src="../photos/cut/tool-geel.webp" alt="Felsgereedschap met gele body voor het vastzetten van de sluiting" style="width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)"></div>
+        <span style="font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Felsgereedschap</span>
+        <span style="max-width:280px;font-size:15px;line-height:1.47;color:#707070;letter-spacing:-0.224px">Sluit zowel RVS keyrings als flex keyrings.</span>
+      </div>
+      <div style="background:#f5f5f7;border-radius:28px;padding:clamp(28px,3vw,44px) clamp(20px,2vw,32px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+        <span style="font-size:14px;font-weight:600;letter-spacing:0.2px;color:#8a8a8e">03</span>
+        <span style="font-size:clamp(21px,2.2vw,26px);line-height:1.14;font-weight:600;color:#1d1d1f;letter-spacing:0.007em">Openen.</span>
+        <span style="max-width:300px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">De enige manier om de ring weer te openen: doorsnijden bij de sluiting.</span>
+        <div style="margin-top:clamp(14px,2vw,26px);height:min(22vw,240px);width:100%;display:flex;align-items:center;justify-content:center"><img width="1600" height="871" src="../photos/cut/tool-rood.webp" alt="Snijgereedschap met rode body om de ring door te snijden" style="width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)"></div>
+        <span style="font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Snijgereedschap</span>
+        <span style="max-width:280px;font-size:15px;line-height:1.47;color:#707070;letter-spacing:-0.224px">Voor RVS keyrings tot 4 mm.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section style="background:#f5f5f7;padding:clamp(56px,7vw,88px) 0 0">
+  <div style="max-width:820px;margin:0 auto;padding:0 24px;text-align:center">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Na het felsen volkomen glad.</h2>
+    <p style="margin-top:16px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Geen uitstekende rand, geen naad waar een sleutel achter blijft haken. De ring is rondom bruikbaar en gaat alleen nog open met het snijgereedschap.</p>
+  </div>
+  <div style="margin:clamp(32px,4vw,56px) auto 0;width:100%">
+    <img width="2400" height="1018" src="../photos/ring-hero-sluiting.webp" alt="Macro van de gefelste sluiting van een RVS keyring: volkomen glad, zonder uitstekende rand" style="width:100%;height:auto;display:block" loading="lazy">
+  </div>
+</section>
+
+<section id="gereedschap" style="scroll-margin-top:180px;background:#ffffff;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,4vw,64px);align-items:start" data-2col>
+    <div style="order:2">
+      <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">Starterkit</p>
+      <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Alles om te beginnen, in één koffer.</h2>
+      <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Ringen in de gangbare maten, de drie stukken gereedschap en gekleurde ID-hulzen. Inclusief een monster van elke maat, zodat u zelf kunt uitproberen wat past.</p>
+      <div style="margin-top:clamp(28px,3.2vw,40px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,2.8vw,40px);align-items:start" data-kit>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#8a8a8e">RVS ringen</span>
+          <div style="display:flex;align-items:flex-start;gap:12px;padding-top:14px;border-top:1px solid #d2d2d7">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;flex:0 0 auto;margin-top:1px"><circle cx="12" cy="13.5" r="7.5"/><path d="M9.5 6h5"/></svg>
+            <span style="font-size:17px;line-height:1.4;color:#1d1d1f;letter-spacing:-0.374px">10&times; 1&quot;<br><span style="font-size:15px;color:#8a8a8e;letter-spacing:-0.224px">3 cm</span></span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;padding-top:14px;border-top:1px solid #d2d2d7">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;flex:0 0 auto;margin-top:1px"><circle cx="12" cy="13.5" r="7.5"/><path d="M9.5 6h5"/></svg>
+            <span style="font-size:17px;line-height:1.4;color:#1d1d1f;letter-spacing:-0.374px">10&times; 1⅝&quot;<br><span style="font-size:15px;color:#8a8a8e;letter-spacing:-0.224px">4 cm</span></span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;padding-top:14px;border-top:1px solid #d2d2d7">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;flex:0 0 auto;margin-top:1px"><circle cx="12" cy="13.5" r="7.5"/><path d="M9.5 6h5"/></svg>
+            <span style="font-size:17px;line-height:1.4;color:#1d1d1f;letter-spacing:-0.374px">10&times; 2&quot;<br><span style="font-size:15px;color:#8a8a8e;letter-spacing:-0.224px">5 cm</span></span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;padding-top:14px;border-top:1px solid #d2d2d7">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;flex:0 0 auto;margin-top:1px"><circle cx="9" cy="10" r="5"/><circle cx="15" cy="14" r="5"/></svg>
+            <span style="font-size:17px;line-height:1.4;color:#1d1d1f;letter-spacing:-0.374px">Monster<br><span style="font-size:15px;color:#8a8a8e;letter-spacing:-0.224px">Van elke maat</span></span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#8a8a8e">Gereedschap</span>
+          <div style="display:flex;align-items:flex-start;gap:12px;padding-top:14px;border-top:1px solid #d2d2d7">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;flex:0 0 auto;margin-top:1px"><rect x="8" y="3" width="8" height="18" rx="2"/><path d="M8 8h3M8 12h3M8 16h3"/></svg>
+            <span style="font-size:17px;line-height:1.4;color:#1d1d1f;letter-spacing:-0.374px">1&times; sluiten<br><span style="font-size:15px;color:#8a8a8e;letter-spacing:-0.224px">Sluitgereedschap</span></span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;padding-top:14px;border-top:1px solid #d2d2d7">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;flex:0 0 auto;margin-top:1px"><path d="M5 20l6-6M19 20l-6-6"/><path d="M9 4l3 6 3-6"/><path d="M12 10v4"/></svg>
+            <span style="font-size:17px;line-height:1.4;color:#1d1d1f;letter-spacing:-0.374px">1&times; felsen<br><span style="font-size:15px;color:#8a8a8e;letter-spacing:-0.224px">Felsgereedschap</span></span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;padding-top:14px;border-top:1px solid #d2d2d7">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;flex:0 0 auto;margin-top:1px"><circle cx="7" cy="18" r="2.6"/><circle cx="17" cy="18" r="2.6"/><path d="M8.6 16L17 4M15.4 16L7 4"/></svg>
+            <span style="font-size:17px;line-height:1.4;color:#1d1d1f;letter-spacing:-0.374px">1&times; openen<br><span style="font-size:15px;color:#8a8a8e;letter-spacing:-0.224px">Snijgereedschap</span></span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#8a8a8e">Herkenning</span>
+          <div style="display:flex;align-items:flex-start;gap:12px;padding-top:14px;border-top:1px solid #d2d2d7">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;flex:0 0 auto;margin-top:1px"><path d="M12.5 3.5H20v7.5L10.5 20.5 3.5 13.5z"/><circle cx="16" cy="8" r="1.5"/></svg>
+            <span style="font-size:17px;line-height:1.4;color:#1d1d1f;letter-spacing:-0.374px">50&times; ID-huls<br><span style="font-size:15px;color:#8a8a8e;letter-spacing:-0.224px">Met kleurcodering</span></span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;padding-top:14px;border-top:1px solid #d2d2d7">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;flex:0 0 auto;margin-top:1px"><circle cx="8" cy="8.5" r="3.2"/><circle cx="16" cy="8.5" r="3.2"/><circle cx="12" cy="15.5" r="3.2"/></svg>
+            <span style="font-size:17px;line-height:1.4;color:#1d1d1f;letter-spacing:-0.374px">5 kleuren<br><span style="font-size:15px;color:#8a8a8e;letter-spacing:-0.224px">Om bossen te scheiden</span></span>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:clamp(22px,2.6vw,32px);font-size:15px;line-height:1.47;color:#8a8a8e;letter-spacing:-0.224px">Voor de exacte inhoud en aantallen: neem contact op.</p>
+    </div>
+    <div style="order:1;display:flex;align-items:flex-start;justify-content:center">
+      <img width="1600" height="1195" src="../photos/cut/ring-koffer.webp" alt="Starterkit: zwarte koffer met op het label de drie stukken gereedschap, een sleutelbos aan een ring en gekleurde ID-hulzen" style="width:100%;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+    </div>
+  </div>
+</section>
+
+<section id="flex" style="scroll-margin-top:180px;background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:center" data-2col>
+    <div>
+      <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">Flex keyrings</p>
+      <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Buigt mee, sluit even hard.</h2>
+      <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Dezelfde vijf maten en hetzelfde serienummer, maar met een gevlochten staaldraad in plaats van een massieve beugel. Voor sleutels met een kleine opening.</p>
+      <p style="margin-top:14px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De flex keyring wordt met hetzelfde felsgereedschap gesloten als de RVS keyring &mdash; het sluitgereedschap is hier niet nodig.</p>
+      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#ffffff;border-radius:18px">
+        <tbody>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap">Kabel</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px">2,6 mm gevlochten RVS</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Sluiting</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">4 mm, glad na felsen</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Maten</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">1&quot; tot 4&quot;, gelijk aan RVS</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Labels</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">Aluminium 3 cm of acrylaat 3 mm</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center">
+      <img width="1191" height="1254" src="../photos/cut/ring-flex-solo.webp" alt="Flex keyring van gevlochten RVS staaldraad met geperste sluiting bovenaan" style="width:100%;max-width:340px;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" style-hover="transform:scale(1.03)">
+    </div>
+  </div>
+</section>
+
+<section style="background:#ffffff;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;max-width:620px;text-wrap:pretty">Twee stukken gereedschap.</h2>
+    <p style="margin-top:16px;max-width:560px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De flex keyring heeft zijn eigen fels- en snijgereedschap: één om de sluiting dicht te knijpen, één om hem weer open te knippen.</p>
+    <div style="margin-top:clamp(32px,4vw,52px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,2.5vw,32px)" data-2col>
+      <div style="background:#f5f5f7;border-radius:28px;padding:clamp(28px,3vw,44px) clamp(20px,2vw,32px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+        <span style="font-size:14px;font-weight:600;letter-spacing:0.2px;color:#8a8a8e">01</span>
+        <span style="font-size:clamp(21px,2.2vw,26px);line-height:1.14;font-weight:600;color:#1d1d1f;letter-spacing:0.007em">Felsen.</span>
+        <span style="max-width:300px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">De sluiting wordt om beide uiteinden geknepen tot een gladde afwerking, rondom bruikbaar.</span>
+        <div style="margin-top:clamp(14px,2vw,26px);height:min(22vw,240px);width:100%;display:flex;align-items:center;justify-content:center"><img width="429" height="141" src="../photos/tool-flex-crimp.webp" alt="Felsgereedschap voor flex keyrings: kniptang met rode ring aan de bek" style="width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)"></div>
+        <span style="font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Felsgereedschap flex keyrings</span>
+        <span style="max-width:280px;font-size:15px;line-height:1.47;color:#707070;letter-spacing:-0.224px">Knijpt de sluiting definitief dicht.</span>
+      </div>
+      <div style="background:#f5f5f7;border-radius:28px;padding:clamp(28px,3vw,44px) clamp(20px,2vw,32px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+        <span style="font-size:14px;font-weight:600;letter-spacing:0.2px;color:#8a8a8e">02</span>
+        <span style="font-size:clamp(21px,2.2vw,26px);line-height:1.14;font-weight:600;color:#1d1d1f;letter-spacing:0.007em">Openen.</span>
+        <span style="max-width:300px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">De enige manier om de ring te openen: de sluiting doorknippen om sleutels te verwijderen.</span>
+        <div style="margin-top:clamp(14px,2vw,26px);height:min(22vw,240px);width:100%;display:flex;align-items:center;justify-content:center"><img width="525" height="129" src="../photos/tool-flex-knipex.webp" alt="Knipex snijtang met rode grepen om de sluiting van een flex keyring door te knippen" style="width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)"></div>
+        <span style="font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Snijgereedschap Knipex</span>
+        <span style="max-width:280px;font-size:15px;line-height:1.47;color:#707070;letter-spacing:-0.224px">Knipt staaldraad tot 4 mm door.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flexmaten" style="background:#f5f5f7;padding:clamp(64px,8vw,100px) 0;scroll-margin-top:132px">
+  <div style="max-width:820px;margin:0 auto;padding:0 24px;text-align:center">
+    <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">Flex keyrings</p>
+    <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Vijf vaste maten.</h2>
+    <p style="margin-top:16px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Dezelfde maatreeks als de RVS keyring, van 1 tot 4 inch. De gevlochten kabel buigt mee, de geperste sluiting is na felsen glad en rondom bruikbaar.</p>
+  </div>
+  <div data-reveal style="margin:clamp(32px,4vw,56px) auto 0;width:100%;max-width:1680px">
+    <img width="1500" height="502" src="../photos/ring-maten-flex-v2.webp" alt="Vijf maten flex keyrings naast elkaar: 1, 1⅝, 2, 3 en 4 inch" style="width:100%;height:auto;display:block" loading="lazy">
+    <div style="position:relative;height:42px;margin-top:clamp(8px,1vw,14px)">
+      <span style="position:absolute;left:7.6%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap"><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">1"</span><span style="font-size:14px;color:#8a8a8e;letter-spacing:-0.08px">3 cm</span></span>
+      <span style="position:absolute;left:22.7%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap"><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">1⅝"</span><span style="font-size:14px;color:#8a8a8e;letter-spacing:-0.08px">4 cm</span></span>
+      <span style="position:absolute;left:39.7%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap"><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">2"</span><span style="font-size:14px;color:#8a8a8e;letter-spacing:-0.08px">5 cm</span></span>
+      <span style="position:absolute;left:60.6%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap"><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">3"</span><span style="font-size:14px;color:#8a8a8e;letter-spacing:-0.08px">7 cm</span></span>
+      <span style="position:absolute;left:85.6%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap"><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">4"</span><span style="font-size:14px;color:#8a8a8e;letter-spacing:-0.08px">9 cm</span></span>
+    </div>
+    <div style="position:relative;height:62px;margin-top:clamp(14px,1.8vw,22px)">
+      <div style="position:absolute;left:7.6%;transform:translateX(-50%);display:flex;flex-direction:row;align-items:center;gap:7px;white-space:nowrap"><svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:block;flex:0 0 auto"><circle cx="9" cy="9" r="4.2"/><path d="M12 12l7 7"/><path d="M15.5 15.5l-1.8 1.8"/><path d="M17.8 17.8l-1.8 1.8"/></svg><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">14</span></div>
+      <div style="position:absolute;left:22.7%;transform:translateX(-50%);display:flex;flex-direction:row;align-items:center;gap:7px;white-space:nowrap"><svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:block;flex:0 0 auto"><circle cx="9" cy="9" r="4.2"/><path d="M12 12l7 7"/><path d="M15.5 15.5l-1.8 1.8"/><path d="M17.8 17.8l-1.8 1.8"/></svg><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">22</span></div>
+      <div style="position:absolute;left:39.7%;transform:translateX(-50%);display:flex;flex-direction:row;align-items:center;gap:7px;white-space:nowrap"><svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:block;flex:0 0 auto"><circle cx="9" cy="9" r="4.2"/><path d="M12 12l7 7"/><path d="M15.5 15.5l-1.8 1.8"/><path d="M17.8 17.8l-1.8 1.8"/></svg><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">28</span></div>
+      <div style="position:absolute;left:60.6%;transform:translateX(-50%);display:flex;flex-direction:row;align-items:center;gap:7px;white-space:nowrap"><svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:block;flex:0 0 auto"><circle cx="9" cy="9" r="4.2"/><path d="M12 12l7 7"/><path d="M15.5 15.5l-1.8 1.8"/><path d="M17.8 17.8l-1.8 1.8"/></svg><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">46</span></div>
+      <div style="position:absolute;left:85.6%;transform:translateX(-50%);display:flex;flex-direction:row;align-items:center;gap:7px;white-space:nowrap"><svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:block;flex:0 0 auto"><circle cx="9" cy="9" r="4.2"/><path d="M12 12l7 7"/><path d="M15.5 15.5l-1.8 1.8"/><path d="M17.8 17.8l-1.8 1.8"/></svg><span style="font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px">66</span></div>
+    </div>
+    <p style="max-width:520px;margin:clamp(10px,1.4vw,16px) auto 0;padding:0 24px;text-align:center;font-size:14px;line-height:1.47;color:#8a8a8e;letter-spacing:-0.08px">Aantal sleutels per ring, indicatief.</p>
+  </div>
+  <div style="max-width:1000px;margin:clamp(32px,4vw,52px) auto 0;padding:0 24px;overflow-x:auto" data-table-scroll="1">
+    <table style="width:100%;min-width:660px;border-collapse:collapse;background:#ffffff;border-radius:18px">
+      <thead>
+        <tr>
+          <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Maat</th>
+          <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Binnendiameter</th>
+          <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Kabel</th>
+          <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Sluiting</th>
+          <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Sleutels</th>
+          <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Bestelcode</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">1" Flex</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">3 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">2,6 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">4 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">14</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">Flex KR3</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">1⅝" Flex</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">4 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">2,6 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">4 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">22</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">Flex KR4</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">2" Flex</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">5 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">2,6 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">4 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">28</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">Flex KR5</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">3" Flex</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">7 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">2,6 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">4 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">46</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">Flex KR7</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">4" Flex</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">9 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">2,6 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">4 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">66</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">Flex KR9</td>
+          </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px;font-size:14px;line-height:1.47;color:#8a8a8e;letter-spacing:-0.08px">Alle maten met eigen serienummer, uit voorraad per 10 stuks per maat.</p>
+  </div>
+</section>
+
+<section id="datasheet" style="background:#ffffff;padding:clamp(40px,5vw,64px) 0 clamp(48px,6vw,80px);scroll-margin-top:132px">
+  <div style="max-width:820px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:clamp(24px,3vw,40px);align-items:stretch">
+    <div data-reveal style="border-top:1px solid #d2d2d7;padding-top:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:18px;text-align:left;scroll-margin-top:132px">
+          <div>
+            <h3 style="font-size:clamp(21px,2.2vw,26px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">Datasheet sleutelringen.</h3>
+            <p style="margin-top:8px;max-width:440px;font-size:15px;line-height:1.47;color:#707070;text-wrap:pretty">Alle gegevens van de fabrikant in één document, met foto's, maten en het gereedschap per uitvoering.</p>
+          </div>
+          <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:20px">
+        <a href="../datasheets/DELPHI-datasheet-Sleutelringen-NL.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;font-size:17px;color:#0066cc;letter-spacing:-0.374px" style-hover="text-decoration:underline"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:17px;height:21px;flex:0 0 auto"><path d="M12.2 2.6H5.6a1.1 1.1 0 0 0-1.1 1.1v12.6a1.1 1.1 0 0 0 1.1 1.1h8.8a1.1 1.1 0 0 0 1.1-1.1V6.1z"/><path d="M12.2 2.6v3.5h3.3"/><path d="M7.4 10.6h5.2M7.4 13.4h5.2"/></svg>Nederlands (PDF)</a>
+        <a href="../datasheets/DELPHI-datasheet-Sleutelringen-EN.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;font-size:17px;color:#0066cc;letter-spacing:-0.374px" style-hover="text-decoration:underline"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:17px;height:21px;flex:0 0 auto"><path d="M12.2 2.6H5.6a1.1 1.1 0 0 0-1.1 1.1v12.6a1.1 1.1 0 0 0 1.1 1.1h8.8a1.1 1.1 0 0 0 1.1-1.1V6.1z"/><path d="M12.2 2.6v3.5h3.3"/><path d="M7.4 10.6h5.2M7.4 13.4h5.2"/></svg>English (PDF)</a>
+      </div>
+        </div>
+        <div data-reveal style="border-top:1px solid #d2d2d7;padding-top:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:18px;text-align:left">
+          <div>
+            <h3 style="font-size:clamp(21px,2.2vw,26px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">Werkinstructie Tamper-Proof Key Rings.</h3>
+            <p style="margin-top:8px;max-width:440px;font-size:15px;line-height:1.47;color:#707070;text-wrap:pretty">Specificaties, gereedschap, en het sluiten, verzegelen en openen van de RVS en de Flex keyring. Vijf pagina&rsquo;s met de figuren van de fabrikant.</p>
+          </div>
+          <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:20px">
+        <a href="../datasheets/DELPHI-werkinstructie-Tamper-Proof-Key-Rings-NL.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;font-size:17px;color:#0066cc;letter-spacing:-0.374px" style-hover="text-decoration:underline"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:17px;height:21px;flex:0 0 auto"><path d="M12.2 2.6H5.6a1.1 1.1 0 0 0-1.1 1.1v12.6a1.1 1.1 0 0 0 1.1 1.1h8.8a1.1 1.1 0 0 0 1.1-1.1V6.1z"/><path d="M12.2 2.6v3.5h3.3"/><path d="M7.4 10.6h5.2M7.4 13.4h5.2"/></svg>Nederlands (PDF)</a>
+        <a href="../datasheets/DELPHI-werkinstructie-Tamper-Proof-Key-Rings-EN.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;font-size:17px;color:#0066cc;letter-spacing:-0.374px" style-hover="text-decoration:underline"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:17px;height:21px;flex:0 0 auto"><path d="M12.2 2.6H5.6a1.1 1.1 0 0 0-1.1 1.1v12.6a1.1 1.1 0 0 0 1.1 1.1h8.8a1.1 1.1 0 0 0 1.1-1.1V6.1z"/><path d="M12.2 2.6v3.5h3.3"/><path d="M7.4 10.6h5.2M7.4 13.4h5.2"/></svg>English (PDF)</a>
+          </div>
+        </div>
+  </div>
+</section>
+
+<section id="morse" style="scroll-margin-top:180px;background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:center" data-2col>
+    <div>
+      <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">Morse keyrings</p>
+      <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Sluiten met de hand. Opnieuw te gebruiken.</h2>
+      <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Een beugel van 4&nbsp;mm roestvrij staal die met handkracht dichtklikt in een kunststof sluitdop &mdash; zonder gereedschap. Elke dop heeft een eigen nummer.</p>
+      <p style="margin-top:14px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bij een nieuwe indeling vervangt u alleen de dop; de beugel blijft in gebruik. Voor situaties waar sleutels regelmatig wisselen en een verzegelde ring te ver gaat.</p>
+      <div style="margin-top:clamp(24px,2.8vw,36px);display:flex;flex-wrap:wrap;gap:10px 40px">
+        <span style="font-size:15px;color:#707070;letter-spacing:-0.224px">Vanaf <strong style="font-weight:600;color:#1d1d1f">10 ringen</strong></span>
+        <span style="font-size:15px;color:#707070;letter-spacing:-0.224px">Losse doppen vanaf <strong style="font-weight:600;color:#1d1d1f">25 stuks</strong></span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center">
+      <img width="1584" height="672" src="../photos/cut/ring-morse-bossen.webp" alt="Vier Morse keyrings met sleutelbossen, oplopend van een handvol sleutels naar een volle bos" style="width:100%;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+    </div>
+  </div>
+</section>
+
+<section style="background:#ffffff;padding:clamp(64px,8vw,100px) 0">
+  <div style="max-width:820px;margin:0 auto;padding:0 24px;text-align:center">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Vier modellen.</h2>
+    <p style="margin-top:16px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Drie U-modellen voor een handvol tot een volle bos, en een rond model van 8,5&nbsp;cm. Dezelfde sluitdop past op elk model.</p>
+  </div>
+  <div style="margin:clamp(32px,4vw,56px) auto 0;width:100%;max-width:1680px">
+    <img width="1584" height="672" src="../photos/ring-morse-maten-v2.webp" alt="Vier Morse keyrings schaalgetrouw naast elkaar: drie U-modellen en het ronde model van 8,5 cm" style="width:100%;height:auto;display:block" loading="lazy">
+  </div>
+  <div style="max-width:1000px;margin:clamp(32px,4vw,52px) auto 0;overflow-x:auto" data-table-scroll="1">
+    <table style="width:100%;min-width:460px;border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+      <thead>
+        <tr>
+          <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Model</th>
+          <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Maat</th>
+          <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Bestelcode</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">U-model</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">3,5 &times; 3,5 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">KR3535</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">U-model</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">3,5 &times; 5,0 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">KR3550</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">U-model</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">5,0 &times; 6,0 cm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">KR5060</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Rond model</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">8,5 cm diameter</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">KR8500</td>
+          </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px;font-size:14px;line-height:1.47;color:#8a8a8e;letter-spacing:-0.08px">Beugel 4 mm roestvrij staal. Minimale afname 10 ringen per model.</p>
+  </div>
+</section>
+
+<section style="background:#f5f5f7;padding:clamp(64px,8vw,100px) 0">
+  <div style="max-width:820px;margin:0 auto;padding:0 24px;text-align:center">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Een dop per afdeling.</h2>
+    <p style="margin-top:16px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De kunststof sluitdoppen zijn in verschillende kleuren leverbaar en elk exemplaar draagt een eigen nummer. Kleur voor de afdeling, nummer voor de administratie.</p>
+    <p style="margin-top:14px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Wisselt de indeling? Dan vervangt u de dop en houdt u de beugel. Losse doppen zijn per 25 stuks te bestellen.</p>
+  </div>
+  <div style="margin:clamp(36px,4.5vw,64px) auto 0;width:100%;max-width:1680px">
+    <img width="1584" height="672" src="../photos/cut/ring-morse-hubs.webp" alt="Zeven Morse sluitdoppen naast elkaar in rood, geel, blauw, groen, antraciet, bruin en wit, elk met een eigen nummer" style="width:100%;height:auto;display:block" loading="lazy">
+  </div>
+</section>
+
+<section id="rivet" style="scroll-margin-top:180px;background:#ffffff;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:center" data-2col>
+    <div>
+      <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">Rivet keyrings</p>
+      <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Dicht met een klinknagel.</h2>
+      <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Verchroomd staal van 2,5&nbsp;mm. De uiteinden worden met een tang naar elkaar gedrukt tot de gaten in de platte einden boven elkaar liggen. Daar gaat een koperen klinknagel door, die u op een stevige ondergrond vastslaat met een hamer.</p>
+      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+        <thead>
+          <tr>
+            <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Diameter</th>
+            <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Sleutels</th>
+            <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Bestelcode</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">2,3 cm</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">13</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">RR23</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">3,5 cm</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">19</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">RR35</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">4,0 cm</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">21</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;font-weight:600;color:#1d1d1f;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">RR40</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px;font-size:14px;line-height:1.47;color:#8a8a8e;letter-spacing:-0.08px">Aantal sleutels indicatief, afgeleid van de RVS-reeks &mdash; de dunnere ring van 2,5 mm laat er in de praktijk iets meer op.</p>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center">
+      <img width="1524" height="1600" src="../photos/cut/ring-rivet-open.webp" alt="Geopende Rivet keyring van verchroomd staal met de platte uiteinden en de koperen klinknagel" style="width:100%;max-width:340px;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+    </div>
+  </div>
+</section>
+
+<section id="coating" style="scroll-margin-top:180px;background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:center" data-2col>
+    <div style="order:2">
+      <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">Flexibel met coating</p>
+      <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Dun, buigzaam, met een twist dicht.</h2>
+      <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Staaldraad met een kunststof coating, voor situaties waarin een dunnere ring nodig is. Sluiten en heropenen gaat zonder gereedschap, met een draai. Moet de ring vast blijven, dan knijpt u de sluiting dicht met een tangetje.</p>
+      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#ffffff;border-radius:18px">
+        <tbody>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap">Diameter</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px">4 cm</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Sleutels</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">Circa 21, indicatief</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Dikte sluiting</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">1,5 mm</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Kleuren</th>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">Rood, blauw, grijs, geel, groen en zwart</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="order:1;display:flex;align-items:center;justify-content:center">
+      <img width="1600" height="1462" src="../photos/cut/ring-coating-blauw.webp" alt="Flexibele sleutelring met blauwe coating en schroefsluiting" style="width:100%;max-width:340px;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+    </div>
+  </div>
+</section>
+
+<section id="vergelijken" style="scroll-margin-top:180px;background:#ffffff;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;max-width:620px;text-wrap:pretty">Welke ring past bij u?</h2>
+    <p style="margin-top:16px;max-width:600px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Kort samengevat: hoe de ring sluit, of daar gereedschap voor nodig is, en of hij opnieuw te gebruiken is.</p>
+    <div data-compare-cards="1" style="margin-top:clamp(32px,4vw,52px);display:none;flex-direction:column;gap:14px">
+      <div style="background:#f5f5f7;border-radius:20px;padding:22px 20px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:-0.4px">RVS keyrings</span>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Sluiting</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Gefelst, verzegeld</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Gereedschap</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Sluit- en felsgereedschap</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Serienummer</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Ja, in het staal</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Opnieuw te gebruiken</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Nee</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Maten</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Vijf, 1&quot; tot 4&quot;</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Bestelcode</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">KR3 &ndash; KR9</span></div>
+        </div>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:22px 20px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:-0.4px">Flex keyrings</span>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Sluiting</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Gefelst, verzegeld</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Gereedschap</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Felsgereedschap</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Serienummer</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Ja, in het staal</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Opnieuw te gebruiken</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Nee</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Maten</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Vijf, 1&quot; tot 4&quot;</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Bestelcode</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Op aanvraag</span></div>
+        </div>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:22px 20px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:-0.4px">Morse keyrings</span>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Sluiting</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Klik in sluitdop</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Gereedschap</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Geen</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Serienummer</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Ja, in de dop</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Opnieuw te gebruiken</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Ja, dop vervangen</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Maten</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Vier modellen</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Bestelcode</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">KR3535 &ndash; KR8500</span></div>
+        </div>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:22px 20px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:-0.4px">Rivet keyrings</span>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Sluiting</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Koperen klinknagel</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Gereedschap</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Tang en hamer</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Serienummer</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Nee</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Opnieuw te gebruiken</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Nee</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Maten</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Drie, 2,3 tot 4,0 cm</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Bestelcode</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">RR23 &ndash; RR40</span></div>
+        </div>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:22px 20px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:-0.4px">Flexibel met coating</span>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Sluiting</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Twist, eventueel geknepen</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Gereedschap</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Geen</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Serienummer</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Nee</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Opnieuw te gebruiken</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Ja</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Maten</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">E&eacute;n, 4 cm</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:9px;border-top:1px solid #dcdce0"><span style="font-size:14px;color:#707070;letter-spacing:-0.224px;flex:0 0 auto">Bestelcode</span><span style="font-size:15px;color:#1d1d1f;letter-spacing:-0.224px;text-align:right">Op aanvraag</span></div>
+        </div>
+      </div>
+    </div>
+    <div data-compare-table="1" style="margin-top:clamp(32px,4vw,52px);overflow-x:auto" data-table-scroll="1">
+      <table style="width:100%;min-width:860px;border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+        <thead>
+          <tr>
+          <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Uitvoering</th>
+          <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Sluiting</th>
+          <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Gereedschap</th>
+          <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Serienummer</th>
+          <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Opnieuw te gebruiken</th>
+          <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Maten</th>
+          <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Bestelcode</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">RVS keyrings</th>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Gefelst, verzegeld</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Sluit- en felsgereedschap</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Ja, in het staal</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Nee</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Vijf, 1&quot; tot 4&quot;</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">KR3 &ndash; KR9</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Flex keyrings</th>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Gefelst, verzegeld</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Felsgereedschap</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Ja, in het staal</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Nee</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Vijf, 1&quot; tot 4&quot;</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Flex KR3 &ndash; Flex KR9</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Morse keyrings</th>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Klik in sluitdop</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Geen</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Ja, in de dop</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Ja, dop vervangen</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Vier modellen</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">KR3535 &ndash; KR8500</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Rivet keyrings</th>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Koperen klinknagel</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Tang en hamer</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Nee</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Nee</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Drie, 2,3 tot 4,0 cm</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">RR23 &ndash; RR40</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Flexibel met coating</th>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Twist, eventueel geknepen</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Geen</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Nee</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">Ja</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;color:#707070;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">E&eacute;n, 4 cm</td>
+            <td style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">Op aanvraag</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:16px;font-size:14px;line-height:1.47;color:#8a8a8e;letter-spacing:-0.08px">Alleen de gefelste RVS en flex keyrings zijn verzegeld: die maken zichtbaar of er aan de bos is gesleuteld.</p>
+  </div>
+</section>
+
+<section style="background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:820px;margin:0 auto;text-align:center">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Alle maten uit voorraad.</h2>
+    <p style="margin-top:16px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Vertel welke maat en hoeveel ringen u nodig heeft, dan sturen we een prijsopgave. Weet u de maat niet? Dan meten we mee.</p>
+    <div style="display:flex;justify-content:center;align-items:center;gap:28px;margin-top:32px;flex-wrap:wrap">
+      <a href="../contact/?p=ringen" style="background:#0071e3;color:#ffffff;font-size:17px;padding:12px 22px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Prijsopgave aanvragen</a>
+      <a href="tel:+31183648851" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px">Of bel +31 (0)183 648851</a>
+    </div>
+  </div>
+</section>
+
+<section style="background:#ffffff;padding:clamp(64px,8vw,100px) 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+    <div>
+      <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;max-width:620px;text-wrap:pretty">Alle uitvoeringen.</h2>
+      <p style="margin-top:16px;max-width:520px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Vijf manieren om de sleutel aan de bos te houden, elk met een eigen manier van sluiten.</p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button type="button" onClick="{{ ringPrev }}" aria-label="Vorige uitvoering" style="width:44px;height:44px;border:none;border-radius:50%;background:#f5f5f7;color:#1d1d1f;font-size:17px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#e8e8ed">‹</button>
+      <button type="button" onClick="{{ ringNext }}" aria-label="Volgende uitvoering" style="width:44px;height:44px;border:none;border-radius:50%;background:#f5f5f7;color:#1d1d1f;font-size:17px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#e8e8ed">›</button>
+    </div>
+  </div>
+  <div data-ring-rail="1" data-hide-scrollbar="1" style="margin:clamp(28px,3.2vw,40px) auto 0;width:fit-content;max-width:100%;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 24px">
+      <div style="flex:0 0 clamp(220px,20vw,270px);scroll-snap-align:start;background:#f5f5f7;border-radius:24px;padding:clamp(22px,2.2vw,30px);display:flex;flex-direction:column;gap:8px;transition:transform .22s cubic-bezier(0.25,0.1,0.25,1)" style-hover="transform:scale(1.02)">
+        <div style="height:clamp(140px,13vw,168px);display:flex;align-items:center;justify-content:center;margin-bottom:4px">
+          <img width="1600" height="1422" src="../photos/cut/ring-rvs.webp" alt="Massieve RVS sleutelring met serienummer" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+        </div>
+        <span style="font-size:22px;font-weight:600;letter-spacing:0.2px">RVS keyrings</span>
+        <span style="font-size:15px;line-height:1.45;color:#707070;letter-spacing:-0.224px;flex:1 1 auto">Massieve ring van 4 mm in geborsteld RVS, met een eigen serienummer. Dicht met gereedschap en daarna alleen los door de ring door te knippen.</span>
+        <a href="../contact/?p=ringen" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:#0066cc;margin-top:auto">Specificaties opvragen&nbsp;›</a>
+      </div>
+      <div style="flex:0 0 clamp(220px,20vw,270px);scroll-snap-align:start;background:#f5f5f7;border-radius:24px;padding:clamp(22px,2.2vw,30px);display:flex;flex-direction:column;gap:8px;transition:transform .22s cubic-bezier(0.25,0.1,0.25,1)" style-hover="transform:scale(1.02)">
+        <div style="height:clamp(140px,13vw,168px);display:flex;align-items:center;justify-content:center;margin-bottom:4px">
+          <img width="1191" height="1254" src="../photos/cut/ring-flex-solo.webp" alt="Flex keyring van gevlochten RVS staaldraad met geperste sluiting" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+        </div>
+        <span style="font-size:22px;font-weight:600;letter-spacing:0.2px">Flex keyrings</span>
+        <span style="font-size:15px;line-height:1.45;color:#707070;letter-spacing:-0.224px;flex:1 1 auto">Gevlochten kabel van 2,6 mm met een sluiting van 4 mm. Dezelfde maten en hetzelfde serienummer als de RVS keyring, maar buigzaam.</span>
+        <a href="../contact/?p=ringen" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:#0066cc;margin-top:auto">Specificaties opvragen&nbsp;›</a>
+      </div>
+      <div style="flex:0 0 clamp(220px,20vw,270px);scroll-snap-align:start;background:#f5f5f7;border-radius:24px;padding:clamp(22px,2.2vw,30px);display:flex;flex-direction:column;gap:8px;transition:transform .22s cubic-bezier(0.25,0.1,0.25,1)" style-hover="transform:scale(1.02)">
+        <div style="height:clamp(140px,13vw,168px);display:flex;align-items:center;justify-content:center;margin-bottom:4px">
+          <img width="1260" height="1582" src="../photos/cut/ring-morse-groen.webp" alt="Morse keyring met groene hub en klik-sluiting" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+        </div>
+        <span style="font-size:22px;font-weight:600;letter-spacing:0.2px">Morse keyrings</span>
+        <span style="font-size:15px;line-height:1.45;color:#707070;letter-spacing:-0.224px;flex:1 1 auto">Hub met een klik-sluiting: sleutels wisselen zonder gereedschap. De hub is er in zeven kleuren, elk met een eigen nummer, om bossen te scheiden.</span>
+        <a href="../contact/?p=ringen" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:#0066cc;margin-top:auto">Specificaties opvragen&nbsp;›</a>
+      </div>
+      <div style="flex:0 0 clamp(220px,20vw,270px);scroll-snap-align:start;background:#f5f5f7;border-radius:24px;padding:clamp(22px,2.2vw,30px);display:flex;flex-direction:column;gap:8px;transition:transform .22s cubic-bezier(0.25,0.1,0.25,1)" style-hover="transform:scale(1.02)">
+        <div style="height:clamp(140px,13vw,168px);display:flex;align-items:center;justify-content:center;margin-bottom:4px">
+          <img width="1524" height="1600" src="../photos/cut/ring-rivet-open.webp" alt="Rivet keyring geopend, met de klinknagel in de sluiting" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+        </div>
+        <span style="font-size:22px;font-weight:600;letter-spacing:0.2px">Rivet keyrings</span>
+        <span style="font-size:15px;line-height:1.45;color:#707070;letter-spacing:-0.224px;flex:1 1 auto">Geklonken uitvoering: de ring wordt met een klinknagel gesloten en gaat daarna niet meer open zonder hem te vernielen.</span>
+        <a href="../contact/?p=ringen" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:#0066cc;margin-top:auto">Specificaties opvragen&nbsp;›</a>
+      </div>
+      <div style="flex:0 0 clamp(220px,20vw,270px);scroll-snap-align:start;background:#f5f5f7;border-radius:24px;padding:clamp(22px,2.2vw,30px);display:flex;flex-direction:column;gap:8px;transition:transform .22s cubic-bezier(0.25,0.1,0.25,1)" style-hover="transform:scale(1.02)">
+        <div style="height:clamp(140px,13vw,168px);display:flex;align-items:center;justify-content:center;margin-bottom:4px">
+          <img width="1600" height="1462" src="../photos/cut/ring-coating-blauw.webp" alt="Staaldraadring met blauwe coating en schroefsluiting" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+        </div>
+        <span style="font-size:22px;font-weight:600;letter-spacing:0.2px">Flexibel met coating</span>
+        <span style="font-size:15px;line-height:1.45;color:#707070;letter-spacing:-0.224px;flex:1 1 auto">Staaldraad met kunststof mantel, die sloten en oppervlakken ontziet. De schroefsluiting gaat open voor het wisselen van sleutels; de kleur scheidt de bossen.</span>
+        <a href="../contact/?p=ringen" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:#0066cc;margin-top:auto">Specificaties opvragen&nbsp;›</a>
+      </div>
+  </div>
+</section>
+
+<section id="faq" data-productfaq="1" style="background:#ffffff;padding:clamp(56px,7vw,96px) 24px;scroll-margin-top:180px">
+  <div data-reveal style="max-width:820px;margin:0 auto">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:-0.2px;text-wrap:pretty">Veelgestelde vragen over sleutelringen.</h2>
+    <ul style="display:flex;flex-direction:column;margin-top:32px;border-top:1px solid #d6d6d6">
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf0 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Kan een sleutelring opnieuw worden geopend?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon0 }}</span>
+        </button>
+        <sc-if value="{{ pf0 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Dat verschilt per uitvoering, en dat is precies het punt. De <a href="#rvs" style="color:#0066cc">RVS keyring</a> en de <a href="#flex" style="color:#0066cc">flex keyring</a> worden gefelst en gaan daarna alleen open met het bijbehorende snijgereedschap — een geopende ring is dus altijd een zichtbaar geopende ring. Bij de <a href="#rivet" style="color:#0066cc">Rivet keyring</a> moet de klinknagel worden verbroken. De <a href="#morse" style="color:#0066cc">Morse keyring</a> klikt met handkracht dicht en is opnieuw te gebruiken. De <a href="#coating" style="color:#0066cc">flexibele ring met coating</a> heeft een schroefsluiting die opengaat voor het wisselen van sleutels: handig bij een wisselende indeling, maar niet bedoeld als verzegeling.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf1 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Hoe werkt de nummering?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon1 }}</span>
+        </button>
+        <sc-if value="{{ pf1 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Een serienummer zit op drie uitvoeringen: de <a href="#rvs" style="color:#0066cc">RVS keyring</a> en de <a href="#flex" style="color:#0066cc">flex keyring</a> hebben het nummer in het staal ingeslagen en gebruiken hetzelfde nummersysteem; bij de <a href="#morse" style="color:#0066cc">Morse keyring</a> staat het nummer op de sluitdop, waarvan elk exemplaar een eigen nummer heeft. Het nummer hoort dus bij de ring zelf en niet bij een label dat eraf kan vallen — daardoor blijft de sleutelbos herleidbaar. De Rivet keyring, de flexibele ring met coating en de losse staaldraadset hebben géén serienummer. In de <a href="#vergelijken" style="color:#0066cc">vergelijking</a> staat per uitvoering wat u krijgt.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf2 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Welke maat heb ik nodig?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon2 }}</span>
+        </button>
+        <sc-if value="{{ pf2 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Er zijn vijf vaste maten, van één tot vier inch. Hoeveel sleutels erop passen hangt af van de dikte van die sleutels, dus een vast aantal is niet te geven. Twijfelt u: print de productsheet op ware grootte en leg uw huidige ring erop. Bij een prijsopgave kijken we mee.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf3 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Heb ik gereedschap nodig?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon3 }}</span>
+        </button>
+        <sc-if value="{{ pf3 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Voor de RVS keyring drie stukken: dichtdrukken, felsen en openen. Handmatig, zonder stroom of instellingen. De flex keyring heeft eigen fels- en snijgereedschap, twee stuks. De Morse keyring sluit met handkracht en heeft geen gereedschap nodig. Er is ook een <a href="#gereedschap" style="color:#0066cc">starterkit</a> met ringen, gereedschap en ID-hulzen in één koffer.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf4 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Beschadigt de ring het slot of de sleutelkast?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon4 }}</span>
+        </button>
+        <sc-if value="{{ pf4 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Na het felsen is de ring volkomen glad: geen uitstekende rand en geen naad waar een sleutel achter blijft haken. Voor situaties waarin een dunnere ring nodig is, of waarin sloten en oppervlakken extra ontzien moeten worden, is er de <a href="#coating" style="color:#0066cc">flexibele ring met kunststof coating</a>.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf5 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Wat is de levertijd?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon5 }}</span>
+        </button>
+        <sc-if value="{{ pf5 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Alle vijf maten liggen op voorraad, per 10 stuks per maat. Geef door welke maat en hoeveel ringen u nodig heeft, dan sturen we een prijsopgave.</p>
+        </sc-if>
+      </li>
+    </ul>
+    <p style="margin-top:28px;font-size:17px;line-height:1.5;color:#474747">Staat uw vraag er niet bij? <a href="../contact/?p=sleutelringen" style="color:#0066cc">Stel hem ons rechtstreeks&nbsp;›</a></p>
+  </div>
+</section>
+
+<section data-crosssell="1" style="background:#f5f5f7;padding:clamp(56px,7vw,96px) 24px">
+  <div data-reveal style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:-0.2px;max-width:620px;text-wrap:pretty">Maak uw sleutelbeheer compleet.</h2>
+    <p style="margin-top:14px;max-width:620px;font-size:17px;line-height:1.5;color:#474747;text-wrap:pretty">Een genummerde ring is de eerste schakel. Deze systemen leggen de rest vast.</p>
+    <p style="margin-top:18px;font-size:17px;line-height:1.5"><a href="../#keuzehulp" style="color:#0066cc">Twijfelt u welk systeem past? Doe de keuzehulp&nbsp;›</a></p>
+    <ul data-crosssell-grid="1" style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.4vw,32px)">
+      <li>
+        <a href="../sam/" style="display:flex;flex-direction:column;height:100%;color:#1d1d1f;text-decoration:none" style-hover="text-decoration:none">
+          <div style="position:relative;overflow:hidden;border-radius:16px;background:transparent;aspect-ratio:4 / 3">
+            <img width="2400" height="1018" src="../photos/cut/sam-familie-lijn.webp" alt="De SAM-serie sleutelbeheersystemen naast elkaar" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+          </div>
+          <span style="margin-top:18px;font-size:21px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">Security Asset Manager</span>
+          <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Van 8 tot 96 posities per kast, dezelfde registratie.</span>
+          <span style="margin-top:auto;padding-top:10px;font-size:15px;color:#0066cc">Security Asset Manager bekijken&nbsp;›</span>
+        </a>
+      </li>
+      <li>
+        <a href="../keybox/" style="display:flex;flex-direction:column;height:100%;color:#1d1d1f;text-decoration:none" style-hover="text-decoration:none">
+          <div style="position:relative;overflow:hidden;border-radius:16px;background:transparent;aspect-ratio:4 / 3">
+            <img width="1600" height="1224" src="../photos/cut/keybox-system-6.webp" alt="Keybox sleutelkast met codepaneel en display" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+          </div>
+          <span style="margin-top:18px;font-size:21px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">Keybox</span>
+          <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Sleutelkasten op code of met volledige registratie.</span>
+          <span style="margin-top:auto;padding-top:10px;font-size:15px;color:#0066cc">Keybox bekijken&nbsp;›</span>
+        </a>
+      </li>
+      <li>
+        <a href="../keytracker/" style="display:flex;flex-direction:column;height:100%;color:#1d1d1f;text-decoration:none" style-hover="text-decoration:none">
+          <div style="position:relative;overflow:hidden;border-radius:16px;background:transparent;aspect-ratio:4 / 3">
+            <img width="894" height="480" src="../photos/keytracker-bord-25-cut.webp" alt="KeyTracker bord met 25 posities" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+          </div>
+          <span style="margin-top:18px;font-size:21px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">KeyTracker</span>
+          <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Mechanisch bord: sleutel eruit, eigen pin erin.</span>
+          <span style="margin-top:auto;padding-top:10px;font-size:15px;color:#0066cc">KeyTracker bekijken&nbsp;›</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer style="margin-top:12px;background:#f5f5f7;padding:80px 24px 40px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:48px">
+      <img width="250" height="92" src="../logos/delphi-wordmark.png" alt="DELPHI" style="height:38px;width:103px;align-self:flex-start;display:block">
+      <span style="font-size:12px;font-weight:600;letter-spacing:2px;color:#707070;text-transform:uppercase">Sleutelbeheersystemen</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px">
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Sleutelbeheer</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../sam/" style="font-size:14px;color:#707070">Security Asset Manager</a></li>
+          <li><a href="../keybox/" style="font-size:14px;color:#707070">Keybox</a></li>
+          <li><a href="../keytracker/" style="font-size:14px;color:#707070">KeyTracker</a></li>
+          <li><a href="../keycontroller/" style="font-size:14px;color:#707070">Keycontroller</a></li>
+          <li><a href="../swat-box/" style="font-size:14px;color:#707070">SWAT-box</a></li>
+          <li><a href="../surface-vault/" style="font-size:14px;color:#707070">Surface Vault</a></li>
+          <li><a href="../safebox/" style="font-size:14px;color:#707070">Safebox</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Opbergsystemen</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../sam-lockers/" style="font-size:14px;color:#707070">SAM lockers</a></li>
+          <li><a href="../oc-spray-station/" style="font-size:14px;color:#707070">OC Spray Station</a></li>
+          <li><a href="../keytracker-opbergkasten/" style="font-size:14px;color:#707070">KeyTracker opbergkasten</a></li>
+          <li><a href="../vel-key/" style="font-size:14px;color:#707070">Vel-Key</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Sleutelringen</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../sleutelringen/" style="font-size:14px;color:#707070">RVS keyrings</a></li>
+          <li><a href="../sleutelringen/#flex" style="font-size:14px;color:#707070">Flex keyrings</a></li>
+          <li><a href="../sleutelringen/#morse" style="font-size:14px;color:#707070">Morse keyrings</a></li>
+          <li><a href="../sleutelringen/#rivet" style="font-size:14px;color:#707070">Rivet keyrings</a></li>
+          <li><a href="../sleutelringen/#coating" style="font-size:14px;color:#707070">Flexibel met coating</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Contact</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../contact/#contactgegevens" style="font-size:14px;color:#707070">Contactgegevens</a></li>
+          <li><a href="../contact/#faq" style="font-size:14px;color:#707070">Veelgestelde vragen</a></li>
+          <li><a href="../documentatie/" style="font-size:14px;color:#707070">Documentatie</a></li>
+          <li><a href="../contact/#dealership" style="font-size:14px;color:#707070">Dealer worden</a></li>
+          <li><a href="../over/" style="font-size:14px;color:#707070">Over DELPHI</a></li>
+          <li><a href="../over/#fabrikanten" style="font-size:14px;color:#707070">Fabrikanten en partners</a></li>
+          <li><a href="../contact/?p=ringen" style="font-size:14px;color:#707070">Offerte aanvragen</a></li>
+          <li><a href="mailto:info@sleutelbeheersystemen.nl" style="font-size:14px;color:#707070">info@sleutelbeheersystemen.nl</a></li>
+        </ul>
+      </div>
+    </div>
+    <p data-legal="1" style="margin-top:64px;padding-top:20px;border-top:1px solid #d6d6d6;font-size:12px;line-height:1.33;color:#707070">© 2026 DELPHI Sleutelbeheersystemen · Einsteinstraat 3e, 4207 HW Gorinchem · KvK 51691671 · BTW NL073453614B01<br><a href="../privacy/" style="color:#707070">Privacy en disclaimer</a> &middot; <a href="../voorwaarden/" style="color:#707070">Algemene voorwaarden</a></p>
+  </div>
+</footer>
+
+<sc-if value="{{ mobileBar }}" hint-placeholder-val="{{ false }}">
+  <div data-sticky-cta="1" style="position:fixed;left:0;right:0;bottom:0;z-index:180;background:rgba(250,250,252,0.94);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #d6d6d6;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;animation:barIn .25s ease both">
+    <a href="../contact/?p=sleutelringen" style="flex:1 1 0;min-height:44px;display:flex;align-items:center;justify-content:center;background:#0071e3;color:#ffffff;font-size:16px;border-radius:980px;text-decoration:none" style-hover="text-decoration:none">Offerte aanvragen</a>
+    <a href="tel:+31183648851" aria-label="Bel +31 183 648851" style="flex:0 0 auto;min-height:44px;display:flex;align-items:center;justify-content:center;padding:0 18px;background:#ffffff;color:#0071e3;font-size:16px;border-radius:980px;border:1px solid #0071e3;text-decoration:none" style-hover="text-decoration:none">Bellen</a>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { navSub: null, menu: null, showBar: false, mobile: false, navOpen: false , searchOpen: false, q: '', pf: [] };
+
+  togglePf = (i) => () => this.setState((s) => { const pf = (s.pf || []).slice(); pf[i] = !pf[i]; return { pf }; });
+
+  sRef = React.createRef();
+
+  componentDidUpdate() {
+    if (this.state.searchOpen && !this._so && this.sRef.current) this.sRef.current.focus();
+    this._so = this.state.searchOpen;
+  }
+
+  componentDidMount() {
+    // React zet het muted-kenmerk niet als eigenschap; zonder deze regels
+    // zou de video met geluid spelen en op mobiel niet mogen starten.
+    this._demp = setInterval(() => {
+      const vs = [...document.querySelectorAll('video')];
+      // Blijven wachten tot de video in de pagina staat: bij het opbouwen is hij er
+      // nog niet, en zonder deze lus krijgt hij nooit zijn bron.
+      if (!vs.length) {
+        this._dempPogingen = (this._dempPogingen || 0) + 1;
+        if (this._dempPogingen > 120) { clearInterval(this._demp); this._demp = null; }
+        return;
+      }
+      clearInterval(this._demp);
+      this._demp = null;
+      vs.forEach((v) => {
+        // Video alleen op desktop laden. Op mobiel blijft de bron ongezet, zodat de
+        // browser niets ophaalt en er geen beeld even oplicht voor de foto verschijnt.
+        // De video die bewust één keer speelt niet hier starten: die wacht op het
+        // in-beeld-mechanisme, anders is hij uitgespeeld voordat de bezoeker er is.
+        if (v.hasAttribute('data-video-desktop') && !v.hasAttribute('data-video-once')) {
+          // De bron staat in de opmaak, maar met preload="none" en zonder autoplay haalt
+          // de browser niets op. Alleen op een breed venster starten we hem; draait iemand
+          // de telefoon naar liggend, dan gebeurt dat op dat moment.
+          const start = () => {
+            const p = v.play();
+            if (p && p.catch) p.catch(() => {});
+          };
+          const breed = window.matchMedia('(min-width: 761px)');
+          if (breed.matches) start();
+          breed.addEventListener('change', (e) => { if (e.matches) start(); });
+        }
+        const dempen = () => {
+          v.defaultMuted = true;
+          if (!v.muted) v.muted = true;
+          v.setAttribute('muted', '');
+          v.playsInline = true;
+          // Herhalen, behalve de video die bewust één keer speelt.
+          if (!v.hasAttribute('data-video-once')) v.loop = true;
+        };
+        dempen();
+        v.addEventListener('volumechange', dempen);
+        v.addEventListener('play', dempen);
+      });
+    }, 150);
+    // Tikken om te starten. Nodig omdat iOS automatisch starten weigert in een
+    // ingesloten venster en in batterijspaarstand; een tik mag altijd.
+    // iOS start soms niet automatisch (batterijspaarstand, of nog geen data).
+    // Daarom: gedempt houden, laden zodra de video in beeld komt, en als het
+    // afspelen wordt geweigerd bij de eerste aanraking opnieuw proberen.
+
+    if (location.hash && location.hash.length > 1) {
+      let pogingen = 0;
+      const spring = () => {
+        let el = null;
+        try { el = document.querySelector(location.hash); } catch (err) { return; }
+        if (el) {
+          const marge = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+          const y = el.getBoundingClientRect().top + window.scrollY - marge;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
+          if (++pogingen > 3) return;
+        }
+        if (++pogingen < 24) setTimeout(spring, 120);
+      };
+      setTimeout(spring, 60);
+    }
+    this._mq = window.matchMedia('(max-width: 1000px)');
+    const syncMq = () => this.setState({ mobile: this._mq.matches, navOpen: false });
+    this._mq.addEventListener('change', syncMq);
+    this.setState({ mobile: this._mq.matches });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.style.animation = 'floatIn 0.7s cubic-bezier(0.28,0.11,0.32,1) both';
+        e.target.addEventListener('animationend', () => {
+          e.target.style.animation = '';
+          e.target.style.opacity = '';
+          e.target.style.transform = '';
+        }, { once: true });
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach((n) => {
+      if (n.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+      n.style.opacity = '0';
+      io.observe(n);
+    });
+    this._io = io;
+
+    // Hero-video's: spelen één keer af zodra ze in beeld komen en blijven daarna op het
+    // laatste beeld staan. Bij "verminder beweging" blijft het eerste beeld staan.
+    const stil = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const vids = [...document.querySelectorAll('video[data-video-once]')];
+    if (vids.length && !stil) {
+      const vio = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          vio.unobserve(e.target);
+          const p = e.target.play();
+          if (p && p.catch) p.catch(() => {});
+        });
+      }, { threshold: 0.25 });
+      vids.forEach((v) => {
+        // React schrijft muted/playsInline niet als DOM-attribuut weg; zonder deze regels
+        // weigert de browser automatisch afspelen en blijft alleen het eerste beeld staan.
+        v.muted = true;
+        v.defaultMuted = true;
+        v.playsInline = true;
+        vio.observe(v);
+      });
+      this._vio = vio;
+    }
+
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const y = window.scrollY || 0;
+        const show = y > 600;
+        if (show !== this.state.showBar) this.setState({ showBar: show });
+      });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+
+    let spyCache = null;
+    const spyPaint = () => {
+      if (!spyCache) {
+        const sub = document.querySelector('[data-subnav]');
+        if (!sub) return;
+        const links = [...sub.querySelectorAll('a[href^="#"]')];
+        const targets = links.map(a => ({ a, el: document.querySelector(a.getAttribute('href')) })).filter(t => t.el)
+          .sort((x, y) => x.el.compareDocumentPosition(y.el) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1);
+        if (!targets.length) return;
+        spyCache = { sub, links, targets, rail: sub.querySelector('[data-subnav-rail]'), current: null };
+      }
+      const { sub, links, targets, rail } = spyCache;
+      const line = sub.getBoundingClientRect().bottom + 24;
+      let pick = null;
+      for (const t of targets) if (t.el.getBoundingClientRect().top <= line) pick = t;
+      if (!pick || pick.a === spyCache.current) return;
+      links.forEach(a => { a.style.color = '#1d1d1f'; a.style.fontWeight = '400'; });
+      pick.a.style.color = '#0071e3';
+      pick.a.style.fontWeight = '600';
+      spyCache.current = pick.a;
+      if (rail && rail.scrollWidth > rail.clientWidth + 4) {
+        const r = pick.a.getBoundingClientRect(), rr = rail.getBoundingClientRect();
+        if (r.left < rr.left + 16 || r.right > rr.right - 16) rail.scrollTo({ left: rail.scrollLeft + (r.left - rr.left) - 24, behavior: 'smooth' });
+      }
+    };
+    this._spy = () => { if (this._spyRaf) return; this._spyRaf = requestAnimationFrame(() => { this._spyRaf = null; spyPaint(); }); };
+    window.addEventListener('scroll', this._spy, { passive: true });
+    this._spyTries = 0;
+    this._spyTimer = setInterval(() => { spyPaint(); if (spyCache || ++this._spyTries > 40) clearInterval(this._spyTimer); }, 150);
+  }
+
+  componentWillUnmount() {
+    if (this._spy) window.removeEventListener('scroll', this._spy);
+    if (this._spyTimer) clearInterval(this._spyTimer);
+    if (this._io) this._io.disconnect();
+    if (this._vio) this._vio.disconnect();
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+
+  hover(k) { return () => this.setState({ menu: k }); }
+  toggleNav = () => this.setState(s => ({ navOpen: !s.navOpen }));
+  closeNav = () => this.setState({ navOpen: false, navSub: null });
+  navBack = () => this.setState({ navSub: null });
+  navTo = (k) => () => this.setState({ navSub: k });
+
+  scrollRing = (dir) => {
+    const rail = document.querySelector('[data-ring-rail]');
+    if (!rail) return;
+    const card = rail.firstElementChild;
+    const step = card ? card.getBoundingClientRect().width + 20 : rail.clientWidth * 0.8;
+    rail.scrollBy({ left: dir * step, behavior: 'smooth' });
+  };
+
+
+  searchRef = React.createRef();
+  toggleSearch = () => this.setState(s => ({ searchOpen: !s.searchOpen, navOpen: false, q: '' }));
+  closeSearch = () => this.setState({ searchOpen: false, q: '' });
+  onSearch = (e) => this.setState({ q: e.target.value });
+
+  searchIndex() {
+    return (window.DELPHI_ZOEK && window.DELPHI_ZOEK.nl) || [];
+  }
+
+  renderVals() {
+    const m = this.state.menu;
+    return {
+      searchOpen: this.state.searchOpen,
+      searchRows: this.state.searchOpen ? '1fr' : '0fr',
+      barTop: this.state.navOpen ? 'translateY(0) rotate(45deg)' : 'translateY(-3.5px)',
+      barBottom: this.state.navOpen ? 'translateY(0) rotate(-45deg)' : 'translateY(3.5px)',
+      searchVis: this.state.searchOpen ? 'visible' : 'hidden',
+      searchRef: this.sRef,
+      searchEvents: this.state.searchOpen ? 'auto' : 'none',
+      toggleSearch: this.toggleSearch,
+      closeSearch: this.closeSearch,
+      onSearch: this.onSearch,
+      searchRef: this.searchRef,
+      searchResults: (() => { const q = (this.state.q || '').trim(); const idx = this.searchIndex(); if (!q) return idx.slice(0, 6); return (window.DELPHI_ZOEK && window.DELPHI_ZOEK.zoek) ? window.DELPHI_ZOEK.zoek('nl', q, 8) : idx.filter(i => (i.t + ' ' + i.s).toLowerCase().includes(q.toLowerCase())).slice(0, 8); })(),
+      ringPrev: () => this.scrollRing(-1),
+      ringNext: () => this.scrollRing(1),
+      openSystemen: m === 'systemen',
+      openOpberg: m === 'opberg',
+      openRingen: m === 'ringen',
+      openContact: m === 'contact',
+      navRoot: !this.state.navSub,
+      navSystemen: this.state.navSub === 'systemen',
+      navOpberg: this.state.navSub === 'opberg',
+      navRingen: this.state.navSub === 'ringen',
+      navContact: this.state.navSub === 'contact',
+      navClosed: !this.state.navOpen,
+      navLabel: this.state.navOpen ? 'Menu sluiten' : 'Menu',
+      navBack: this.navBack,
+      navToSystemen: this.navTo('systemen'),
+      navToOpberg: this.navTo('opberg'),
+      navToRingen: this.navTo('ringen'),
+      navToContact: this.navTo('contact'),
+      flyRows: m ? '1fr' : '0fr',
+      flyEvents: m ? 'auto' : 'none',
+      hoverSystemen: this.hover('systemen'),
+      hoverOpberg: this.hover('opberg'),
+      hoverRingen: this.hover('ringen'),
+      hoverContact: this.hover('contact'),
+      closeMenu: () => this.setState({ menu: null }),
+      showBar: this.state.showBar,
+      ...(() => {
+        const pf = this.state.pf || [];
+        const u = {};
+        for (let i = 0; i < 6; i++) { u['pf' + i] = !!pf[i]; u['pfIcon' + i] = pf[i] ? '–' : '+'; u['togglePf' + i] = this.togglePf(i); }
+        return u;
+      })(),
+      mobileBar: this.state.mobile && this.state.showBar && !this.state.navOpen && !this.state.searchOpen,
+      isDesktop: !this.state.mobile,
+      isMobile: this.state.mobile,
+      navOpen: this.state.navOpen,
+      toggleNav: this.toggleNav,
+      closeNav: this.closeNav
+    };
+  }
+}
+
+
+</script>
+</body>
+</html>
