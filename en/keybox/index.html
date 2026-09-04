@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"../../vendor/react/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"../../vendor/react-dom/react-dom.production.min.js"};</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../support.js"></script>
+<!-- Cookie-consent + GA4 (laadt GA4 alleen na toestemming) -->
+<script>
+(function () {
+  var GA_ID = 'G-XXXXXXXXXX'; // <-- VERVANG door jullie GA4 meet-ID
+  var KEY = 'delphi-consent';
+
+  function loadGA() {
+    if (!GA_ID || GA_ID.indexOf('XXXX') !== -1) return; // niet laden zonder echt ID
+    if (window.__gaLoaded) return; window.__gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  window.__delphiConsent = { granted: false };
+  try {
+    var saved = localStorage.getItem(KEY);
+    if (saved === 'accepted') { window.__delphiConsent.granted = true; loadGA(); return; }
+    if (saved === 'declined') { return; }
+  } catch (e) {}
+
+  function showBanner() {
+    var bar = document.createElement('div');
+    bar.setAttribute('role', 'dialog');
+    bar.setAttribute('aria-label', 'Cookie preferences');
+    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;background:rgba(250,250,252,0.96);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #d6d6d6;padding:18px 24px;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:center;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif';
+    var txt = document.createElement('p');
+    txt.style.cssText = 'margin:0;font-size:14px;line-height:1.4;color:#1d1d1f;max-width:640px';
+    txt.innerHTML = 'We use analytics cookies to improve our website. You can accept or decline them. Read more in our <a href="../../en/privacy/" style="color:#0066cc">privacy statement</a>.';
+    var btns = document.createElement('div');
+    btns.style.cssText = 'display:flex;gap:10px;flex-wrap:wrap';
+    function mkBtn(label, primary) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = label;
+      b.style.cssText = 'font-family:inherit;font-size:15px;padding:9px 20px;border-radius:980px;cursor:pointer;border:0;' +
+        (primary ? 'background:#0071e3;color:#fff' : 'background:#e8e8ed;color:#1d1d1f');
+      return b;
+    }
+    var accept = mkBtn('Accept', true);
+    var decline = mkBtn('Decline', false);
+    function close() { if (bar.parentNode) bar.parentNode.removeChild(bar); }
+    accept.onclick = function () { try { localStorage.setItem(KEY, 'accepted'); } catch (e) {} window.__delphiConsent.granted = true; loadGA(); close(); };
+    decline.onclick = function () { try { localStorage.setItem(KEY, 'declined'); } catch (e) {} close(); };
+    btns.appendChild(accept); btns.appendChild(decline);
+    bar.appendChild(txt); bar.appendChild(btns);
+    document.body.appendChild(bar);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showBanner);
+  else showBanner();
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script>window.DELPHI_BASIS = "../../";</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keybox — key cabinets with code, logging and expansion | DELPHI</title>
+<meta name="description" content="Keybox key cabinets in three series: Basic with a keypad, System with display and registration, Expansion to add alongside. Ask for a price and configuration.">
+<link rel="canonical" href="https://www.sleutelbeheersystemen.nl/en/keybox/">
+<link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/keybox/">
+<link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/keybox/">
+<link rel="alternate" hreflang="x-default" href="https://www.sleutelbeheersystemen.nl/keybox/">
+<meta property="og:url" content="https://www.sleutelbeheersystemen.nl/en/keybox/">
+<meta property="og:site_name" content="DELPHI Sleutelbeheersystemen">
+<meta property="og:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Keybox — sleutelkasten met code, logging en uitbreiding | DELPHI">
+<meta name="twitter:description" content="Keybox key cabinets in three series: Basic with a keypad, System with display and registration, Expansion to add alongside. Ask for a price and configuration.">
+<meta name="twitter:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
+<link rel="preload" href="../../fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face { font-family: Inter; font-style: normal; font-weight: 100 900; font-display: swap;
+    src: url("../../fonts/InterVariable.woff2") format("woff2"); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: #1d1d1f;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* Chrome blaast losse alinea's in brede containers op ("font boosting");
+       dat maakte de inleiding op de voorwaardenpagina 27px in plaats van 17px. */
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { color: #0071e3; text-decoration: underline; }
+  h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  ::selection { background: #d6e4f7; }
+  html { scroll-behavior: smooth; }
+  a, button, li { transition: color .22s ease, background-color .22s ease, opacity .35s ease; }
+  [data-hide-scrollbar] { scrollbar-width: none; -ms-overflow-style: none; }
+  [data-hide-scrollbar]::-webkit-scrollbar { display: none; }
+  @keyframes flyIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+  @keyframes flyOpen { from { grid-template-rows: 0fr; opacity: .4; } to { grid-template-rows: 1fr; opacity: 1; } }
+  [data-nav-row] svg { opacity: 0; transition: opacity .2s ease; }
+  [data-nav-row]:hover svg, [data-nav-row]:focus svg, [data-nav-row]:active svg { opacity: 1; }
+  @media (max-width: 900px) { [data-crosssell-grid] { grid-template-columns: repeat(2, minmax(0,1fr)) !important; } }
+  @media (max-width: 600px) { [data-crosssell-grid] { grid-template-columns: minmax(0,1fr) !important; } }
+  /* Raakvlakken op aanraakschermen minimaal 44px: subnav, kruimelpad en
+     tekst-CTA’s zijn inline links en daardoor van zichzelf maar 16-34px hoog. */
+  @media (max-width: 900px) {
+    [data-subnav] a, [data-breadcrumb] a, [data-card-cta] a {
+      display: inline-flex; align-items: center; min-height: 44px;
+    }
+  }
+  /* Voettekstregel met privacy- en voorwaardenlink: op aanraakschermen minimaal 44px hoog. */
+  @media (max-width: 900px) {
+    [data-legal] a { display: inline-flex; align-items: center; min-height: 44px; }
+  }
+  @keyframes floatIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 680px) {
+    [data-card-cta] { gap: 12px !important; flex-wrap: wrap !important; justify-content: center !important; margin-top: 18px !important; }
+    [data-card-cta] a { font-size: 15px !important; padding: 8px 18px !important; white-space: nowrap; text-align: center; }
+  }
+  @media (max-width: 1000px) {
+    [data-subnav] { top: 75px !important; }
+  }
+  @media (max-width: 700px) {
+    [data-subnav] > div { height: 44px !important; }
+    [data-subnav] a { font-size: 14px !important; }
+    [data-subnav] > div > span, [data-subnav] span { font-size: 14px !important; }
+    [data-subnav-rail] { -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%); mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%); }
+  }
+  @media (max-width: 760px) {
+    [data-table-scroll] { -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 32px), transparent 100%); mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 32px), transparent 100%); }
+  }
+  @keyframes barIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 680px) { [data-mobile-1col] { grid-template-columns: minmax(0,1fr) !important; } }
+  @media (max-width: 1000px) { [data-keywin-grid] { grid-template-columns: repeat(2, minmax(0,1fr)) !important; } }
+  @media (max-width: 620px) { [data-keywin-grid] { grid-template-columns: minmax(0,1fr) !important; } }
+  @media (max-width: 700px) { [data-bc-home] { display: none !important; } }
+</style>
+<script>
+(function () {
+  function init() {
+    var bar = document.querySelector('[id$="-subnav"]');
+    if (!bar) return;
+    var links = [].slice.call(bar.querySelectorAll('a[href^="#"]'));
+    if (!links.length) return;
+    var targets = links.map(function (a) {
+      return { link: a, el: document.getElementById(a.getAttribute('href').slice(1)) };
+    }).filter(function (t) { return t.el; });
+    if (!targets.length) return;
+    var current = null;
+    function update() {
+      var line = bar.getBoundingClientRect().bottom + 24;
+      var active = null;
+      for (var i = 0; i < targets.length; i++) {
+        if (targets[i].el.getBoundingClientRect().top <= line) active = targets[i];
+      }
+      if (active === current) return;
+      current = active;
+      targets.forEach(function (t) {
+        var on = t === active;
+        t.link.style.color = on ? '#0071e3' : '#1d1d1f';
+        t.link.style.fontWeight = on ? '600' : '400';
+      });
+    }
+    update();
+    var tick = false;
+    window.addEventListener('scroll', function () {
+      if (tick) return;
+      tick = true;
+      requestAnimationFrame(function () { update(); tick = false; });
+    }, { passive: true });
+    window.addEventListener('resize', update);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else setTimeout(init, 0);
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DELPHI Sleutelbeheersystemen",
+  "url": "https://www.sleutelbeheersystemen.nl",
+  "logo": "https://www.sleutelbeheersystemen.nl/logos/delphi-wordmark.png",
+  "telephone": "+31183648851",
+  "email": "info@sleutelbeheersystemen.nl",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Einsteinstraat 3e",
+    "postalCode": "4207 HW",
+    "addressLocality": "Gorinchem",
+    "addressCountry": "NL"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Keybox",
+  "description": "Keybox key cabinets in three series: Basic with a keypad, System with display and registration, Expansion to add alongside. Ask for a price and configuration.",
+  "image": "https://www.sleutelbeheersystemen.nl/photos/cut/keybox-system-6.webp",
+  "category": "Key management",
+  "brand": { "@type": "Brand", "name": "DELPHI Sleutelbeheersystemen" },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.sleutelbeheersystemen.nl/en/keybox/",
+    "seller": { "@type": "Organization", "name": "DELPHI Sleutelbeheersystemen" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is the difference between the series?", "acceptedAnswer": { "@type": "Answer", "text": "The same housing, the same drawers, the same size on the wall — what differs is the level of management. Basic opens with a code, without the cabinet keeping track of who was there. System has a display: rights per person and every action recorded. Keycontrol identifies every key position electronically, so the cabinet also knows which key is hanging there. Expansion has no panel of its own and hangs beside one of the other three." } },
+    { "@type": "Question", "name": "Can I expand later without replacing the cabinet?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. An Expansion cabinet is placed beside an existing Basic, System or Keycontrol and works from the same panel. Inside the cabinet you decide how many sleutellijsten it holds; those can be added later." } },
+    { "@type": "Question", "name": "Does the cabinet also know which key was taken?", "acceptedAnswer": { "@type": "Answer", "text": "With the Keycontrol series it does: every position is identified electronically. In the other series the cabinet records who opened it and when. With the IntelliPin key fob, each of which has its own identity, it can be seen afterwards who took which key and at what moment." } },
+    { "@type": "Question", "name": "Which software goes with it?", "acceptedAnswer": { "@type": "Answer", "text": "KeyWin6 controls all your Keybox cabinets from one environment: keys, users and rights in one place, and reports on what has happened." } },
+    { "@type": "Question", "name": "How many keys will a Keybox hold?", "acceptedAnswer": { "@type": "Answer", "text": "Every series comes in the same formaten, so you first choose the level of management and then the size. The models, dimensions and capacity per series are listed under Specifications." } },
+    { "@type": "Question", "name": "Which series suits us?", "acceptedAnswer": { "@type": "Answer", "text": "That depends on three things: the number of keys, the number of users and whether registration is required. If you must be able to prove who had a key, Basic is not enough. We will look with you — or start with the keuzehulp." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sleutelbeheersystemen.nl/" },
+    { "@type": "ListItem", "position": 2, "name": "Key management", "item": "https://www.sleutelbeheersystemen.nl/#systemen" },
+    { "@type": "ListItem", "position": 3, "name": "Keybox", "item": "https://www.sleutelbeheersystemen.nl/en/keybox/" }
+  ]
+}
+</script>
+<script src="../../zoekindex.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+
+<nav onMouseLeave="{{ closeMenu }}" style="position:sticky;top:0;z-index:200;background:rgba(250,250,252,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid #d6d6d6">
+  <div style="max-width:1200px;margin:0 auto;padding:18px 24px;min-height:72px;display:flex;flex-wrap:nowrap;align-items:center;gap:24px">
+    <a href="../../en/" style="display:flex;align-items:center;min-height:44px;text-decoration:none;flex:0 0 auto">
+      <img width="250" height="92" src="../../logos/delphi-wordmark.png" alt="DELPHI" style="height:38px;width:104px;display:block;margin-top:-14px">
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <ul data-hide-scrollbar="1" style="display:flex;flex-wrap:nowrap;align-items:center;gap:20px;flex:1 1 auto;min-width:0;overflow-x:auto">
+        <li onMouseEnter="{{ hoverSystemen }}" style="flex:0 0 auto"><a href="../../en/#sam" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Key management</a></li>
+        <li onMouseEnter="{{ hoverOpberg }}" style="flex:0 0 auto"><a href="../../en/#opberg" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Storage systems</a></li>
+        <li onMouseEnter="{{ hoverRingen }}" style="flex:0 0 auto"><a href="../../en/#ringen" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Key rings</a></li>
+        <li onMouseEnter="{{ closeMenu }}" style="flex:0 0 auto"><a href="../../en/documentatie/" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Documentation</a></li>
+        <li onMouseEnter="{{ closeMenu }}"><a href="../../en/keybox/#keywin" style="font-size:16px;font-weight:400;color:#1d1d1f">Software</a></li>
+        <li onMouseEnter="{{ hoverContact }}" style="flex:0 0 auto"><a href="../../en/contact/?p=keybox" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Contact</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:16px;flex:0 0 auto">
+        <button type="button" aria-label="Search" onClick="{{ toggleSearch }}" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:none;border:0;padding:0;cursor:pointer;color:#1d1d1f" style-hover="color:#0071e3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:18px;height:18px;display:block"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+        </button>
+        <a href="../../en/contact/?p=keybox" style="display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-size:16px;font-weight:400;padding:9px 18px;border-radius:980px;text-decoration:none;white-space:nowrap" style-hover="text-decoration:none">Request a quote</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:0 0 auto;display:flex;align-items:center;gap:7px;font-size:14px;letter-spacing:0.3px">
+        <span style="color:#1d1d1f;font-weight:600">EN</span>
+        <span aria-hidden="true" style="color:#c7c7cc">/</span>
+        <a href="../../keybox/" hreflang="nl" style="color:#707070;text-decoration:none" style-hover="color:#0066cc">NL</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-left:auto;display:flex;align-items:center;gap:2px">
+        <div style="display:flex;align-items:center;gap:6px;font-size:14px;letter-spacing:0.3px;padding:0 6px 0 2px">
+          <span style="color:#1d1d1f;font-weight:600">EN</span>
+          <span aria-hidden="true" style="color:#c7c7cc">/</span>
+          <a href="../../keybox/" hreflang="nl" style="display:inline-flex;align-items:center;min-height:44px;padding:0 12px;margin:0 -12px;color:#707070;text-decoration:none">NL</a>
+        </div>
+        <button type="button" aria-label="Search" onClick="{{ toggleSearch }}" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:20px;height:20px;display:block"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+        </button>
+        <button type="button" aria-label="{{ navLabel }}" aria-expanded="{{ navOpen }}" onClick="{{ toggleNav }}" style="width:44px;height:44px;position:relative;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer">
+          <span style="position:absolute;width:18px;height:1.2px;border-radius:1px;background:#1d1d1f;transform:{{ barTop }};transition:transform .4s cubic-bezier(0.4,0.01,0.2,1)"></span>
+          <span style="position:absolute;width:18px;height:1.2px;border-radius:1px;background:#1d1d1f;transform:{{ barBottom }};transition:transform .4s cubic-bezier(0.4,0.01,0.2,1)"></span>
+        </button>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:100%;left:0;right:0;z-index:300;display:grid;grid-template-rows:1fr;animation:flyOpen .4s cubic-bezier(0.25,0.1,0.25,1) both"><div style="min-height:0;overflow:hidden"><div style="background:#fafafc;border-top:1px solid #d6d6d6;box-shadow:0 18px 34px rgba(0,0,0,0.07);max-height:calc(100dvh - 81px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain">
+      <sc-if value="{{ navRoot }}" hint-placeholder-val="{{ true }}">
+      <ul style="max-width:1200px;margin:0 auto;padding:12px 24px 8px;display:flex;flex-direction:column">
+        <li><a href="../../en/" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Home<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToSystemen }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Key management<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToOpberg }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Storage systems<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToRingen }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Key rings<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><a href="../../en/documentatie/" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Documentation<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToContact }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Contact<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><a href="../../en/contact/#faq" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Frequently asked questions<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+      </ul>
+      <div style="max-width:1200px;margin:0 auto;padding:12px 24px 28px;display:flex;flex-direction:column;gap:14px">
+        <a href="../../en/contact/" onClick="{{ closeNav }}" style="align-self:flex-start;background:#0071e3;color:#ffffff;font-size:17px;padding:12px 22px;border-radius:980px;text-decoration:none;white-space:nowrap" style-hover="background:#0077ed;text-decoration:none">Request a quote</a>
+        <a href="tel:+31183648851" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">+31 (0)183 648851</a>
+      </div>
+      </sc-if>
+      <sc-if value="{{ navSystemen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Back" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Back
+      </button>
+        <a href="../../en/sam/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Security Asset Manager (SAM)</a>
+        <a href="../../en/keybox/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Keybox</a>
+        <a href="../../en/keytracker/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">KeyTracker</a>
+        <a href="../../en/keycontroller/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Keycontroller</a>
+        <a href="../../en/swat-box/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">SWAT-box</a>
+        <a href="../../en/surface-vault/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Surface Vault</a>
+        <a href="../../en/safebox/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Safebox</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navOpberg }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Back" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Back
+      </button>
+        <a href="../../en/sam-lockers/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">SAM lockers</a>
+        <a href="../../en/oc-spray-station/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">OC Spray Station</a>
+        <a href="../../en/keytracker-opbergkasten/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">KeyTracker cabinets</a>
+        <a href="../../en/vel-key/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Vel-Key</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navRingen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Back" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Back
+      </button>
+        <a href="../../en/sleutelringen/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Stainless steel keyrings</a>
+        <a href="../../en/sleutelringen/#flex" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Flex keyrings</a>
+        <a href="../../en/sleutelringen/#morse" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Morse keyrings</a>
+        <a href="../../en/sleutelringen/#rivet" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Rivet keyrings</a>
+        <a href="../../en/sleutelringen/#coating" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Flexible with coating</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navContact }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Back" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Back
+      </button>
+        <a href="../../en/contact/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Request a quote</a>
+        <a href="../../en/contact/#faq" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Frequently asked questions</a>
+        <a href="../../en/contact/#contactgegevens" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Contact details</a>
+        <a href="../../en/over/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">About DELPHI</a>
+        <a href="../../en/contact/#dealership" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Dealership</a>
+        </div>
+      </sc-if>
+    </div></div></div>
+  </sc-if>
+
+  <div style="position:absolute;top:100%;left:0;right:0;z-index:310;display:grid;grid-template-rows:{{ searchRows }};transition:grid-template-rows .4s cubic-bezier(0.25,0.1,0.25,1);pointer-events:{{ searchEvents }};visibility:{{ searchVis }}">
+    <div style="min-height:0;overflow:hidden">
+      <div style="background:#fafafc;border-top:1px solid #d6d6d6;max-height:calc(100vh - 74px);overflow-y:auto">
+      <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:flex;flex-direction:column;gap:clamp(20px,2.2vw,28px)">
+        <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px">Search</span>
+        <div style="display:flex;align-items:center;gap:10px;max-width:560px;background:#ffffff;border:1px solid #d2d2d7;border-radius:12px;padding:10px 14px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:18px;height:18px;flex:0 0 auto"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+          <input type="search" placeholder="Search for a product or topic" ref="{{ searchRef }}" onInput="{{ onSearch }}" style="flex:1;min-width:0;border:0;outline:none;background:none;font-size:17px;color:#1d1d1f">
+        </div>
+        <ul style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="4">
+            <li>
+              <a href="{{ r.u }}" onClick="{{ closeSearch }}" style="display:flex;flex-direction:column;gap:2px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#86868b">{{ r.g }}</span>
+                <span style="font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">{{ r.t }}</span>
+                <span style="font-size:14px;color:#707070">{{ r.s }}</span>
+              </a>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;top:100%;left:0;right:0;z-index:300;display:grid;grid-template-rows:{{ flyRows }};transition:grid-template-rows .4s cubic-bezier(0.25,0.1,0.25,1);pointer-events:{{ flyEvents }}">
+    <div style="min-height:0;overflow:hidden">
+      <div style="border-top:1px solid #d6d6d6;background:#fafafc;border-bottom:1px solid #d6d6d6">
+      <sc-if value="{{ openSystemen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Key management</span>
+          <a href="../../en/sam/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Security Asset Manager</a>
+          <a href="../../en/keybox/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Keybox</a>
+          <a href="../../en/keytracker/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">KeyTracker</a>
+          <a href="../../en/keycontroller/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Keycontroller</a>
+          <a href="../../en/swat-box/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">SWAT-box</a>
+          <a href="../../en/surface-vault/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Surface Vault</a>
+          <a href="../../en/safebox/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Safebox</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openOpberg }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Storage systems</span>
+          <a href="../../en/sam-lockers/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">SAM lockers</a>
+          <a href="../../en/oc-spray-station/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">OC Spray Station</a>
+          <a href="../../en/keytracker-opbergkasten/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">KeyTracker cabinets</a>
+          <a href="../../en/vel-key/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Vel-Key</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openRingen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Key rings</span>
+          <a href="../../en/sleutelringen/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Stainless steel keyrings</a>
+          <a href="../../en/sleutelringen/#flex" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Flex keyrings</a>
+          <a href="../../en/sleutelringen/#morse" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Morse keyrings</a>
+          <a href="../../en/sleutelringen/#rivet" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Rivet keyrings</a>
+          <a href="../../en/sleutelringen/#coating" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Flexible with coating</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openContact }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Contact</span>
+          <a href="../../en/contact/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Request a quote</a>
+          <a href="../../en/contact/#faq" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Frequently asked questions</a>
+          <a href="../../en/contact/#contactgegevens" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Contact details</a>
+          <a href="../../en/over/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">About DELPHI</a>
+          <a href="../../en/contact/#dealership" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Dealership</a>
+          </div>
+        </div>
+      </sc-if>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section style="background:#ffffff;padding:clamp(48px,6vw,80px) 24px 0">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">Key Management Systems</p>
+    <h1 style="margin-top:8px;font-size:clamp(44px,7.4vw,96px);line-height:1.04;font-weight:700;letter-spacing:-1.44px;max-width:840px;margin-left:auto;margin-right:auto;text-wrap:balance">Keybox</h1>
+    <p style="margin:28px auto 0;max-width:600px;font-size:21px;line-height:1.38;color:#707070;letter-spacing:0.231px;text-wrap:pretty">Steel key cabinets in four series. Start with a cabinet on a code, turn it into a registered system or have the cabinet recognise every key, and add another as soon as the number of keys grows.</p>
+    <div style="display:flex;justify-content:center;align-items:center;gap:28px;margin-top:36px;flex-wrap:wrap">
+      <a href="../../en/contact/?p=keybox" style="background:#0071e3;color:#ffffff;font-size:17px;padding:12px 22px;border-radius:980px;text-decoration:none;white-space:nowrap" style-hover="background:#0077ed;text-decoration:none">Request a configuration</a>
+      <a href="#basic" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc;white-space:nowrap">View the series&nbsp;›</a>
+    </div>
+  </div>
+  <div data-reveal style="margin:clamp(40px,6vw,72px) -24px 0;overflow:hidden">
+    <img width="2400" height="1018" id="hero-visual" src="../../photos/keybox-hero-wand.webp" alt="Keybox System key cabinet on the wall of an office corridor, with keypad, display and six drawers" style="width:100%;height:auto;display:block">
+  </div>
+</section>
+
+<div id="keybox-subnav" data-subnav="1" style="position:sticky;top:75px;z-index:60;background:#fafafc;border-bottom:1px solid #d6d6d6">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;gap:24px">
+    <div data-hide-scrollbar="1" data-subnav-rail="1" style="display:flex;align-items:center;gap:24px;overflow-x:auto;width:100%">
+      <nav data-breadcrumb="1" aria-label="Breadcrumb" style="display:flex;align-items:center;gap:8px;white-space:nowrap;flex:0 0 auto;margin-right:auto">
+        <a href="../../en/" data-bc-home="1" style="font-size:15px;color:#707070;text-decoration:none" style-hover="color:#0066cc;text-decoration:none">Home</a>
+        <span aria-hidden="true" data-bc-home="1" style="font-size:15px;color:#8a8a8e">›</span>
+        <a href="../../en/#systemen" style="font-size:15px;color:#707070;text-decoration:none" style-hover="color:#0066cc;text-decoration:none">Key management</a>
+        <span aria-hidden="true" style="font-size:15px;color:#8a8a8e">›</span>
+        <span aria-current="page" style="font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Keybox</span>
+      </nav>
+      <a href="#basic" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Series</a>
+      <a href="#expansion" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Expansion</a>
+      <a href="#specificaties" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Specifications</a>
+      <a href="#intellipin" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">IntelliPin</a>
+      <a href="#keywin" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">KeyWin6</a>
+      <a href="#faq" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Questions</a>
+    </div>
+  </div>
+</div>
+
+<section style="background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;max-width:620px;text-wrap:pretty">One cabinet line, three levels of management.</h2>
+    <p style="margin-top:16px;max-width:560px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">The same housing, the same drawers, the same size on the wall. What differs is the control on the door.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;margin-top:48px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:44px;height:44px;display:block;margin-bottom:6px"><rect x="9" y="6" width="26" height="32" rx="3"/><circle cx="16" cy="14" r="1.5" fill="#0071e3" stroke="none"/><circle cx="22" cy="14" r="1.5" fill="#0071e3" stroke="none"/><circle cx="28" cy="14" r="1.5" fill="#0071e3" stroke="none"/><circle cx="16" cy="21" r="1.5" fill="#0071e3" stroke="none"/><circle cx="22" cy="21" r="1.5" fill="#0071e3" stroke="none"/><circle cx="28" cy="21" r="1.5" fill="#0071e3" stroke="none"/><circle cx="16" cy="28" r="1.5" fill="#0071e3" stroke="none"/><circle cx="22" cy="28" r="1.5" fill="#0071e3" stroke="none"/><circle cx="28" cy="28" r="1.5" fill="#0071e3" stroke="none"/></svg>
+        <span style="font-size:21px;font-weight:600;letter-spacing:0.231px">Basic</span>
+        <span style="font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">A keypad on the door. Open with a personal code; no further infrastructure needed.</span>
+        <a href="#basic" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc;margin-top:4px;white-space:nowrap">View Basic&nbsp;›</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:44px;height:44px;display:block;margin-bottom:6px"><rect x="9" y="6" width="26" height="32" rx="3"/><rect x="14" y="11" width="16" height="7" rx="1.5"/><circle cx="16" cy="25" r="1.5" fill="#0071e3" stroke="none"/><circle cx="22" cy="25" r="1.5" fill="#0071e3" stroke="none"/><circle cx="28" cy="25" r="1.5" fill="#0071e3" stroke="none"/><circle cx="16" cy="32" r="1.5" fill="#0071e3" stroke="none"/><circle cx="22" cy="32" r="1.5" fill="#0071e3" stroke="none"/><circle cx="28" cy="32" r="1.5" fill="#0071e3" stroke="none"/></svg>
+        <span style="font-size:12px;font-weight:500;color:#b64400;letter-spacing:0.2px">Most chosen</span>
+        <span style="font-size:21px;font-weight:600;letter-spacing:0.231px">System</span>
+        <span style="font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">A keypad with display. Users, rights and events are recorded and can be read out.</span>
+        <a href="#system" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc;margin-top:4px;white-space:nowrap">View System&nbsp;›</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:44px;height:44px;display:block;margin-bottom:6px"><rect x="9" y="6" width="26" height="32" rx="3"/><rect x="14" y="10" width="16" height="7" rx="1.5"/><circle cx="16" cy="24" r="2" fill="#0071e3" stroke="none"/><circle cx="22" cy="24" r="2" fill="#34c759" stroke="none"/><circle cx="28" cy="24" r="2" fill="#0071e3" stroke="none"/><circle cx="16" cy="31" r="2" fill="#34c759" stroke="none"/><circle cx="22" cy="31" r="2" fill="#0071e3" stroke="none"/><circle cx="28" cy="31" r="2" fill="#34c759" stroke="none"/></svg>
+        <span style="font-size:21px;font-weight:600;letter-spacing:0.231px">Keycontrol</span>
+        <span style="font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Electronic identification per key position. The cabinet knows which key hangs where, up to 924 positions.</span>
+        <a href="#keycontrol" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc;margin-top:4px;white-space:nowrap">View Keycontrol&nbsp;›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="basic" style="background:#ffffff;padding:clamp(64px,8vw,100px) 24px;scroll-margin-top:132px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:center" data-mobile-1col="1">
+    <div data-reveal style="display:flex;align-items:center;justify-content:center">
+      <img width="1600" height="1261" src="../../photos/cut/keybox-basic-1.webp" alt="Keybox Basic with a keypad on the door" style="width:100%;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+    </div>
+    <div data-reveal>
+      <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">Basic series</p>
+      <h2 style="margin-top:8px;font-size:clamp(30px,3.6vw,44px);line-height:1.09;font-weight:700;letter-spacing:-0.28px;text-wrap:balance">Open with a code.</h2>
+      <p style="margin-top:20px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">The simplest step away from a key box with one key: everyone with access has their own code. No network, no server, no management program.</p>
+      <ul style="margin-top:28px;display:flex;flex-direction:column;gap:14px">
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Open with a personal code on the door</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Works on its own — no network or server needed</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Ready to use at once, minimal installation</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="system" style="background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px;scroll-margin-top:132px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,4vw,64px);align-items:center" data-mobile-1col="1">
+    <div data-reveal>
+      <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">System series</p>
+      <h2 style="margin-top:8px;font-size:clamp(30px,3.6vw,44px);line-height:1.09;font-weight:700;letter-spacing:-0.28px;text-wrap:balance">Who, what, when.</h2>
+      <p style="margin-top:20px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">The same cabinet, now with a display. Users and rights are set per person and every opening is recorded. After an incident it can be established who opened the compartment.</p>
+      <ul style="margin-top:28px;display:flex;flex-direction:column;gap:14px">
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Users and rights configurable per person</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Every issue and return goes into the log</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Traceable afterwards: who, what, when</span></li>
+      </ul>
+    </div>
+    <div data-reveal style="display:flex;align-items:center;justify-content:center">
+      <img width="1600" height="1275" src="../../photos/cut/keybox-system-1.webp" alt="Keybox System with keypad and display on the door" style="width:100%;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+    </div>
+  </div>
+</section>
+
+<section id="keycontrol" style="background:#ffffff;padding:clamp(64px,8vw,100px) 24px;scroll-margin-top:132px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:center" data-mobile-1col="1">
+    <div data-reveal style="display:flex;align-items:center;justify-content:center">
+      <img width="1600" height="906" src="../../photos/keybox-keycontrol-open.webp" alt="An open Keybox Keycontrol with keypad and display, three key strips with green status LEDs beside the positions" style="width:100%;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+    </div>
+    <div data-reveal>
+      <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">Keycontrol series</p>
+      <h2 style="margin-top:8px;font-size:clamp(30px,3.6vw,44px);line-height:1.09;font-weight:700;letter-spacing:-0.28px;text-wrap:balance">Every key recognised.</h2>
+      <p style="margin-top:20px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">The most intelligent level: every key position is identified electronically. The cabinet knows which key hangs where and which is out — in real time, without signing off by hand.</p>
+      <ul style="margin-top:28px;display:flex;flex-direction:column;gap:14px">
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Electronic identification per key position</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Real-time view of which key is present or out</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Works with IntelliPin and KeyWin for full logging</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="expansion" style="background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px;scroll-margin-top:132px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,4vw,64px);align-items:center" data-mobile-1col="1">
+    <div data-reveal>
+      <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">Expansion series</p>
+      <h2 style="margin-top:8px;font-size:clamp(30px,3.6vw,44px);line-height:1.09;font-weight:700;letter-spacing:-0.28px;text-wrap:balance">Add, do not replace.</h2>
+      <p style="margin-top:20px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Expansion cabinets have no panel of their own. They hang beside a Basic, System or Keycontrol and are opened from that same control. If the number of keys grows, another cabinet is added — the codes and rights stay as they are.</p>
+      <ul style="margin-top:28px;display:flex;flex-direction:column;gap:14px">
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">No control of its own — works under the main cabinet</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">The same codes and rights continue to apply</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Expand without replacing the system</span></li>
+      </ul>
+    </div>
+    <div data-reveal style="display:flex;align-items:center;justify-content:center">
+      <img width="1600" height="1195" src="../../photos/cut/keybox-expansion-1.webp" alt="Keybox Expansion without a panel of its own, beside the main cabinet" style="width:100%;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+    </div>
+  </div>
+</section>
+
+<section id="lijsten" style="background:#ffffff;padding:clamp(64px,8vw,100px) 24px;scroll-margin-top:132px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:center" data-mobile-1col="1">
+    <div data-reveal style="order:2">
+      <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">Key strips</p>
+      <h2 style="margin-top:8px;font-size:clamp(30px,3.6vw,44px);line-height:1.09;font-weight:700;letter-spacing:-0.28px;text-wrap:balance">Start with one strip. Build it out when you need to.</h2>
+      <p style="margin-top:20px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">You decide how many key strips go in the cabinet. Lockable, non-lockable, or both mixed in the same cabinet. That keeps the initial outlay small and lets you add a strip later as the number of keys grows.</p>
+    </div>
+    <div data-reveal style="order:1;display:flex;align-items:center;justify-content:center">
+      <img width="1600" height="1066" src="../../photos/keybox-sleutellijsten.webp" alt="Two open Keybox cabinets: the upper one with one key strip, the lower one with two" style="width:100%;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+    </div>
+  </div>
+</section>
+
+<section id="formaat" style="background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px;scroll-margin-top:132px">
+  <div style="max-width:1680px;margin:0 auto">
+    <div style="max-width:640px">
+      <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">Size</p>
+      <h2 style="margin-top:8px;font-size:clamp(36px,4.6vw,56px);line-height:1.07;font-weight:700;letter-spacing:-0.28px;text-wrap:balance">Choose your size.</h2>
+      <p style="margin-top:20px;font-size:21px;line-height:1.38;color:#707070;letter-spacing:0.231px;text-wrap:pretty">Every series comes in the same sizes. You choose the control — Basic, System or Expansion — and the size separately, from a single interior to a large cabinet.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(16px,1.6vw,24px);margin-top:clamp(40px,5vw,64px)">
+      <div data-reveal style="background:#ffffff;border-radius:28px;padding:clamp(28px,3vw,44px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;align-items:center;text-align:center">
+        <span style="font-size:clamp(21px,2.2vw,28px);font-weight:600;letter-spacing:0.196px">One interior</span>
+        <span style="margin-top:8px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;max-width:320px">The full interior behind one door, fitted out with key hooks.</span>
+        <div style="margin-top:clamp(24px,3vw,40px);width:100%;height:min(30vw,340px);display:flex;align-items:center;justify-content:center"><img width="1600" height="1261" src="../../photos/cut/keybox-basic-1.webp" alt="Keybox with a single interior" style="max-width:100%;max-height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)"></div>
+      </div>
+      <div data-reveal style="background:#ffffff;border-radius:28px;padding:clamp(28px,3vw,44px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;align-items:center;text-align:center">
+        <span style="font-size:clamp(21px,2.2vw,28px);font-weight:600;letter-spacing:0.196px">Two drawers</span>
+        <span style="margin-top:8px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;max-width:320px">An interior plus two drawers, each released separately.</span>
+        <div style="margin-top:clamp(24px,3vw,40px);width:100%;height:min(30vw,340px);display:flex;align-items:center;justify-content:center"><img width="1600" height="1230" src="../../photos/cut/keybox-basic-2.webp" alt="Keybox with two lockable drawers" style="max-width:100%;max-height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)"></div>
+      </div>
+      <div data-reveal style="background:#ffffff;border-radius:28px;padding:clamp(28px,3vw,44px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;align-items:center;text-align:center">
+        <span style="font-size:clamp(21px,2.2vw,28px);font-weight:600;letter-spacing:0.196px">Six drawers</span>
+        <span style="margin-top:8px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;max-width:320px">Six separate compartments for departments, buildings or vehicles.</span>
+        <div style="margin-top:clamp(24px,3vw,40px);width:100%;height:min(30vw,340px);display:flex;align-items:center;justify-content:center"><img width="1600" height="1227" src="../../photos/cut/keybox-basic-6.webp" alt="Keybox with six lockable drawers" style="max-width:100%;max-height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)"></div>
+      </div>
+      <div data-reveal style="background:#ffffff;border-radius:28px;padding:clamp(28px,3vw,44px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;align-items:center;text-align:center">
+        <span style="font-size:clamp(21px,2.2vw,28px);font-weight:600;letter-spacing:0.196px">Large version</span>
+        <span style="margin-top:8px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;max-width:320px">For a set of keys that no longer fits in one cabinet.</span>
+        <div style="margin-top:clamp(24px,3vw,40px);width:100%;height:min(30vw,340px);display:flex;align-items:center;justify-content:center"><img width="1600" height="1566" src="../../photos/cut/keybox-expansion-9500.webp" alt="A large Keybox cabinet" style="max-width:100%;max-height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)"></div>
+      </div>
+    </div>
+    <p style="margin-top:32px;max-width:560px;font-size:14px;line-height:1.47;color:#707070;letter-spacing:-0.224px">All models, sizes and capacities are listed in the <a href="#specificaties" style="color:#0066cc">specifications</a>.</p>
+  </div>
+</section>
+
+<section id="specificaties" style="background:#ffffff;padding:clamp(64px,8vw,100px) 24px;scroll-margin-top:132px">
+  <div data-reveal style="max-width:1100px;margin:0 auto">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-align:center">Specifications.</h2>
+    <p style="margin:16px auto 0;max-width:560px;text-align:center;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Models, dimensions and capacity per series. Every cabinet can be expanded with up to 15 additional cabinets under one control.</p>
+
+    <h3 style="margin-top:clamp(32px,4vw,52px);font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Basic and System</h3>
+    <p style="margin-top:8px;font-size:15px;line-height:1.47;color:#707070;letter-spacing:-0.224px">Both series in the same models; the letter after the model number indicates the series (B or S).</p>
+    <div style="margin-top:16px;overflow-x:auto" data-table-scroll="1">
+      <table style="width:100%;min-width:620px;border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+        <thead>
+          <tr>
+            <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Model</th>
+            <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Layout</th>
+            <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">External size (w×h×d)</th>
+            <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap">9002</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px">2 doors, 18 key hooks</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px">350 × 280 × 85 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap">5.3 kg</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">9001</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">1 door, 32 key hooks</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">350 × 280 × 85 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">5.3 kg</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">9006</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">6 compartments of 145 × 40 × 60 mm</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">350 × 280 × 85 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">5.3 kg</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">9006 stainless steel</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">6 compartments in stainless steel</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">350 × 280 × 85 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">6.0 kg</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">9500</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">1 door, 216 key hooks</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">746 × 730 × 140 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">28 kg</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:clamp(28px,3vw,44px);font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Keycontrol</h3>
+    <p style="margin-top:8px;font-size:15px;line-height:1.47;color:#707070;letter-spacing:-0.224px">Fourteen key slots per strip, locked or unlocked. A choice of a sheet metal or glass door.</p>
+    <div style="margin-top:16px;overflow-x:auto" data-table-scroll="1">
+      <table style="width:100%;min-width:620px;border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+        <thead>
+          <tr>
+            <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Model</th>
+            <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Key slots</th>
+            <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">External size (w×h×d)</th>
+            <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap">9400 SC</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px">42, in 3 strips</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px">746 × 370 × 140 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap">25 kg</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">9500 SC / EC</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">84, in 6 strips</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">746 × 730 × 140 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">30 kg</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">9550 SC / EC</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">210, in 15 strips</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">746 × 1460 × 140 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">70 kg</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">9600 SC</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">224, in 16 strips</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">746 × 1460 × 140 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">70 kg</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">9700 SC</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">924, in 66 strips</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">746 × 1460 × 140 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">70 kg</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:clamp(28px,3vw,44px);font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Keycontrol as a security cabinet</h3>
+    <p style="margin-top:8px;font-size:15px;line-height:1.47;color:#707070;letter-spacing:-0.224px">Certified to SSF3492, for situations with higher burglary-resistance requirements.</p>
+    <div style="margin-top:16px;overflow-x:auto" data-table-scroll="1">
+      <table style="width:100%;min-width:620px;border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+        <thead>
+          <tr>
+            <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Model</th>
+            <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Key slots</th>
+            <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">External size (w×h×d)</th>
+            <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap">8500 KR</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px">98, in 7 strips</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px">650 × 730 × 250 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap">98 kg</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">8600 KR</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">308, in 22 strips</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">575 × 1600 × 850 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">245 kg</td>
+          </tr>
+          <tr>
+            <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap;border-top:1px solid #d2d2d7">8700 KR</th>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">616, in 44 strips</td>
+            <td style="padding:15px 18px;text-align:left;font-size:17px;color:#707070;letter-spacing:-0.374px;border-top:1px solid #d2d2d7">800 × 1600 × 850 mm</td>
+            <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">345 kg</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:clamp(32px,4vw,52px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
+      <div style="background:#f5f5f7;border-radius:20px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:40px;height:40px;display:block;margin-bottom:14px"><rect x="9" y="6" width="26" height="32" rx="3"/><circle cx="16" cy="15" r="1.6" fill="#0071e3" stroke="none"/><circle cx="22" cy="15" r="1.6" fill="#0071e3" stroke="none"/><circle cx="28" cy="15" r="1.6" fill="#0071e3" stroke="none"/><circle cx="16" cy="22" r="1.6" fill="#0071e3" stroke="none"/><circle cx="22" cy="22" r="1.6" fill="#0071e3" stroke="none"/><circle cx="28" cy="22" r="1.6" fill="#0071e3" stroke="none"/><circle cx="16" cy="29" r="1.6" fill="#0071e3" stroke="none"/><circle cx="22" cy="29" r="1.6" fill="#0071e3" stroke="none"/><circle cx="28" cy="29" r="1.6" fill="#0071e3" stroke="none"/></svg>
+        <span style="font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Basic</span>
+        <ul style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">500 unique codes per cabinet</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">A green LED above the keypad</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">230 V connection</span></li>
+        </ul>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:40px;height:40px;display:block;margin-bottom:14px"><rect x="6" y="9" width="32" height="21" rx="3"/><path d="M15 36h14M22 30v6"/><path d="M13 16h12M13 22h8"/></svg>
+        <span style="font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">System</span>
+        <ul style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Up to 500 users, codes of 1 to 8 digits</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">A log of 3,600 events</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Time zones, double code and block function</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Readable with KeyWin Light</span></li>
+        </ul>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:40px;height:40px;display:block;margin-bottom:14px"><circle cx="22" cy="22" r="15"/><path d="M22 13v9l6 4"/><circle cx="22" cy="22" r="2" fill="#0071e3" stroke="none"/></svg>
+        <span style="font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Keycontrol</span>
+        <ul style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Every IntelliPin has its own ID</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">A display with menu and search function</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Battery backup and alarms</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Management through KeyWin6, on site or in the cloud</span></li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
+      <div style="background:#f5f5f7;border-radius:20px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:40px;height:40px;display:block;margin-bottom:14px"><path d="M22 5 8 11v10c0 8.5 5.8 14.8 14 18 8.2-3.2 14-9.5 14-18V11L22 5Z"/><path d="M16.5 22l4 4 7.5-8"/></svg>
+        <span style="font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Housing</span>
+        <ul style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Steel, 1.5 mm</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Powder coating</span></li>
+        </ul>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:40px;height:40px;display:block;margin-bottom:14px"><path d="M22 14a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"/><path d="M22 5v5M22 34v5M39 22h-5M10 22H5M34 10l-3.5 3.5M13.5 30.5 10 34M34 34l-3.5-3.5M13.5 13.5 10 10"/></svg>
+        <span style="font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Options</span>
+        <ul style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Battery backup</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Alarm contacts</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">External card reader</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Flush-mounting kit for installation in the wall</span></li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:24px;font-size:14px;line-height:1.47;color:#707070;letter-spacing:-0.224px">Dimensions as width × height × depth. The weight of Keycontrol cabinets is when fully equipped.</p>
+    <div id="datasheet" data-reveal style="margin-top:clamp(32px,4vw,48px);border-top:1px solid #d2d2d7;padding-top:clamp(24px,3vw,32px);display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,40px);align-items:baseline;justify-content:space-between;scroll-margin-top:132px">
+      <div>
+  <h3 style="font-size:clamp(21px,2.2vw,26px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">Datasheet Keybox.</h3>
+  <p style="margin-top:8px;max-width:420px;font-size:15px;line-height:1.47;color:#707070;text-wrap:pretty">All the manufacturer data in one document, with photographs and dimensions.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:20px">
+  <a href="../../datasheets/DELPHI-datasheet-Keybox-NL.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;font-size:17px;color:#0066cc;letter-spacing:-0.374px;white-space:nowrap" style-hover="text-decoration:underline"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:17px;height:21px;flex:0 0 auto"><path d="M12.2 2.6H5.6a1.1 1.1 0 0 0-1.1 1.1v12.6a1.1 1.1 0 0 0 1.1 1.1h8.8a1.1 1.1 0 0 0 1.1-1.1V6.1z"/><path d="M12.2 2.6v3.5h3.3"/><path d="M7.4 10.6h5.2M7.4 13.4h5.2"/></svg>Dutch (PDF)</a>
+  <a href="../../datasheets/DELPHI-datasheet-Keybox-EN.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;font-size:17px;color:#0066cc;letter-spacing:-0.374px;white-space:nowrap" style-hover="text-decoration:underline"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:17px;height:21px;flex:0 0 auto"><path d="M12.2 2.6H5.6a1.1 1.1 0 0 0-1.1 1.1v12.6a1.1 1.1 0 0 0 1.1 1.1h8.8a1.1 1.1 0 0 0 1.1-1.1V6.1z"/><path d="M12.2 2.6v3.5h3.3"/><path d="M7.4 10.6h5.2M7.4 13.4h5.2"/></svg>English (PDF)</a>
+</div>
+    </div>
+  </div>
+</section>
+
+<section id="intellipin" style="background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px;scroll-margin-top:132px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,4vw,64px);align-items:center" data-mobile-1col="1">
+    <div data-reveal style="order:2;display:flex;align-items:center;justify-content:center">
+      <img width="2000" height="1125" src="../../photos/cut/keybox-intellipin.webp" alt="Two aluminium IntelliPin key fobs with blue markings, plus the locking marker" style="width:100%;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+    </div>
+    <div data-reveal style="order:1">
+      <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">IntelliPin</p>
+      <h2 style="margin-top:8px;font-size:clamp(30px,3.6vw,44px);line-height:1.09;font-weight:700;letter-spacing:-0.28px;text-wrap:balance">The key fob that gives itself away.</h2>
+      <p style="margin-top:20px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">The IntelliPin is not packed with electronics. Its strength is simpler: every fob has its own unique identity. The cabinet reads it, KeyWin records it.</p>
+      <p style="margin-top:16px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">That makes it possible to see afterwards who took which key and at what moment. No list on the wall, no sign-out book.</p>
+      <ul style="margin-top:28px;display:flex;flex-direction:column;gap:14px">
+        <li style="display:flex;gap:12px;align-items:flex-start">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg>
+          <span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">A unique identity per fob — no two alike in the system</span>
+        </li>
+        <li style="display:flex;gap:12px;align-items:flex-start">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg>
+          <span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Every issue and return goes into the log van KeyWin</span>
+        </li>
+        <li style="display:flex;gap:12px;align-items:flex-start">
+          <svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg>
+          <span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">The bunch fixed to the fob, the fob fixed in the position</span>
+        </li>
+      </ul>
+      <p style="margin-top:24px;font-size:14px;line-height:1.47;color:#707070;letter-spacing:-0.224px">Every IntelliPin has its own ID; veertien sleutelplaatsen per strip.</p>
+    </div>
+  </div>
+</section>
+
+<section id="keywin" style="background:#ffffff;padding:clamp(64px,8vw,100px) 24px;scroll-margin-top:132px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:center" data-mobile-1col="1">
+    <div data-reveal style="order:2">
+      <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">KeyWin6 · software</p>
+      <h2 style="margin-top:8px;font-size:clamp(30px,3.6vw,44px);line-height:1.09;font-weight:700;letter-spacing:-0.28px;text-wrap:balance">The brain behind every cabinet.</h2>
+      <p style="margin-top:20px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">KeyWin6 controls all your KeyBox cabinets from one environment. Keys, users and events at a glance — wherever you are, on any device. Available as a cloud service through Microsoft Azure or as a local installation on your own server.</p>
+      <ul style="margin-top:28px;display:flex;flex-direction:column;gap:14px">
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Cloud through Microsoft Azure or locally on your own server</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Find the right key or user in a single search</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 auto;margin-top:3px"><path d="M4 10.5l4 4 8-9"/></svg><span style="font-size:17px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.374px">Links to access control through an API or sync engine</span></li>
+      </ul>
+      <p style="margin-top:24px;font-size:14px;line-height:1.47;color:#707070;letter-spacing:-0.224px">Licence forms and integrations on request.</p>
+    </div>
+    <div data-reveal style="order:1;display:flex;align-items:center;justify-content:center">
+      <img width="1400" height="1319" src="../../photos/keywin6-montage.webp" alt="Several screens of the KeyWin6 management software: overview, log and reporting" style="width:100%;height:auto;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+    </div>
+  </div>
+
+  <div data-reveal data-keywin-grid="1" style="max-width:1200px;margin:clamp(44px,5vw,72px) auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+      <div style="background:#f5f5f7;border-radius:20px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:38px;height:38px;display:block;margin-bottom:14px"><circle cx="22" cy="15" r="6"/><path d="M10 35c0-6.6 5.4-10 12-10s12 3.4 12 10"/></svg>
+        <span style="font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Users</span>
+        <ul style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">A chosen or random PIN code</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Login by PIN code or card reader</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Validity period and number of issues can be limited</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Two-factor authentication per user type</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">An individual language setting per user</span></li>
+        </ul>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:38px;height:38px;display:block;margin-bottom:14px"><rect x="9" y="6" width="26" height="32" rx="3"/><path d="M15 15h14M15 21h14M15 27h9"/></svg>
+        <span style="font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Event log</span>
+        <ul style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">A log from the software and the cabinets</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Sort by date or event</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Decide for yourself what is shown</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Reports as PDF</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Alarms forwarded to e-mail</span></li>
+        </ul>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:38px;height:38px;display:block;margin-bottom:14px"><path d="M14 20V14a8 8 0 0 1 16 0v6"/><rect x="9" y="20" width="26" height="17" rx="3"/><circle cx="22" cy="28" r="2.4"/></svg>
+        <span style="font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Keys</span>
+        <ul style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">A time limit per key</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">A hidden, searchable key ID</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Colour grouping and a graphic overview</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">One key in several cabinets</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">A free or fixed position</span></li>
+        </ul>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:38px;height:38px;display:block;margin-bottom:14px"><rect x="7" y="9" width="13" height="12" rx="2.5"/><rect x="24" y="9" width="13" height="12" rx="2.5"/><rect x="7" y="25" width="13" height="12" rx="2.5"/><rect x="24" y="25" width="13" height="12" rx="2.5"/></svg>
+        <span style="font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Groups and administrators</span>
+        <ul style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Groups for users, keys and doors</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Time channels per group</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Administrator rights per cabinet</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Administrator actions in the log</span></li>
+        </ul>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:38px;height:38px;display:block;margin-bottom:14px"><path d="M8 34V19M16 34V12M24 34v-9M32 34V16"/><path d="M6 38h32"/></svg>
+        <span style="font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Statistics and reports</span>
+        <ul style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Top 10 most active users</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Top 10 most used keys</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">The number of keys currently out</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Daily statistics on alarms and issues</span></li>
+        </ul>
+      </div>
+      <div style="background:#f5f5f7;border-radius:20px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:38px;height:38px;display:block;margin-bottom:14px"><path d="M22 14a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"/><path d="M22 5v5M22 34v5M39 22h-5M10 22H5M34 10l-3.5 3.5M13.5 30.5 10 34M34 34l-3.5-3.5M13.5 13.5 10 10"/></svg>
+        <span style="font-size:21px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Settings</span>
+        <ul style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Import users through XML, export to PDF</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Door, key and burglar alarm</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">A connection for an external reader or alarm</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">A fixed or automatic IP address</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:#c7c7cc;margin-top:9px"></span><span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.3px">Cabinet overview and choice of language</span></li>
+        </ul>
+      </div>
+  </div>
+</section>
+
+<section style="background:#ffffff;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:820px;margin:0 auto;text-align:center">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em">Which series suits you?</h2>
+    <p style="margin:16px auto 0;max-width:560px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">We look with you at the number of keys, the number of users and whether registration is required. If keys are issued to dozens of staff a day, the <a href="../../en/sam/" style="color:#0066cc">Security Asset Manager</a> is the next step. For keys that only need to be behind a lock: the <a href="../../en/safebox/" style="color:#0066cc">Safebox</a>.</p>
+    <div data-card-cta="1" style="display:flex;justify-content:center;align-items:center;gap:28px;margin-top:40px;flex-wrap:wrap">
+      <a href="../../en/contact/?p=keybox" style="background:#0071e3;color:#ffffff;font-size:17px;padding:12px 22px;border-radius:980px;text-decoration:none;white-space:nowrap" style-hover="background:#0077ed;text-decoration:none">Request a price and configuration</a>
+      <a href="tel:+31183648851" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">Or call +31 (0)183 648851</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" data-productfaq="1" style="background:#ffffff;padding:clamp(56px,7vw,96px) 24px;scroll-margin-top:132px">
+  <div data-reveal style="max-width:820px;margin:0 auto">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:-0.2px;text-wrap:pretty">Frequently asked questions about the Keybox.</h2>
+    <ul style="display:flex;flex-direction:column;margin-top:32px;border-top:1px solid #d6d6d6">
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf0 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">What is the difference between the series?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon0 }}</span>
+        </button>
+        <sc-if value="{{ pf0 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">The same housing, the same drawers, the same size on the wall — what differs is the level of management. <a href="#basic" style="color:#0066cc">Basic</a> opens with a code, without the cabinet keeping track of who was there. <a href="#system" style="color:#0066cc">System</a> has a display: rights per person and every action recorded. <a href="#keycontrol" style="color:#0066cc">Keycontrol</a> identifies every key position electronically, so the cabinet also knows which key is hanging there. <a href="#expansion" style="color:#0066cc">Expansion</a> has no panel of its own and hangs beside one of the other three.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf1 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Can I expand later without replacing the cabinet?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon1 }}</span>
+        </button>
+        <sc-if value="{{ pf1 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Yes. An Expansion cabinet is placed beside an existing Basic, System or Keycontrol and works from the same panel. Inside the cabinet you decide how many <a href="#lijsten" style="color:#0066cc">key strips</a> it holds; those can be added later.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf2 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Does the cabinet also know which key was taken?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon2 }}</span>
+        </button>
+        <sc-if value="{{ pf2 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">With the Keycontrol series it does: every position is identified electronically. In the other series the cabinet records who opened it and when. With the <a href="#intellipin" style="color:#0066cc">IntelliPin</a> key fob, each of which has its own identity, it can be seen afterwards who took which key and at what moment.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf3 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Which software goes with it?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon3 }}</span>
+        </button>
+        <sc-if value="{{ pf3 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty"><a href="#keywin" style="color:#0066cc">KeyWin6</a> controls all your Keybox cabinets from one environment: keys, users and rights in one place, and reports on what has happened.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf4 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">How many keys will a Keybox hold?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon4 }}</span>
+        </button>
+        <sc-if value="{{ pf4 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Every series comes in the same <a href="#formaat" style="color:#0066cc">sizes</a>, so you first choose the level of management and then the size. The models, dimensions and capacity per series are listed under <a href="#specificaties" style="color:#0066cc">Specifications</a>.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf5 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Which series suits us?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon5 }}</span>
+        </button>
+        <sc-if value="{{ pf5 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">That depends on three things: the number of keys, the number of users and whether registration is required. If you must be able to prove who had a key, Basic is not enough. We will look with you — or start with the <a href="../../en/#keuzehulp" style="color:#0066cc">product finder</a>.</p>
+        </sc-if>
+      </li>
+    </ul>
+    <p style="margin-top:28px;font-size:17px;line-height:1.5;color:#474747">Is your question not listed? <a href="../../en/contact/?p=keybox" style="color:#0066cc">Ask us directly&nbsp;›</a></p>
+  </div>
+</section>
+
+<section data-crosssell="1" style="background:#f5f5f7;padding:clamp(56px,7vw,96px) 24px">
+  <div data-reveal style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:-0.2px;max-width:620px;text-wrap:pretty">Complete your key management.</h2>
+    <p style="margin-top:14px;max-width:620px;font-size:17px;line-height:1.5;color:#474747;text-wrap:pretty">A cabinet with registration only works if the key is fixed to its number — and grows with whatever you add beside it.</p>
+    <p style="margin-top:18px;font-size:17px;line-height:1.5"><a href="../../en/#keuzehulp" style="color:#0066cc">Not sure which system fits? Try the product finder&nbsp;›</a></p>
+    <ul data-crosssell-grid="1" style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.4vw,32px)">
+      <li>
+        <a href="../../en/sleutelringen/" style="display:flex;flex-direction:column;height:100%;color:#1d1d1f;text-decoration:none" style-hover="text-decoration:none">
+          <div style="position:relative;overflow:hidden;border-radius:16px;background:#f5f5f7;aspect-ratio:4 / 3">
+            <img width="1600" height="900" src="../../photos/ring360w/f01-grijs.webp" alt="Open stainless steel key ring, ready to be sealed" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+          </div>
+          <span style="margin-top:18px;font-size:21px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">Key rings</span>
+          <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Tamper-proof, with its own serial number.</span>
+          <span style="margin-top:auto;padding-top:10px;font-size:15px;color:#0066cc">View the key rings&nbsp;›</span>
+        </a>
+      </li>
+      <li>
+        <a href="../../en/sam/" style="display:flex;flex-direction:column;height:100%;color:#1d1d1f;text-decoration:none" style-hover="text-decoration:none">
+          <div style="position:relative;overflow:hidden;border-radius:16px;background:transparent;aspect-ratio:4 / 3">
+            <img width="2400" height="1018" src="../../photos/cut/sam-familie-lijn.webp" alt="The SAM series of key management systems side by side" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+          </div>
+          <span style="margin-top:18px;font-size:21px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">Security Asset Manager</span>
+          <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">From 8 to 96 positions per cabinet, the same registration.</span>
+          <span style="margin-top:auto;padding-top:10px;font-size:15px;color:#0066cc">View the Security Asset Manager&nbsp;›</span>
+        </a>
+      </li>
+      <li>
+        <a href="../../en/safebox/" style="display:flex;flex-direction:column;height:100%;color:#1d1d1f;text-decoration:none" style-hover="text-decoration:none">
+          <div style="position:relative;overflow:hidden;border-radius:16px;background:transparent;aspect-ratio:4 / 3">
+            <img width="898" height="1160" src="../../photos/safebox-58-transparant.webp" alt="Black Safebox 58 key safe" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+          </div>
+          <span style="margin-top:18px;font-size:21px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">Safebox</span>
+          <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Combination lock, with mechanical emergency opening.</span>
+          <span style="margin-top:auto;padding-top:10px;font-size:15px;color:#0066cc">View Safebox&nbsp;›</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer style="margin-top:12px;background:#f5f5f7;padding:80px 24px 40px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:48px">
+      <img width="250" height="92" src="../../logos/delphi-wordmark.png" alt="DELPHI" style="height:38px;width:103px;align-self:flex-start;display:block">
+      <span style="font-size:12px;font-weight:600;letter-spacing:2px;color:#707070;text-transform:uppercase">Key Management Systems</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px">
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Key management</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../../en/sam/" style="font-size:14px;color:#707070">Security Asset Manager</a></li>
+          <li><a href="../../en/keybox/" style="font-size:14px;color:#707070">Keybox</a></li>
+          <li><a href="../../en/keytracker/" style="font-size:14px;color:#707070">KeyTracker</a></li>
+          <li><a href="../../en/keycontroller/" style="font-size:14px;color:#707070">Keycontroller</a></li>
+          <li><a href="../../en/swat-box/" style="font-size:14px;color:#707070">SWAT-box</a></li>
+          <li><a href="../../en/surface-vault/" style="font-size:14px;color:#707070">Surface Vault</a></li>
+          <li><a href="../../en/safebox/" style="font-size:14px;color:#707070">Safebox</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Storage systems</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../../en/sam-lockers/" style="font-size:14px;color:#707070">SAM lockers</a></li>
+          <li><a href="../../en/oc-spray-station/" style="font-size:14px;color:#707070">OC Spray Station</a></li>
+          <li><a href="../../en/keytracker-opbergkasten/" style="font-size:14px;color:#707070">KeyTracker cabinets</a></li>
+          <li><a href="../../en/vel-key/" style="font-size:14px;color:#707070">Vel-Key</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Key rings</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../../en/sleutelringen/" style="font-size:14px;color:#707070">Stainless steel keyrings</a></li>
+          <li><a href="../../en/sleutelringen/#flex" style="font-size:14px;color:#707070">Flex keyrings</a></li>
+          <li><a href="../../en/sleutelringen/#morse" style="font-size:14px;color:#707070">Morse keyrings</a></li>
+          <li><a href="../../en/sleutelringen/#rivet" style="font-size:14px;color:#707070">Rivet keyrings</a></li>
+          <li><a href="../../en/sleutelringen/#coating" style="font-size:14px;color:#707070">Flexible with coating</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Contact</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../../en/contact/#contactgegevens" style="font-size:14px;color:#707070">Contact details</a></li>
+          <li><a href="../../en/contact/#faq" style="font-size:14px;color:#707070">Frequently asked questions</a></li>
+          <li><a href="../../en/documentatie/" style="font-size:14px;color:#707070">Documentation</a></li>
+          <li><a href="../../en/contact/#dealership" style="font-size:14px;color:#707070">Become a dealer</a></li>
+          <li><a href="../../en/over/" style="font-size:14px;color:#707070">About DELPHI</a></li>
+          <li><a href="../../en/over/#fabrikanten" style="font-size:14px;color:#707070">Manufacturers and partners</a></li>
+          <li><a href="../../en/contact/?p=keybox" style="font-size:14px;color:#707070">Request a quote</a></li>
+          <li><a href="mailto:info@sleutelbeheersystemen.nl" style="font-size:14px;color:#707070">info@sleutelbeheersystemen.nl</a></li>
+        </ul>
+      </div>
+    </div>
+    <p data-legal="1" style="margin-top:64px;padding-top:20px;border-top:1px solid #d6d6d6;font-size:12px;line-height:1.33;color:#707070">© 2026 DELPHI Sleutelbeheersystemen · Einsteinstraat 3e, 4207 HW Gorinchem · KvK 51691671 · BTW NL073453614B01<br><a href="../../en/privacy/" style="color:#707070">Privacy and disclaimer</a> &middot; <a href="../../voorwaarden/" hreflang="nl" title="Available in Dutch only" style="color:#707070">General terms and conditions (Dutch)</a></p>
+  </div>
+</footer>
+
+<sc-if value="{{ mobileBar }}" hint-placeholder-val="{{ false }}">
+  <div data-sticky-cta="1" style="position:fixed;left:0;right:0;bottom:0;z-index:180;background:rgba(250,250,252,0.94);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #d6d6d6;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;animation:barIn .25s ease both">
+    <a href="../../en/contact/?p=keybox" style="flex:1 1 0;min-height:44px;display:flex;align-items:center;justify-content:center;background:#0071e3;color:#ffffff;font-size:16px;border-radius:980px;text-decoration:none;white-space:nowrap" style-hover="text-decoration:none">Request a quote</a>
+    <a href="tel:+31183648851" aria-label="Call +31 183 648851" style="flex:0 0 auto;min-height:44px;display:flex;align-items:center;justify-content:center;padding:0 18px;background:#ffffff;color:#0071e3;font-size:16px;border-radius:980px;border:1px solid #0071e3;text-decoration:none;white-space:nowrap" style-hover="text-decoration:none">Call</a>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { navSub: null, menu: null, showBar: false, mobile: false, navOpen: false , searchOpen: false, q: '', pf: [] };
+
+  togglePf = (i) => () => this.setState((s) => { const pf = (s.pf || []).slice(); pf[i] = !pf[i]; return { pf }; });
+
+  sRef = React.createRef();
+
+  componentDidUpdate() {
+    if (this.state.searchOpen && !this._so && this.sRef.current) this.sRef.current.focus();
+    this._so = this.state.searchOpen;
+  }
+
+  componentDidMount() {
+
+    if (location.hash && location.hash.length > 1) {
+      let pogingen = 0;
+      const spring = () => {
+        let el = null;
+        try { el = document.querySelector(location.hash); } catch (err) { return; }
+        if (el) {
+          const marge = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+          const y = el.getBoundingClientRect().top + window.scrollY - marge;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
+          if (++pogingen > 3) return;
+        }
+        if (++pogingen < 24) setTimeout(spring, 120);
+      };
+      setTimeout(spring, 60);
+    }
+    this._mq = window.matchMedia('(max-width: 1000px)');
+    const syncMq = () => this.setState({ mobile: this._mq.matches, navOpen: false });
+    this._mq.addEventListener('change', syncMq);
+    this.setState({ mobile: this._mq.matches });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.style.animation = 'floatIn 0.7s cubic-bezier(0.28,0.11,0.32,1) both';
+        e.target.addEventListener('animationend', () => {
+          e.target.style.animation = '';
+          e.target.style.opacity = '';
+          e.target.style.transform = '';
+        }, { once: true });
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach((n) => {
+      if (n.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+      n.style.opacity = '0';
+      io.observe(n);
+    });
+    this._io = io;
+
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const y = window.scrollY || 0;
+        const show = y > 600;
+        if (show !== this.state.showBar) this.setState({ showBar: show });
+      });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+
+    let spyCache = null;
+    const spyPaint = () => {
+      if (!spyCache) {
+        const sub = document.querySelector('[data-subnav]');
+        if (!sub) return;
+        const links = [...sub.querySelectorAll('a[href^="#"]')];
+        const targets = links.map(a => ({ a, el: document.querySelector(a.getAttribute('href')) })).filter(t => t.el)
+          .sort((x, y) => x.el.compareDocumentPosition(y.el) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1);
+        if (!targets.length) return;
+        spyCache = { sub, links, targets, rail: sub.querySelector('[data-subnav-rail]'), current: null };
+      }
+      const { sub, links, targets, rail } = spyCache;
+      const line = sub.getBoundingClientRect().bottom + 24;
+      let pick = null;
+      for (const t of targets) if (t.el.getBoundingClientRect().top <= line) pick = t;
+      if (!pick || pick.a === spyCache.current) return;
+      links.forEach(a => { a.style.color = '#1d1d1f'; a.style.fontWeight = '400'; });
+      pick.a.style.color = '#0071e3';
+      pick.a.style.fontWeight = '600';
+      spyCache.current = pick.a;
+      if (rail && rail.scrollWidth > rail.clientWidth + 4) {
+        const r = pick.a.getBoundingClientRect(), rr = rail.getBoundingClientRect();
+        if (r.left < rr.left + 16 || r.right > rr.right - 16) rail.scrollTo({ left: rail.scrollLeft + (r.left - rr.left) - 24, behavior: 'smooth' });
+      }
+    };
+    this._spy = () => { if (this._spyRaf) return; this._spyRaf = requestAnimationFrame(() => { this._spyRaf = null; spyPaint(); }); };
+    window.addEventListener('scroll', this._spy, { passive: true });
+    this._spyTries = 0;
+    this._spyTimer = setInterval(() => { spyPaint(); if (spyCache || ++this._spyTries > 40) clearInterval(this._spyTimer); }, 150);
+  }
+
+  componentWillUnmount() {
+    if (this._spy) window.removeEventListener('scroll', this._spy);
+    if (this._spyTimer) clearInterval(this._spyTimer);
+    if (this._io) this._io.disconnect();
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+
+  hover(k) { return () => this.setState({ menu: k }); }
+  toggleNav = () => this.setState(s => ({ navOpen: !s.navOpen }));
+  closeNav = () => this.setState({ navOpen: false, navSub: null });
+  navBack = () => this.setState({ navSub: null });
+  navTo = (k) => () => this.setState({ navSub: k });
+
+
+  searchRef = React.createRef();
+  toggleSearch = () => this.setState(s => ({ searchOpen: !s.searchOpen, navOpen: false, q: '' }));
+  closeSearch = () => this.setState({ searchOpen: false, q: '' });
+  onSearch = (e) => this.setState({ q: e.target.value });
+
+  searchIndex() {
+    return (window.DELPHI_ZOEK && window.DELPHI_ZOEK.en) || [];
+  }
+
+  renderVals() {
+    const m = this.state.menu;
+    return {
+      searchOpen: this.state.searchOpen,
+      searchRows: this.state.searchOpen ? '1fr' : '0fr',
+      barTop: this.state.navOpen ? 'translateY(0) rotate(45deg)' : 'translateY(-3.5px)',
+      barBottom: this.state.navOpen ? 'translateY(0) rotate(-45deg)' : 'translateY(3.5px)',
+      searchVis: this.state.searchOpen ? 'visible' : 'hidden',
+      searchRef: this.sRef,
+      searchEvents: this.state.searchOpen ? 'auto' : 'none',
+      toggleSearch: this.toggleSearch,
+      closeSearch: this.closeSearch,
+      onSearch: this.onSearch,
+      searchRef: this.searchRef,
+      searchResults: (() => { const q = (this.state.q || '').trim(); const idx = this.searchIndex(); if (!q) return idx.slice(0, 6); return (window.DELPHI_ZOEK && window.DELPHI_ZOEK.zoek) ? window.DELPHI_ZOEK.zoek('en', q, 8) : idx.filter(i => (i.t + ' ' + i.s).toLowerCase().includes(q.toLowerCase())).slice(0, 8); })(),
+      openSystemen: m === 'systemen',
+      openOpberg: m === 'opberg',
+      openRingen: m === 'ringen',
+      openContact: m === 'contact',
+      navRoot: !this.state.navSub,
+      navSystemen: this.state.navSub === 'systemen',
+      navOpberg: this.state.navSub === 'opberg',
+      navRingen: this.state.navSub === 'ringen',
+      navContact: this.state.navSub === 'contact',
+      navClosed: !this.state.navOpen,
+      navLabel: this.state.navOpen ? 'Close menu' : 'Menu',
+      navBack: this.navBack,
+      navToSystemen: this.navTo('systemen'),
+      navToOpberg: this.navTo('opberg'),
+      navToRingen: this.navTo('ringen'),
+      navToContact: this.navTo('contact'),
+      flyRows: m ? '1fr' : '0fr',
+      flyEvents: m ? 'auto' : 'none',
+      hoverSystemen: this.hover('systemen'),
+      hoverOpberg: this.hover('opberg'),
+      hoverRingen: this.hover('ringen'),
+      hoverContact: this.hover('contact'),
+      closeMenu: () => this.setState({ menu: null }),
+      showBar: this.state.showBar,
+      ...(() => {
+        const pf = this.state.pf || [];
+        const u = {};
+        for (let i = 0; i < 6; i++) { u['pf' + i] = !!pf[i]; u['pfIcon' + i] = pf[i] ? '–' : '+'; u['togglePf' + i] = this.togglePf(i); }
+        return u;
+      })(),
+      mobileBar: this.state.mobile && this.state.showBar && !this.state.navOpen && !this.state.searchOpen,
+      isDesktop: !this.state.mobile,
+      isMobile: this.state.mobile,
+      navOpen: this.state.navOpen,
+      toggleNav: this.toggleNav,
+      closeNav: this.closeNav
+    };
+  }
+}
+</script>
+</body>
+</html>

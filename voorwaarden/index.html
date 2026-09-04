@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"../vendor/react/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"../vendor/react-dom/react-dom.production.min.js"};</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+<!-- Cookie-consent + GA4 (laadt GA4 alleen na toestemming) -->
+<script>
+(function () {
+  var GA_ID = 'G-XXXXXXXXXX'; // <-- VERVANG door jullie GA4 meet-ID
+  var KEY = 'delphi-consent';
+
+  function loadGA() {
+    if (!GA_ID || GA_ID.indexOf('XXXX') !== -1) return; // niet laden zonder echt ID
+    if (window.__gaLoaded) return; window.__gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  window.__delphiConsent = { granted: false };
+  try {
+    var saved = localStorage.getItem(KEY);
+    if (saved === 'accepted') { window.__delphiConsent.granted = true; loadGA(); return; }
+    if (saved === 'declined') { return; }
+  } catch (e) {}
+
+  function showBanner() {
+    var bar = document.createElement('div');
+    bar.setAttribute('role', 'dialog');
+    bar.setAttribute('aria-label', 'Cookievoorkeuren');
+    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;background:rgba(250,250,252,0.96);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #d6d6d6;padding:18px 24px;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:center;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif';
+    var txt = document.createElement('p');
+    txt.style.cssText = 'margin:0;font-size:14px;line-height:1.4;color:#1d1d1f;max-width:640px';
+    txt.innerHTML = 'Wij gebruiken analytische cookies om onze website te verbeteren. U kunt dit accepteren of weigeren. Meer leest u in onze <a href="../privacy/" style="color:#0066cc">privacyverklaring</a>.';
+    var btns = document.createElement('div');
+    btns.style.cssText = 'display:flex;gap:10px;flex-wrap:wrap';
+    function mkBtn(label, primary) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = label;
+      b.style.cssText = 'font-family:inherit;font-size:15px;padding:9px 20px;border-radius:980px;cursor:pointer;border:0;' +
+        (primary ? 'background:#0071e3;color:#fff' : 'background:#e8e8ed;color:#1d1d1f');
+      return b;
+    }
+    var accept = mkBtn('Accepteren', true);
+    var decline = mkBtn('Weigeren', false);
+    function close() { if (bar.parentNode) bar.parentNode.removeChild(bar); }
+    accept.onclick = function () { try { localStorage.setItem(KEY, 'accepted'); } catch (e) {} window.__delphiConsent.granted = true; loadGA(); close(); };
+    decline.onclick = function () { try { localStorage.setItem(KEY, 'declined'); } catch (e) {} close(); };
+    btns.appendChild(accept); btns.appendChild(decline);
+    bar.appendChild(txt); bar.appendChild(btns);
+    document.body.appendChild(bar);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showBanner);
+  else showBanner();
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script>window.DELPHI_BASIS = "../";</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Algemene voorwaarden | DELPHI Sleutelbeheersystemen</title>
+<link rel="canonical" href="https://www.sleutelbeheersystemen.nl/voorwaarden/">
+<meta name="description" content="Algemene voorwaarden van DELPHI Sleutelbeheersystemen, versie 30 augustus 2026: offertes, levering, installatie, garantie, onderhoud, betaling en aansprakelijkheid.">
+<link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/voorwaarden/">
+<link rel="alternate" hreflang="x-default" href="https://www.sleutelbeheersystemen.nl/voorwaarden/">
+<meta property="og:url" content="https://www.sleutelbeheersystemen.nl/voorwaarden/">
+<meta property="og:site_name" content="DELPHI Sleutelbeheersystemen">
+<meta property="og:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Algemene voorwaarden | DELPHI Sleutelbeheersystemen">
+<meta name="twitter:description" content="Algemene voorwaarden van DELPHI Sleutelbeheersystemen, versie 30 augustus 2026: offertes, levering, installatie, garantie, onderhoud, betaling en aansprakelijkheid.">
+<meta name="twitter:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
+<link rel="preload" href="../fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face { font-family: Inter; font-style: normal; font-weight: 100 900; font-display: swap;
+    src: url("../fonts/InterVariable.woff2") format("woff2"); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: #1d1d1f;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* Chrome blaast losse alinea's in brede containers op ("font boosting");
+       dat maakte de inleiding op de voorwaardenpagina 27px in plaats van 17px. */
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { color: #0071e3; text-decoration: underline; }
+  h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  ::selection { background: #d6e4f7; }
+  html { scroll-behavior: smooth; }
+  a, button, li { transition: color .22s ease, background-color .22s ease, opacity .35s ease; }
+  [data-hide-scrollbar] { scrollbar-width: none; -ms-overflow-style: none; }
+  [data-hide-scrollbar]::-webkit-scrollbar { display: none; }
+  @keyframes flyIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+  @keyframes flyOpen { from { grid-template-rows: 0fr; opacity: .4; } to { grid-template-rows: 1fr; opacity: 1; } }
+  [data-nav-row] svg { opacity: 0; transition: opacity .2s ease; }
+  [data-nav-row]:hover svg, [data-nav-row]:focus svg, [data-nav-row]:active svg { opacity: 1; }
+  /* Raakvlakken op aanraakschermen minimaal 44px: subnav, kruimelpad en
+     tekst-CTA’s zijn inline links en daardoor van zichzelf maar 16-34px hoog. */
+  @media (max-width: 900px) {
+    [data-subnav] a, [data-breadcrumb] a, [data-card-cta] a {
+      display: inline-flex; align-items: center; min-height: 44px;
+    }
+  }
+  /* Voettekstregel met privacy- en voorwaardenlink: op aanraakschermen minimaal 44px hoog. */
+  @media (max-width: 900px) {
+    [data-legal] a { display: inline-flex; align-items: center; min-height: 44px; }
+  }
+  @keyframes floatIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 680px) {
+    [data-card-cta] { gap: 12px !important; flex-wrap: wrap !important; justify-content: center !important; margin-top: 18px !important; }
+    [data-card-cta] a { font-size: 15px !important; padding: 8px 18px !important; white-space: nowrap; text-align: center; }
+  }
+  @media (max-width: 700px) {
+    [data-subnav] > div { height: 44px !important; }
+    [data-subnav] a { font-size: 14px !important; }
+    [data-subnav] > div > span, [data-subnav] span { font-size: 14px !important; }
+    [data-subnav-rail] { -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%); mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%); }
+  }
+  @media (max-width: 760px) {
+    [data-table-scroll] { -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 32px), transparent 100%); mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 32px), transparent 100%); }
+  }
+  @keyframes barIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+</style>
+<script>
+(function () {
+  function init() {
+    var bar = document.querySelector('[id$="-subnav"]');
+    if (!bar) return;
+    var links = [].slice.call(bar.querySelectorAll('a[href^="#"]'));
+    if (!links.length) return;
+    var targets = links.map(function (a) {
+      return { link: a, el: document.getElementById(a.getAttribute('href').slice(1)) };
+    }).filter(function (t) { return t.el; });
+    if (!targets.length) return;
+    var current = null;
+    function update() {
+      var line = bar.getBoundingClientRect().bottom + 24;
+      var active = null;
+      for (var i = 0; i < targets.length; i++) {
+        if (targets[i].el.getBoundingClientRect().top <= line) active = targets[i];
+      }
+      if (active === current) return;
+      current = active;
+      targets.forEach(function (t) {
+        var on = t === active;
+        t.link.style.color = on ? '#0071e3' : '#1d1d1f';
+        t.link.style.fontWeight = on ? '600' : '400';
+      });
+    }
+    update();
+    var tick = false;
+    window.addEventListener('scroll', function () {
+      if (tick) return;
+      tick = true;
+      requestAnimationFrame(function () { update(); tick = false; });
+    }, { passive: true });
+    window.addEventListener('resize', update);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else setTimeout(init, 0);
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DELPHI Sleutelbeheersystemen",
+  "url": "https://www.sleutelbeheersystemen.nl",
+  "logo": "https://www.sleutelbeheersystemen.nl/logos/delphi-wordmark.png",
+  "telephone": "+31183648851",
+  "email": "info@sleutelbeheersystemen.nl",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Einsteinstraat 3e",
+    "postalCode": "4207 HW",
+    "addressLocality": "Gorinchem",
+    "addressCountry": "NL"
+  }
+}
+</script>
+<script src="../zoekindex.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+
+<nav onMouseLeave="{{ closeMenu }}" style="position:sticky;top:0;z-index:200;background:rgba(250,250,252,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid #d6d6d6">
+  <div style="max-width:1200px;margin:0 auto;padding:18px 24px;min-height:72px;display:flex;flex-wrap:nowrap;align-items:center;gap:24px">
+    <a href="../" style="display:flex;align-items:center;min-height:44px;text-decoration:none;flex:0 0 auto">
+      <img width="250" height="92" src="../logos/delphi-wordmark.png" alt="DELPHI" style="height:38px;width:104px;display:block;margin-top:-14px">
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <ul data-hide-scrollbar="1" style="display:flex;flex-wrap:nowrap;align-items:center;gap:20px;flex:1 1 auto;min-width:0;overflow-x:auto">
+        <li onMouseEnter="{{ hoverSystemen }}" style="flex:0 0 auto"><a href="../#sam" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Sleutelbeheer</a></li>
+        <li onMouseEnter="{{ hoverOpberg }}" style="flex:0 0 auto"><a href="../#opberg" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Opbergsystemen</a></li>
+        <li onMouseEnter="{{ hoverRingen }}" style="flex:0 0 auto"><a href="../#ringen" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Sleutelringen</a></li>
+        <li onMouseEnter="{{ closeMenu }}" style="flex:0 0 auto"><a href="../documentatie/" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Documentatie</a></li>
+        <li onMouseEnter="{{ hoverContact }}" style="flex:0 0 auto"><a href="../contact/" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Contact</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:16px;flex:0 0 auto">
+        <button type="button" aria-label="Zoeken" onClick="{{ toggleSearch }}" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:none;border:0;padding:0;cursor:pointer;color:#1d1d1f" style-hover="color:#0071e3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:18px;height:18px;display:block"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+        </button>
+        <a href="../contact/" style="display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-size:16px;font-weight:400;padding:9px 18px;border-radius:980px;text-decoration:none" style-hover="text-decoration:none">Offerte aanvragen</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:0 0 auto;display:flex;align-items:center;gap:7px;font-size:14px;letter-spacing:0.3px">
+        <span style="color:#1d1d1f;font-weight:600">NL</span>
+        <span aria-hidden="true" style="color:#c7c7cc">/</span>
+        <a href="../voorwaarden/" hreflang="nl" title="These terms are available in Dutch only" style="color:#707070;text-decoration:none" style-hover="color:#0066cc">EN</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-left:auto;display:flex;align-items:center;gap:2px">
+        <div style="display:flex;align-items:center;gap:6px;font-size:14px;letter-spacing:0.3px;padding:0 6px 0 2px">
+          <span style="color:#1d1d1f;font-weight:600">NL</span>
+          <span aria-hidden="true" style="color:#c7c7cc">/</span>
+          <a href="../voorwaarden/" hreflang="nl" title="These terms are available in Dutch only" style="display:inline-flex;align-items:center;min-height:44px;padding:0 12px;margin:0 -12px;color:#707070;text-decoration:none">EN</a>
+        </div>
+        <button type="button" aria-label="Zoeken" onClick="{{ toggleSearch }}" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:20px;height:20px;display:block"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+        </button>
+        <button type="button" aria-label="{{ navLabel }}" aria-expanded="{{ navOpen }}" onClick="{{ toggleNav }}" style="width:44px;height:44px;position:relative;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer">
+          <span style="position:absolute;width:18px;height:1.2px;border-radius:1px;background:#1d1d1f;transform:{{ barTop }};transition:transform .4s cubic-bezier(0.4,0.01,0.2,1)"></span>
+          <span style="position:absolute;width:18px;height:1.2px;border-radius:1px;background:#1d1d1f;transform:{{ barBottom }};transition:transform .4s cubic-bezier(0.4,0.01,0.2,1)"></span>
+        </button>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:100%;left:0;right:0;z-index:300;display:grid;grid-template-rows:1fr;animation:flyOpen .4s cubic-bezier(0.25,0.1,0.25,1) both"><div style="min-height:0;overflow:hidden"><div style="background:#fafafc;border-top:1px solid #d6d6d6;box-shadow:0 18px 34px rgba(0,0,0,0.07);max-height:calc(100dvh - 81px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain">
+      <sc-if value="{{ navRoot }}" hint-placeholder-val="{{ true }}">
+      <ul style="max-width:1200px;margin:0 auto;padding:12px 24px 8px;display:flex;flex-direction:column">
+        <li><a href="../" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Home<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToSystemen }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Sleutelbeheer<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToOpberg }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Opbergsystemen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToRingen }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Sleutelringen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><a href="../documentatie/" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Documentatie<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToContact }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Contact<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><a href="../contact/#faq" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Veelgestelde vragen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+      </ul>
+      <div style="max-width:1200px;margin:0 auto;padding:12px 24px 28px;display:flex;flex-direction:column;gap:14px">
+        <a href="../contact/" onClick="{{ closeNav }}" style="align-self:flex-start;background:#0071e3;color:#ffffff;font-size:17px;padding:12px 22px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Offerte aanvragen</a>
+        <a href="tel:+31183648851" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">+31 (0)183 648851</a>
+      </div>
+      </sc-if>
+      <sc-if value="{{ navSystemen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../sam/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Security Asset Manager (SAM)</a>
+        <a href="../keybox/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Keybox</a>
+        <a href="../keytracker/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">KeyTracker</a>
+        <a href="../keycontroller/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Keycontroller</a>
+        <a href="../swat-box/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">SWAT-box</a>
+        <a href="../surface-vault/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Surface Vault</a>
+        <a href="../safebox/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Safebox</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navOpberg }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../sam-lockers/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">SAM lockers</a>
+        <a href="../oc-spray-station/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">OC Spray Station</a>
+        <a href="../keytracker-opbergkasten/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">KeyTracker opbergkasten</a>
+        <a href="../vel-key/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Vel-Key</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navRingen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../sleutelringen/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">RVS keyrings</a>
+        <a href="../sleutelringen/#flex" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Flex keyrings</a>
+        <a href="../sleutelringen/#morse" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Morse keyrings</a>
+        <a href="../sleutelringen/#rivet" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Rivet keyrings</a>
+        <a href="../sleutelringen/#coating" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Flexibel met coating</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navContact }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../contact/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Offerte aanvragen</a>
+        <a href="../contact/#faq" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Veelgestelde vragen</a>
+        <a href="../contact/#contactgegevens" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Contactgegevens</a>
+        <a href="../over/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Over DELPHI</a>
+        <a href="../contact/#dealership" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Dealership</a>
+        </div>
+      </sc-if>
+    </div></div></div>
+  </sc-if>
+
+  <div style="position:absolute;top:100%;left:0;right:0;z-index:310;display:grid;grid-template-rows:{{ searchRows }};transition:grid-template-rows .4s cubic-bezier(0.25,0.1,0.25,1);pointer-events:{{ searchEvents }};visibility:{{ searchVis }}">
+    <div style="min-height:0;overflow:hidden">
+      <div style="background:#fafafc;border-top:1px solid #d6d6d6;max-height:calc(100vh - 74px);overflow-y:auto">
+      <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:flex;flex-direction:column;gap:clamp(20px,2.2vw,28px)">
+        <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px">Zoeken</span>
+        <div style="display:flex;align-items:center;gap:10px;max-width:560px;background:#ffffff;border:1px solid #d2d2d7;border-radius:12px;padding:10px 14px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:18px;height:18px;flex:0 0 auto"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+          <input type="search" placeholder="Zoek een product of onderwerp" ref="{{ searchRef }}" onInput="{{ onSearch }}" style="flex:1;min-width:0;border:0;outline:none;background:none;font-size:17px;color:#1d1d1f">
+        </div>
+        <ul style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="4">
+            <li>
+              <a href="{{ r.u }}" onClick="{{ closeSearch }}" style="display:flex;flex-direction:column;gap:2px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#86868b">{{ r.g }}</span>
+                <span style="font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">{{ r.t }}</span>
+                <span style="font-size:14px;color:#707070">{{ r.s }}</span>
+              </a>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;top:100%;left:0;right:0;z-index:300;display:grid;grid-template-rows:{{ flyRows }};transition:grid-template-rows .4s cubic-bezier(0.25,0.1,0.25,1);pointer-events:{{ flyEvents }}">
+    <div style="min-height:0;overflow:hidden">
+      <div style="border-top:1px solid #d6d6d6;background:#fafafc;border-bottom:1px solid #d6d6d6">
+      <sc-if value="{{ openSystemen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Sleutelbeheer</span>
+          <a href="../sam/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Security Asset Manager</a>
+          <a href="../keybox/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Keybox</a>
+          <a href="../keytracker/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">KeyTracker</a>
+          <a href="../keycontroller/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Keycontroller</a>
+          <a href="../swat-box/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">SWAT-box</a>
+          <a href="../surface-vault/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Surface Vault</a>
+          <a href="../safebox/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Safebox</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openOpberg }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Opbergsystemen</span>
+          <a href="../sam-lockers/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">SAM lockers</a>
+          <a href="../oc-spray-station/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">OC Spray Station</a>
+          <a href="../keytracker-opbergkasten/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">KeyTracker opbergkasten</a>
+          <a href="../vel-key/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Vel-Key</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openRingen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Sleutelringen</span>
+          <a href="../sleutelringen/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">RVS keyrings</a>
+          <a href="../sleutelringen/#flex" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Flex keyrings</a>
+          <a href="../sleutelringen/#morse" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Morse keyrings</a>
+          <a href="../sleutelringen/#rivet" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Rivet keyrings</a>
+          <a href="../sleutelringen/#coating" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Flexibel met coating</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openContact }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Contact</span>
+          <a href="../contact/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Offerte aanvragen</a>
+          <a href="../contact/#faq" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Veelgestelde vragen</a>
+          <a href="../contact/#contactgegevens" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Contactgegevens</a>
+          <a href="../over/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Over DELPHI</a>
+          <a href="../contact/#dealership" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Dealership</a>
+          </div>
+        </div>
+      </sc-if>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section style="background:#ffffff;padding:clamp(48px,6vw,80px) 24px clamp(40px,5vw,64px)">
+  <div style="max-width:820px;margin:0 auto">
+    <div style="text-align:center">
+      <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">Juridisch</p>
+      <h1 style="margin-top:8px;font-size:clamp(36px,5.6vw,64px);line-height:1.06;font-weight:700;letter-spacing:-1px;text-wrap:balance">Algemene voorwaarden</h1>
+      <p style="margin:20px auto 0;max-width:620px;font-size:19px;line-height:1.38;color:#707070;letter-spacing:0.231px;text-wrap:pretty">Geactualiseerde versie, geschreven voor het leveren, installeren en onderhouden van sleutelbeheersystemen. Versie 30 augustus 2026.</p>
+    </div>
+  </div>
+</section>
+
+<section id="voorwaarden" style="background:#f5f5f7;padding:clamp(56px,7vw,96px) 24px;scroll-margin-top:90px">
+  <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(30px,3.4vw,44px)">
+
+    <p style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Algemene voorwaarden DELPHI Sleutelbeheersystemen, versie 30 augustus 2026. DELPHI staat ingeschreven bij de Kamer van Koophandel onder nummer 51691671. Wij verstrekken deze voorwaarden bij iedere offerte en opdrachtbevestiging; de versie op deze website is de geldende versie.</p>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 1. Definities</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI: DELPHI Sleutelbeheersystemen, gevestigd te Gorinchem, ingeschreven bij de Kamer van Koophandel onder nummer 51691671.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Klant: de natuurlijke of rechtspersoon die met DELPHI een Overeenkomst sluit of aan wie DELPHI een aanbieding doet.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Overeenkomst: iedere overeenkomst tussen DELPHI en de Klant over het leveren van Zaken, het verlenen van gebruiksrecht op Software en/of het verrichten van Diensten, inclusief deze algemene voorwaarden en de opdrachtbevestiging.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Zaken: de door DELPHI te leveren goederen, waaronder sleutelbeheersystemen, sleutelkasten, lockers, sleutelringen, sluitwerk en toebehoren.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Software: de bij de Zaken behorende programmatuur en firmware, inclusief updates, van DELPHI of van haar toeleveranciers.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Diensten: alle werkzaamheden van DELPHI, waaronder advies, inmeten, installatie, inbedrijfstelling, instructie, onderhoud, storingsherstel en reparatie.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 2. Toepasselijkheid</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Deze algemene voorwaarden zijn van toepassing op iedere aanbieding, offerte en Overeenkomst tussen DELPHI en de Klant, voor zover partijen daarvan niet uitdrukkelijk en schriftelijk zijn afgeweken.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI stelt deze voorwaarden voorafgaand aan of bij het sluiten van de Overeenkomst aan de Klant ter beschikking, in ieder geval als bijlage bij de offerte en de opdrachtbevestiging en via de website van DELPHI.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De toepasselijkheid van inkoop- of andere voorwaarden van de Klant wordt uitdrukkelijk van de hand gewezen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI contracteert uitsluitend met partijen die handelen in de uitoefening van een beroep of bedrijf. Met consumenten sluit DELPHI geen overeenkomsten; deze voorwaarden zijn daarop niet van toepassing.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Indien een bepaling van deze voorwaarden geheel of gedeeltelijk nietig is of wordt vernietigd, blijven de overige bepalingen van kracht. Partijen treden in dat geval in overleg over een vervangende bepaling die zoveel mogelijk het doel en de strekking van de oorspronkelijke bepaling benadert.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bij tegenstrijdigheid tussen de opdrachtbevestiging en deze voorwaarden geldt de opdrachtbevestiging.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 3. Offertes en aanbiedingen</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Alle offertes en aanbiedingen van DELPHI zijn vrijblijvend en geldig gedurende 30 dagen na de datum van de offerte, tenzij daarin een andere termijn is vermeld.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Offertes zijn gebaseerd op de informatie die de Klant heeft verstrekt. De Klant staat er voor in dat hij alle informatie die voor de opzet, uitvoering en afronding van de opdracht van belang is, tijdig en naar waarheid heeft verstrekt. Daaronder vallen in ieder geval het aantal te beheren sleutels en middelen, het aantal gebruikers, de bouwkundige situatie en de aanwezige netwerk- en toegangscontrolesystemen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI kan niet aan een offerte worden gehouden indien de Klant redelijkerwijs kan begrijpen dat deze een kennelijke vergissing of verschrijving bevat.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Afbeeldingen, maten, gewichten, capaciteiten en technische gegevens in brochures, datasheets en op de website zijn indicatief en binden DELPHI niet, tenzij deze uitdrukkelijk in de opdrachtbevestiging zijn opgenomen. Geringe afwijkingen in uitvoering, kleur en afmeting geven geen recht op afkeuring.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Een samengestelde aanbieding verplicht DELPHI niet tot levering van een deel daarvan tegen een overeenkomstig deel van de prijs. Offertes gelden niet automatisch voor toekomstige orders.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 4. Prijzen</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Alle prijzen zijn in euro&rsquo;s en exclusief btw en andere heffingen van overheidswege. Tenzij anders vermeld zijn transport, montage, inbedrijfstelling, instructie en het inrichten van de Software niet in de prijs begrepen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Reis- en verblijfkosten en voorrijkosten worden afzonderlijk in rekening gebracht volgens de in de offerte vermelde tarieven.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Is een vaste prijs overeengekomen, dan is DELPHI gerechtigd deze te verhogen indien de verhoging voortvloeit uit een wettelijke bevoegdheid of verplichting, of haar oorzaak vindt in een stijging van kostprijsbepalende factoren zoals grondstofprijzen, inkoopprijzen van toeleveranciers, energie, vervoer, valutakoersen of lonen, die bij het aangaan van de Overeenkomst redelijkerwijs niet voorzienbaar was.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bedraagt een prijsstijging als bedoeld in het vorige lid meer dan 10% en vloeit deze niet voort uit een wettelijke verplichting, dan mag de Klant de Overeenkomst binnen 14 dagen na kennisgeving van de nieuwe prijs schriftelijk ontbinden, tenzij DELPHI alsnog bereid is tegen de oorspronkelijke prijs uit te voeren of is bedongen dat de levering later dan drie maanden na het sluiten van de Overeenkomst plaatsvindt. Ontbinding geeft geen recht op schadevergoeding; DELPHI mag de tot dan gemaakte kosten in rekening brengen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bij doorlopende overeenkomsten voor onderhoud, service of softwaregebruik mag DELPHI de tarieven jaarlijks per 1 januari aanpassen op basis van de CBS-dienstenprijsindex, of, indien deze index niet beschikbaar is, met een door DELPHI schriftelijk aangekondigd percentage.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 5. Totstandkoming van de Overeenkomst</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Overeenkomst komt tot stand op de dag waarop de Klant de opdrachtbevestiging ondertekent, dan wel op de dag waarop DELPHI haar schriftelijke opdrachtbevestiging aan de Klant verzendt, dan wel op het moment waarop DELPHI met instemming van de Klant met de uitvoering begint.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Overeenkomsten voor de levering van Zaken worden aangegaan voor de duur die nodig is voor de uitvoering. Overeenkomsten voor onderhoud, service of softwaregebruik worden aangegaan voor twaalf maanden en worden daarna telkens met dezelfde periode verlengd, tenzij een van partijen uiterlijk twee maanden voor het einde van de looptijd schriftelijk opzegt.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 6. Uitvoering van de Overeenkomst</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI voert de Overeenkomst uit naar beste inzicht en vermogen en met de zorg van een goed opdrachtnemer.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Ten aanzien van Diensten neemt DELPHI een inspanningsverbintenis op zich en geeft zij geen garantie omtrent het resultaat, tenzij uitdrukkelijk anders is overeengekomen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI mag de Overeenkomst geheel of gedeeltelijk door derden laten uitvoeren indien een goede uitvoering dat vereist. Bij werkzaamheden op locatie van de Klant informeert DELPHI de Klant hierover vooraf. De artikelen 7:404, 7:407 lid 2 en 7:409 BW worden uitdrukkelijk uitgesloten.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Schakelt DELPHI voor installatie of onderhoud een derde in, dan blijft DELPHI het aanspreekpunt van de Klant en jegens hem verantwoordelijk voor de nakoming van de Overeenkomst; de Klant ontvangt &eacute;&eacute;n factuur en richt zijn meldingen tot DELPHI. Kiest en contracteert de Klant zelf een installateur of andere derde, dan is DELPHI niet aansprakelijk voor het werk van die derde en vervalt de garantie op gebreken die daaruit voortvloeien.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI mag de Overeenkomst in fasen uitvoeren en het uitgevoerde gedeelte afzonderlijk factureren.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 7. Wijzigingen en meerwerk</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Wijzigingen die de Klant na het sluiten van de Overeenkomst verlangt, moeten tijdig en schriftelijk aan DELPHI worden gemeld. Een wijziging of aanvulling geldt alleen indien DELPHI deze schriftelijk heeft aanvaard.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Er is sprake van meerwerk indien de Klant de opdracht uitbreidt of wijzigt, of indien DELPHI de werkzaamheden opnieuw moet organiseren doordat de Klant onjuiste of onvolledige gegevens heeft verstrekt. Meerwerk wordt op basis van nacalculatie in rekening gebracht tegen het overeengekomen tarief.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Wijzigingen kunnen ertoe leiden dat de overeengekomen levertijd of oplevertijd wordt overschreden. Overschrijding om die reden geeft de Klant geen recht op ontbinding of schadevergoeding.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 8. Medewerking van de Klant</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant verstrekt DELPHI, gevraagd en ongevraagd, alle informatie die voor een correcte uitvoering van de opdracht van belang is.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Worden noodzakelijke gegevens niet, niet tijdig of niet overeenkomstig de afspraken verstrekt, of komt de Klant zijn overige verplichtingen niet na, dan mag DELPHI de uitvoering opschorten.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant zorgt ervoor dat de medewerkers die bij de uitvoering betrokken zijn tijdig beschikbaar zijn en over de nodige kennis beschikken, en wijst &eacute;&eacute;n contactpersoon aan die namens hem beslissingen kan nemen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Ontstaan voor DELPHI extra kosten doordat de Klant personeel, gegevens, bescheiden of faciliteiten niet, niet tijdig of niet behoorlijk ter beschikking stelt, dan komen deze kosten voor rekening van de Klant.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 9. Levering en levertijden</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Opgegeven levertijden zijn indicatief en gelden nooit als fatale termijn. Bij overschrijding moet de Klant DELPHI schriftelijk in gebreke stellen en een redelijke termijn geven om alsnog te leveren.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De levertijd gaat in op het moment dat de Overeenkomst tot stand is gekomen, alle voor de uitvoering benodigde gegevens en goedkeuringen door DELPHI zijn ontvangen en een eventueel overeengekomen aanbetaling is voldaan.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Tenzij anders overeengekomen levert DELPHI af op het door de Klant opgegeven adres. Het risico van verlies, beschadiging of waardevermindering gaat over op de Klant op het moment dat de Zaken op het afleveradres ter beschikking worden gesteld.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant is verplicht de Zaken af te nemen op het moment dat deze ter beschikking worden gesteld. Weigert de Klant de afname of is hij nalatig in het verstrekken van informatie of instructies die voor de levering nodig zijn, dan mag DELPHI de Zaken opslaan voor rekening en risico van de Klant en de daaruit voortvloeiende kosten in rekening brengen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI mag in delen leveren en het geleverde deel afzonderlijk factureren.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant zorgt voor een vrije, veilige en droge aanvoerroute, voldoende manoeuvreerruimte en, waar nodig, voor het gebruik van een lift of hijsvoorziening. Zijn deze niet beschikbaar en moet DELPHI extra maatregelen nemen, dan komen die kosten voor rekening van de Klant.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 10. Installatie, inbedrijfstelling en oplevering</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant zorgt er kosteloos voor dat de locatie op het afgesproken tijdstip gereed is voor installatie. Daaronder valt in ieder geval: vrije en veilige toegang tot de opstellingsplaats, een draagkrachtige en vlakke wand of vloer, de benodigde 230V-aansluiting op de juiste plaats, en waar van toepassing een netwerkaansluiting met de door DELPHI opgegeven specificaties en de daarvoor benodigde openstellingen in het netwerk van de Klant.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bouwkundige werkzaamheden, doorvoeren, hak- en breekwerk, het aanbrengen van bekabeling buiten de opstellingsplaats en het aanpassen van deuren of sluitwerk vallen niet onder de Overeenkomst, tenzij uitdrukkelijk anders is overeengekomen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Blijkt de locatie op het afgesproken tijdstip niet gereed, of kan DELPHI om een andere aan de Klant toe te rekenen oorzaak niet installeren, dan brengt DELPHI de daardoor verloren tijd, voorrijkosten en een nieuwe installatieafspraak in rekening tegen de geldende tarieven.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Installatiewerkzaamheden worden uitgevoerd op werkdagen tussen 08.00 en 17.00 uur. Werkzaamheden op verzoek van de Klant buiten deze tijden, op zaterdag, zondag of een feestdag worden verrekend met een toeslag volgens de geldende tarieven.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Na installatie en inbedrijfstelling volgt een oplevering, waarbij DELPHI de werking van het systeem demonstreert en de Klant instructie ontvangt. De Klant of zijn contactpersoon tekent voor oplevering. Het systeem geldt als opgeleverd wanneer de Klant heeft getekend, of wanneer de Klant het systeem in gebruik neemt, of wanneer de Klant niet binnen acht dagen na de opleveringsdatum schriftelijk gebreken heeft gemeld.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Kleine gebreken die het gebruik van het systeem niet in de weg staan, vormen geen grond om de oplevering te weigeren. DELPHI herstelt deze binnen een redelijke termijn.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant is verantwoordelijk voor het aanvragen van eventuele vergunningen en voor toestemming van de eigenaar of verhuurder van het pand voor de montage.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 11. Garantie</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI garandeert dat de geleverde Zaken bij oplevering vrij zijn van materiaal- en fabricagefouten, gedurende twaalf maanden na oplevering, of langer indien de fabrieksgarantie van de betreffende fabrikant een langere termijn kent. Op reparaties en vervangen onderdelen geldt een garantietermijn van drie maanden, of de resterende oorspronkelijke garantietermijn indien die langer is.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Voor onderdelen en systemen van toeleveranciers geldt de garantie van de betreffende fabrikant, zowel in duur als in omvang. DELPHI verstrekt op verzoek de garantievoorwaarden van de fabrikant en bemiddelt bij een beroep daarop.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De garantie houdt in dat DELPHI naar eigen keuze het gebrek herstelt, het onderdeel vervangt of de betaalde prijs voor het betreffende onderdeel crediteert. Vervanging van het gehele systeem kan de Klant niet verlangen indien herstel mogelijk is.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Onder de garantie vallen niet: normale slijtage; verbruiksartikelen zoals batterijen, accu&rsquo;s, lampen, sleutelringen en labels; schade door onjuist of oneigenlijk gebruik, overbelasting van vakken of laden, geweld, forceren, inbraak, vandalisme, brand, water, blikseminslag, over- of onderspanning en andere van buiten komende oorzaken; schade door het niet volgen van de gebruiks-, installatie- en onderhoudsinstructies; en gebreken die het gevolg zijn van door de Klant of derden uitgevoerde aanpassingen, reparaties of verplaatsingen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De garantie vervalt indien de Klant zonder schriftelijke toestemming van DELPHI wijzigingen aan de Zaken of de Software heeft aangebracht of laten aanbrengen, of niet-originele onderdelen heeft laten plaatsen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Garantiewerkzaamheden worden uitgevoerd op werkdagen tijdens de in artikel 10 lid 4 genoemde uren. De garantie omvat arbeid en materiaal; werkzaamheden buiten die uren en, bij systemen die niet op afstand te benaderen zijn, de kosten van transport van de Zaken naar en van DELPHI komen voor rekening van de Klant.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Blijkt bij onderzoek dat een beroep op de garantie ongegrond is, dan mag DELPHI de kosten van het onderzoek en het bezoek in rekening brengen tegen de geldende tarieven.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Een beroep op de garantie schort de betalingsverplichting van de Klant niet op.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 12. Service, onderhoud en storingen</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Onderhoud en storingsherstel worden uitgevoerd op basis van een afzonderlijke onderhoudsovereenkomst of, bij het ontbreken daarvan, op afroep tegen de geldende tarieven.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bij een onderhoudsovereenkomst reageert DELPHI op een tijdens kantooruren gemelde storing binnen acht kantooruren. Bij systemen in Nederland en Belgi&euml; streeft DELPHI ernaar binnen twee werkdagen ter plaatse te zijn; buiten Nederland en Belgi&euml; verleent DELPHI ondersteuning op afstand en worden bezoeken ter plaatse afzonderlijk overeengekomen. Genoemde termijnen zijn streeftermijnen en geen fatale termijnen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Storingen meldt de Klant met een omschrijving van het probleem, het type systeem en het serienummer, via de door DELPHI aangegeven kanalen. De Klant verleent DELPHI voor onderzoek en herstel toegang tot het systeem en, waar overeengekomen, toegang op afstand.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Werkzaamheden die geen gevolg zijn van een gebrek in het systeem &mdash; waaronder het herstellen van instellingen die de Klant zelf heeft gewijzigd, het uitlezen van gegevens, het toevoegen van gebruikers en autorisaties, verplaatsingen, en het openen van een systeem waarvan de Klant de beheerderscode of sleutel niet meer heeft &mdash; vallen niet onder onderhoud en worden afzonderlijk in rekening gebracht.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI is niet gehouden onderdelen te leveren die de fabrikant niet meer produceert. DELPHI spant zich in onderdelen gedurende vijf jaar na levering beschikbaar te houden en informeert de Klant tijdig indien een systeem het einde van zijn ondersteuningstermijn bereikt.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 13. Software en licenties</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Software wordt niet verkocht maar in gebruik gegeven. De Klant verkrijgt een niet-exclusief, niet-overdraagbaar gebruiksrecht voor de duur van de Overeenkomst en uitsluitend voor gebruik binnen zijn eigen organisatie en voor het overeengekomen aantal gebruikers, systemen of locaties.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant mag de Software niet kopi&euml;ren, verhuren, in sublicentie geven, decompileren of aan derden ter beschikking stellen, behoudens voor zover de wet dat dwingend toestaat.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Licenties van de fabrikant worden via DELPHI verstrekt. Updates en nieuwe versies levert DELPHI in samenwerking met de fabrikant en in overleg met de Klant over het moment van uitvoering. Voorwaarden die de fabrikant aan het gebruik van zijn Software stelt, gelden ook tussen DELPHI en de Klant, voor zover DELPHI die aan de Klant heeft verstrekt.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI garandeert niet dat de Software zonder onderbreking of fouten werkt, noch dat alle fouten worden hersteld. DELPHI spant zich in gemelde fouten binnen een redelijke termijn te verhelpen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant is verantwoordelijk voor de werkomgeving waarin de Software draait: hardware, besturingssysteem, netwerk, stroomvoorziening, virusbescherming en het tijdig installeren van door DELPHI beschikbaar gestelde updates. Werkt de Software niet goed doordat de Klant niet aan de gestelde systeemeisen voldoet, dan is dat geen gebrek.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant is verantwoordelijk voor het maken van back-ups van zijn gegevens. DELPHI is niet aansprakelijk voor verlies, beschadiging of onbeschikbaarheid van gegevens, waaronder logbestanden en gebruikersgegevens.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Verwerkt DELPHI bij de uitvoering van de Overeenkomst persoonsgegevens voor de Klant, dan doet zij dat uitsluitend in opdracht van de Klant en leggen partijen dit vast in een verwerkersovereenkomst. De Klant is verwerkingsverantwoordelijke voor de gegevens die met het systeem worden vastgelegd, waaronder gegevens over wie welke sleutel of welk middel heeft gebruikt, en bepaalt zelf de bewaartermijn en de doelen van die registratie.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 14. Sleutels, autorisaties en beveiliging</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Een sleutelbeheersysteem is een hulpmiddel. De Klant blijft verantwoordelijk voor zijn eigen sleutel- en beveiligingsbeleid, voor het bepalen van wie tot welke sleutels en middelen toegang heeft, en voor het toekennen, wijzigen en intrekken van autorisaties.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant beheert de beheerderscodes, noodsleutels, pincodes en toegangsmiddelen zorgvuldig en houdt deze geheim. Verlies daarvan meldt de Klant onverwijld aan DELPHI. Het openen of herstellen van een systeem na verlies van de beheerderscode of noodsleutel is geen garantiewerk.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI bewaart geen kopie&euml;n van sleutels van de Klant. Voor zover DELPHI voor de uitvoering van de Overeenkomst tijdelijk over sleutels of toegangsmiddelen van de Klant beschikt, gaat zij daar zorgvuldig mee om en geeft zij deze na afronding terug. Na oplevering liggen de beheerderscodes, noodsleutels, pincodes, autorisaties en logbestanden volledig in eigen beheer van de Klant; DELPHI heeft daartoe geen toegang en bewaart daarvan geen kopie&euml;n.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI staat er niet voor in dat het systeem inbraak, diefstal, misbruik of verlies van sleutels voorkomt, en aanvaardt daarvoor geen aansprakelijkheid. Adviezen over de opstelling en inrichting van een systeem laten de eigen verantwoordelijkheid van de Klant en de eisen van zijn verzekeraar onverlet; de Klant gaat zelf na welke eisen zijn verzekeraar, certificeringsregeling of toezichthouder stelt.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant zorgt ervoor dat het gebruik van het systeem in zijn organisatie past binnen de geldende wet- en regelgeving, waaronder de privacywetgeving en de afspraken met de ondernemingsraad of personeelsvertegenwoordiging over registratie van gebruik.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 15. Annulering, retour en maatwerk</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Annulering van een order door de Klant is alleen mogelijk met schriftelijke instemming van DELPHI. In dat geval is de Klant de tot dan gemaakte kosten verschuldigd, vermeerderd met een vergoeding van 15% van de orderwaarde.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Zaken die op maat zijn gemaakt, op specificatie van de Klant zijn samengesteld, zijn gegraveerd, gelabeld of anderszins voor de Klant persoonlijk zijn gemaakt, kunnen niet worden geannuleerd of geretourneerd.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Retourzending van standaardartikelen is alleen mogelijk na schriftelijke toestemming van DELPHI, binnen 14 dagen na levering, in de originele en onbeschadigde verpakking en ongebruikt. DELPHI mag een vergoeding voor behandelingskosten in rekening brengen; transportkosten van de retourzending komen voor rekening van de Klant.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 16. Eigendomsvoorbehoud</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Alle door DELPHI geleverde Zaken blijven eigendom van DELPHI totdat de Klant al zijn verplichtingen uit de Overeenkomst, waaronder de betalingsverplichtingen, volledig is nagekomen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Zaken die onder het eigendomsvoorbehoud vallen mogen niet worden doorverkocht, als betaalmiddel worden gebruikt, verpand of op andere wijze bezwaard.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant behandelt de onder eigendomsvoorbehoud geleverde Zaken met de nodige zorgvuldigheid, bewaart ze als herkenbaar eigendom van DELPHI en verzekert ze tegen brand, water en diefstal.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Komt de Klant zijn verplichtingen niet na, of heeft DELPHI goede grond te vrezen dat hij dat niet zal doen, dan mag DELPHI de geleverde Zaken terugnemen. De Klant verleent DELPHI daartoe toegang tot de locatie waar de Zaken zich bevinden. De kosten van terugname komen voor rekening van de Klant.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Wordt op de Zaken beslag gelegd of maakt een derde aanspraak op de Zaken, dan stelt de Klant DELPHI daarvan onverwijld op de hoogte.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 17. Betaling</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Betaling geschiedt binnen 30 dagen na factuurdatum in euro&rsquo;s, op de door DELPHI aangegeven wijze, tenzij uitdrukkelijk anders is overeengekomen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bij maatwerk, projecten en orders boven &euro; 10.000 mag DELPHI een aanbetaling van 50% van de orderwaarde verlangen voordat met de uitvoering wordt begonnen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Blijft de Klant in gebreke met tijdige betaling, dan is hij van rechtswege in verzuim en is hij de wettelijke handelsrente verschuldigd vanaf de vervaldag tot het moment van volledige betaling, waarbij een gedeelte van een maand als volle maand geldt.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Vanaf het moment van verzuim komen alle gerechtelijke en buitengerechtelijke kosten en executiekosten die met de invordering samenhangen voor rekening van de Klant. De buitengerechtelijke kosten worden vastgesteld op 15% van de hoofdsom met een minimum van &euro; 40,00 exclusief btw, tenzij de wet anders bepaalt.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Betalingen worden eerst in mindering gebracht op de kosten, vervolgens op de verschenen rente en tenslotte op de hoofdsom en de lopende rente. DELPHI mag een aanbod tot betaling weigeren indien de Klant een andere toerekening aanwijst, en mag aflossing van de hoofdsom weigeren indien niet ook de rente en kosten worden voldaan.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bezwaren tegen de hoogte van een factuur moeten binnen 14 dagen na factuurdatum schriftelijk worden ingediend. Daarna vervalt het recht van bezwaar. De Klant is niet gerechtigd tot opschorting of verrekening van wat hij aan DELPHI verschuldigd is.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI mag te allen tijde zekerheid voor de betaling verlangen. Wordt die niet ten genoegen van DELPHI gegeven, dan mag zij de uitvoering van alle overeenkomsten met de Klant opschorten of weigeren, zonder tot schadevergoeding gehouden te zijn.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 18. Klachten en onderzoek</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant onderzoekt het geleverde onmiddellijk nadat het ter beschikking is gesteld. Zichtbare gebreken, beschadigingen en afwijkingen in aantallen meldt de Klant binnen acht dagen na levering schriftelijk aan DELPHI.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Niet-zichtbare gebreken meldt de Klant binnen acht dagen nadat hij deze heeft ontdekt of had behoren te ontdekken, en in ieder geval binnen de garantietermijn. Meldt de Klant niet tijdig, dan kan hij op het gebrek geen beroep meer doen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant stelt DELPHI in de gelegenheid een klacht te onderzoeken en verleent daartoe toegang tot de Zaken en het systeem. Zaken mogen niet worden geretourneerd zonder voorafgaande schriftelijke toestemming van DELPHI.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bij een gegronde en tijdige klacht herstelt DELPHI naar eigen keuze het gebrek, vervangt zij het geleverde tegen retournering daarvan, of crediteert zij een evenredig deel van de factuur.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Blijkt een klacht ongegrond, dan komen de kosten die DELPHI voor het onderzoek heeft gemaakt integraal voor rekening van de Klant.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Een klacht schort de betalingsverplichting van de Klant niet op.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 19. Overmacht</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Kan DELPHI haar verplichtingen niet, niet tijdig of niet behoorlijk nakomen door een oorzaak die haar niet is toe te rekenen, dan worden die verplichtingen opgeschort tot het moment waarop zij alsnog kan nakomen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Onder overmacht wordt in ieder geval verstaan: ziekte of uitval van bij de uitvoering betrokken personen; het niet, niet tijdig of niet volledig leveren door toeleveranciers; storingen en tekorten in de aanvoer van onderdelen, grondstoffen of energie; transportbelemmeringen; brand, waterschade en inbraak bij DELPHI of haar toeleveranciers; storingen in netwerken, telecommunicatie en internet; cyberaanvallen; overheidsmaatregelen; werkstakingen; en epidemie&euml;n.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Duurt de overmachtsituatie langer dan twee maanden, dan mogen beide partijen de Overeenkomst schriftelijk ontbinden, zonder recht op schadevergoeding. Wat op dat moment al is gepresteerd, wordt naar verhouding afgerekend.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 20. Aansprakelijkheid</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI is niet aansprakelijk voor schade, van welke aard dan ook, die is ontstaan doordat zij is uitgegaan van door of namens de Klant verstrekte onjuiste of onvolledige gegevens.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Is DELPHI aansprakelijk, dan is haar aansprakelijkheid beperkt tot het factuurbedrag van de betreffende Overeenkomst, althans tot dat deel van het bedrag waarop de aansprakelijkheid betrekking heeft. Bij doorlopende overeenkomsten is de aansprakelijkheid beperkt tot het bedrag dat in de twaalf maanden voorafgaand aan de schadeveroorzakende gebeurtenis in rekening is gebracht.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Voor zover een aansprakelijkheidsverzekering van DELPHI in het betreffende geval dekking biedt, is de aansprakelijkheid tevens beperkt tot het bedrag van die uitkering, vermeerderd met het eigen risico. Biedt geen verzekering dekking, dan is de aansprakelijkheid van DELPHI beperkt tot &euro; 25.000 per gebeurtenis en tot &euro; 50.000 per kalenderjaar, waarbij een reeks samenhangende gebeurtenissen als &eacute;&eacute;n gebeurtenis geldt.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI is uitsluitend aansprakelijk voor directe schade. Daaronder wordt verstaan: de redelijke kosten om de oorzaak en omvang van de schade vast te stellen, de redelijke kosten om de gebrekkige prestatie aan de Overeenkomst te laten beantwoorden voor zover deze aan DELPHI kan worden toegerekend, en de redelijke kosten ter voorkoming of beperking van schade, voor zover de Klant aantoont dat die kosten tot beperking van directe schade hebben geleid.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI is nooit aansprakelijk voor indirecte schade, waaronder gevolgschade, gederfde winst, gemiste besparingen, schade door bedrijfsstagnatie, reputatieschade, verlies of beschadiging van gegevens, en schade als gevolg van inbraak, diefstal, verlies of misbruik van sleutels, middelen of goederen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De in dit artikel opgenomen beperkingen gelden niet indien de schade te wijten is aan opzet of grove schuld van DELPHI of haar leidinggevenden.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 21. Opzegging</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Overeenkomsten voor de levering van Zaken kunnen niet worden opgezegd; daarop is artikel 15 van toepassing.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Doorlopende overeenkomsten voor onderhoud, service of softwaregebruik kunnen door beide partijen schriftelijk worden opgezegd tegen het einde van de looptijd, met inachtneming van de in artikel 5 lid 2 genoemde termijn.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Raakt een van beide partijen in staat van faillissement, vraagt zij surseance van betaling aan of staakt zij haar bedrijfsvoering, dan mag de andere partij de Overeenkomst zonder opzegtermijn beëindigen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bij beëindiging van een softwareovereenkomst eindigt het gebruiksrecht. DELPHI stelt de in het systeem vastgelegde gegevens van de Klant op diens verzoek en tegen de geldende tarieven in een gangbaar bestandsformaat beschikbaar, mits de Klant aan al zijn betalingsverplichtingen heeft voldaan.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 22. Opschorting en ontbinding</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI mag de nakoming van haar verplichtingen opschorten of de Overeenkomst ontbinden, indien:
+          <ol style="margin:12px 0 0;padding-left:24px;list-style:lower-alpha;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">de Klant zijn verplichtingen uit de Overeenkomst niet, niet volledig of niet tijdig nakomt, dan wel DELPHI goede grond heeft te vrezen dat hij daarin zal tekortschieten;</li>
+            <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">de Klant is verzocht zekerheid te stellen voor de nakoming en deze zekerheid uitblijft of onvoldoende is;</li>
+            <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">de Klant in staat van faillissement is verklaard, aan hem surseance van betaling is verleend, de Wet Schuldsanering Natuurlijke Personen op hem van toepassing is verklaard, hij onder curatele is gesteld, hij de vrije beschikking over zijn vermogen geheel of gedeeltelijk verliest, hij zijn bedrijf verkoopt, dan wel ten laste van hem beslag wordt gelegd dat niet binnen drie maanden is opgeheven.</li>
+          </ol>
+        </li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI mag de Overeenkomst voorts ontbinden indien zich omstandigheden voordoen die nakoming onmogelijk maken of die van zodanige aard zijn dat ongewijzigde instandhouding van de Overeenkomst redelijkerwijs niet van haar kan worden gevergd.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Gaat DELPHI over tot opschorting of ontbinding, dan is zij niet gehouden tot vergoeding van de daaruit voortvloeiende schade of kosten. Bij ontbinding zijn haar vorderingen op de Klant onmiddellijk opeisbaar.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Is de ontbinding aan de Klant toe te rekenen, of moet DELPHI de uitvoering opschorten op grond van dit artikel of artikel 8 lid 2, dan vergoedt de Klant de daardoor ontstane schade en kosten.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 23. Geheimhouding</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Partijen houden alle vertrouwelijke informatie die zij in het kader van de Overeenkomst van elkaar of uit andere bron verkrijgen geheim. Informatie geldt als vertrouwelijk als de andere partij dat heeft gemeld of als dat uit de aard van de informatie volgt. Gegevens over de beveiligingsinrichting, sleutelplannen en autorisaties van de Klant zijn in ieder geval vertrouwelijk.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Is DELPHI op grond van een wettelijke bepaling of rechterlijke uitspraak gehouden vertrouwelijke informatie aan een derde te verstrekken en kan zij zich niet beroepen op een verschoningsrecht, dan is zij niet gehouden tot schadevergoeding en is de Klant niet gerechtigd tot ontbinding.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Partijen leggen de verplichtingen uit dit artikel op aan de derden die zij inschakelen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI mag de naam en het logo van de Klant uitsluitend met voorafgaande schriftelijke toestemming als referentie gebruiken.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 24. Intellectueel eigendom</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Alle door DELPHI ontwikkelde of verstrekte modellen, ontwerpen, werken, uitvindingen en Software blijven eigendom van DELPHI of haar licentiegevers. Daaronder vallen alle rechten van intellectueel eigendom, waaronder auteursrechten, modelrechten en octrooirechten.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Door DELPHI verstrekte stukken, zoals rapporten, systeemontwerpen, sleutelplannen, werkwijzen, adviezen, handleidingen en instructiemateriaal, mag de Klant gebruiken en verveelvoudigen voor eigen gebruik binnen zijn eigen organisatie. Zonder voorafgaande schriftelijke toestemming van DELPHI mogen zij niet openbaar worden gemaakt, geëxploiteerd of ter kennis van derden worden gebracht, tenzij uit de aard van het stuk anders volgt.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant mag typeaanduidingen, serienummers en merk- of herkomstaanduidingen op de Zaken en in de Software niet verwijderen of wijzigen.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 25. Vrijwaring derden</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant vrijwaart DELPHI voor aanspraken van derden die schade lijden in verband met de uitvoering van de Overeenkomst, waarvan de oorzaak niet aan DELPHI is toe te rekenen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Wordt DELPHI door een derde aangesproken, dan staat de Klant haar zowel in als buiten rechte bij en doet hij onverwijld wat in dat geval van hem verwacht mag worden. Blijft hij in gebreke met het nemen van adequate maatregelen, dan mag DELPHI zonder ingebrekestelling zelf daartoe overgaan. Alle daaruit voortvloeiende kosten en schade komen voor rekening en risico van de Klant.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 26. Vervaltermijn en contractovername</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">In afwijking van de wettelijke verjaringstermijnen bedraagt de verjaringstermijn van alle vorderingen en verweren van de Klant jegens DELPHI één jaar.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De Klant mag verplichtingen uit de Overeenkomst niet zonder schriftelijke toestemming van DELPHI aan een derde overdragen. Geeft DELPHI die toestemming, dan blijft de Klant naast die derde aansprakelijk voor de verplichtingen uit de Overeenkomst.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bij een contractovername brengt de Klant DELPHI daarvan voorafgaand op de hoogte. DELPHI mag de Overeenkomst beëindigen tegen de datum waarop de overdracht plaatsvindt, zonder tot schadevergoeding gehouden te zijn.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">DELPHI mag haar rechten en verplichtingen uit de Overeenkomst overdragen in het kader van een overname of reorganisatie van haar onderneming.</li>
+      </ol>
+    </article>
+
+    <article>
+      <h2 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:600;letter-spacing:0.007em">Artikel 27. Toepasselijk recht en geschillen</h2>
+      <ol style="margin:16px 0 0;padding-left:24px;list-style:decimal;display:flex;flex-direction:column;gap:12px">
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Op alle overeenkomsten tussen DELPHI en de Klant is uitsluitend Nederlands recht van toepassing. De toepasselijkheid van het Weens Koopverdrag is uitgesloten.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Onverminderd het recht van DELPHI een geschil aan de volgens de wet bevoegde rechter voor te leggen, worden geschillen in eerste instantie voorgelegd aan de bevoegde rechter in de vestigingsplaats van DELPHI, tenzij de wet dwingend anders voorschrijft.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Partijen wenden zich pas tot de rechter nadat zij zich hebben ingespannen het geschil in onderling overleg op te lossen.</li>
+        <li style="font-size:17px;line-height:1.6;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Deze voorwaarden zijn opgesteld in het Nederlands. Bij een vertaling in een andere taal prevaleert de Nederlandse tekst.</li>
+      </ol>
+    </article>
+
+    <p style="padding-top:24px;border-top:1px solid #d6d6d6;font-size:15px;line-height:1.55;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Bij een ondertekende opdrachtbevestiging verklaart de Klant deze algemene voorwaarden gelezen te hebben en daarmee akkoord te gaan. Deze versie vervangt de <a href="../voorwaarden-2016/" style="color:#0066cc">algemene voorwaarden van juli 2016</a>; die blijven van toepassing op overeenkomsten die daarv&oacute;&oacute;r zijn gesloten.</p>
+
+  </div>
+</section>
+
+<section style="background:#ffffff;padding:clamp(56px,7vw,88px) 24px">
+  <div style="max-width:820px;margin:0 auto;text-align:center">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em">Vraag over deze voorwaarden?</h2>
+    <p style="margin:16px auto 0;max-width:520px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Staat er iets onduidelijk, of wijkt uw inkoopsituatie af? Bel of mail; wij leggen afwijkende afspraken vast in de opdrachtbevestiging.</p>
+    <div data-card-cta="1" style="display:flex;justify-content:center;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap">
+      <a href="../contact/" style="display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Contact opnemen</a>
+      <a href="tel:+31183648851" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">+31 (0)183 648851</a>
+    </div>
+  </div>
+</section>
+
+<footer style="margin-top:12px;background:#f5f5f7;padding:80px 24px 40px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:48px">
+      <img width="250" height="92" src="../logos/delphi-wordmark.png" alt="DELPHI" style="height:38px;width:103px;align-self:flex-start;display:block">
+      <span style="font-size:12px;font-weight:600;letter-spacing:2px;color:#707070;text-transform:uppercase">Sleutelbeheersystemen</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px">
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Sleutelbeheer</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../sam/" style="font-size:14px;color:#707070">Security Asset Manager</a></li>
+          <li><a href="../keybox/" style="font-size:14px;color:#707070">Keybox</a></li>
+          <li><a href="../keytracker/" style="font-size:14px;color:#707070">KeyTracker</a></li>
+          <li><a href="../keycontroller/" style="font-size:14px;color:#707070">Keycontroller</a></li>
+          <li><a href="../swat-box/" style="font-size:14px;color:#707070">SWAT-box</a></li>
+          <li><a href="../surface-vault/" style="font-size:14px;color:#707070">Surface Vault</a></li>
+          <li><a href="../safebox/" style="font-size:14px;color:#707070">Safebox</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Opbergsystemen</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../sam-lockers/" style="font-size:14px;color:#707070">SAM lockers</a></li>
+          <li><a href="../oc-spray-station/" style="font-size:14px;color:#707070">OC Spray Station</a></li>
+          <li><a href="../keytracker-opbergkasten/" style="font-size:14px;color:#707070">KeyTracker opbergkasten</a></li>
+          <li><a href="../vel-key/" style="font-size:14px;color:#707070">Vel-Key</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Sleutelringen</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../sleutelringen/" style="font-size:14px;color:#707070">RVS keyrings</a></li>
+          <li><a href="../sleutelringen/#flex" style="font-size:14px;color:#707070">Flex keyrings</a></li>
+          <li><a href="../sleutelringen/#morse" style="font-size:14px;color:#707070">Morse keyrings</a></li>
+          <li><a href="../sleutelringen/#rivet" style="font-size:14px;color:#707070">Rivet keyrings</a></li>
+          <li><a href="../sleutelringen/#coating" style="font-size:14px;color:#707070">Flexibel met coating</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Contact</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../contact/#contactgegevens" style="font-size:14px;color:#707070">Contactgegevens</a></li>
+          <li><a href="../over/" style="font-size:14px;color:#707070">Over DELPHI</a></li>
+          <li><a href="../over/#fabrikanten" style="font-size:14px;color:#707070">Fabrikanten en partners</a></li>
+          <li><a href="../contact/#faq" style="font-size:14px;color:#707070">Veelgestelde vragen</a></li>
+          <li><a href="../documentatie/" style="font-size:14px;color:#707070">Documentatie</a></li>
+          <li><a href="../contact/#dealership" style="font-size:14px;color:#707070">Dealer worden</a></li>
+          <li><a href="../contact/" style="font-size:14px;color:#707070">Offerte aanvragen</a></li>
+          <li><a href="mailto:info@sleutelbeheersystemen.nl" style="font-size:14px;color:#707070">info@sleutelbeheersystemen.nl</a></li>
+        </ul>
+      </div>
+    </div>
+    <p data-legal="1" style="margin-top:64px;padding-top:20px;border-top:1px solid #d6d6d6;font-size:12px;line-height:1.33;color:#707070">© 2026 DELPHI Sleutelbeheersystemen · Einsteinstraat 3e, 4207 HW Gorinchem · KvK 51691671 · BTW NL073453614B01<br><a href="../privacy/" style="color:#707070">Privacy en disclaimer</a> &middot; <a href="../voorwaarden/" style="color:#707070">Algemene voorwaarden</a></p>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { navSub: null, menu: null, showBar: false, mobile: false, navOpen: false, sent: false, faq: [false, false, false, false], subject: '' , searchOpen: false, q: '' };
+
+  sRef = React.createRef();
+
+  componentDidUpdate() {
+    if (this.state.searchOpen && !this._so && this.sRef.current) this.sRef.current.focus();
+    this._so = this.state.searchOpen;
+  }
+
+  static SOURCES = {
+    sam: ['Security Asset Manager', '../sam/'],
+    keybox: ['Keybox', '../keybox/'],
+    safebox: ['Safebox', '../safebox/'],
+    swatbox: ['SWAT-box', '../swat-box/'],
+    keycontroller: ['Keycontroller', '../keycontroller/'],
+    lockers: ['SAM lockers', '../sam-lockers/'],
+    velkey: ['Vel-Key', '../vel-key/'],
+    ringen: ['Sleutelringen', '../sleutelringen/']
+  };
+
+  toggleFaq(i) { return () => this.setState(s => { const f = s.faq.slice(); f[i] = !f[i]; return { faq: f }; }); }
+
+  componentDidMount() {
+
+    if (location.hash && location.hash.length > 1) {
+      let pogingen = 0;
+      const spring = () => {
+        let el = null;
+        try { el = document.querySelector(location.hash); } catch (err) { return; }
+        if (el) {
+          const marge = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+          const y = el.getBoundingClientRect().top + window.scrollY - marge;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
+          if (++pogingen > 3) return;
+        }
+        if (++pogingen < 24) setTimeout(spring, 120);
+      };
+      setTimeout(spring, 60);
+    }
+    const p = new URLSearchParams(location.search).get('p');
+    const src = p && Component.SOURCES[p];
+    if (src) this.setState({ subject: 'Aanvraag ' + src[0] });
+    this._src = src || null;
+    this._mq = window.matchMedia('(max-width: 1000px)');
+    const syncMq = () => this.setState({ mobile: this._mq.matches, navOpen: false });
+    this._mq.addEventListener('change', syncMq);
+    this.setState({ mobile: this._mq.matches });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.style.animation = 'floatIn 0.7s cubic-bezier(0.28,0.11,0.32,1) both';
+        e.target.addEventListener('animationend', () => {
+          e.target.style.animation = '';
+          e.target.style.opacity = '';
+          e.target.style.transform = '';
+        }, { once: true });
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach((n) => {
+      if (n.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+      n.style.opacity = '0';
+      io.observe(n);
+    });
+    this._io = io;
+
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const y = window.scrollY || 0;
+        const show = y > 600;
+        if (show !== this.state.showBar) this.setState({ showBar: show });
+      });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+
+    let spyCache = null;
+    const spyPaint = () => {
+      if (!spyCache) {
+        const sub = document.querySelector('[data-subnav]');
+        if (!sub) return;
+        const links = [...sub.querySelectorAll('a[href^="#"]')];
+        const targets = links.map(a => ({ a, el: document.querySelector(a.getAttribute('href')) })).filter(t => t.el);
+        if (!targets.length) return;
+        spyCache = { sub, links, targets, rail: sub.querySelector('[data-subnav-rail]'), current: null };
+      }
+      const { sub, links, targets, rail } = spyCache;
+      const line = sub.getBoundingClientRect().bottom + 24;
+      let pick = null;
+      for (const t of targets) if (t.el.getBoundingClientRect().top <= line) pick = t;
+      if (!pick || pick.a === spyCache.current) return;
+      links.forEach(a => { a.style.color = '#1d1d1f'; a.style.fontWeight = '400'; });
+      pick.a.style.color = '#0071e3';
+      pick.a.style.fontWeight = '600';
+      spyCache.current = pick.a;
+      if (rail && rail.scrollWidth > rail.clientWidth + 4) {
+        const r = pick.a.getBoundingClientRect(), rr = rail.getBoundingClientRect();
+        if (r.left < rr.left + 16 || r.right > rr.right - 16) rail.scrollTo({ left: rail.scrollLeft + (r.left - rr.left) - 24, behavior: 'smooth' });
+      }
+    };
+    this._spy = () => { if (this._spyRaf) return; this._spyRaf = requestAnimationFrame(() => { this._spyRaf = null; spyPaint(); }); };
+    window.addEventListener('scroll', this._spy, { passive: true });
+    this._spyTries = 0;
+    this._spyTimer = setInterval(() => { spyPaint(); if (spyCache || ++this._spyTries > 40) clearInterval(this._spyTimer); }, 150);
+  }
+
+  componentWillUnmount() {
+    if (this._spy) window.removeEventListener('scroll', this._spy);
+    if (this._spyTimer) clearInterval(this._spyTimer);
+    if (this._io) this._io.disconnect();
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+
+  hover(k) { return () => this.setState({ menu: k }); }
+  toggleNav = () => this.setState(s => ({ navOpen: !s.navOpen }));
+  closeNav = () => this.setState({ navOpen: false, navSub: null });
+  navBack = () => this.setState({ navSub: null });
+  navTo = (k) => () => this.setState({ navSub: k });
+
+
+  searchRef = React.createRef();
+  toggleSearch = () => this.setState(s => ({ searchOpen: !s.searchOpen, navOpen: false, q: '' }));
+  closeSearch = () => this.setState({ searchOpen: false, q: '' });
+  onSearch = (e) => this.setState({ q: e.target.value });
+
+  searchIndex() {
+    return (window.DELPHI_ZOEK && window.DELPHI_ZOEK.nl) || [];
+  }
+
+  renderVals() {
+    const m = this.state.menu;
+    return {
+      searchOpen: this.state.searchOpen,
+      searchRows: this.state.searchOpen ? '1fr' : '0fr',
+      barTop: this.state.navOpen ? 'translateY(0) rotate(45deg)' : 'translateY(-3.5px)',
+      barBottom: this.state.navOpen ? 'translateY(0) rotate(-45deg)' : 'translateY(3.5px)',
+      searchVis: this.state.searchOpen ? 'visible' : 'hidden',
+      searchRef: this.sRef,
+      searchEvents: this.state.searchOpen ? 'auto' : 'none',
+      toggleSearch: this.toggleSearch,
+      closeSearch: this.closeSearch,
+      onSearch: this.onSearch,
+      searchRef: this.searchRef,
+      searchResults: (() => { const q = (this.state.q || '').trim(); const idx = this.searchIndex(); if (!q) return idx.slice(0, 6); return (window.DELPHI_ZOEK && window.DELPHI_ZOEK.zoek) ? window.DELPHI_ZOEK.zoek('nl', q, 8) : idx.filter(i => (i.t + ' ' + i.s).toLowerCase().includes(q.toLowerCase())).slice(0, 8); })(),
+      hasSource: !!this._src,
+      sourceLabel: this._src ? this._src[0] : '',
+      sourceHref: this._src ? this._src[1] : '#',
+      subject: this.state.subject,
+      onSubject: (e) => this.setState({ subject: e.target.value }),
+      showForm: !this.state.sent,
+      sent: this.state.sent,
+      submitForm: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      faq0: this.state.faq[0], faq1: this.state.faq[1], faq2: this.state.faq[2], faq3: this.state.faq[3],
+      faqIcon0: this.state.faq[0] ? '–' : '+', faqIcon1: this.state.faq[1] ? '–' : '+', faqIcon2: this.state.faq[2] ? '–' : '+', faqIcon3: this.state.faq[3] ? '–' : '+',
+      toggleFaq0: this.toggleFaq(0), toggleFaq1: this.toggleFaq(1), toggleFaq2: this.toggleFaq(2), toggleFaq3: this.toggleFaq(3),
+      openSystemen: m === 'systemen',
+      openOpberg: m === 'opberg',
+      openRingen: m === 'ringen',
+      openContact: m === 'contact',
+      navRoot: !this.state.navSub,
+      navSystemen: this.state.navSub === 'systemen',
+      navOpberg: this.state.navSub === 'opberg',
+      navRingen: this.state.navSub === 'ringen',
+      navContact: this.state.navSub === 'contact',
+      navClosed: !this.state.navOpen,
+      navLabel: this.state.navOpen ? 'Menu sluiten' : 'Menu',
+      navBack: this.navBack,
+      navToSystemen: this.navTo('systemen'),
+      navToOpberg: this.navTo('opberg'),
+      navToRingen: this.navTo('ringen'),
+      navToContact: this.navTo('contact'),
+      flyRows: m ? '1fr' : '0fr',
+      flyEvents: m ? 'auto' : 'none',
+      hoverSystemen: this.hover('systemen'),
+      hoverOpberg: this.hover('opberg'),
+      hoverRingen: this.hover('ringen'),
+      hoverContact: this.hover('contact'),
+      closeMenu: () => this.setState({ menu: null }),
+      showBar: this.state.showBar,
+      isDesktop: !this.state.mobile,
+      isMobile: this.state.mobile,
+      navOpen: this.state.navOpen,
+      toggleNav: this.toggleNav,
+      closeNav: this.closeNav
+    };
+  }
+}
+</script>
+</body>
+</html>
