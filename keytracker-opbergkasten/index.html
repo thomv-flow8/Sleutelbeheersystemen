@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"../vendor/react/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"../vendor/react-dom/react-dom.production.min.js"};</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+<!-- Cookie-consent + GA4 (laadt GA4 alleen na toestemming) -->
+<script>
+(function () {
+  var GA_ID = 'G-XXXXXXXXXX'; // <-- VERVANG door jullie GA4 meet-ID
+  var KEY = 'delphi-consent';
+
+  function loadGA() {
+    if (!GA_ID || GA_ID.indexOf('XXXX') !== -1) return; // niet laden zonder echt ID
+    if (window.__gaLoaded) return; window.__gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  window.__delphiConsent = { granted: false };
+  try {
+    var saved = localStorage.getItem(KEY);
+    if (saved === 'accepted') { window.__delphiConsent.granted = true; loadGA(); return; }
+    if (saved === 'declined') { return; }
+  } catch (e) {}
+
+  function showBanner() {
+    var bar = document.createElement('div');
+    bar.setAttribute('role', 'dialog');
+    bar.setAttribute('aria-label', 'Cookievoorkeuren');
+    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;background:rgba(250,250,252,0.96);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #d6d6d6;padding:18px 24px;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:center;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif';
+    var txt = document.createElement('p');
+    txt.style.cssText = 'margin:0;font-size:14px;line-height:1.4;color:#1d1d1f;max-width:640px';
+    txt.innerHTML = 'Wij gebruiken analytische cookies om onze website te verbeteren. U kunt dit accepteren of weigeren. Meer leest u in onze <a href="../privacy/" style="color:#0066cc">privacyverklaring</a>.';
+    var btns = document.createElement('div');
+    btns.style.cssText = 'display:flex;gap:10px;flex-wrap:wrap';
+    function mkBtn(label, primary) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = label;
+      b.style.cssText = 'font-family:inherit;font-size:15px;padding:9px 20px;border-radius:980px;cursor:pointer;border:0;' +
+        (primary ? 'background:#0071e3;color:#fff' : 'background:#e8e8ed;color:#1d1d1f');
+      return b;
+    }
+    var accept = mkBtn('Accepteren', true);
+    var decline = mkBtn('Weigeren', false);
+    function close() { if (bar.parentNode) bar.parentNode.removeChild(bar); }
+    accept.onclick = function () { try { localStorage.setItem(KEY, 'accepted'); } catch (e) {} window.__delphiConsent.granted = true; loadGA(); close(); };
+    decline.onclick = function () { try { localStorage.setItem(KEY, 'declined'); } catch (e) {} close(); };
+    btns.appendChild(accept); btns.appendChild(decline);
+    bar.appendChild(txt); bar.appendChild(btns);
+    document.body.appendChild(bar);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showBanner);
+  else showBanner();
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script>window.DELPHI_BASIS = "../";</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KeyTracker opbergkasten — stalen kast met codeslot | DELPHI</title>
+<meta name="description" content="Stalen opbergkasten voor het KeyTracker-bord: zelfsluitende deur, mechanisch codeslot of elektrisch slot op uw kaartlezer, noodcilinder en vierpuntssluiting. Vanaf 25 posities.">
+<link rel="canonical" href="https://www.sleutelbeheersystemen.nl/keytracker-opbergkasten/">
+<link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/keytracker-opbergkasten/">
+<link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/keytracker-opbergkasten/">
+<link rel="alternate" hreflang="x-default" href="https://www.sleutelbeheersystemen.nl/keytracker-opbergkasten/">
+<meta property="og:url" content="https://www.sleutelbeheersystemen.nl/keytracker-opbergkasten/">
+<meta property="og:site_name" content="DELPHI Sleutelbeheersystemen">
+<meta property="og:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KeyTracker opbergkasten — stalen kast met codeslot | DELPHI">
+<meta name="twitter:description" content="Stalen opbergkasten voor het KeyTracker-bord, met zelfsluitende deur, codeslot en vierpuntssluiting.">
+<meta name="twitter:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
+<link rel="preload" href="../fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face { font-family: Inter; font-style: normal; font-weight: 100 900; font-display: swap;
+    src: url("../fonts/InterVariable.woff2") format("woff2"); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: #1d1d1f;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { color: #0071e3; text-decoration: underline; }
+  h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  ::selection { background: #d6e4f7; }
+  html { scroll-behavior: smooth; }
+  a, button, li { transition: color .22s ease, background-color .22s ease, opacity .35s ease; }
+  [data-hide-scrollbar] { scrollbar-width: none; -ms-overflow-style: none; }
+  [data-hide-scrollbar]::-webkit-scrollbar { display: none; }
+  @media (max-width: 900px) { [data-2col] { grid-template-columns: minmax(0,1fr) !important; } }
+  @media (max-width: 820px) { [data-3col] { grid-template-columns: minmax(0,1fr) !important; } }
+  @media (max-width: 820px) {
+    [data-kaartraster] { grid-template-rows: none !important; row-gap: clamp(20px,2.5vw,32px) !important; }
+    [data-kaart] { grid-row: auto !important; grid-template-rows: none !important; }
+  }
+  @keyframes flyIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+  @keyframes flyOpen { from { grid-template-rows: 0fr; opacity: .4; } to { grid-template-rows: 1fr; opacity: 1; } }
+  [data-nav-row] svg { opacity: 0; transition: opacity .2s ease; }
+  [data-nav-row]:hover svg, [data-nav-row]:focus svg, [data-nav-row]:active svg { opacity: 1; }
+  @media (max-width: 900px) { [data-crosssell-grid] { grid-template-columns: repeat(2, minmax(0,1fr)) !important; } }
+  @media (max-width: 600px) { [data-crosssell-grid] { grid-template-columns: minmax(0,1fr) !important; } }
+  @media (max-width: 900px) {
+    [data-subnav] a, [data-breadcrumb] a, [data-card-cta] a {
+      display: inline-flex; align-items: center; min-height: 44px;
+    }
+  }
+  /* Voettekstregel met privacy- en voorwaardenlink: op aanraakschermen minimaal 44px hoog. */
+  @media (max-width: 900px) {
+    [data-legal] a { display: inline-flex; align-items: center; min-height: 44px; }
+  }
+  @keyframes floatIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 680px) {
+    [data-card-cta] { gap: 12px !important; flex-wrap: wrap !important; justify-content: center !important; margin-top: 18px !important; }
+    [data-card-cta] a { font-size: 15px !important; padding: 8px 18px !important; white-space: nowrap; text-align: center; }
+  }
+  @media (max-width: 1000px) { [data-subnav] { top: 75px !important; } }
+  @media (max-width: 700px) {
+    [data-subnav] > div { height: 44px !important; }
+    [data-subnav] a { font-size: 14px !important; }
+    [data-subnav] > div > span, [data-subnav] span { font-size: 14px !important; }
+    [data-subnav-rail] { -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%); mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%); }
+  }
+  @media (max-width: 760px) {
+    [data-table-scroll] { -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 32px), transparent 100%); mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 32px), transparent 100%); }
+  }
+  @keyframes barIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 700px) { [data-bc-home] { display: none !important; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DELPHI Sleutelbeheersystemen",
+  "url": "https://www.sleutelbeheersystemen.nl",
+  "logo": "https://www.sleutelbeheersystemen.nl/logos/delphi-wordmark.png",
+  "telephone": "+31183648851",
+  "email": "info@sleutelbeheersystemen.nl",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Einsteinstraat 3e",
+    "postalCode": "4207 HW",
+    "addressLocality": "Gorinchem",
+    "addressCountry": "NL"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "KeyTracker opbergkasten",
+  "description": "Stalen opbergkasten voor het KeyTracker-bord: zelfsluitende deur, mechanisch codeslot of elektrisch slot op uw eigen kaartlezer, noodcilinder en vierpuntssluiting. Vanaf 25 posities, in vier maten.",
+  "image": "https://www.sleutelbeheersystemen.nl/photos/keytracker-kasten-cut2.webp",
+  "category": "Opbergsystemen",
+  "brand": { "@type": "Brand", "name": "KeyTracker" },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.sleutelbeheersystemen.nl/keytracker-opbergkasten/",
+    "seller": { "@type": "Organization", "name": "DELPHI Sleutelbeheersystemen" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Vanaf welk formaat is er een kast?", "acceptedAnswer": { "@type": "Answer", "text": "Vanaf 25 posities. Voor de KeyTracker 25, 50, 100 en 150 is er een passende stalen kast; de kast neemt een of twee KeyTracker-borden of haakpanelen op." } },
+    { "@type": "Question", "name": "Welk slot zit erin?", "acceptedAnswer": { "@type": "Answer", "text": "Standaard een mechanisch codeslot met drukknoppen, met noodcilinder. In plaats daarvan kan er een elektrisch slot in, bediend door uw eigen kaartlezer of toegangscontrole." } },
+    { "@type": "Question", "name": "Wat als de kast niet aan de wand kan?", "acceptedAnswer": { "@type": "Answer", "text": "Dan staat hij op een los metalen frame of een plint, midden in de ruimte. Dat is een voordelige manier om de kast vrij te plaatsen." } },
+    { "@type": "Question", "name": "Kan de kast in onze eigen kleur?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. De kast is standaard neutraal gepoedercoat en kan in elke kleur worden geleverd. Ook de draairichting van de deur kiest u: links- of rechtsdraaiend." } },
+    { "@type": "Question", "name": "Is er ook een politiegoedgekeurde kast?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. De high-security kast is de enige politiegoedgekeurde sleutelkast van KeyTracker: gehard verstevigd staal bij alle toegangspunten en boven- en onderin een gepantserd slot met verstevigde kast." } },
+    { "@type": "Question", "name": "Kan de deur een spiegelfront krijgen?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Met een spiegelfront ziet de gebruiker of iemand achter hem meekijkt tijdens het intoetsen van de code." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sleutelbeheersystemen.nl/" },
+    { "@type": "ListItem", "position": 2, "name": "Opbergsystemen", "item": "https://www.sleutelbeheersystemen.nl/#opberg" },
+    { "@type": "ListItem", "position": 3, "name": "KeyTracker opbergkasten", "item": "https://www.sleutelbeheersystemen.nl/keytracker-opbergkasten/" }
+  ]
+}
+</script>
+<script src="../zoekindex.js"></script>
+</helmet>
+
+<div style="min-height:100vh">
+
+<nav onMouseLeave="{{ closeMenu }}" style="position:sticky;top:0;z-index:200;background:rgba(250,250,252,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid #d6d6d6">
+  <div style="max-width:1200px;margin:0 auto;padding:18px 24px;min-height:72px;display:flex;flex-wrap:nowrap;align-items:center;gap:24px">
+    <a href="../" style="display:flex;align-items:center;min-height:44px;text-decoration:none;flex:0 0 auto">
+      <img width="250" height="92" src="../logos/delphi-wordmark.png" alt="DELPHI" style="height:38px;width:104px;display:block;margin-top:-14px">
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <ul data-hide-scrollbar="1" style="display:flex;flex-wrap:nowrap;align-items:center;gap:20px;flex:1 1 auto;min-width:0;overflow-x:auto">
+        <li onMouseEnter="{{ hoverSystemen }}" style="flex:0 0 auto"><a href="../#sam" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Sleutelbeheer</a></li>
+        <li onMouseEnter="{{ hoverOpberg }}" style="flex:0 0 auto"><a href="../#opberg" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Opbergsystemen</a></li>
+        <li onMouseEnter="{{ hoverRingen }}" style="flex:0 0 auto"><a href="../#ringen" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Sleutelringen</a></li>
+        <li onMouseEnter="{{ closeMenu }}" style="flex:0 0 auto"><a href="../documentatie/" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Documentatie</a></li>
+        <li onMouseEnter="{{ hoverContact }}" style="flex:0 0 auto"><a href="../contact/?p=keytrackerkasten" style="font-size:16px;font-weight:400;color:#1d1d1f;white-space:nowrap">Contact</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:16px;flex:0 0 auto">
+        <button type="button" aria-label="Zoeken" onClick="{{ toggleSearch }}" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:none;border:0;padding:0;cursor:pointer;color:#1d1d1f" style-hover="color:#0071e3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:18px;height:18px;display:block"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+        </button>
+        <a href="../contact/?p=keytrackerkasten" style="display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-size:16px;font-weight:400;padding:9px 18px;border-radius:980px;text-decoration:none" style-hover="text-decoration:none">Offerte aanvragen</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:0 0 auto;display:flex;align-items:center;gap:7px;font-size:14px;letter-spacing:0.3px">
+        <span style="color:#1d1d1f;font-weight:600">NL</span>
+        <span aria-hidden="true" style="color:#c7c7cc">/</span>
+        <a href="../en/keytracker-opbergkasten/" hreflang="en" style="color:#707070;text-decoration:none" style-hover="color:#0066cc">EN</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-left:auto;display:flex;align-items:center;gap:2px">
+        <div style="display:flex;align-items:center;gap:6px;font-size:14px;letter-spacing:0.3px;padding:0 6px 0 2px">
+          <span style="color:#1d1d1f;font-weight:600">NL</span>
+          <span aria-hidden="true" style="color:#c7c7cc">/</span>
+          <a href="../en/keytracker-opbergkasten/" hreflang="en" style="display:inline-flex;align-items:center;min-height:44px;padding:0 12px;margin:0 -12px;color:#707070;text-decoration:none">EN</a>
+        </div>
+        <button type="button" aria-label="Zoeken" onClick="{{ toggleSearch }}" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:20px;height:20px;display:block"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+        </button>
+        <button type="button" aria-label="{{ navLabel }}" aria-expanded="{{ navOpen }}" onClick="{{ toggleNav }}" style="width:44px;height:44px;position:relative;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer">
+          <span style="position:absolute;width:18px;height:1.2px;border-radius:1px;background:#1d1d1f;transform:{{ barTop }};transition:transform .4s cubic-bezier(0.4,0.01,0.2,1)"></span>
+          <span style="position:absolute;width:18px;height:1.2px;border-radius:1px;background:#1d1d1f;transform:{{ barBottom }};transition:transform .4s cubic-bezier(0.4,0.01,0.2,1)"></span>
+        </button>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:100%;left:0;right:0;z-index:300;display:grid;grid-template-rows:1fr;animation:flyOpen .4s cubic-bezier(0.25,0.1,0.25,1) both"><div style="min-height:0;overflow:hidden"><div style="background:#fafafc;border-top:1px solid #d6d6d6;box-shadow:0 18px 34px rgba(0,0,0,0.07);max-height:calc(100dvh - 81px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain">
+      <sc-if value="{{ navRoot }}" hint-placeholder-val="{{ true }}">
+      <ul style="max-width:1200px;margin:0 auto;padding:12px 24px 8px;display:flex;flex-direction:column">
+        <li><a href="../" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Home<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToSystemen }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Sleutelbeheer<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToOpberg }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Opbergsystemen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToRingen }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Sleutelringen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><a href="../documentatie/" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Documentatie<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToContact }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Contact<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><a href="../contact/#faq" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Veelgestelde vragen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+      </ul>
+      <div style="max-width:1200px;margin:0 auto;padding:12px 24px 28px;display:flex;flex-direction:column;gap:14px">
+        <a href="../contact/" onClick="{{ closeNav }}" style="align-self:flex-start;background:#0071e3;color:#ffffff;font-size:17px;padding:12px 22px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Offerte aanvragen</a>
+        <a href="tel:+31183648851" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">+31 (0)183 648851</a>
+      </div>
+      </sc-if>
+      <sc-if value="{{ navSystemen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../sam/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Security Asset Manager (SAM)</a>
+        <a href="../keybox/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Keybox</a>
+        <a href="../keytracker/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">KeyTracker</a>
+        <a href="../keycontroller/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Keycontroller</a>
+        <a href="../swat-box/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">SWAT-box</a>
+        <a href="../surface-vault/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Surface Vault</a>
+        <a href="../safebox/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Safebox</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navOpberg }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../sam-lockers/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">SAM lockers</a>
+        <a href="../oc-spray-station/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">OC Spray Station</a>
+        <a href="../keytracker-opbergkasten/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">KeyTracker opbergkasten</a>
+        <a href="../vel-key/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Vel-Key</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navRingen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../sleutelringen/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">RVS keyrings</a>
+        <a href="../sleutelringen/#flex" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Flex keyrings</a>
+        <a href="../sleutelringen/#morse" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Morse keyrings</a>
+        <a href="../sleutelringen/#rivet" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Rivet keyrings</a>
+        <a href="../sleutelringen/#coating" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Flexibel met coating</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navContact }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="../contact/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Offerte aanvragen</a>
+        <a href="../contact/#faq" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Veelgestelde vragen</a>
+        <a href="../contact/#contactgegevens" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Contactgegevens</a>
+        <a href="../over/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Over DELPHI</a>
+        <a href="../contact/#dealership" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Dealership</a>
+        </div>
+      </sc-if>
+    </div></div></div>
+  </sc-if>
+
+  <div style="position:absolute;top:100%;left:0;right:0;z-index:310;display:grid;grid-template-rows:{{ searchRows }};transition:grid-template-rows .4s cubic-bezier(0.25,0.1,0.25,1);pointer-events:{{ searchEvents }};visibility:{{ searchVis }}">
+    <div style="min-height:0;overflow:hidden">
+      <div style="background:#fafafc;border-top:1px solid #d6d6d6;max-height:calc(100vh - 74px);overflow-y:auto">
+      <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:flex;flex-direction:column;gap:clamp(20px,2.2vw,28px)">
+        <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px">Zoeken</span>
+        <div style="display:flex;align-items:center;gap:10px;max-width:560px;background:#ffffff;border:1px solid #d2d2d7;border-radius:12px;padding:10px 14px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:18px;height:18px;flex:0 0 auto"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+          <input type="search" placeholder="Zoek een product of onderwerp" ref="{{ searchRef }}" onInput="{{ onSearch }}" style="flex:1;min-width:0;border:0;outline:none;background:none;font-size:17px;color:#1d1d1f">
+        </div>
+        <ul style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="4">
+            <li>
+              <a href="{{ r.u }}" onClick="{{ closeSearch }}" style="display:flex;flex-direction:column;gap:2px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#86868b">{{ r.g }}</span>
+                <span style="font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">{{ r.t }}</span>
+                <span style="font-size:14px;color:#707070">{{ r.s }}</span>
+              </a>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;top:100%;left:0;right:0;z-index:300;display:grid;grid-template-rows:{{ flyRows }};transition:grid-template-rows .4s cubic-bezier(0.25,0.1,0.25,1);pointer-events:{{ flyEvents }}">
+    <div style="min-height:0;overflow:hidden">
+      <div style="border-top:1px solid #d6d6d6;background:#fafafc;border-bottom:1px solid #d6d6d6">
+      <sc-if value="{{ openSystemen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Sleutelbeheer</span>
+          <a href="../sam/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Security Asset Manager</a>
+          <a href="../keybox/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Keybox</a>
+          <a href="../keytracker/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">KeyTracker</a>
+          <a href="../keycontroller/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Keycontroller</a>
+          <a href="../swat-box/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">SWAT-box</a>
+          <a href="../surface-vault/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Surface Vault</a>
+          <a href="../safebox/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Safebox</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openOpberg }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Opbergsystemen</span>
+          <a href="../sam-lockers/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">SAM lockers</a>
+          <a href="../oc-spray-station/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">OC Spray Station</a>
+          <a href="../keytracker-opbergkasten/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">KeyTracker opbergkasten</a>
+          <a href="../vel-key/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Vel-Key</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openRingen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Sleutelringen</span>
+          <a href="../sleutelringen/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">RVS keyrings</a>
+          <a href="../sleutelringen/#flex" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Flex keyrings</a>
+          <a href="../sleutelringen/#morse" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Morse keyrings</a>
+          <a href="../sleutelringen/#rivet" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Rivet keyrings</a>
+          <a href="../sleutelringen/#coating" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Flexibel met coating</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openContact }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Contact</span>
+          <a href="../contact/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Offerte aanvragen</a>
+          <a href="../contact/#faq" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Veelgestelde vragen</a>
+          <a href="../contact/#contactgegevens" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Contactgegevens</a>
+          <a href="../over/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Over DELPHI</a>
+          <a href="../contact/#dealership" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Dealership</a>
+          </div>
+        </div>
+      </sc-if>
+      </div>
+    </div>
+  </div>
+</nav>
+<section style="background:#ffffff;padding:clamp(48px,6vw,80px) 24px 0">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <p style="font-size:17px;color:#707070;letter-spacing:-0.374px">Opbergsystemen</p>
+    <h1 style="margin-top:8px;font-size:clamp(40px,6.6vw,88px);line-height:1.04;font-weight:700;letter-spacing:-1.44px;max-width:900px;margin-left:auto;margin-right:auto;text-wrap:balance">KeyTracker opbergkasten</h1>
+    <p style="margin:28px auto 0;max-width:600px;font-size:21px;line-height:1.38;color:#707070;letter-spacing:0.231px;text-wrap:pretty">Achter een deur die zichzelf sluit. Vanaf 25 posities is er een passende metalen kast met zelfsluitende deur, mechanisch codeslot, noodcilinder en vierpuntssluiting.</p>
+    <div data-card-cta="1" style="display:flex;justify-content:center;align-items:center;gap:28px;margin-top:36px;flex-wrap:wrap">
+      <a href="../contact/?p=keytrackerkasten" style="background:#0071e3;color:#ffffff;font-size:17px;padding:12px 22px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Prijs opvragen</a>
+      <a href="#uitvoeringen" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">Bekijk de uitvoeringen&nbsp;&rsaquo;</a>
+    </div>
+  </div>
+  <div data-reveal style="max-width:900px;margin:clamp(36px,5vw,64px) auto 0;display:flex;justify-content:center">
+    <img width="1024" height="1024" src="../photos/keytracker-kasten-cut2.webp" alt="De vier maten KeyTracker-kasten naast elkaar, met mechanisch codeslot en noodcilinder" style="width:100%;max-width:820px;height:auto;display:block" loading="eager">
+  </div>
+</section>
+
+<div id="keytrackerkasten-subnav" style="position:sticky;top:75px;z-index:60;background:#fafafc;border-bottom:1px solid #d6d6d6" data-subnav="1">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;gap:24px">
+    <div data-hide-scrollbar="1" data-subnav-rail="1" style="display:flex;align-items:center;gap:24px;overflow-x:auto;width:100%">
+      <nav data-breadcrumb="1" aria-label="Kruimelpad" style="display:flex;align-items:center;gap:8px;white-space:nowrap;flex:0 0 auto;margin-right:auto">
+        <a href="../" data-bc-home="1" style="font-size:15px;color:#707070;text-decoration:none" style-hover="color:#0066cc;text-decoration:none">Home</a>
+        <span aria-hidden="true" data-bc-home="1" style="font-size:15px;color:#8a8a8e">&rsaquo;</span>
+        <a href="../#opberg" style="font-size:15px;color:#707070;text-decoration:none" style-hover="color:#0066cc;text-decoration:none">Opbergsystemen</a>
+        <span aria-hidden="true" style="font-size:15px;color:#8a8a8e">&rsaquo;</span>
+        <span aria-current="page" style="font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">KeyTracker opbergkasten</span>
+      </nav>
+      <a href="#werking" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Werking</a>
+      <a href="#uitvoeringen" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Uitvoeringen</a>
+      <a href="#opties" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Opties</a>
+      <a href="#maten" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Maten</a>
+      <a href="#faq" style="font-size:15px;color:#1d1d1f;white-space:nowrap" style-hover="color:#0066cc;text-decoration:none">Vragen</a>
+    </div>
+  </div>
+</div>
+
+<section id="werking" style="scroll-margin-top:180px;background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(28px,4vw,56px);align-items:center" data-2col>
+      <div>
+        <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;max-width:580px;text-wrap:pretty">Het bord blijft, de deur komt erbij.</h2>
+        <p style="margin-top:16px;max-width:580px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">De kast neemt een of twee <a href="../keytracker/" style="color:#0066cc">KeyTracker-borden</a> of haakpanelen op: &eacute;&eacute;n in de kast en &eacute;&eacute;n aan de binnenzijde van de deur. Interne rails houden het bord vast, zodat u het er zonder gereedschap in en uit schuift.</p>
+        <p style="margin-top:14px;max-width:580px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">De deur valt achter de gebruiker in het slot. Er is dus geen moment waarop de kast per ongeluk open blijft staan.</p>
+      </div>
+      <figure style="margin:0;display:flex;align-items:center;justify-content:center">
+        <img width="979" height="1024" src="../photos/keytracker-kasten/cut/kast-open-deur.webp" alt="Geopende KeyTracker-kast met het KeyTracker-bord erin en het codeslot in de deur" style="max-width:100%;width:100%;height:auto;object-fit:contain;display:block" loading="lazy">
+      </figure>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,3.5vw,48px);margin-top:clamp(36px,4.5vw,56px)" data-3col>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:44px;height:44px;display:block;margin-bottom:6px"><path d="M10 8h18v28H10z"/><path d="M28 12h6v20h-6"/><path d="M14 22h.01"/><path d="M34 18a6 6 0 0 1 0 8"/></svg>
+        <span style="font-size:21px;font-weight:600;letter-spacing:0.231px">Zelfsluitende deur</span>
+        <span style="font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Zware scharnieren met veerwerking trekken de deur dicht. Wie de sleutel pakt en doorloopt, laat een gesloten kast achter.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:44px;height:44px;display:block;margin-bottom:6px"><rect x="8" y="8" width="28" height="28" rx="3"/><path d="M22 8v6"/><path d="M22 30v6"/><path d="M8 22h6"/><path d="M30 22h6"/><circle cx="22" cy="22" r="3.4"/></svg>
+        <span style="font-size:21px;font-weight:600;letter-spacing:0.231px">Vierpuntssluiting</span>
+        <span style="font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">De deur grijpt op vier punten in de kast. Daarnaast zit er een noodcilinder in, zodat de kast bij een vergeten code open kan.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:44px;height:44px;display:block;margin-bottom:6px"><rect x="12" y="6" width="20" height="32" rx="3"/><circle cx="18" cy="14" r="1.5" fill="#0071e3" stroke="none"/><circle cx="26" cy="14" r="1.5" fill="#0071e3" stroke="none"/><circle cx="18" cy="22" r="1.5" fill="#0071e3" stroke="none"/><circle cx="26" cy="22" r="1.5" fill="#0071e3" stroke="none"/><circle cx="22" cy="31" r="2.6"/></svg>
+        <span style="font-size:21px;font-weight:600;letter-spacing:0.231px">Codeslot of uw kaartlezer</span>
+        <span style="font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Standaard een mechanisch drukknopcodeslot: geen stroom nodig. In plaats daarvan kan er een elektrisch slot in, bediend door uw eigen kaartlezer.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="uitvoeringen" style="scroll-margin-top:180px;background:#ffffff;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:820px;margin:0 auto;text-align:center">
+    <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">Uitvoeringen</p>
+    <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Drie kasten, dezelfde borden erin.</h2>
+    <p style="margin:16px auto 0;max-width:580px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Elke kast neemt maximaal twee mechanische sleutelsystemen of haakpanelen op. Het verschil zit in het slot en in hoe zwaar de kast is uitgevoerd.</p>
+  </div>
+  <div data-kaartraster="1" style="max-width:1200px;margin:clamp(32px,4vw,52px) auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(5,auto);column-gap:clamp(20px,2.5vw,32px);row-gap:0" data-3col>
+    <div data-kaart="1" style="background:#f5f5f7;border-radius:28px;padding:clamp(24px,2.6vw,32px);display:grid;grid-row:1 / span 5;grid-template-rows:subgrid">
+      <div style="border-radius:18px;overflow:hidden;background:transparent;aspect-ratio:1 / 1">
+        <img width="400" height="300" src="../photos/keytracker-kasten/cut/kast-hoog-dicht.webp" alt="Hogere KeyTracker-kast, gesloten, met mechanisch codeslot" style="width:100%;height:100%;object-fit:contain;padding:10px;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+      </div>
+      <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:32px;height:32px;display:block;margin-top:22px"><rect x="13" y="5" width="18" height="26" rx="3"/><circle cx="19" cy="12" r="1.4" fill="#0071e3" stroke="none"/><circle cx="25" cy="12" r="1.4" fill="#0071e3" stroke="none"/><circle cx="19" cy="18" r="1.4" fill="#0071e3" stroke="none"/><circle cx="25" cy="18" r="1.4" fill="#0071e3" stroke="none"/><circle cx="19" cy="24" r="1.4" fill="#0071e3" stroke="none"/><circle cx="25" cy="24" r="1.4" fill="#0071e3" stroke="none"/><circle cx="22" cy="35" r="4"/></svg>
+      <span style="margin-top:14px;font-size:24px;font-weight:600;color:#1d1d1f;letter-spacing:0.19px">Mechanisch codeslot</span>
+      <span style="margin-top:10px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De standaarduitvoering: een stalen kast met zelfsluitende deur en een mechanisch drukknopcodeslot. Werkt zonder stroom en zonder netwerk.</span>
+      <ul style="display:flex;flex-direction:column;gap:10px;margin-top:20px">
+        <li style="font-size:15px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.224px">Drukknopcodeslot met noodcilinder</li>
+        <li style="font-size:15px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.224px">Vierpuntssluiting</li>
+        <li style="font-size:15px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.224px">Links- of rechtsdraaiend</li>
+      </ul>
+    </div>
+    <div data-kaart="1" style="background:#f5f5f7;border-radius:28px;padding:clamp(24px,2.6vw,32px);display:grid;grid-row:1 / span 5;grid-template-rows:subgrid">
+      <div style="border-radius:18px;overflow:hidden;background:transparent;aspect-ratio:1 / 1">
+        <img width="400" height="300" src="../photos/keytracker-kasten/cut/kast-breed-dicht.webp" alt="Kleine brede KeyTracker-kast, gesloten, met mechanisch codeslot" style="width:100%;height:100%;object-fit:contain;padding:10px;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+      </div>
+      <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:32px;height:32px;display:block;margin-top:22px"><rect x="5" y="13" width="22" height="15" rx="2.5"/><path d="M10 19h7"/><path d="M10 23h4"/><path d="M32 14a9 9 0 0 1 0 13"/><path d="M36.5 10a14 14 0 0 1 0 21"/></svg>
+      <span style="margin-top:14px;font-size:24px;font-weight:600;color:#1d1d1f;letter-spacing:0.19px">Elektronisch slot</span>
+      <span style="margin-top:10px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Dezelfde kast, maar met een elektronisch codeslot of een elektrisch slot dat door uw eigen kaartlezer of toegangscontrole wordt vrijgegeven.</span>
+      <ul style="display:flex;flex-direction:column;gap:10px;margin-top:20px">
+        <li style="font-size:15px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.224px">Elektronisch codeslot of kaartlezer</li>
+        <li style="font-size:15px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.224px">Mechanische noodcilinder blijft</li>
+        <li style="font-size:15px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.224px">Aan te sluiten op bestaande toegangscontrole</li>
+      </ul>
+    </div>
+    <div data-kaart="1" style="background:#f5f5f7;border-radius:28px;padding:clamp(24px,2.6vw,32px);display:grid;grid-row:1 / span 5;grid-template-rows:subgrid">
+      <div style="border-radius:18px;overflow:hidden;background:transparent;aspect-ratio:1 / 1">
+        <img width="1000" height="1452" src="../photos/keytracker-kasten/cut/kast-open-codeslot.webp" alt="Geopende KeyTracker-kast met codeslot in de deur en een bord met sleutelposities" style="width:100%;height:100%;object-fit:contain;padding:10px;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+      </div>
+      <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:32px;height:32px;display:block;margin-top:22px"><path d="M22 5l13 5v10c0 8-5.4 14.4-13 19-7.6-4.6-13-11-13-19V10z"/><rect x="17" y="20" width="10" height="8" rx="1.6"/><path d="M19.5 20v-2.5a2.5 2.5 0 0 1 5 0V20"/></svg>
+      <span style="margin-top:14px;font-size:24px;font-weight:600;color:#1d1d1f;letter-spacing:0.19px">High security</span>
+      <span style="margin-top:10px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">De enige politiegoedgekeurde sleutelkast van KeyTracker. Gehard verstevigd staal bij alle toegangspunten, met boven- en onderin een gepantserd slot in een verstevigde kast.</span>
+      <ul style="display:flex;flex-direction:column;gap:10px;margin-top:20px">
+        <li style="font-size:15px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.224px">Politiegoedgekeurd</li>
+        <li style="font-size:15px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.224px">Gehard staal bij alle toegangspunten</li>
+        <li style="font-size:15px;line-height:1.47;color:#1d1d1f;letter-spacing:-0.224px">Twee gepantserde sloten, boven en onder</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="opties" style="scroll-margin-top:180px;background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;max-width:560px;text-wrap:pretty">Opties.</h2>
+    <p style="margin-top:16px;max-width:560px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">De kasten worden op maat gemaakt. Deze keuzes maakt u bij de aanvraag.</p>
+    <div style="margin-top:clamp(32px,4vw,52px);display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(20px,2.5vw,32px);align-items:start" data-2col>
+      <figure style="margin:0;border-radius:20px;overflow:hidden;background:#e8e8ed;align-self:stretch;height:100%;min-height:360px">
+        <img width="900" height="1371" src="../photos/keytracker-kasten/high-secure-frame.webp" alt="KeyTracker-kast op een los metalen frame tegen een bakstenen wand" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy">
+      </figure>
+      <ul style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,2.5vw,32px)" data-2col>
+        <li style="background:#ffffff;border-radius:20px;padding:clamp(22px,2.4vw,28px);display:flex;flex-direction:column;gap:8px">
+          <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:block;margin-bottom:4px"><path d="M22 6v32"/><path d="M22 36h-8V10h8"/><path d="M22 10h8v26h-8"/></svg>
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px;text-wrap:pretty">Los frame of plint</span>
+          <span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.32px;text-wrap:pretty">Kan de kast niet aan een massieve wand, dan staat hij op een metalen frame of plint midden in de ruimte.</span>
+        </li>
+        <li style="background:#ffffff;border-radius:20px;padding:clamp(22px,2.4vw,28px);display:flex;flex-direction:column;gap:8px">
+          <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:block;margin-bottom:4px"><rect x="9" y="7" width="26" height="30" rx="3"/><path d="M14 30l8-11 5 7 3-4 4 8z"/><circle cx="17" cy="14" r="2.2"/></svg>
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px;text-wrap:pretty">Spiegelfront</span>
+          <span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.32px;text-wrap:pretty">Een spiegel in de deur laat de gebruiker zien of iemand achter hem meekijkt bij het intoetsen van de code.</span>
+        </li>
+        <li style="background:#ffffff;border-radius:20px;padding:clamp(22px,2.4vw,28px);display:flex;flex-direction:column;gap:8px">
+          <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:block;margin-bottom:4px"><path d="M14 22h16"/><path d="M24 16l6 6-6 6"/><path d="M8 8v28"/></svg>
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px;text-wrap:pretty">Draairichting</span>
+          <span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.32px;text-wrap:pretty">Links- of rechtsdraaiend, zodat de deur openzwaait naar de kant waar u de ruimte hebt.</span>
+        </li>
+        <li style="background:#ffffff;border-radius:20px;padding:clamp(22px,2.4vw,28px);display:flex;flex-direction:column;gap:8px">
+          <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:block;margin-bottom:4px"><circle cx="22" cy="22" r="13"/><path d="M22 9a13 13 0 0 1 0 26z" fill="#0071e3" stroke="none"/></svg>
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px;text-wrap:pretty">Kleur naar keuze</span>
+          <span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.32px;text-wrap:pretty">Standaard een neutrale poedercoating; elke andere kleur kan besteld worden.</span>
+        </li>
+        <li style="background:#ffffff;border-radius:20px;padding:clamp(22px,2.4vw,28px);display:flex;flex-direction:column;gap:8px">
+          <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:block;margin-bottom:4px"><rect x="7" y="9" width="12" height="26" rx="2"/><rect x="25" y="9" width="12" height="26" rx="2"/><path d="M11 15h4"/><path d="M29 15h4"/></svg>
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px;text-wrap:pretty">Een of twee borden</span>
+          <span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.32px;text-wrap:pretty">E&eacute;n of twee KeyTracker-borden en haakpanelen: in de kast en aan de binnenzijde van de deur.</span>
+        </li>
+        <li style="background:#ffffff;border-radius:20px;padding:clamp(22px,2.4vw,28px);display:flex;flex-direction:column;gap:8px">
+          <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:block;margin-bottom:4px"><path d="M8 12h28"/><path d="M8 22h28"/><path d="M8 32h28"/><path d="M16 8v8"/><path d="M28 26v10"/></svg>
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px;text-wrap:pretty">Interne rails</span>
+          <span style="font-size:16px;line-height:1.47;color:#707070;letter-spacing:-0.32px;text-wrap:pretty">Borden en panelen schuiven in kanalen in de kast, dus plaatsen en verwisselen gaat zonder gereedschap.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="maten" style="scroll-margin-top:180px;background:#ffffff;padding:clamp(64px,8vw,100px) 0">
+  <div style="max-width:820px;margin:0 auto;padding:0 24px;text-align:center">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Maten.</h2>
+    <p style="margin-top:16px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Vier maten, passend bij de KeyTracker-borden van 25 tot 150 posities. De breedte en de diepte blijven gelijk; alleen de hoogte loopt mee met het aantal posities.</p>
+  </div>
+  <div style="max-width:1200px;margin:clamp(32px,4vw,52px) auto 0;padding:0 24px;overflow-x:auto" data-table-scroll="1">
+    <table style="width:100%;min-width:520px;border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+      <thead>
+        <tr>
+          <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Voor</th>
+          <th style="padding:16px 18px;text-align:right;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Kast h &times; b &times; d</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">KeyTracker 25</th>
+          <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">43 &times; 73 &times; 28 cm</td>
+        </tr>
+        <tr>
+          <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">KeyTracker 50</th>
+          <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">69 &times; 73 &times; 28 cm</td>
+        </tr>
+        <tr>
+          <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">KeyTracker 100</th>
+          <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">107 &times; 73 &times; 28 cm</td>
+        </tr>
+        <tr>
+          <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px;border-top:1px solid #d2d2d7">KeyTracker 150</th>
+          <td style="padding:15px 18px;text-align:right;font-size:17px;color:#707070;letter-spacing:-0.374px;white-space:nowrap;border-top:1px solid #d2d2d7">145 &times; 73 &times; 28 cm</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px;font-size:14px;line-height:1.47;color:#8a8a8e;letter-spacing:-0.08px">Maatvoering onder voorbehoud. De kasten worden op maat gemaakt; wijkt uw ruimte af, dan kijken we naar een andere maat.</p>
+    <div data-reveal style="margin-top:clamp(32px,4vw,48px);border-top:1px solid #d2d2d7;padding-top:clamp(24px,3vw,32px);display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,40px);align-items:baseline;justify-content:space-between">
+      <div>
+        <h3 style="font-size:clamp(21px,2.2vw,26px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">Datasheet KeyTracker.</h3>
+        <p style="margin-top:8px;max-width:420px;font-size:15px;line-height:1.47;color:#707070;text-wrap:pretty">De borden en de bijbehorende kastmaten staan in de datasheet van de KeyTracker.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:20px">
+  <a href="../datasheets/DELPHI-datasheet-KeyTracker-NL.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;font-size:17px;color:#0066cc;letter-spacing:-0.374px" style-hover="text-decoration:underline"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:17px;height:21px;flex:0 0 auto"><path d="M12.2 2.6H5.6a1.1 1.1 0 0 0-1.1 1.1v12.6a1.1 1.1 0 0 0 1.1 1.1h8.8a1.1 1.1 0 0 0 1.1-1.1V6.1z"/><path d="M12.2 2.6v3.5h3.3"/><path d="M7.4 10.6h5.2M7.4 13.4h5.2"/></svg>Nederlands (PDF)</a>
+  <a href="../datasheets/DELPHI-datasheet-KeyTracker-EN.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;font-size:17px;color:#0066cc;letter-spacing:-0.374px" style-hover="text-decoration:underline"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:17px;height:21px;flex:0 0 auto"><path d="M12.2 2.6H5.6a1.1 1.1 0 0 0-1.1 1.1v12.6a1.1 1.1 0 0 0 1.1 1.1h8.8a1.1 1.1 0 0 0 1.1-1.1V6.1z"/><path d="M12.2 2.6v3.5h3.3"/><path d="M7.4 10.6h5.2M7.4 13.4h5.2"/></svg>English (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#f5f5f7;padding:clamp(64px,8vw,100px) 24px">
+  <div style="max-width:820px;margin:0 auto;text-align:center">
+    <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Wat past bij uw ruimte?</h2>
+    <p style="margin:16px auto 0;max-width:580px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Geef door hoeveel posities u heeft, of het bord aan de wand kan en welk slot u wilt. Wij rekenen de maat en het slot voor u uit.</p>
+    <div data-card-cta="1" style="display:flex;justify-content:center;align-items:center;gap:28px;margin-top:36px;flex-wrap:wrap">
+      <a href="../contact/?p=keytrackerkasten" style="background:#0071e3;color:#ffffff;font-size:17px;padding:12px 22px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Prijs opvragen</a>
+      <a href="tel:+31183648851" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">Of bel +31 (0)183 648851</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" data-productfaq="1" style="background:#ffffff;padding:clamp(56px,7vw,96px) 24px;scroll-margin-top:180px">
+  <div data-reveal style="max-width:820px;margin:0 auto">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:-0.2px;text-wrap:pretty">Veelgestelde vragen over de opbergkasten.</h2>
+    <ul style="display:flex;flex-direction:column;margin-top:32px;border-top:1px solid #d6d6d6">
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf0 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Vanaf welk formaat is er een kast?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon0 }}</span>
+        </button>
+        <sc-if value="{{ pf0 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Vanaf 25 posities. Voor de KeyTracker 25, 50, 100 en 150 is er een passende kast; de maten staan bij <a href="#maten" style="color:#0066cc">Maten</a>.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf1 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Welk slot zit erin?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon1 }}</span>
+        </button>
+        <sc-if value="{{ pf1 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Standaard een mechanisch codeslot met drukknoppen en een noodcilinder. In plaats daarvan kan er een elektronisch codeslot of een elektrisch slot in, bediend door uw eigen kaartlezer of toegangscontrole.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf2 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Wat als de kast niet aan de wand kan?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon2 }}</span>
+        </button>
+        <sc-if value="{{ pf2 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Dan staat hij op een los metalen frame of een plint, midden in de ruimte. Dat is een voordelige manier om de kast vrij te plaatsen.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf3 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Kan de kast in onze eigen kleur?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon3 }}</span>
+        </button>
+        <sc-if value="{{ pf3 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Ja. De kast is standaard neutraal gepoedercoat en kan in elke kleur geleverd worden. Ook de draairichting van de deur kiest u zelf: links- of rechtsdraaiend.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf4 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Is er ook een politiegoedgekeurde kast?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon4 }}</span>
+        </button>
+        <sc-if value="{{ pf4 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Ja, de high-security kast. Gehard verstevigd staal bij alle toegangspunten en boven- en onderin een gepantserd slot met verstevigde kast. Zie <a href="#uitvoeringen" style="color:#0066cc">Uitvoeringen</a>.</p>
+        </sc-if>
+      </li>
+      <li style="border-bottom:1px solid #d6d6d6">
+        <button type="button" onClick="{{ togglePf5 }}" style="width:100%;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;text-align:left;font-family:inherit;min-height:44px">
+          <span style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:0.231px">Kan de deur een spiegelfront krijgen?</span>
+          <span style="font-size:21px;color:#707070">{{ pfIcon5 }}</span>
+        </button>
+        <sc-if value="{{ pf5 }}" hint-placeholder-val="{{ false }}">
+          <p style="padding:0 0 22px;font-size:17px;line-height:1.5;color:#474747;letter-spacing:-0.374px;max-width:660px;text-wrap:pretty">Ja. Met een spiegel in de deur ziet de gebruiker of iemand achter hem meekijkt tijdens het intoetsen van de code.</p>
+        </sc-if>
+      </li>
+    </ul>
+    <p style="margin-top:28px;font-size:17px;line-height:1.5;color:#474747">Staat uw vraag er niet bij? <a href="../contact/?p=keytrackerkasten" style="color:#0066cc">Stel hem ons rechtstreeks&nbsp;&rsaquo;</a></p>
+  </div>
+</section>
+
+<section data-crosssell="1" style="background:#f5f5f7;padding:clamp(56px,7vw,96px) 24px">
+  <div data-reveal style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:-0.2px;max-width:620px;text-wrap:pretty">Wat er in de kast gaat.</h2>
+    <p style="margin-top:14px;max-width:620px;font-size:17px;line-height:1.5;color:#474747;text-wrap:pretty">De kast is de behuizing. Het systeem erin bepaalt hoe u de sleutels uitgeeft.</p>
+    <p style="margin-top:18px;font-size:17px;line-height:1.5"><a href="../#keuzehulp" style="color:#0066cc">Twijfelt u welk systeem past? Doe de keuzehulp&nbsp;&rsaquo;</a></p>
+    <ul data-crosssell-grid="1" style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.4vw,32px)">
+      <li>
+        <a href="../keytracker/" style="display:flex;flex-direction:column;height:100%;color:#1d1d1f;text-decoration:none" style-hover="text-decoration:none">
+          <div style="position:relative;overflow:hidden;border-radius:16px;background:transparent;aspect-ratio:4 / 3">
+            <img width="894" height="480" src="../photos/keytracker-bord-25-cut.webp" alt="KeyTracker bord met 25 posities" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+          </div>
+          <span style="margin-top:18px;font-size:21px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">KeyTracker</span>
+          <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Het mechanische bord dat in de kast gaat, van 25 tot 150 posities.</span>
+          <span style="margin-top:auto;padding-top:10px;font-size:15px;color:#0066cc">KeyTracker bekijken&nbsp;&rsaquo;</span>
+        </a>
+      </li>
+      <li>
+        <a href="../keybox/" style="display:flex;flex-direction:column;height:100%;color:#1d1d1f;text-decoration:none" style-hover="text-decoration:none">
+          <div style="position:relative;overflow:hidden;border-radius:16px;background:transparent;aspect-ratio:4 / 3">
+            <img width="1600" height="1224" src="../photos/cut/keybox-system-6.webp" alt="Keybox sleutelkast met codepaneel en display" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+          </div>
+          <span style="margin-top:18px;font-size:21px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">Keybox</span>
+          <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Wilt u vastleggen wie welke sleutel had, dan is een Keybox de volgende stap.</span>
+          <span style="margin-top:auto;padding-top:10px;font-size:15px;color:#0066cc">Keybox bekijken&nbsp;&rsaquo;</span>
+        </a>
+      </li>
+      <li>
+        <a href="../vel-key/" style="display:flex;flex-direction:column;height:100%;color:#1d1d1f;text-decoration:none" style-hover="text-decoration:none">
+          <div style="position:relative;overflow:hidden;border-radius:16px;background:transparent;aspect-ratio:4 / 3">
+            <img width="1600" height="1073" src="../photos/cut/velkey-cassette-schoon.webp" alt="Vel-Key cassette met gelabelde sleutels" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px;display:block;transition:transform .5s cubic-bezier(0.25,0.1,0.25,1)" loading="lazy" style-hover="transform:scale(1.03)">
+          </div>
+          <span style="margin-top:18px;font-size:21px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">Vel-Key</span>
+          <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Labels, panelen en koffers voor sleutels die niet aan een bord hangen.</span>
+          <span style="margin-top:auto;padding-top:10px;font-size:15px;color:#0066cc">Vel-Key bekijken&nbsp;&rsaquo;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer style="margin-top:12px;background:#f5f5f7;padding:80px 24px 40px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:48px">
+      <img width="250" height="92" src="../logos/delphi-wordmark.png" alt="DELPHI" style="height:38px;width:103px;align-self:flex-start;display:block">
+      <span style="font-size:12px;font-weight:600;letter-spacing:2px;color:#707070;text-transform:uppercase">Sleutelbeheersystemen</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px">
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Sleutelbeheer</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../sam/" style="font-size:14px;color:#707070">Security Asset Manager</a></li>
+          <li><a href="../keybox/" style="font-size:14px;color:#707070">Keybox</a></li>
+          <li><a href="../keytracker/" style="font-size:14px;color:#707070">KeyTracker</a></li>
+          <li><a href="../keycontroller/" style="font-size:14px;color:#707070">Keycontroller</a></li>
+          <li><a href="../swat-box/" style="font-size:14px;color:#707070">SWAT-box</a></li>
+          <li><a href="../surface-vault/" style="font-size:14px;color:#707070">Surface Vault</a></li>
+          <li><a href="../safebox/" style="font-size:14px;color:#707070">Safebox</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Opbergsystemen</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../sam-lockers/" style="font-size:14px;color:#707070">SAM lockers</a></li>
+          <li><a href="../oc-spray-station/" style="font-size:14px;color:#707070">OC Spray Station</a></li>
+          <li><a href="../keytracker-opbergkasten/" style="font-size:14px;color:#707070">KeyTracker opbergkasten</a></li>
+          <li><a href="../vel-key/" style="font-size:14px;color:#707070">Vel-Key</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Sleutelringen</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../sleutelringen/" style="font-size:14px;color:#707070">RVS keyrings</a></li>
+          <li><a href="../sleutelringen/#flex" style="font-size:14px;color:#707070">Flex keyrings</a></li>
+          <li><a href="../sleutelringen/#morse" style="font-size:14px;color:#707070">Morse keyrings</a></li>
+          <li><a href="../sleutelringen/#rivet" style="font-size:14px;color:#707070">Rivet keyrings</a></li>
+          <li><a href="../sleutelringen/#coating" style="font-size:14px;color:#707070">Flexibel met coating</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Contact</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="../contact/#contactgegevens" style="font-size:14px;color:#707070">Contactgegevens</a></li>
+          <li><a href="../contact/#faq" style="font-size:14px;color:#707070">Veelgestelde vragen</a></li>
+          <li><a href="../documentatie/" style="font-size:14px;color:#707070">Documentatie</a></li>
+          <li><a href="../contact/#dealership" style="font-size:14px;color:#707070">Dealer worden</a></li>
+          <li><a href="../over/" style="font-size:14px;color:#707070">Over DELPHI</a></li>
+          <li><a href="../over/#fabrikanten" style="font-size:14px;color:#707070">Fabrikanten en partners</a></li>
+          <li><a href="../contact/?p=keytrackerkasten" style="font-size:14px;color:#707070">Offerte aanvragen</a></li>
+          <li><a href="mailto:info@sleutelbeheersystemen.nl" style="font-size:14px;color:#707070">info@sleutelbeheersystemen.nl</a></li>
+        </ul>
+      </div>
+    </div>
+    <p data-legal="1" style="margin-top:64px;padding-top:20px;border-top:1px solid #d6d6d6;font-size:12px;line-height:1.33;color:#707070">© 2026 DELPHI Sleutelbeheersystemen · Einsteinstraat 3e, 4207 HW Gorinchem · KvK 51691671 · BTW NL073453614B01<br><a href="../privacy/" style="color:#707070">Privacy en disclaimer</a> &middot; <a href="../voorwaarden/" style="color:#707070">Algemene voorwaarden</a></p>
+  </div>
+</footer>
+
+<sc-if value="{{ mobileBar }}" hint-placeholder-val="{{ false }}">
+  <div data-sticky-cta="1" style="position:fixed;left:0;right:0;bottom:0;z-index:180;background:rgba(250,250,252,0.94);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #d6d6d6;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;animation:barIn .25s ease both">
+    <a href="../contact/?p=keytrackerkasten" style="flex:1 1 0;min-height:44px;display:flex;align-items:center;justify-content:center;background:#0071e3;color:#ffffff;font-size:16px;border-radius:980px;text-decoration:none" style-hover="text-decoration:none">Offerte aanvragen</a>
+    <a href="tel:+31183648851" aria-label="Bel +31 183 648851" style="flex:0 0 auto;min-height:44px;display:flex;align-items:center;justify-content:center;padding:0 18px;background:#ffffff;color:#0071e3;font-size:16px;border-radius:980px;border:1px solid #0071e3;text-decoration:none" style-hover="text-decoration:none">Bellen</a>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { navSub: null, menu: null, showBar: false, mobile: false, navOpen: false , searchOpen: false, q: '', pf: [] };
+
+  togglePf = (i) => () => this.setState((s) => { const pf = (s.pf || []).slice(); pf[i] = !pf[i]; return { pf }; });
+
+  sRef = React.createRef();
+
+  componentDidUpdate() {
+    if (this.state.searchOpen && !this._so && this.sRef.current) this.sRef.current.focus();
+    this._so = this.state.searchOpen;
+  }
+
+  componentDidMount() {
+    // React zet het muted-kenmerk niet als eigenschap; zonder deze regels
+    // zou de video met geluid spelen en op mobiel niet mogen starten.
+    this._demp = setInterval(() => {
+      const vs = [...document.querySelectorAll('video')];
+      // Blijven wachten tot de video in de pagina staat: bij het opbouwen is hij er
+      // nog niet, en zonder deze lus krijgt hij nooit zijn bron.
+      if (!vs.length) {
+        this._dempPogingen = (this._dempPogingen || 0) + 1;
+        if (this._dempPogingen > 120) { clearInterval(this._demp); this._demp = null; }
+        return;
+      }
+      clearInterval(this._demp);
+      this._demp = null;
+      vs.forEach((v) => {
+        // Video alleen op desktop laden. Op mobiel blijft de bron ongezet, zodat de
+        // browser niets ophaalt en er geen beeld even oplicht voor de foto verschijnt.
+        // De video die bewust één keer speelt niet hier starten: die wacht op het
+        // in-beeld-mechanisme, anders is hij uitgespeeld voordat de bezoeker er is.
+        if (v.hasAttribute('data-video-desktop') && !v.hasAttribute('data-video-once')) {
+          // De bron staat in de opmaak, maar met preload="none" en zonder autoplay haalt
+          // de browser niets op. Alleen op een breed venster starten we hem; draait iemand
+          // de telefoon naar liggend, dan gebeurt dat op dat moment.
+          const start = () => {
+            const p = v.play();
+            if (p && p.catch) p.catch(() => {});
+          };
+          const breed = window.matchMedia('(min-width: 761px)');
+          if (breed.matches) start();
+          breed.addEventListener('change', (e) => { if (e.matches) start(); });
+        }
+        const dempen = () => {
+          v.defaultMuted = true;
+          if (!v.muted) v.muted = true;
+          v.setAttribute('muted', '');
+          v.playsInline = true;
+          // Herhalen, behalve de video die bewust één keer speelt.
+          if (!v.hasAttribute('data-video-once')) v.loop = true;
+        };
+        dempen();
+        v.addEventListener('volumechange', dempen);
+        v.addEventListener('play', dempen);
+      });
+    }, 150);
+    // Tikken om te starten. Nodig omdat iOS automatisch starten weigert in een
+    // ingesloten venster en in batterijspaarstand; een tik mag altijd.
+    // iOS start soms niet automatisch (batterijspaarstand, of nog geen data).
+    // Daarom: gedempt houden, laden zodra de video in beeld komt, en als het
+    // afspelen wordt geweigerd bij de eerste aanraking opnieuw proberen.
+
+    if (location.hash && location.hash.length > 1) {
+      let pogingen = 0;
+      const spring = () => {
+        let el = null;
+        try { el = document.querySelector(location.hash); } catch (err) { return; }
+        if (el) {
+          const marge = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+          const y = el.getBoundingClientRect().top + window.scrollY - marge;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
+          if (++pogingen > 3) return;
+        }
+        if (++pogingen < 24) setTimeout(spring, 120);
+      };
+      setTimeout(spring, 60);
+    }
+    this._mq = window.matchMedia('(max-width: 1000px)');
+    const syncMq = () => this.setState({ mobile: this._mq.matches, navOpen: false });
+    this._mq.addEventListener('change', syncMq);
+    this.setState({ mobile: this._mq.matches });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.style.animation = 'floatIn 0.7s cubic-bezier(0.28,0.11,0.32,1) both';
+        e.target.addEventListener('animationend', () => {
+          e.target.style.animation = '';
+          e.target.style.opacity = '';
+          e.target.style.transform = '';
+        }, { once: true });
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach((n) => {
+      if (n.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+      n.style.opacity = '0';
+      io.observe(n);
+    });
+    this._io = io;
+
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const y = window.scrollY || 0;
+        const show = y > 600;
+        if (show !== this.state.showBar) this.setState({ showBar: show });
+      });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+
+    let spyCache = null;
+    const spyPaint = () => {
+      if (!spyCache) {
+        const sub = document.querySelector('[data-subnav]');
+        if (!sub) return;
+        const links = [...sub.querySelectorAll('a[href^="#"]')];
+        const targets = links.map(a => ({ a, el: document.querySelector(a.getAttribute('href')) })).filter(t => t.el)
+          .sort((x, y) => x.el.compareDocumentPosition(y.el) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1);
+        if (!targets.length) return;
+        spyCache = { sub, links, targets, rail: sub.querySelector('[data-subnav-rail]'), current: null };
+      }
+      const { sub, links, targets, rail } = spyCache;
+      const line = sub.getBoundingClientRect().bottom + 24;
+      let pick = null;
+      for (const t of targets) if (t.el.getBoundingClientRect().top <= line) pick = t;
+      if (!pick || pick.a === spyCache.current) return;
+      links.forEach(a => { a.style.color = '#1d1d1f'; a.style.fontWeight = '400'; });
+      pick.a.style.color = '#0071e3';
+      pick.a.style.fontWeight = '600';
+      spyCache.current = pick.a;
+      if (rail && rail.scrollWidth > rail.clientWidth + 4) {
+        const r = pick.a.getBoundingClientRect(), rr = rail.getBoundingClientRect();
+        if (r.left < rr.left + 16 || r.right > rr.right - 16) rail.scrollTo({ left: rail.scrollLeft + (r.left - rr.left) - 24, behavior: 'smooth' });
+      }
+    };
+    this._spy = () => { if (this._spyRaf) return; this._spyRaf = requestAnimationFrame(() => { this._spyRaf = null; spyPaint(); }); };
+    window.addEventListener('scroll', this._spy, { passive: true });
+    this._spyTries = 0;
+    this._spyTimer = setInterval(() => { spyPaint(); if (spyCache || ++this._spyTries > 40) clearInterval(this._spyTimer); }, 150);
+  }
+
+  componentWillUnmount() {
+    if (this._spy) window.removeEventListener('scroll', this._spy);
+    if (this._spyTimer) clearInterval(this._spyTimer);
+    if (this._io) this._io.disconnect();
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+
+  hover(k) { return () => this.setState({ menu: k }); }
+  toggleNav = () => this.setState(s => ({ navOpen: !s.navOpen }));
+  closeNav = () => this.setState({ navOpen: false, navSub: null });
+  navBack = () => this.setState({ navSub: null });
+  navTo = (k) => () => this.setState({ navSub: k });
+
+
+  searchRef = React.createRef();
+  toggleSearch = () => this.setState(s => ({ searchOpen: !s.searchOpen, navOpen: false, q: '' }));
+  closeSearch = () => this.setState({ searchOpen: false, q: '' });
+  onSearch = (e) => this.setState({ q: e.target.value });
+
+  searchIndex() {
+    return (window.DELPHI_ZOEK && window.DELPHI_ZOEK.nl) || [];
+  }
+
+  renderVals() {
+    const m = this.state.menu;
+    return {
+      searchOpen: this.state.searchOpen,
+      searchRows: this.state.searchOpen ? '1fr' : '0fr',
+      barTop: this.state.navOpen ? 'translateY(0) rotate(45deg)' : 'translateY(-3.5px)',
+      barBottom: this.state.navOpen ? 'translateY(0) rotate(-45deg)' : 'translateY(3.5px)',
+      searchVis: this.state.searchOpen ? 'visible' : 'hidden',
+      searchRef: this.sRef,
+      searchEvents: this.state.searchOpen ? 'auto' : 'none',
+      toggleSearch: this.toggleSearch,
+      closeSearch: this.closeSearch,
+      onSearch: this.onSearch,
+      searchRef: this.searchRef,
+      searchResults: (() => { const q = (this.state.q || '').trim(); const idx = this.searchIndex(); if (!q) return idx.slice(0, 6); return (window.DELPHI_ZOEK && window.DELPHI_ZOEK.zoek) ? window.DELPHI_ZOEK.zoek('nl', q, 8) : idx.filter(i => (i.t + ' ' + i.s).toLowerCase().includes(q.toLowerCase())).slice(0, 8); })(),
+      openSystemen: m === 'systemen',
+      openOpberg: m === 'opberg',
+      openRingen: m === 'ringen',
+      openContact: m === 'contact',
+      navRoot: !this.state.navSub,
+      navSystemen: this.state.navSub === 'systemen',
+      navOpberg: this.state.navSub === 'opberg',
+      navRingen: this.state.navSub === 'ringen',
+      navContact: this.state.navSub === 'contact',
+      navClosed: !this.state.navOpen,
+      navLabel: this.state.navOpen ? 'Menu sluiten' : 'Menu',
+      navBack: this.navBack,
+      navToSystemen: this.navTo('systemen'),
+      navToOpberg: this.navTo('opberg'),
+      navToRingen: this.navTo('ringen'),
+      navToContact: this.navTo('contact'),
+      flyRows: m ? '1fr' : '0fr',
+      flyEvents: m ? 'auto' : 'none',
+      hoverSystemen: this.hover('systemen'),
+      hoverOpberg: this.hover('opberg'),
+      hoverRingen: this.hover('ringen'),
+      hoverContact: this.hover('contact'),
+      closeMenu: () => this.setState({ menu: null }),
+      showBar: this.state.showBar,
+      ...(() => {
+        const pf = this.state.pf || [];
+        const u = {};
+        for (let i = 0; i < 6; i++) { u['pf' + i] = !!pf[i]; u['pfIcon' + i] = pf[i] ? '–' : '+'; u['togglePf' + i] = this.togglePf(i); }
+        return u;
+      })(),
+      mobileBar: this.state.mobile && this.state.showBar && !this.state.navOpen && !this.state.searchOpen,
+      isDesktop: !this.state.mobile,
+      isMobile: this.state.mobile,
+      navOpen: this.state.navOpen,
+      toggleNav: this.toggleNav,
+      closeNav: this.closeNav
+    };
+  }
+}
+
+</script>
+</body>
+</html>
