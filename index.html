@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"vendor/react/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"vendor/react-dom/react-dom.production.min.js"};</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+<!-- Cookie-consent + GA4 (laadt GA4 alleen na toestemming) -->
+<script>
+(function () {
+  var GA_ID = 'G-XXXXXXXXXX'; // <-- VERVANG door jullie GA4 meet-ID
+  var KEY = 'delphi-consent';
+
+  function loadGA() {
+    if (!GA_ID || GA_ID.indexOf('XXXX') !== -1) return; // niet laden zonder echt ID
+    if (window.__gaLoaded) return; window.__gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  window.__delphiConsent = { granted: false };
+  try {
+    var saved = localStorage.getItem(KEY);
+    if (saved === 'accepted') { window.__delphiConsent.granted = true; loadGA(); return; }
+    if (saved === 'declined') { return; }
+  } catch (e) {}
+
+  function showBanner() {
+    var bar = document.createElement('div');
+    bar.setAttribute('role', 'dialog');
+    bar.setAttribute('aria-label', 'Cookievoorkeuren');
+    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;background:rgba(250,250,252,0.96);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #d6d6d6;padding:18px 24px;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:center;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif';
+    var txt = document.createElement('p');
+    txt.style.cssText = 'margin:0;font-size:14px;line-height:1.4;color:#1d1d1f;max-width:640px';
+    txt.innerHTML = 'Wij gebruiken analytische cookies om onze website te verbeteren. U kunt dit accepteren of weigeren. Meer leest u in onze <a href="privacy/" style="color:#0066cc">privacyverklaring</a>.';
+    var btns = document.createElement('div');
+    btns.style.cssText = 'display:flex;gap:10px;flex-wrap:wrap';
+    function mkBtn(label, primary) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = label;
+      b.style.cssText = 'font-family:inherit;font-size:15px;padding:9px 20px;border-radius:980px;cursor:pointer;border:0;' +
+        (primary ? 'background:#0071e3;color:#fff' : 'background:#e8e8ed;color:#1d1d1f');
+      return b;
+    }
+    var accept = mkBtn('Accepteren', true);
+    var decline = mkBtn('Weigeren', false);
+    function close() { if (bar.parentNode) bar.parentNode.removeChild(bar); }
+    accept.onclick = function () { try { localStorage.setItem(KEY, 'accepted'); } catch (e) {} window.__delphiConsent.granted = true; loadGA(); close(); };
+    decline.onclick = function () { try { localStorage.setItem(KEY, 'declined'); } catch (e) {} close(); };
+    btns.appendChild(accept); btns.appendChild(decline);
+    bar.appendChild(txt); bar.appendChild(btns);
+    document.body.appendChild(bar);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showBanner);
+  else showBanner();
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script>window.DELPHI_BASIS = "";</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DELPHI Sleutelbeheersystemen — sleutelbeheer en sleutelkasten</title>
+<meta name="description" content="DELPHI levert elektronische sleutelbeheersystemen, sleutelkasten, lockers en sabotagevrije sleutelringen. Elke uitgifte op naam en tijdstip vastgelegd.">
+<link rel="canonical" href="https://www.sleutelbeheersystemen.nl/">
+<link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/">
+<link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/">
+<link rel="alternate" hreflang="x-default" href="https://www.sleutelbeheersystemen.nl/">
+<meta property="og:url" content="https://www.sleutelbeheersystemen.nl/">
+<meta property="og:site_name" content="DELPHI Sleutelbeheersystemen">
+<meta property="og:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DELPHI Sleutelbeheersystemen — sleutelbeheer en sleutelkasten">
+<meta name="twitter:description" content="DELPHI levert elektronische sleutelbeheersystemen, sleutelkasten, lockers en sabotagevrije sleutelringen. Elke uitgifte op naam en tijdstip vastgelegd.">
+<meta name="twitter:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
+<meta property="og:title" content="DELPHI Sleutelbeheersystemen">
+<meta property="og:description" content="Elektronisch sleutelbeheer voor organisaties waar toegang niet ter discussie staat.">
+<meta property="og:type" content="website">
+<link rel="preload" href="fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face { font-family: Inter; font-style: normal; font-weight: 100 900; font-display: swap;
+    src: url("fonts/InterVariable.woff2") format("woff2"); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: #1d1d1f;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* Chrome blaast losse alinea's in brede containers op ("font boosting");
+       dat maakte de inleiding op de voorwaardenpagina 27px in plaats van 17px. */
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { color: #0071e3; text-decoration: underline; }
+  h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  ::selection { background: #d6e4f7; }
+  html { scroll-behavior: smooth; }
+  html, body { max-width: 100%; }
+  #page-wrap { overflow-x: clip; }
+  a, button, li { transition: color .22s ease, background-color .22s ease, opacity .35s ease; }
+  [data-hide-scrollbar] { scrollbar-width: none; -ms-overflow-style: none; }
+  [data-hide-scrollbar]::-webkit-scrollbar { display: none; }
+  @keyframes flyIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+  @keyframes flyOpen { from { grid-template-rows: 0fr; opacity: .4; } to { grid-template-rows: 1fr; opacity: 1; } }
+  [data-nav-row] svg { opacity: 0; transition: opacity .2s ease; }
+  [data-nav-row]:hover svg, [data-nav-row]:focus svg, [data-nav-row]:active svg { opacity: 1; }
+  /* Raakvlakken op aanraakschermen minimaal 44px: subnav, kruimelpad en
+     tekst-CTA’s zijn inline links en daardoor van zichzelf maar 16-34px hoog. */
+  @media (max-width: 900px) {
+    [data-subnav] a, [data-breadcrumb] a, [data-card-cta] a {
+      display: inline-flex; align-items: center; min-height: 44px;
+    }
+  }
+  /* Voettekstregel met privacy- en voorwaardenlink: op aanraakschermen minimaal 44px hoog. */
+  @media (max-width: 900px) {
+    [data-legal] a { display: inline-flex; align-items: center; min-height: 44px; }
+  }
+  @keyframes floatIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 680px) {
+    [data-card-cta] { gap: 12px !important; flex-wrap: wrap !important; justify-content: center !important; margin-top: 18px !important; }
+    [data-card-cta] a { font-size: 15px !important; padding: 8px 18px !important; white-space: nowrap; text-align: center; }
+    [data-product-card] { padding: 48px 16px 40px !important; }
+    [data-card-grid] { padding-left: 0 !important; padding-right: 0 !important; gap: 12px !important; padding-bottom: 0 !important; }
+    [data-product-card] > a[aria-label] { border-radius: 0 !important; }
+    [data-card-photo] { height: min(62vw, 320px) !important; margin-top: 26px !important; }
+    [data-product-card] h3 { font-size: 32px !important; }
+    [data-product-card] > p { font-size: 19px !important; margin-top: 10px !important; }
+  }
+  @keyframes barIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; } }
+  @media (max-width: 760px) { [data-kh-result] { grid-template-columns: minmax(0,1fr) !important; } [data-kh-result] > a { order: -1; } }
+  @media (max-width: 820px) {
+    /* Vier kasten blijven staan, maar full-bleed: de breedte begrenst de foto,
+       dus elke pixel padding kost hoogte. De knoppen en sectielinks vervallen:
+       de vaste balk onderaan en het menu bieden ze al, en zo staat de foto
+       direct in beeld. */
+    [data-hero-cta] { display: none !important; }
+    [data-hero-band] { aspect-ratio: 2400 / 1018 !important; max-height: none !important; padding: 0 !important; }
+  }
+  /* Keten: vier tekstkolommen, geen beeld. Onder 1000px twee kolommen, onder
+     700px een lijst onder elkaar. */
+  @media (max-width: 1000px) {
+    [data-keten-grid] { grid-template-columns: repeat(2, minmax(0,1fr)) !important; gap: 0 32px !important; }
+    [data-keten-grid] > li { padding-bottom: 24px; }
+  }
+  @media (max-width: 700px) {
+    [data-keten-grid] { grid-template-columns: minmax(0,1fr) !important; gap: 0 !important; margin-top: 24px !important; }
+    [data-keten-grid] > li { padding-bottom: 20px; }
+  }
+  @media (max-width: 680px) {
+    [data-mobile-1col] { grid-template-columns: minmax(0,1fr) !important; }
+    [data-mobile-bleed] { gap: 10px !important; background: #ffffff; margin-left: -24px !important; margin-right: -24px !important; }
+    [data-mobile-bleed] > a { border-radius: 0 !important; padding-left: 24px !important; padding-right: 24px !important; background: #f5f5f7 !important; }
+    [data-mobile-bleed] > a > div:first-child { height: 62vw !important; }
+    [data-ring-carousel] {
+      display: flex !important; grid-template-columns: none !important;
+      overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; gap: 12px !important; touch-action: pan-x;
+      overscroll-behavior-x: contain;
+      margin-left: -24px !important; margin-right: -24px !important;
+      padding: 0 24px !important;
+    }
+    [data-ring-carousel]::-webkit-scrollbar { display: none; }
+    [data-ring-carousel] > a { flex: 0 0 68vw; scroll-snap-align: center; touch-action: pan-x; }
+    [data-ring-carousel] > a * { touch-action: pan-x; -webkit-user-drag: none; user-select: none; }
+    [data-ring-carousel] > a > div:first-child { height: 42vw !important; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DELPHI Sleutelbeheersystemen",
+  "url": "https://www.sleutelbeheersystemen.nl",
+  "logo": "https://www.sleutelbeheersystemen.nl/logos/delphi-wordmark.png",
+  "telephone": "+31183648851",
+  "email": "info@sleutelbeheersystemen.nl",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Einsteinstraat 3e",
+    "postalCode": "4207 HW",
+    "addressLocality": "Gorinchem",
+    "addressCountry": "NL"
+  }
+}
+</script>
+<script src="zoekindex.js"></script>
+<script src="producten.js"></script>
+</helmet>
+
+<div id="page-wrap" style="min-height:100vh">
+
+<nav onMouseLeave="{{ closeMenu }}" style="position:sticky;top:0;z-index:200;background:rgba(250,250,252,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid #d6d6d6">
+  <div style="max-width:1200px;margin:0 auto;padding:18px 24px;min-height:72px;display:flex;flex-wrap:nowrap;align-items:center;gap:24px">
+    <a href="#top" style="display:flex;align-items:center;min-height:44px;text-decoration:none;flex:0 0 auto">
+      <img width="250" height="92" src="logos/delphi-wordmark.png" alt="DELPHI Sleutelbeheersystemen" style="height:38px;width:104px;display:block;margin-top:-14px">
+    </a>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <ul style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 24px;flex:1 1 auto;min-width:0">
+        <li onMouseEnter="{{ hoverSystemen }}"><a href="#sam" style="font-size:16px;font-weight:400;color:#1d1d1f">Sleutelbeheer</a></li>
+        <li onMouseEnter="{{ hoverOpberg }}"><a href="#opberg" style="font-size:16px;font-weight:400;color:#1d1d1f">Opbergsystemen</a></li>
+        <li onMouseEnter="{{ hoverRingen }}"><a href="#ringen" style="font-size:16px;font-weight:400;color:#1d1d1f">Sleutelringen</a></li>
+        <li onMouseEnter="{{ closeMenu }}"><a href="documentatie/" style="font-size:16px;font-weight:400;color:#1d1d1f">Documentatie</a></li>
+        <li onMouseEnter="{{ hoverContact }}"><a href="#contact" style="font-size:16px;font-weight:400;color:#1d1d1f">Contact</a></li>
+        <li><a href="contact/" style="display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-size:16px;font-weight:400;padding:9px 18px;border-radius:980px;text-decoration:none" style-hover="text-decoration:none">Offerte aanvragen</a></li>
+        <li><button type="button" aria-label="Zoeken" onClick="{{ toggleSearch }}" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:none;border:0;padding:0;cursor:pointer;color:#1d1d1f">
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.4" stroke="currentColor" stroke-width="1.5"></circle><path d="M11.2 11.2 L15.4 15.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+        </button></li>
+      </ul>
+    </sc-if>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:0 0 auto;display:flex;align-items:center;gap:7px;font-size:14px;letter-spacing:0.3px">
+        <span style="color:#1d1d1f;font-weight:600">NL</span>
+        <span aria-hidden="true" style="color:#c7c7cc">/</span>
+        <a href="en/" hreflang="en" style="color:#707070;text-decoration:none" style-hover="color:#0066cc">EN</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-left:auto;display:flex;align-items:center;gap:2px">
+        <div style="display:flex;align-items:center;gap:6px;font-size:14px;letter-spacing:0.3px;padding:0 6px 0 2px">
+          <span style="color:#1d1d1f;font-weight:600">NL</span>
+          <span aria-hidden="true" style="color:#c7c7cc">/</span>
+          <a href="en/" hreflang="en" style="display:inline-flex;align-items:center;min-height:44px;padding:0 12px;margin:0 -12px;color:#707070;text-decoration:none">EN</a>
+        </div>
+        <button type="button" aria-label="Zoeken" onClick="{{ toggleSearch }}" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:20px;height:20px;display:block"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+        </button>
+        <button type="button" aria-label="{{ navLabel }}" aria-expanded="{{ navOpen }}" onClick="{{ toggleNav }}" style="width:44px;height:44px;position:relative;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer">
+          <span style="position:absolute;width:18px;height:1.2px;border-radius:1px;background:#1d1d1f;transform:{{ barTop }};transition:transform .4s cubic-bezier(0.4,0.01,0.2,1)"></span>
+          <span style="position:absolute;width:18px;height:1.2px;border-radius:1px;background:#1d1d1f;transform:{{ barBottom }};transition:transform .4s cubic-bezier(0.4,0.01,0.2,1)"></span>
+        </button>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="position:absolute;top:100%;left:0;right:0;z-index:300;display:grid;grid-template-rows:{{ searchRows }};transition:grid-template-rows .4s cubic-bezier(0.25,0.1,0.25,1);pointer-events:{{ searchEvents }};visibility:{{ searchVis }}">
+    <div style="min-height:0;overflow:hidden">
+      <div style="background:#fafafc;border-top:1px solid #d6d6d6;box-shadow:0 18px 34px rgba(0,0,0,0.07)">
+      <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:flex;flex-direction:column;gap:clamp(20px,2.2vw,28px)"><span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px">Zoeken</span>
+        <input type="search" value="{{ query }}" onInput="{{ onQuery }}" ref="{{ searchRef }}" placeholder="Zoek een product of pagina" style="width:100%;max-width:560px;font-size:21px;padding:12px 16px;border:1px solid #d6d6d6;border-radius:12px;background:#ffffff;color:#1d1d1f;outline:none">
+        <ul style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ results }}" as="r" hint-placeholder-count="4">
+            <li><a href="{{ r.href }}" onClick="{{ closeSearch }}" style="display:flex;flex-direction:column;gap:2px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">
+              <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#86868b">{{ r.g }}</span>
+                <span style="font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">{{ r.title }}</span>
+              <span style="font-size:14px;color:#707070">{{ r.sub }}</span>
+            </a></li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:100%;left:0;right:0;z-index:300;display:grid;grid-template-rows:1fr;animation:flyOpen .4s cubic-bezier(0.25,0.1,0.25,1) both"><div style="min-height:0;overflow:hidden"><div style="background:#fafafc;border-top:1px solid #d6d6d6;box-shadow:0 18px 34px rgba(0,0,0,0.07);max-height:calc(100dvh - 81px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain">
+      <sc-if value="{{ navRoot }}" hint-placeholder-val="{{ true }}">
+      <ul style="max-width:1200px;margin:0 auto;padding:12px 24px 8px;display:flex;flex-direction:column">
+        <li><button type="button" data-nav-row="1" onClick="{{ navToSystemen }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Sleutelbeheer<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToOpberg }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Opbergsystemen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToRingen }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Sleutelringen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><a href="documentatie/" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Documentatie<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+        <li><button type="button" data-nav-row="1" onClick="{{ navToContact }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;background:none;border:0;text-align:left;font-size:22px;font-weight:600;color:#1d1d1f;cursor:pointer">Contact<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></button></li>
+        <li><a href="contact/#faq" data-nav-row="1" onClick="{{ closeNav }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;font-size:22px;font-weight:600;color:#1d1d1f;text-decoration:none">Veelgestelde vragen<svg viewBox="0 0 12 20" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px;flex:0 0 auto"><path d="M2 2l8 8-8 8"/></svg></a></li>
+      </ul>
+      <div style="max-width:1200px;margin:0 auto;padding:12px 24px 28px;display:flex;flex-direction:column;gap:14px">
+        <a href="contact/" onClick="{{ closeNav }}" style="align-self:flex-start;background:#0071e3;color:#ffffff;font-size:17px;padding:12px 22px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Offerte aanvragen</a>
+        <a href="tel:+31183648851" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">+31 (0)183 648851</a>
+      </div>
+      </sc-if>
+      <sc-if value="{{ navSystemen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="sam/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Security Asset Manager (SAM)</a>
+        <a href="keybox/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Keybox</a>
+        <a href="keytracker/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">KeyTracker</a>
+        <a href="keycontroller/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Keycontroller</a>
+        <a href="swat-box/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">SWAT-box</a>
+        <a href="surface-vault/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Surface Vault</a>
+        <a href="safebox/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Safebox</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navOpberg }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="sam-lockers/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">SAM lockers</a>
+        <a href="oc-spray-station/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">OC Spray Station</a>
+        <a href="keytracker-opbergkasten/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">KeyTracker opbergkasten</a>
+        <a href="vel-key/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Vel-Key</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navRingen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="sleutelringen/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">RVS keyrings</a>
+        <a href="sleutelringen/#flex" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Flex keyrings</a>
+        <a href="sleutelringen/#morse" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Morse keyrings</a>
+        <a href="sleutelringen/#rivet" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Rivet keyrings</a>
+        <a href="sleutelringen/#coating" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Flexibel met coating</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ navContact }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
+      <button type="button" onClick="{{ navBack }}" aria-label="Terug" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
+        <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
+        Terug
+      </button>
+        <a href="contact/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Offerte aanvragen</a>
+        <a href="contact/#faq" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Veelgestelde vragen</a>
+        <a href="contact/#contactgegevens" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Contactgegevens</a>
+        <a href="over/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Over DELPHI</a>
+        <a href="contact/#dealership" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Dealership</a>
+        </div>
+      </sc-if>
+    </div></div></div>
+  </sc-if>
+
+  <div style="position:absolute;top:100%;left:0;right:0;z-index:300;display:grid;grid-template-rows:{{ flyRows }};transition:grid-template-rows .4s cubic-bezier(0.25,0.1,0.25,1);pointer-events:{{ flyEvents }}">
+    <div style="min-height:0;overflow:hidden">
+      <div style="border-top:1px solid #d6d6d6;background:#fafafc;border-bottom:1px solid #d6d6d6">
+      <sc-if value="{{ openSystemen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Sleutelbeheer</span>
+          <a href="sam/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Security Asset Manager</a>
+          <a href="keybox/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Keybox</a>
+          <a href="keytracker/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">KeyTracker</a>
+          <a href="keycontroller/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Keycontroller</a>
+          <a href="swat-box/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">SWAT-box</a>
+          <a href="surface-vault/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Surface Vault</a>
+          <a href="safebox/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Safebox</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openOpberg }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Opbergsystemen</span>
+          <a href="sam-lockers/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">SAM lockers</a>
+          <a href="oc-spray-station/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">OC Spray Station</a>
+          <a href="keytracker-opbergkasten/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">KeyTracker opbergkasten</a>
+          <a href="vel-key/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Vel-Key</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openRingen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Sleutelringen</span>
+          <a href="sleutelringen/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">RVS keyrings</a>
+          <a href="sleutelringen/#flex" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Flex keyrings</a>
+          <a href="sleutelringen/#morse" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Morse keyrings</a>
+          <a href="sleutelringen/#rivet" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Rivet keyrings</a>
+          <a href="sleutelringen/#coating" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Flexibel met coating</a>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ openContact }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,56px);align-items:start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px;margin-bottom:2px">Contact</span>
+          <a href="contact/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Offerte aanvragen</a>
+          <a href="contact/#faq" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Veelgestelde vragen</a>
+          <a href="contact/#contactgegevens" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Contactgegevens</a>
+          <a href="over/" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Over DELPHI</a>
+          <a href="contact/#dealership" style="display:block;font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">Dealership</a>
+          </div>
+        </div>
+      </sc-if>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section id="top" style="background:#ffffff;padding:clamp(48px,6vw,88px) 24px clamp(8px,1vw,16px)">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <span style="display:inline-block;font-size:12px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:#707070;margin-bottom:clamp(18px,2vw,26px)">Sleutelbeheersystemen</span>
+    <h1 style="font-size:clamp(40px,7vw,88px);line-height:1.04;font-weight:700;letter-spacing:-1.44px;max-width:1000px;margin-left:auto;margin-right:auto;text-wrap:balance">Elke sleutel op naam.<br>Elk moment herleidbaar.</h1>
+    <p style="margin:clamp(20px,2.4vw,28px) auto 0;max-width:660px;font-size:clamp(19px,2.2vw,23px);line-height:1.42;color:#474747;letter-spacing:0;text-wrap:pretty">Elektronische sleutelkasten, lockers en sabotagevrije sleutelringen. Voor organisaties waar toegang niet ter discussie staat.</p>
+    <div data-hero-cta="1" style="display:flex;justify-content:center;align-items:center;gap:12px;margin-top:clamp(26px,3vw,34px);flex-wrap:wrap">
+      <a href="#sam" style="display:inline-flex;align-items:center;min-height:44px;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 26px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Bekijk de oplossingen</a>
+      <a href="contact/" style="display:inline-flex;align-items:center;min-height:44px;background:#ffffff;color:#0071e3;font-size:17px;padding:10px 25px;border-radius:980px;border:1px solid #0071e3;text-decoration:none" style-hover="background:#0071e3;color:#ffffff;text-decoration:none">Offerte aanvragen</a>
+    </div>
+    <div data-hero-cta="1" style="display:flex;justify-content:center;gap:10px;margin-top:clamp(22px,2.4vw,28px);flex-wrap:wrap">
+      <a href="#sam" style="display:inline-flex;align-items:center;min-height:44px;background:#f5f5f7;color:#1d1d1f;font-size:15px;padding:8px 18px;border-radius:980px;text-decoration:none" style-hover="background:#ebebef;text-decoration:none">Sleutelbeheer</a>
+      <a href="#opberg" style="display:inline-flex;align-items:center;min-height:44px;background:#f5f5f7;color:#1d1d1f;font-size:15px;padding:8px 18px;border-radius:980px;text-decoration:none" style-hover="background:#ebebef;text-decoration:none">Opbergsystemen</a>
+      <a href="#ringen" style="display:inline-flex;align-items:center;min-height:44px;background:#f5f5f7;color:#1d1d1f;font-size:15px;padding:8px 18px;border-radius:980px;text-decoration:none" style-hover="background:#ebebef;text-decoration:none">Sleutelringen</a>
+    </div>
+    <div data-hero-cta="1" style="display:flex;justify-content:center;margin-top:clamp(18px,2vw,24px)">
+      <a href="#keuzehulp" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">Welke oplossing past bij mij?&nbsp;›</a>
+    </div>
+  </div>
+  <div data-reveal style="margin:clamp(32px,4vw,56px) -24px 0;overflow:hidden;background:linear-gradient(180deg,#ffffff 0%,#f1f1f4 58%,#e8e8ed 100%)">
+    <div data-hero-band="1" style="width:100%;max-width:1240px;margin:0 auto;aspect-ratio:2400 / 1018;max-height:460px;display:flex;align-items:flex-end;justify-content:center;padding:clamp(14px,2vw,30px) 24px 0">
+      <img width="2400" height="1018" id="hero-visual" data-hero-wide="1" src="photos/cut/sam-familie-lijn.webp" alt="De Security Asset Manager-serie: vier uitvoeringen naast elkaar, van 96 tot 8 sleutelposities" style="width:100%;height:100%;object-fit:contain;object-position:bottom center;display:block">
+    </div>
+  </div>
+</section>
+
+<section style="background:#ffffff;padding:clamp(40px,5vw,64px) 0 clamp(8px,1vw,16px)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;text-align:center">
+    <p style="font-size:12px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:#707070">In gebruik bij</p>
+  </div>
+  <div style="margin-top:24px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)">
+    <ul style="display:flex;align-items:center;width:max-content;animation:marquee 54s linear infinite">
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="155" height="54" src="logos/google.png" alt="Google" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="358" height="132" src="logos/politie.png" alt="Politie" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="768" height="297" src="logos/rws.png" alt="Rijkswaterstaat" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="257" height="64" src="logos/pon.png" alt="Pon" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="884" height="176" src="logos/dr.png" alt="Digital Realty" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="322" height="318" src="logos/meta.png" alt="Meta" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="831" height="497" src="logos/kt-kleurrijk-wonen.png" alt="Kleurrijk Wonen" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="562" height="276" src="logos/kt-leiden.png" alt="Gemeente Leiden" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="300" height="219" src="logos/kt-renewi.png" alt="Renewi" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="242" height="208" src="logos/kt-domus-magnus.png" alt="Domus Magnus" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="410" height="162" src="logos/kt-hoppenbrouwers.png" alt="Hoppenbrouwers" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="373" height="116" src="logos/kt-plavei.png" alt="Plavei" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="155" height="54" src="logos/google.png" alt="Google" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="358" height="132" src="logos/politie.png" alt="Politie" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="768" height="297" src="logos/rws.png" alt="Rijkswaterstaat" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="257" height="64" src="logos/pon.png" alt="Pon" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="884" height="176" src="logos/dr.png" alt="Digital Realty" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="322" height="318" src="logos/meta.png" alt="Meta" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="831" height="497" src="logos/kt-kleurrijk-wonen.png" alt="Kleurrijk Wonen" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="562" height="276" src="logos/kt-leiden.png" alt="Gemeente Leiden" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="300" height="219" src="logos/kt-renewi.png" alt="Renewi" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="242" height="208" src="logos/kt-domus-magnus.png" alt="Domus Magnus" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="410" height="162" src="logos/kt-hoppenbrouwers.png" alt="Hoppenbrouwers" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+      <li style="flex:0 0 auto;width:232px;height:64px;display:flex;align-items:center;justify-content:center;opacity:0.55"><img width="373" height="116" src="logos/kt-plavei.png" alt="Plavei" style="max-width:170px;max-height:48px;width:auto;height:auto;object-fit:contain;display:block" loading="lazy"></li>
+    </ul>
+  </div>
+</section>
+
+<section id="keten" style="background:#ffffff;padding:clamp(40px,5vw,72px) 24px clamp(32px,4vw,48px);scroll-margin-top:74px">
+  <div data-reveal style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:-0.2px;max-width:620px;text-wrap:pretty">Sleutelbeheer op het niveau dat u nodig heeft.</h2>
+    <p style="margin-top:14px;max-width:620px;font-size:17px;line-height:1.5;color:#474747;text-wrap:pretty">De één wil sleutels alleen veilig opbergen, de ander moet kunnen aantonen wie welke sleutel wanneer meenam. DELPHI levert alle niveaus, en een systeem groeit mee als de eis verandert.</p>
+    <ul data-keten-grid="1" style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,2.4vw,32px)">
+      <li style="display:flex;flex-direction:column;border-top:1px solid #d6d6d6;padding-top:16px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:40px;height:40px;display:block;margin:0 0 12px"><rect x="9" y="10" width="26" height="24" rx="3"/><path d="M15 34v3M29 34v3"/><circle cx="22" cy="21" r="3.4"/><path d="M22 24.4V28"/></svg>
+        <span style="font-size:13px;font-weight:600;color:#707070;letter-spacing:0.4px">NIVEAU 01</span>
+        <span style="margin-top:6px;font-size:19px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">Opbergen</span>
+        <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Sleutels achter slot, op code of sleutel. Geen registratie, wel orde.</span>
+      </li>
+      <li style="display:flex;flex-direction:column;border-top:1px solid #d6d6d6;padding-top:16px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:40px;height:40px;display:block;margin:0 0 12px"><rect x="6" y="9" width="17" height="26" rx="3"/><path d="M18 20v4"/><path d="M28 22h10"/><path d="M34 18l4 4-4 4"/></svg>
+        <span style="font-size:13px;font-weight:600;color:#707070;letter-spacing:0.4px">NIVEAU 02</span>
+        <span style="margin-top:6px;font-size:19px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">Uitgeven aan bevoegden</span>
+        <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Wie welke sleutel mag pakken, ligt vast per persoon of per groep.</span>
+      </li>
+      <li style="display:flex;flex-direction:column;border-top:1px solid #d6d6d6;padding-top:16px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:40px;height:40px;display:block;margin:0 0 12px"><circle cx="16" cy="22" r="10"/><path d="M26 22h6"/><path d="M29 22v4"/><path d="M32 22v3"/><path d="M37 10v24"/><path d="M41 15v14"/></svg>
+        <span style="font-size:13px;font-weight:600;color:#707070;letter-spacing:0.4px">NIVEAU 03</span>
+        <span style="margin-top:6px;font-size:19px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">Registreren per sleutel</span>
+        <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Elektronische herkenning van de ring: welke sleutel, wie, hoe lang.</span>
+      </li>
+      <li style="display:flex;flex-direction:column;border-top:1px solid #d6d6d6;padding-top:16px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:40px;height:40px;display:block;margin:0 0 12px"><path d="M8 36V8"/><path d="M8 36h28"/><path d="M14 30v-7M21 30V16M28 30v-11"/><path d="M31 11l3 3 5-6"/></svg>
+        <span style="font-size:13px;font-weight:600;color:#707070;letter-spacing:0.4px">NIVEAU 04</span>
+        <span style="margin-top:6px;font-size:19px;font-weight:600;line-height:1.2;letter-spacing:-0.2px">Rapporteren en beheren</span>
+        <span style="margin-top:6px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Overzicht over meerdere kasten en locaties, met meldingen en rapportages.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section style="background:#ffffff;padding:clamp(32px,4vw,48px) 24px clamp(32px,4vw,48px)">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em">Sleutelbeheer</h2>
+    <p style="margin:12px auto 0;max-width:520px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Zes systemen, elk voor een ander gebruik.</p>
+  </div>
+</section>
+
+<section id="sam" style="position:relative;background:#f5f5f7;padding:clamp(40px,5vw,64px) 24px clamp(40px,5vw,64px);scroll-margin-top:74px;transition:background-color .18s ease" style-hover="background:#efeff1">
+  <a href="sam/" aria-label="Security Asset Manager — meer informatie" style="position:absolute;inset:0;z-index:1"></a>
+  <div data-reveal style="max-width:1200px;margin:0 auto;text-align:center">
+    <h2 style="font-size:clamp(36px,4.4vw,56px);line-height:1.06;font-weight:600;letter-spacing:-0.4px;color:#1d1d1f">Security Asset Manager</h2>
+    <p style="margin:14px auto 0;max-width:560px;min-height:58px;font-size:21px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">Van 8 tot 96 posities per kast, uit te breiden tot 192. Dezelfde bediening, dezelfde registratie.</p>
+    <div data-card-cta="1" style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap">
+      <a href="sam/" style="display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Meer informatie</a>
+      <a href="contact/?p=sam" style="display:inline-flex;align-items:center;background:#f5f5f7;color:#0071e3;font-size:17px;padding:10px 23px;border-radius:980px;border:1px solid #0071e3;text-decoration:none" style-hover="background:#0071e3;color:#ffffff;border-color:#0071e3;text-decoration:none">Offerte aanvragen</a>
+    </div>
+  </div>
+  <div data-reveal style="margin:clamp(32px,4vw,52px) auto 0;max-width:1100px;height:min(28.9vw,328px);display:flex;align-items:flex-end;justify-content:center">
+    <img width="1200" height="1053" src="photos/sam-16-cut.webp" data-eq-img="1" alt="Security Asset Manager met 16 sleutelposities, bedieningspaneel en genummerde sleutelringen achter de geopende deur" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block" loading="lazy">
+  </div>
+</section>
+
+<section id="keybox" style="position:relative;margin-top:12px;background:#f5f5f7;padding:clamp(56px,7vw,88px) 24px clamp(40px,5vw,64px);scroll-margin-top:74px;transition:background-color .18s ease" style-hover="background:#efeff1">
+  <a href="keybox/" aria-label="Keybox — meer informatie" style="position:absolute;inset:0;z-index:1"></a>
+  <div data-reveal style="max-width:1200px;margin:0 auto;text-align:center">
+    <h2 style="font-size:clamp(36px,4.4vw,56px);line-height:1.06;font-weight:600;letter-spacing:-0.4px;color:#1d1d1f">Keybox</h2>
+    <p style="margin:14px auto 0;max-width:640px;font-size:21px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">Sleutelkasten in vier series: op code, met registratie, met elektronische sleutelherkenning of als uitbreiding.</p>
+    <div style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap" data-card-cta="1">
+      <a href="keybox/" style="display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Meer informatie</a>
+      <a href="contact/?p=keybox" style="display:inline-flex;align-items:center;background:#f5f5f7;color:#0071e3;font-size:17px;padding:10px 23px;border-radius:980px;border:1px solid #0071e3;text-decoration:none" style-hover="background:#0071e3;color:#ffffff;border-color:#0071e3;text-decoration:none">Offerte aanvragen</a>
+    </div>
+  </div>
+      <div data-card-photo="1" style="margin:clamp(28px,3vw,44px) auto 0;height:min(27.9vw,318px);width:100%;max-width:560px;display:flex;align-items:flex-end;justify-content:center">
+        <img width="1600" height="1224" src="photos/cut/keybox-system-6.webp" alt="Keybox sleutelkast met codepaneel, display en zes laden" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block" loading="lazy">
+      </div>
+</section>
+
+<section id="systemen" style="background:#ffffff;padding:0;scroll-margin-top:74px">
+  <div data-card-grid="1" style="margin:12px 0 0;padding:0 12px 12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:12px" data-mobile-1col="1">
+    <div data-reveal data-product-card="1" id="keytracker" style="position:relative;background:#f5f5f7;padding:clamp(40px,5vw,64px) 28px clamp(32px,4vw,48px);display:flex;flex-direction:column;align-items:center;text-align:center;scroll-margin-top:86px;transition:background-color .18s ease" style-hover="background:#efeff1">
+      <a href="keytracker/" aria-label="KeyTracker — meer informatie" style="position:absolute;inset:0;z-index:1"></a>
+      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.2px">KeyTracker</h3>
+      <p style="margin-top:12px;max-width:400px;font-size:19px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">Mechanisch bord: de sleutel komt pas los als de gebruiker zijn eigen pin achterlaat.</p>
+      <div style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap" data-card-cta="1">
+        <a href="keytracker/" style="display:inline-flex;align-items:center;min-height:44px;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">KeyTracker bekijken</a>
+      </div>
+      <div data-card-photo="1" style="margin-top:clamp(16px,1.8vw,26px);height:min(31.7vw,357px);width:100%;max-width:420px;display:flex;align-items:center;justify-content:center">
+        <img width="894" height="480" src="photos/keytracker-bord-25-cut.webp" alt="KeyTracker bord met 25 posities" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block" loading="lazy">
+      </div>
+    </div>
+    <div data-reveal data-product-card="1" id="keycontroller" style="position:relative;background:#f5f5f7;padding:clamp(40px,5vw,64px) 28px clamp(32px,4vw,48px);display:flex;flex-direction:column;align-items:center;text-align:center;scroll-margin-top:86px;transition:background-color .18s ease" style-hover="background:#efeff1">
+      <a href="keycontroller/" aria-label="Keycontroller — meer informatie" style="position:absolute;inset:0;z-index:1"></a>
+      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.2px">Keycontroller</h3>
+      <p style="margin-top:12px;max-width:400px;font-size:19px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">Tandemslot: de gebruikssleutel komt alleen los als de controlesleutel blijft zitten.</p>
+      <div style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap" data-card-cta="1">
+        <a href="keycontroller/" style="display:inline-flex;align-items:center;min-height:44px;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Keycontroller bekijken</a>
+      </div>
+      <div data-card-photo="1" style="margin-top:clamp(16px,1.8vw,26px);height:min(31.7vw,357px);width:100%;max-width:420px;display:flex;align-items:center;justify-content:center">
+        <img width="1200" height="1298" src="photos/cut/keycontroller-6pos.webp" alt="Keycontroller kluis met zes tandemposities" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block" loading="lazy">
+      </div>
+    </div>
+    <div data-reveal data-product-card="1" id="swatbox" style="position:relative;background:#f5f5f7;padding:clamp(40px,5vw,64px) 28px clamp(32px,4vw,48px);display:flex;flex-direction:column;align-items:center;text-align:center;scroll-margin-top:86px;transition:background-color .18s ease" style-hover="background:#efeff1">
+      <a href="swat-box/" aria-label="SWAT-box — meer informatie" style="position:absolute;inset:0;z-index:1"></a>
+      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.2px">SWAT-box</h3>
+      <p style="margin-top:12px;max-width:400px;font-size:19px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">Mobiele uitgifte voor teams op locatie.</p>
+      <div style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap" data-card-cta="1">
+        <a href="swat-box/" style="display:inline-flex;align-items:center;min-height:44px;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">SWAT-box bekijken</a>
+      </div>
+      <div data-card-photo="1" style="margin-top:clamp(28px,3vw,44px);height:min(30vw,340px);width:100%;max-width:560px;display:flex;align-items:flex-end;justify-content:center">
+        <img width="1300" height="1414" src="photos/cut/swat-hero.webp" alt="SWAT-box mobiele sleuteluitgifte" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block" loading="lazy">
+      </div>
+    </div>
+    <div data-reveal data-product-card="1" id="surfacevault" style="position:relative;background:#f5f5f7;padding:clamp(40px,5vw,64px) 28px clamp(32px,4vw,48px);display:flex;flex-direction:column;align-items:center;text-align:center;scroll-margin-top:86px;transition:background-color .18s ease" style-hover="background:#efeff1">
+      <a href="surface-vault/" aria-label="Surface Vault — meer informatie" style="position:absolute;inset:0;z-index:1"></a>
+      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.2px">Surface Vault</h3>
+      <p style="margin-top:12px;max-width:400px;font-size:19px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">E&eacute;n bewaakte positie aan de wand, vrijgegeven door uw toegangscontrole.</p>
+      <div style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap" data-card-cta="1">
+        <a href="surface-vault/" style="display:inline-flex;align-items:center;min-height:44px;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Surface Vault bekijken</a>
+      </div>
+      <div data-card-photo="1" style="margin-top:clamp(16px,1.8vw,26px);height:min(31.7vw,357px);width:100%;max-width:420px;display:flex;align-items:center;justify-content:center">
+        <img width="900" height="1024" src="photos/cut/surface-vault-open.webp" alt="Surface Vault met geopend deksel en de sleutel in de vergrendeling" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="opberg" style="background:#ffffff;padding:clamp(40px,5vw,64px) 0 0;scroll-margin-top:74px">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;text-align:center">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em">Opbergsystemen</h2>
+    <p style="margin:12px auto 0;max-width:520px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Kasten en lockers die meegroeien met het sleutelbestand.</p>
+  </div>
+  <div data-card-grid="1" style="margin:clamp(28px,4vw,44px) 0 0;padding:0 12px 12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px" data-mobile-1col="1">
+    <div data-reveal data-product-card="1" style="position:relative;background:#f5f5f7;padding:clamp(40px,5vw,64px) 28px clamp(32px,4vw,48px);display:flex;flex-direction:column;align-items:center;text-align:center;transition:background-color .18s ease" style-hover="background:#efeff1">
+      <a href="sam-lockers/" aria-label="SAM lockers — meer informatie" style="position:absolute;inset:0;z-index:1"></a>
+      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.2px">SAM lockers</h3>
+      <p style="margin-top:12px;max-width:400px;font-size:19px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">Voor portofoons, laptops en uitrusting.</p>
+      <div style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap" data-card-cta="1">
+        <a href="sam-lockers/" style="display:inline-flex;align-items:center;min-height:44px;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">SAM lockers bekijken</a>
+      </div>
+      <div data-card-photo="1" style="margin-top:clamp(28px,3vw,44px);height:min(32vw,360px);width:100%;display:flex;align-items:flex-end;justify-content:center">
+        <img width="900" height="900" src="photos/lockers-radio.webp" alt="Locker met portofoon in laadstation" style="max-width:100%;max-height:100%;object-fit:contain;display:block" loading="lazy">
+      </div>
+    </div>
+    <div data-reveal data-product-card="1" style="position:relative;background:#f5f5f7;padding:clamp(40px,5vw,64px) 28px clamp(32px,4vw,48px);display:flex;flex-direction:column;align-items:center;text-align:center;transition:background-color .18s ease" style-hover="background:#efeff1">
+      <a href="oc-spray-station/" aria-label="OC Spray Station — meer informatie" style="position:absolute;inset:0;z-index:1"></a>
+      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.2px">OC Spray Station</h3>
+      <p style="margin-top:12px;max-width:400px;font-size:19px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">Pepperspray uitgeven, wegen en afvoeren.</p>
+      <div style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap" data-card-cta="1">
+        <a href="oc-spray-station/" style="display:inline-flex;align-items:center;min-height:44px;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">OC Spray Station bekijken</a>
+      </div>
+      <div data-card-photo="1" style="margin-top:clamp(28px,3vw,44px);height:min(32vw,360px);width:100%;display:flex;align-items:center;justify-content:center">
+        <img width="1500" height="756" src="photos/cut/oc-spray-familie-vrij.webp" alt="MK-9-kast met zestien spuitbussen naast een MK-4-kast met tachtig posities" style="max-width:100%;max-height:100%;object-fit:contain;display:block" loading="lazy">
+      </div>
+    </div>
+    <div data-reveal data-product-card="1" style="position:relative;background:#f5f5f7;padding:clamp(40px,5vw,64px) 28px clamp(32px,4vw,48px);display:flex;flex-direction:column;align-items:center;text-align:center;transition:background-color .18s ease" style-hover="background:#efeff1">
+      <a href="keytracker-opbergkasten/" aria-label="KeyTracker opbergkasten — meer informatie" style="position:absolute;inset:0;z-index:1"></a>
+      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.2px">KeyTracker opbergkasten</h3>
+      <p style="margin-top:12px;max-width:400px;font-size:19px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">Stalen kast om het KeyTracker-bord heen.</p>
+      <div style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap" data-card-cta="1">
+        <a href="keytracker-opbergkasten/" style="display:inline-flex;align-items:center;min-height:44px;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Opbergkasten bekijken</a>
+      </div>
+      <div data-card-photo="1" style="margin-top:clamp(28px,3vw,44px);height:min(32vw,360px);width:100%;display:flex;align-items:center;justify-content:center">
+        <img width="1024" height="1024" src="photos/keytracker-kasten-cut2.webp" alt="De vier maten KeyTracker-kasten naast elkaar, met mechanisch codeslot en noodcilinder" style="max-width:100%;max-height:100%;object-fit:contain;display:block" loading="lazy">
+      </div>
+    </div>
+    <div data-reveal data-product-card="1" style="position:relative;background:#f5f5f7;padding:clamp(40px,5vw,64px) 28px clamp(32px,4vw,48px);display:flex;flex-direction:column;align-items:center;text-align:center;transition:background-color .18s ease" style-hover="background:#efeff1">
+      <a href="vel-key/" aria-label="Vel-Key — meer informatie" style="position:absolute;inset:0;z-index:1"></a>
+      <h3 style="font-size:clamp(28px,3vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.2px">Vel-Key</h3>
+      <p style="margin-top:12px;max-width:400px;font-size:19px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">Sleutels op labels met klittenband.</p>
+      <div style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px;flex-wrap:wrap" data-card-cta="1">
+        <a href="vel-key/" style="display:inline-flex;align-items:center;min-height:44px;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Vel-Key bekijken</a>
+      </div>
+      <div data-card-photo="1" style="margin-top:clamp(28px,3vw,44px);height:min(32vw,360px);width:100%;display:flex;align-items:flex-end;justify-content:center">
+        <img width="1600" height="1073" src="photos/cut/velkey-cassette-schoon.webp" alt="Vel-Key Key Cassette met gelabelde sleutels" style="max-width:100%;max-height:100%;object-fit:contain;display:block" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ringen" style="background:#f5f5f7;padding:clamp(40px,5vw,64px) 24px clamp(64px,8vw,104px)">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em">Sleutelringen</h2>
+    <p style="margin:12px auto 0;max-width:520px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Een systeem klopt alleen als de sleutel aan de ring blijft zitten.</p>
+  </div>
+  <div data-reveal style="margin:clamp(32px,4vw,52px) 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px" data-ring-carousel="1">
+    <a href="sleutelringen/" style="position:relative;background:#ffffff;border-radius:20px;padding:clamp(28px,3vw,40px) 22px clamp(28px,3vw,36px);display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:18px;color:#1d1d1f;transition:transform .22s cubic-bezier(0.25,0.1,0.25,1)" style-hover="text-decoration:none;transform:scale(1.02)">
+      <div style="display:flex;flex-direction:column;gap:6px;width:100%">
+        <span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#707070">RVS keyrings</span>
+        <span style="font-size:24px;font-weight:600;line-height:1.16;letter-spacing:0.1px;text-wrap:pretty">Onlosmaakbaar in RVS.</span>
+        <span style="margin-top:2px;font-size:15px;line-height:1.4;color:#707070;letter-spacing:-0.2px;text-wrap:pretty">Dicht met gereedschap, alleen los door knippen.</span>
+      </div>
+      <div style="height:min(30vw,210px);width:100%;margin-top:auto;display:flex;align-items:flex-end;justify-content:center"><img width="1600" height="1422" src="photos/ring-rvs.webp" alt="Massieve RVS sleutelring" style="max-width:100%;max-height:100%;object-fit:contain;display:block" loading="lazy"></div>
+      <span style="position:absolute;right:clamp(18px,2vw,26px);bottom:clamp(18px,2vw,26px);width:36px;height:36px;border-radius:50%;background:#1d1d1f;color:#ffffff;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;padding-bottom:2px">›</span>
+    </a>
+    <a href="sleutelringen/#flex" style="position:relative;background:#ffffff;border-radius:20px;padding:clamp(28px,3vw,40px) 22px clamp(28px,3vw,36px);display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:18px;color:#1d1d1f;transition:transform .22s cubic-bezier(0.25,0.1,0.25,1)" style-hover="text-decoration:none;transform:scale(1.02)">
+      <div style="display:flex;flex-direction:column;gap:6px;width:100%">
+        <span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#707070">Flex keyrings</span>
+        <span style="font-size:24px;font-weight:600;line-height:1.16;letter-spacing:0.1px;text-wrap:pretty">Buigzaam en verzegeld.</span>
+        <span style="margin-top:2px;font-size:15px;line-height:1.4;color:#707070;letter-spacing:-0.2px;text-wrap:pretty">Gevlochten kabel, ook voor sleutels met een grote kop.</span>
+      </div>
+      <div style="height:min(30vw,210px);width:100%;margin-top:auto;display:flex;align-items:flex-end;justify-content:center"><img width="1191" height="1254" src="photos/cut/ring-flex-solo.webp" alt="Flex keyring van gevlochten staaldraad met geperste sluiting" style="max-width:100%;max-height:100%;object-fit:contain;display:block" loading="lazy"></div>
+      <span style="position:absolute;right:clamp(18px,2vw,26px);bottom:clamp(18px,2vw,26px);width:36px;height:36px;border-radius:50%;background:#1d1d1f;color:#ffffff;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;padding-bottom:2px">›</span>
+    </a>
+    <a href="sleutelringen/#morse" style="position:relative;background:#ffffff;border-radius:20px;padding:clamp(28px,3vw,40px) 22px clamp(28px,3vw,36px);display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:18px;color:#1d1d1f;transition:transform .22s cubic-bezier(0.25,0.1,0.25,1)" style-hover="text-decoration:none;transform:scale(1.02)">
+      <div style="display:flex;flex-direction:column;gap:6px;width:100%">
+        <span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#707070">Morse keyrings</span>
+        <span style="font-size:24px;font-weight:600;line-height:1.16;letter-spacing:0.1px;text-wrap:pretty">Sluiten met een klik.</span>
+        <span style="margin-top:2px;font-size:15px;line-height:1.4;color:#707070;letter-spacing:-0.2px;text-wrap:pretty">Sleutels wisselen zonder gereedschap; hub vervangbaar.</span>
+      </div>
+      <div style="height:min(30vw,210px);width:100%;margin-top:auto;display:flex;align-items:flex-end;justify-content:center"><img width="1260" height="1582" src="photos/ring-morse-groen.webp" alt="Morse keyring met groene hub" style="max-width:100%;max-height:100%;object-fit:contain;display:block" loading="lazy"></div>
+      <span style="position:absolute;right:clamp(18px,2vw,26px);bottom:clamp(18px,2vw,26px);width:36px;height:36px;border-radius:50%;background:#1d1d1f;color:#ffffff;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;padding-bottom:2px">›</span>
+    </a>
+    <a href="sleutelringen/#rivet" style="position:relative;background:#ffffff;border-radius:20px;padding:clamp(28px,3vw,40px) 22px clamp(28px,3vw,36px);display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:18px;color:#1d1d1f;transition:transform .22s cubic-bezier(0.25,0.1,0.25,1)" style-hover="text-decoration:none;transform:scale(1.02)">
+      <div style="display:flex;flex-direction:column;gap:6px;width:100%">
+        <span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#707070">Rivet keyrings</span>
+        <span style="font-size:24px;font-weight:600;line-height:1.16;letter-spacing:0.1px;text-wrap:pretty">Sluiting met klinknagel.</span>
+        <span style="margin-top:2px;font-size:15px;line-height:1.4;color:#707070;letter-spacing:-0.2px;text-wrap:pretty">Manipulatie is aan de ring te zien.</span>
+      </div>
+      <div style="height:min(30vw,210px);width:100%;margin-top:auto;display:flex;align-items:flex-end;justify-content:center"><img width="1524" height="1600" src="photos/ring-rivet-open.webp" alt="Rivet keyring met klinknagel" style="max-width:100%;max-height:100%;object-fit:contain;display:block" loading="lazy"></div>
+      <span style="position:absolute;right:clamp(18px,2vw,26px);bottom:clamp(18px,2vw,26px);width:36px;height:36px;border-radius:50%;background:#1d1d1f;color:#ffffff;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;padding-bottom:2px">›</span>
+    </a>
+    <a href="sleutelringen/#coating" style="position:relative;background:#ffffff;border-radius:20px;padding:clamp(28px,3vw,40px) 22px clamp(28px,3vw,36px);display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:18px;color:#1d1d1f;transition:transform .22s cubic-bezier(0.25,0.1,0.25,1)" style-hover="text-decoration:none;transform:scale(1.02)">
+      <div style="display:flex;flex-direction:column;gap:6px;width:100%">
+        <span style="font-size:12px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#707070">Flexibel met coating</span>
+        <span style="font-size:24px;font-weight:600;line-height:1.16;letter-spacing:0.1px;text-wrap:pretty">Staaldraad met mantel.</span>
+        <span style="margin-top:2px;font-size:15px;line-height:1.4;color:#707070;letter-spacing:-0.2px;text-wrap:pretty">Ontziet sloten en oppervlakken.</span>
+      </div>
+      <div style="height:min(30vw,210px);width:100%;margin-top:auto;display:flex;align-items:flex-end;justify-content:center"><img width="1600" height="1462" src="photos/ring-coating-blauw.webp" alt="Staaldraadring met blauwe coating" style="max-width:100%;max-height:100%;object-fit:contain;display:block" loading="lazy"></div>
+      <span style="position:absolute;right:clamp(18px,2vw,26px);bottom:clamp(18px,2vw,26px);width:36px;height:36px;border-radius:50%;background:#1d1d1f;color:#ffffff;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;padding-bottom:2px">›</span>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:clamp(28px,3vw,40px)">
+    <a href="sleutelringen/" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">Bekijk de sleutelringen&nbsp;›</a>
+  </div>
+</section>
+
+<section id="keuzehulp" style="background:#ffffff;padding:clamp(56px,7vw,96px) 24px;scroll-margin-top:74px">
+  <div data-reveal style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:-0.2px;max-width:620px;text-wrap:pretty">Welk systeem past bij u?</h2>
+    <p style="margin-top:14px;max-width:620px;font-size:17px;line-height:1.5;color:#474747;text-wrap:pretty">Drie vragen. Daarna weet u waar u moet beginnen — en waarom.</p>
+
+    <div style="margin-top:clamp(32px,4vw,48px);display:flex;flex-direction:column;gap:clamp(28px,3vw,40px);max-width:820px">
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:1.4px;color:#707070">01 &nbsp;WAT GAAT ER IN</span>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <button type="button" onClick="{{ khDoelSleutels }}" aria-pressed="{{ khDoelSleutelsAan }}" style="font-family:inherit;font-size:16px;min-height:44px;padding:10px 20px;border-radius:980px;cursor:pointer;border:1px solid {{ khDoel1Rand }};background:{{ khDoel1Bg }};color:{{ khDoel1Kleur }};transition:background-color .2s ease,border-color .2s ease">Sleutels</button>
+          <button type="button" onClick="{{ khDoelMaterieel }}" aria-pressed="{{ khDoelMaterieelAan }}" style="font-family:inherit;font-size:16px;min-height:44px;padding:10px 20px;border-radius:980px;cursor:pointer;border:1px solid {{ khDoel2Rand }};background:{{ khDoel2Bg }};color:{{ khDoel2Kleur }};transition:background-color .2s ease,border-color .2s ease">Sleutels én materieel</button>
+          <button type="button" onClick="{{ khDoelMobiel }}" aria-pressed="{{ khDoelMobielAan }}" style="font-family:inherit;font-size:16px;min-height:44px;padding:10px 20px;border-radius:980px;cursor:pointer;border:1px solid {{ khDoel3Rand }};background:{{ khDoel3Bg }};color:{{ khDoel3Kleur }};transition:background-color .2s ease,border-color .2s ease">Uitgifte op locatie</button>
+          <button type="button" onClick="{{ khDoelOC }}" aria-pressed="{{ khDoelOCAan }}" style="font-family:inherit;font-size:16px;min-height:44px;padding:10px 20px;border-radius:980px;cursor:pointer;border:1px solid {{ khDoel4Rand }};background:{{ khDoel4Bg }};color:{{ khDoel4Kleur }};transition:background-color .2s ease,border-color .2s ease">Pepperspray</button>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:1.4px;color:#707070">02 &nbsp;HOEVEEL POSITIES</span>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <button type="button" onClick="{{ khOmvangEen }}" aria-pressed="{{ khOmvangEenAan }}" style="font-family:inherit;font-size:16px;min-height:44px;padding:10px 20px;border-radius:980px;cursor:pointer;border:1px solid {{ khOmvang0Rand }};background:{{ khOmvang0Bg }};color:{{ khOmvang0Kleur }};transition:background-color .2s ease,border-color .2s ease">Eén sleutel</button>
+          <button type="button" onClick="{{ khOmvangKlein }}" aria-pressed="{{ khOmvangKleinAan }}" style="font-family:inherit;font-size:16px;min-height:44px;padding:10px 20px;border-radius:980px;cursor:pointer;border:1px solid {{ khOmvang1Rand }};background:{{ khOmvang1Bg }};color:{{ khOmvang1Kleur }};transition:background-color .2s ease,border-color .2s ease">Tot 12</button>
+          <button type="button" onClick="{{ khOmvangMiddel }}" aria-pressed="{{ khOmvangMiddelAan }}" style="font-family:inherit;font-size:16px;min-height:44px;padding:10px 20px;border-radius:980px;cursor:pointer;border:1px solid {{ khOmvang2Rand }};background:{{ khOmvang2Bg }};color:{{ khOmvang2Kleur }};transition:background-color .2s ease,border-color .2s ease">12 tot 48</button>
+          <button type="button" onClick="{{ khOmvangGroot }}" aria-pressed="{{ khOmvangGrootAan }}" style="font-family:inherit;font-size:16px;min-height:44px;padding:10px 20px;border-radius:980px;cursor:pointer;border:1px solid {{ khOmvang3Rand }};background:{{ khOmvang3Bg }};color:{{ khOmvang3Kleur }};transition:background-color .2s ease,border-color .2s ease">Meer dan 48</button>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:1.4px;color:#707070">03 &nbsp;WAT MOET ER VASTLIGGEN</span>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <button type="button" onClick="{{ khRegDigitaal }}" aria-pressed="{{ khRegDigitaalAan }}" style="font-family:inherit;font-size:16px;min-height:44px;padding:10px 20px;border-radius:980px;cursor:pointer;border:1px solid {{ khReg1Rand }};background:{{ khReg1Bg }};color:{{ khReg1Kleur }};transition:background-color .2s ease,border-color .2s ease">Wie, wat en wanneer, digitaal</button>
+          <button type="button" onClick="{{ khRegZichtbaar }}" aria-pressed="{{ khRegZichtbaarAan }}" style="font-family:inherit;font-size:16px;min-height:44px;padding:10px 20px;border-radius:980px;cursor:pointer;border:1px solid {{ khReg2Rand }};background:{{ khReg2Bg }};color:{{ khReg2Kleur }};transition:background-color .2s ease,border-color .2s ease">Zichtbaar, zonder software</button>
+          <button type="button" onClick="{{ khRegGeen }}" aria-pressed="{{ khRegGeenAan }}" style="font-family:inherit;font-size:16px;min-height:44px;padding:10px 20px;border-radius:980px;cursor:pointer;border:1px solid {{ khReg3Rand }};background:{{ khReg3Bg }};color:{{ khReg3Kleur }};transition:background-color .2s ease,border-color .2s ease">Alleen veilig afsluiten</button>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ khKlaar }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:clamp(32px,4vw,48px);max-width:1000px;background:#f5f5f7;border-radius:16px;padding:clamp(28px,3.2vw,40px)">
+        <div data-kh-result="1" style="display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,3vw,40px);align-items:start">
+        <div>
+        <span style="font-size:12px;font-weight:600;letter-spacing:1.4px;color:#707070">ONZE AANBEVELING</span>
+        <h3 style="margin-top:12px;font-size:clamp(28px,3vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.2px">{{ khNaam }}</h3>
+        <span style="display:block;margin-top:8px;font-size:17px;color:#707070;letter-spacing:-0.374px">{{ khPosities }} als vertrekpunt</span>
+        <p style="margin-top:12px;max-width:560px;font-size:17px;line-height:1.5;color:#474747;text-wrap:pretty">{{ khWaarom }}</p>
+        <div style="margin-top:24px;padding-top:22px;border-top:1px solid #d6d6d6">
+          <span style="font-size:12px;font-weight:600;letter-spacing:1.4px;color:#707070">WAAROM DIT PAST</span>
+          <ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;max-width:560px">
+            <sc-for list="{{ khPunten }}" as="punt" hint-placeholder-count="5">
+              <li style="display:flex;gap:10px;align-items:flex-start;font-size:17px;line-height:1.45;color:#1d1d1f;letter-spacing:-0.374px">
+                <svg viewBox="0 0 20 20" fill="none" stroke="#0071e3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:0 0 20px;margin-top:2px"><path d="M4 10.5l4 4 8-9"/></svg>
+                <span style="text-wrap:pretty">{{ punt }}</span>
+              </li>
+            </sc-for>
+          </ul>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
+          <a href="{{ khOfferte }}" style="display:inline-flex;align-items:center;min-height:44px;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Offerte aanvragen</a>
+          <a href="{{ khHref }}" style="display:inline-flex;align-items:center;min-height:44px;background:transparent;color:#0071e3;font-size:17px;padding:10px 23px;border-radius:980px;border:1px solid #0071e3;text-decoration:none" style-hover="background:#0071e3;color:#ffffff;text-decoration:none">{{ khCta }}</a>
+        </div>
+        <span style="display:block;margin-top:12px;font-size:15px;line-height:1.45;color:#707070;text-wrap:pretty">Uw antwoorden gaan mee in de aanvraag, zodat we meteen gericht kunnen reageren.</span>
+        <div style="margin-top:26px;padding-top:22px;border-top:1px solid #d6d6d6;display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:15px;color:#707070">Ook een optie</span>
+          <a href="{{ khAltHref }}" style="font-size:19px;font-weight:600;color:#1d1d1f;letter-spacing:-0.2px" style-hover="color:#0071e3;text-decoration:none">{{ khAltNaam }}&nbsp;›</a>
+          <span style="font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">{{ khAltWaarom }}</span>
+        </div>
+        <p style="margin-top:22px;font-size:15px;line-height:1.45;color:#474747;text-wrap:pretty">Welk systeem het ook wordt: de registratie klopt alleen als de sleutel niet van de ring kan. <a href="sleutelringen/" style="color:#0066cc">Bekijk de sleutelringen&nbsp;›</a></p>
+        <button type="button" onClick="{{ khReset }}" style="margin-top:20px;font-family:inherit;font-size:15px;min-height:44px;padding:0;background:none;border:0;color:#0066cc;cursor:pointer;text-align:left">Opnieuw beginnen</button>
+        </div>
+        <a href="{{ khHref }}" aria-hidden="true" tabIndex="-1" style="display:block;background:transparent;aspect-ratio:4 / 3;overflow:hidden;text-decoration:none" style-hover="text-decoration:none">
+          {{ khFoto }}
+        </a>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<section style="background:#f5f5f7;padding:clamp(56px,7vw,88px) 24px;margin:12px 0">
+  <div data-reveal style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;max-width:560px;text-wrap:pretty">Van sleutelbos naar sluitend beheer.</h2>
+    <p style="margin-top:14px;max-width:560px;font-size:17px;line-height:1.5;color:#474747;text-wrap:pretty">Welk niveau u ook kiest, de weg ernaartoe is dezelfde.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(24px,3vw,40px);margin-top:40px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:44px;height:44px;display:block;margin:2px 0 6px"><rect x="9" y="8" width="26" height="30" rx="3"/><path d="M17 8V6h10v2"/><path d="M15 18l2.5 2.5L22 16"/><path d="M26 19h5"/><path d="M15 28l2.5 2.5L22 26"/><path d="M26 29h5"/></svg>
+        <span style="font-size:14px;font-weight:600;color:#707070;letter-spacing:0.2px">01</span>
+        <span style="font-size:21px;font-weight:600;letter-spacing:0.231px">Inventarisatie</span>
+        <span style="font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Sleutels, gebruikers en verantwoordelijkheden in kaart, op locatie.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:44px;height:44px;display:block;margin:2px 0 6px"><rect x="7" y="7" width="30" height="30" rx="3"/><path d="M22 7v30"/><circle cx="14.5" cy="15" r="1.6"/><circle cx="14.5" cy="22" r="1.6"/><circle cx="14.5" cy="29" r="1.6"/><path d="M28 16h5M28 22h5M28 28h5"/></svg>
+        <span style="font-size:14px;font-weight:600;color:#707070;letter-spacing:0.2px">02</span>
+        <span style="font-size:21px;font-weight:600;letter-spacing:0.231px">Inrichting</span>
+        <span style="font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Systeem, ringen en autorisaties ingericht, geplaatst en uitgelegd.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <svg viewBox="0 0 44 44" fill="none" stroke="#0071e3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:44px;height:44px;display:block;margin:2px 0 6px"><path d="M36 22a14 14 0 1 1-4.1-9.9"/><path d="M32 6v7h-7"/><path d="M18 22l3 3 6-7"/></svg>
+        <span style="font-size:14px;font-weight:600;color:#707070;letter-spacing:0.2px">03</span>
+        <span style="font-size:21px;font-weight:600;letter-spacing:0.231px">Beheer</span>
+        <span style="font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Rapportages, uitbreiding en onderhoud via één aanspreekpunt.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:#ffffff;padding:clamp(64px,8vw,104px) 24px">
+  <div data-reveal style="max-width:1200px;margin:0 auto;text-align:center">
+    <h2 style="font-size:clamp(32px,4.6vw,56px);line-height:1.07;font-weight:700;letter-spacing:-0.28px;text-wrap:balance">Zie het werken.</h2>
+    <p style="margin:16px auto 0;max-width:520px;font-size:19px;line-height:1.38;color:#707070;letter-spacing:0.231px;text-wrap:pretty">Een demo op uw locatie of bij ons in Gorinchem. We nemen binnen één werkdag contact op.</p>
+    <div data-card-cta="1" style="display:flex;justify-content:center;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap">
+      <a href="contact/" style="display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none" style-hover="background:#0077ed;text-decoration:none">Offerte aanvragen</a>
+      <a href="tel:+31183648851" style="display:inline-flex;align-items:center;background:#ffffff;color:#0071e3;font-size:17px;padding:10px 23px;border-radius:980px;border:1px solid #0071e3;text-decoration:none" style-hover="background:#0071e3;color:#ffffff;text-decoration:none">+31 (0)183 648851</a>
+    </div>
+    <div style="margin:clamp(32px,4vw,48px) auto 0;padding-top:24px;border-top:1px solid #d6d6d6;max-width:640px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 32px">
+      <a href="contact/#contactgegevens" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">Einsteinstraat 3e, 4207 HW Gorinchem&nbsp;›</a>
+      <a href="mailto:info@sleutelbeheersystemen.nl" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">info@sleutelbeheersystemen.nl</a>
+    </div>
+    <div style="margin-top:16px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 32px">
+      <a href="contact/#faq" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">Veelgestelde vragen&nbsp;›</a>
+      <a href="contact/#dealership" style="display:inline-flex;align-items:center;min-height:44px;font-size:17px;color:#0066cc">Dealer worden&nbsp;›</a>
+    </div>
+  </div>
+</section>
+
+<footer style="margin-top:12px;background:#f5f5f7;padding:clamp(56px,7vw,80px) 24px 40px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:40px">
+      <img width="250" height="92" src="logos/delphi-wordmark.png" alt="DELPHI" style="height:32px;width:87px;align-self:flex-start;display:block" loading="lazy">
+      <span style="font-size:12px;font-weight:600;letter-spacing:2px;color:#707070;text-transform:uppercase">Sleutelbeheersystemen</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Sleutelbeheer</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="sam/" style="font-size:14px;color:#707070">Security Asset Manager</a></li>
+          <li><a href="keybox/" style="font-size:14px;color:#707070">Keybox</a></li>
+          <li><a href="keytracker/" style="font-size:14px;color:#707070">KeyTracker</a></li>
+          <li><a href="keycontroller/" style="font-size:14px;color:#707070">Keycontroller</a></li>
+          <li><a href="swat-box/" style="font-size:14px;color:#707070">SWAT-box</a></li>
+          <li><a href="surface-vault/" style="font-size:14px;color:#707070">Surface Vault</a></li>
+          <li><a href="safebox/" style="font-size:14px;color:#707070">Safebox</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Opbergsystemen</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="sam-lockers/" style="font-size:14px;color:#707070">SAM lockers</a></li>
+          <li><a href="oc-spray-station/" style="font-size:14px;color:#707070">OC Spray Station</a></li>
+          <li><a href="keytracker-opbergkasten/" style="font-size:14px;color:#707070">KeyTracker opbergkasten</a></li>
+          <li><a href="vel-key/" style="font-size:14px;color:#707070">Vel-Key</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Sleutelringen</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="sleutelringen/" style="font-size:14px;color:#707070">RVS keyrings</a></li>
+          <li><a href="sleutelringen/#flex" style="font-size:14px;color:#707070">Flex keyrings</a></li>
+          <li><a href="sleutelringen/#morse" style="font-size:14px;color:#707070">Morse keyrings</a></li>
+          <li><a href="sleutelringen/#rivet" style="font-size:14px;color:#707070">Rivet keyrings</a></li>
+          <li><a href="sleutelringen/#coating" style="font-size:14px;color:#707070">Flexibel met coating</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:14px;font-weight:600;color:#1d1d1f;letter-spacing:-0.224px">Contact</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <li><a href="contact/#contactgegevens" style="font-size:14px;color:#707070">Contactgegevens</a></li>
+          <li><a href="contact/#faq" style="font-size:14px;color:#707070">Veelgestelde vragen</a></li>
+          <li><a href="documentatie/" style="font-size:14px;color:#707070">Documentatie</a></li>
+          <li><a href="contact/#dealership" style="font-size:14px;color:#707070">Dealer worden</a></li>
+          <li><a href="over/" style="font-size:14px;color:#707070">Over DELPHI</a></li>
+          <li><a href="over/#fabrikanten" style="font-size:14px;color:#707070">Fabrikanten en partners</a></li>
+          <li><a href="contact/" style="font-size:14px;color:#707070">Offerte aanvragen</a></li>
+        </ul>
+      </div>
+    </div>
+    <p data-legal="1" style="margin-top:48px;padding-top:20px;border-top:1px solid #d6d6d6;font-size:12px;line-height:1.33;color:#707070">© 2026 DELPHI Sleutelbeheersystemen · Einsteinstraat 3e, 4207 HW Gorinchem · KvK 51691671 · BTW NL073453614B01<br><a href="privacy/" style="color:#707070">Privacy en disclaimer</a> &middot; <a href="voorwaarden/" style="color:#707070">Algemene voorwaarden</a></p>
+  </div>
+</footer>
+
+<sc-if value="{{ mobileBar }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:180;background:rgba(250,250,252,0.94);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #d6d6d6;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;animation:barIn .25s ease both">
+    <a href="contact/" style="flex:1 1 0;min-height:44px;display:flex;align-items:center;justify-content:center;background:#0071e3;color:#ffffff;font-size:16px;border-radius:980px;text-decoration:none" style-hover="text-decoration:none">Offerte aanvragen</a>
+    <a href="tel:+31183648851" aria-label="Bel +31 183 648851" style="flex:0 0 auto;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;padding:0 18px;background:#ffffff;color:#0071e3;font-size:16px;border-radius:980px;border:1px solid #0071e3;text-decoration:none" style-hover="text-decoration:none">Bellen</a>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { navSub: null, menu: null, showBar: false, faq: [false, false, false, false], slide: 0, mobile: false, navOpen: false, searchOpen: false, q: '', kh: {} };
+
+  sRef = React.createRef();
+
+  componentDidUpdate() {
+    if (this.state.searchOpen && !this._so && this.sRef.current) this.sRef.current.focus();
+    this._so = this.state.searchOpen;
+  }
+
+  static get INDEX() {
+    return ((window.DELPHI_ZOEK && window.DELPHI_ZOEK.nl) || []).map(function (r) {
+      return { title: r.t, sub: r.s, href: r.u, k: r.k, g: r.g };
+    });
+  }
+
+  componentDidMount() {
+
+    if (location.hash && location.hash.length > 1) {
+      let pogingen = 0;
+      const spring = () => {
+        let el = null;
+        try { el = document.querySelector(location.hash); } catch (err) { return; }
+        if (el) {
+          const marge = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+          const y = el.getBoundingClientRect().top + window.scrollY - marge;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
+          if (++pogingen > 3) return;
+        }
+        if (++pogingen < 24) setTimeout(spring, 120);
+      };
+      setTimeout(spring, 60);
+    }
+    this._mq = window.matchMedia('(max-width: 1000px)');
+    const sync = () => this.setState({ mobile: this._mq.matches, navOpen: false });
+    this._mq.addEventListener('change', sync);
+    this.setState({ mobile: this._mq.matches });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.style.animation = 'floatIn 0.7s cubic-bezier(0.28,0.11,0.32,1) both';
+        e.target.addEventListener('animationend', () => {
+          e.target.style.animation = '';
+          e.target.style.opacity = '';
+          e.target.style.transform = '';
+        }, { once: true });
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach((n) => {
+      if (n.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+      n.style.opacity = '0';
+      io.observe(n);
+    });
+    this._io = io;
+
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const y = window.scrollY || 0;
+        const show = y > 700;
+        if (show !== this.state.showBar) this.setState({ showBar: show });
+      });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+
+  hover(k) { return () => { if (!this.state.mobile) this.setState({ menu: k }); }; }
+  toggleFaq(i) {
+    return () => this.setState((s) => {
+      const faq = s.faq.slice();
+      faq[i] = !faq[i];
+      return { faq };
+    });
+  }
+  goSlide(i) {
+    return () => {
+      const el = document.getElementById('gallery-scroller');
+      if (!el) return;
+      const card = el.children[i];
+      if (card) el.scrollTo({ left: card.offsetLeft - el.offsetLeft, behavior: 'smooth' });
+    };
+  }
+
+  navBack = () => this.setState({ navSub: null });
+  navTo = (k) => () => this.setState({ navSub: k });
+
+  khSet = (veld, waarde) => () => this.setState((s) => ({ kh: Object.assign({}, s.kh, { [veld]: s.kh && s.kh[veld] === waarde ? null : waarde }) }));
+
+  khAdvies() {
+    const kh = this.state.kh || {};
+    if (!kh.doel || !kh.omvang || !kh.reg) return null;
+    const P = window.DELPHI_PRODUCTEN.kaart('nl');
+    const SLUG = window.DELPHI_PRODUCTEN.slugs();
+    const OMVANG = { een: 'Eén sleutel of één bos', klein: 'Tot 12 posities', middel: '12 tot 48 posities', groot: '48 posities of meer' };
+    const OMVANGKORT = { een: 'één sleutel of één bos', klein: 'tot 12 posities', middel: '12 tot 48 posities', groot: 'meer dan 48 posities' };
+    const DOELTEKST = { sleutels: 'alleen sleutels', materieel: 'sleutels én materieel', mobiel: 'uitgifte op locatie', ocspray: 'pepperspray beheren' };
+    const REGTEKST = { digitaal: 'wie, wat en wanneer digitaal vastleggen', zichtbaar: 'zichtbaar zonder software', geen: 'alleen veilig afsluiten' };
+    const R = (k, waarom, alt, altWaarom, punten) => {
+      const samenvatting = 'Via de keuzehulp op de website: ' + (DOELTEKST[kh.doel] || '') + ', ' +
+        (OMVANGKORT[kh.omvang] || '') + ', ' + (REGTEKST[kh.reg] || '') +
+        '. Geadviseerd: ' + P[k].naam + '. Graag een voorstel en een prijsopgave.';
+      return {
+        naam: P[k].naam, href: P[k].href, cta: P[k].cta, waarom: waarom,
+        posities: OMVANG[kh.omvang] || '', punten: punten || [],
+        offerte: 'contact/?p=' + SLUG[k] + '&i=prijs&kh=' + encodeURIComponent(samenvatting),
+        img: P[k].img, imgAlt: P[k].alt, imgW: P[k].imgW, imgH: P[k].imgH,
+        altNaam: P[alt].naam, altHref: P[alt].href, altWaarom: altWaarom
+      };
+    };
+
+    if (kh.doel === 'mobiel') {
+      return R('swat', 'Uitgifte gebeurt buiten de vaste locatie. De SWAT-box gaat mee en geeft sleutels vrij aan wie zich ter plaatse identificeert.', 'sam',
+        'Voor het vaste beheer op de basis, waar de SWAT-box zijn sleutels vandaan haalt.',
+        ['Gaat mee naar de locatie, werkt zelfstandig', 'Vrijgave op pincode of pas ter plaatse', 'Elke uitgifte en inname met tijdstip vastgelegd', 'Koppelt terug aan het vaste beheer op de basis', 'Robuuste behuizing voor gebruik buiten']);
+    }
+    if (kh.doel === 'ocspray') {
+      return R('ocspray', 'OC-spuitbussen vragen meer dan een afsluitbare kast: de OC Spray Station weegt elke bus bij inname en beoordeelt of hij terug in dienst kan of afgevoerd moet worden.', 'lockers',
+        'Als het niet alleen om spuitbussen gaat maar om uitrusting in het algemeen.',
+        ['Interne weegschaal controleert of de bus op gewicht is', 'Apart afvoervak voor bussen die uit dienst gaan', 'Elke bus afzonderlijk geïdentificeerd en gevolgd', 'Uitgifte op pincode, pas, proximity of vingerafdruk', 'MK-4 voor 24, 48 of 80 bussen; MK-9 voor 16']);
+    }
+    if (kh.doel === 'materieel') {
+      return R('lockers', 'Portofoons, laptops en uitrusting vragen een vak, geen sleutelhaak. SAM lockers werken op dezelfde bediening en dezelfde registratie als de sleutelkasten.', 'sam',
+        'Als de sleutels het zwaartepunt zijn en het materieel erbij komt.',
+        ['Vakken voor apparatuur in plaats van sleutelhaken', 'Vakken in verschillende hoogtes te combineren', 'Dezelfde bediening en registratie als de sleutelkasten', 'Uitgifte op naam, met tijdstip en gebruiker', 'Later uit te breiden met extra kolommen']);
+    }
+    if (kh.omvang === 'een') {
+      if (kh.reg === 'digitaal') {
+        return R('surfacevault', 'Bij één sleutel op een vaste plek is een hele kast overbodig. De Surface Vault hangt aan uw toegangscontrole of aan de Security Asset Manager en meldt of de sleutel aanwezig is.', 'keycontroller',
+          'Als u het zonder stroom en zonder systeem wilt oplossen.',
+          ['Vrijgave door uw toegangscontrole, brandmeldpaneel of de SAM', 'Deursensor en sleutelsensor melden de stand op afstand', 'Led bevestigt dat er is ontgrendeld', 'Mechanische noodopening als de voeding wegvalt', 'Key Ring model voor een bos tot vijftien sleutels']);
+      }
+      return R('keycontroller', 'Eén verzegelde positie, mechanisch geregeld. Het tandemslot dwingt af dat de controlesleutel achterblijft, dus de sleutel kan niet ongemerkt verdwijnen.', 'surfacevault',
+        'Als u de positie op afstand wilt kunnen vrijgeven en bewaken.',
+        ['Eén positie, verzegeld en niet te omzeilen', 'Werkt volledig mechanisch, geen stroom of software', 'Zichtbaar of de sleutel is uitgegeven', 'Geschikt als noodsleutel of reservesleutel', 'Geen beheerlast en geen updates']);
+    }
+    if (kh.reg === 'digitaal') {
+      if (kh.omvang === 'klein') {
+        return R('keybox', 'Bij een beperkt aantal posities is een Keybox met registratie de kortste weg: elke uitgifte op naam en tijdstip, zonder een systeem dat groter is dan uw sleutelbestand.', 'sam',
+          'Als u verwacht te groeien of meerdere locaties wilt koppelen.',
+        ['Registratie per uitgifte, op naam en tijdstip', 'Bediening op code, pas of vingerafdruk', 'Rapportage van wie welke sleutel heeft', 'Compact genoeg voor een beperkt sleutelbestand', 'Uit te breiden zodra het aantal sleutels groeit']);
+      }
+      return R('sam', 'Vanaf enkele tientallen posities loont een systeem dat per positie vrijgeeft en alles vastlegt. De Security Asset Manager loopt van 8 tot 96 posities per kast, uit te breiden tot 192, met dezelfde bediening.', 'keybox',
+        'Als één kast met registratie volstaat en uitbreiding geen rol speelt.',
+        ['Vrijgave per positie, alleen de juiste sleutel komt los', 'Gebruikersbeheer met rechten per persoon', 'Volledige rapportage en export van de historie', 'Van 8 tot 96 posities per kast, tot 192 uitbreidbaar', 'Meerdere kasten onder één beheer te brengen']);
+    }
+    if (kh.reg === 'zichtbaar') {
+      if (kh.omvang === 'klein') {
+        return R('keycontroller', 'Het tandemslot dwingt de uitwisseling af: de gebruikssleutel komt alleen los als de controlesleutel blijft zitten. Geen software, geen twijfel.', 'keytracker',
+          'Als u in één oogopslag wilt zien wie welke sleutel heeft.',
+        ['Tandemslot: de controlesleutel blijft altijd achter', 'Werkt volledig mechanisch, geen stroom of software', 'Uitwisseling is niet te omzeilen', 'Geschikt voor een beperkt aantal posities', 'Geen beheerlast en geen updates']);
+      }
+      return R('keytracker', 'Een mechanisch bord waarop de sleutel pas loskomt als de gebruiker zijn eigen pin achterlaat. Wie wat heeft, is aan het bord te zien — zonder software.', 'keycontroller',
+        'Als u per positie wilt afdwingen dat er iets achterblijft.',
+        ['De gebruiker laat zijn eigen pin achter bij het bord', 'In één oogopslag zichtbaar wie wat heeft', 'Geen software, geen stroom, geen beheer', 'Leverbaar in meerdere bordgroottes', 'Lage aanschaf en direct in gebruik te nemen']);
+    }
+    if (kh.omvang === 'klein') {
+      return R('safebox', 'Als alleen veilig opbergen nodig is, volstaat een kluis met cijferslot en mechanische noodopening.', 'keybox',
+        'Als u later toch wilt kunnen registreren wie wat meeneemt.',
+        ['Cijferslot, geen sleutel die zelf kwijt kan raken', 'Mechanische noodopening als achtervang', 'Compact, aan de wand te monteren', 'Geschikt voor een klein sleutelbestand', 'Geen installatie of software nodig']);
+    }
+    return R('keybox', 'Voor een groter sleutelbestand zonder registratieplicht: een sleutelkast op code, met vaste posities en nummering.', 'velkey',
+      'Als de sleutels vooral geordend en overzichtelijk moeten liggen.',
+        ['Vaste, genummerde posities voor elke sleutel', 'Bediening op code, geen beheersleutel nodig', 'Ruimte voor een groter sleutelbestand', 'Stevige kast, aan de wand te monteren', 'Later uit te breiden met registratie']);
+  }
+
+  renderVals() {
+    const m = this.state.menu;
+    const dot = (i) => (this.state.slide === i ? '#1d1d1f' : '#c7c7cc');
+    const icon = (i) => (this.state.faq[i] ? '–' : '+');
+    return {
+      isMobile: this.state.mobile,
+      isDesktop: !this.state.mobile,
+      navOpen: this.state.navOpen,
+      toggleNav: () => this.setState((s) => ({ navOpen: !s.navOpen, menu: null })),
+      closeNav: () => this.setState({ navOpen: false, navSub: null }),
+      openSystemen: m === 'systemen',
+      openOpberg: m === 'opberg',
+      openRingen: m === 'ringen',
+      openContact: m === 'contact',
+      navRoot: !this.state.navSub,
+      navSystemen: this.state.navSub === 'systemen',
+      navOpberg: this.state.navSub === 'opberg',
+      navRingen: this.state.navSub === 'ringen',
+      navContact: this.state.navSub === 'contact',
+      navClosed: !this.state.navOpen,
+      navLabel: this.state.navOpen ? 'Menu sluiten' : 'Menu',
+      navBack: this.navBack,
+      navToSystemen: this.navTo('systemen'),
+      navToOpberg: this.navTo('opberg'),
+      navToRingen: this.navTo('ringen'),
+      navToContact: this.navTo('contact'),
+      flyRows: m ? '1fr' : '0fr',
+      flyEvents: m ? 'auto' : 'none',
+      hoverSystemen: this.hover('systemen'),
+      hoverOpberg: this.hover('opberg'),
+      hoverRingen: this.hover('ringen'),
+      hoverContact: this.hover('contact'),
+      closeMenu: () => this.setState({ menu: null }),
+      searchOpen: this.state.searchOpen,
+      searchRows: this.state.searchOpen ? '1fr' : '0fr',
+      barTop: this.state.navOpen ? 'translateY(0) rotate(45deg)' : 'translateY(-3.5px)',
+      barBottom: this.state.navOpen ? 'translateY(0) rotate(-45deg)' : 'translateY(3.5px)',
+      searchVis: this.state.searchOpen ? 'visible' : 'hidden',
+      searchRef: this.sRef,
+      searchEvents: this.state.searchOpen ? 'auto' : 'none',
+      query: this.state.q,
+      toggleSearch: () => this.setState((s) => ({ searchOpen: !s.searchOpen, menu: null, q: '' })),
+      closeSearch: () => this.setState({ searchOpen: false, q: '' }),
+      onQuery: (e) => this.setState({ q: e.target.value }),
+      results: (() => {
+        const q = this.state.q.trim().toLowerCase();
+        const all = Component.INDEX;
+        if (!q) return all.slice(0, 5);
+        return (window.DELPHI_ZOEK && window.DELPHI_ZOEK.zoek) ? window.DELPHI_ZOEK.zoek('nl', q, 8).map((x) => ({ title: x.t, sub: x.s, href: x.u, g: x.g })) : all.filter((r) => (r.title + ' ' + r.sub + ' ' + r.k).toLowerCase().includes(q));
+      })(),
+      showBar: this.state.showBar && !this.state.navOpen,
+      mobileBar: this.state.mobile && this.state.showBar && !this.state.navOpen && !this.state.searchOpen,
+      ...(() => {
+        const kh = this.state.kh || {};
+        const a = this.khAdvies();
+        const uit = {
+          khKlaar: !!a,
+          khNaam: a ? a.naam : '', khWaarom: a ? a.waarom : '', khHref: a ? a.href : '#', khCta: a ? a.cta : '',
+          khPosities: a ? a.posities : '', khPunten: a ? a.punten : [], khOfferte: a ? a.offerte : 'contact/?p=keuzehulp',
+          // De foto wordt hier opgebouwd: een {{ hole }} in een src-attribuut laat de browser
+          // tijdens het streamen een request doen naar de letterlijke tekst "{{ khImg }}".
+          khFoto: a ? React.createElement('img', {
+            src: a.img,
+            alt: a.imgAlt,
+            width: a.imgW,
+            height: a.imgH,
+            onMouseEnter: () => this.setState({ khHover: true }),
+            onMouseLeave: () => this.setState({ khHover: false }),
+            style: {
+              width: '100%', height: '100%', objectFit: 'contain', padding: 22, display: 'block',
+              transition: 'transform .5s cubic-bezier(0.25,0.1,0.25,1)',
+              transform: this.state.khHover ? 'scale(1.04)' : 'none'
+            }
+          }) : null,
+          khAltNaam: a ? a.altNaam : '', khAltHref: a ? a.altHref : '#', khAltWaarom: a ? a.altWaarom : '',
+          khReset: () => this.setState({ kh: {} }),
+          khDoelSleutels: this.khSet('doel', 'sleutels'),
+          khDoelMaterieel: this.khSet('doel', 'materieel'),
+          khDoelMobiel: this.khSet('doel', 'mobiel'),
+          khDoelOC: this.khSet('doel', 'ocspray'),
+          khOmvangEen: this.khSet('omvang', 'een'),
+          khOmvangKlein: this.khSet('omvang', 'klein'),
+          khOmvangMiddel: this.khSet('omvang', 'middel'),
+          khOmvangGroot: this.khSet('omvang', 'groot'),
+          khRegDigitaal: this.khSet('reg', 'digitaal'),
+          khRegZichtbaar: this.khSet('reg', 'zichtbaar'),
+          khRegGeen: this.khSet('reg', 'geen'),
+          khDoelSleutelsAan: kh.doel === 'sleutels',
+          khDoelMaterieelAan: kh.doel === 'materieel',
+          khDoelMobielAan: kh.doel === 'mobiel',
+          khDoelOCAan: kh.doel === 'ocspray',
+          khOmvangEenAan: kh.omvang === 'een',
+          khOmvangKleinAan: kh.omvang === 'klein',
+          khOmvangMiddelAan: kh.omvang === 'middel',
+          khOmvangGrootAan: kh.omvang === 'groot',
+          khRegDigitaalAan: kh.reg === 'digitaal',
+          khRegZichtbaarAan: kh.reg === 'zichtbaar',
+          khRegGeenAan: kh.reg === 'geen'
+        };
+        const stijl = (aan) => ({ bg: aan ? '#0071e3' : '#ffffff', rand: aan ? '#0071e3' : '#d6d6d6', kleur: aan ? '#ffffff' : '#1d1d1f' });
+        [['Doel1', kh.doel === 'sleutels'], ['Doel2', kh.doel === 'materieel'], ['Doel3', kh.doel === 'mobiel'], ['Doel4', kh.doel === 'ocspray'],
+         ['Omvang0', kh.omvang === 'een'], ['Omvang1', kh.omvang === 'klein'], ['Omvang2', kh.omvang === 'middel'], ['Omvang3', kh.omvang === 'groot'],
+         ['Reg1', kh.reg === 'digitaal'], ['Reg2', kh.reg === 'zichtbaar'], ['Reg3', kh.reg === 'geen']].forEach(([k, aan]) => {
+          const s = stijl(aan);
+          uit['kh' + k + 'Bg'] = s.bg;
+          uit['kh' + k + 'Rand'] = s.rand;
+          uit['kh' + k + 'Kleur'] = s.kleur;
+        });
+        return uit;
+      })(),
+      faq0: this.state.faq[0], faq1: this.state.faq[1], faq2: this.state.faq[2], faq3: this.state.faq[3],
+      faqIcon0: icon(0), faqIcon1: icon(1), faqIcon2: icon(2), faqIcon3: icon(3),
+      toggleFaq0: this.toggleFaq(0), toggleFaq1: this.toggleFaq(1), toggleFaq2: this.toggleFaq(2), toggleFaq3: this.toggleFaq(3),
+      goSlide0: this.goSlide(0), goSlide1: this.goSlide(1), goSlide2: this.goSlide(2), goSlide3: this.goSlide(3),
+      dot0: dot(0), dot1: dot(1), dot2: dot(2), dot3: dot(3),
+      galleryScroll: (e) => {
+        const el = e.currentTarget;
+        const i = Math.round(el.scrollLeft / (el.children[0] ? el.children[0].offsetWidth + 20 : 1));
+        if (i !== this.state.slide) this.setState({ slide: Math.max(0, Math.min(3, i)) });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
