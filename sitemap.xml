@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adressen zonder bestandsnaam: elke pagina is een map met index.html.
+     Volgorde volgt de navigatie: home, sleutelbeheer, opbergsystemen,
+     sleutelringen, contact, documenten. -->
+<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/sam/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/sam/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/sam/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/sam/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/sam/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/sam/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/keybox/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/keybox/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/keybox/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/keybox/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/keybox/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/keybox/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/safebox/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/safebox/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/safebox/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/safebox/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/safebox/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/safebox/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/swat-box/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/swat-box/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/swat-box/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/swat-box/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/swat-box/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/swat-box/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/keycontroller/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/keycontroller/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/keycontroller/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/keycontroller/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/keycontroller/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/keycontroller/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/keytracker/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/keytracker/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/keytracker/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/keytracker/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/keytracker/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/keytracker/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/surface-vault/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/surface-vault/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/surface-vault/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/surface-vault/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/surface-vault/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/surface-vault/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/sam-lockers/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/sam-lockers/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/sam-lockers/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/sam-lockers/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/sam-lockers/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/sam-lockers/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/oc-spray-station/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/oc-spray-station/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/oc-spray-station/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/oc-spray-station/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/oc-spray-station/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/oc-spray-station/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/keytracker-opbergkasten/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/keytracker-opbergkasten/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/keytracker-opbergkasten/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/keytracker-opbergkasten/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/keytracker-opbergkasten/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/keytracker-opbergkasten/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/vel-key/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/vel-key/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/vel-key/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/vel-key/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/vel-key/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/vel-key/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/sleutelringen/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/sleutelringen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/sleutelringen/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/sleutelringen/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/sleutelringen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/sleutelringen/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/documentatie/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/documentatie/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/documentatie/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/documentatie/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/documentatie/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/documentatie/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/contact/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/contact/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/contact/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/contact/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/over/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/over/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/over/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/over/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/over/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/over/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/privacy/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/privacy/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/voorwaarden/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/voorwaarden/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/datasheet/gfms/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/gfms/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/gfms/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/datasheet/gfms/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/gfms/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/gfms/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/datasheet/keybox/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/keybox/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/keybox/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/datasheet/keybox/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/keybox/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/keybox/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/datasheet/keycontroller/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/keycontroller/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/keycontroller/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/datasheet/keycontroller/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/keycontroller/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/keycontroller/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/datasheet/keytracker/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/keytracker/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/keytracker/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/datasheet/keytracker/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/keytracker/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/keytracker/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/datasheet/oc-spray-station/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/oc-spray-station/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/oc-spray-station/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/datasheet/oc-spray-station/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/oc-spray-station/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/oc-spray-station/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/datasheet/sam-lockers/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/sam-lockers/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/sam-lockers/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/datasheet/sam-lockers/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/sam-lockers/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/sam-lockers/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/datasheet/sam/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/sam/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/sam/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/datasheet/sam/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/sam/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/sam/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/datasheet/sleutelringen/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/sleutelringen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/sleutelringen/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/datasheet/sleutelringen/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/sleutelringen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/sleutelringen/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/datasheet/surface-vault/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/surface-vault/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/surface-vault/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/datasheet/surface-vault/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/surface-vault/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/surface-vault/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/datasheet/swat-box/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/swat-box/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/swat-box/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/datasheet/swat-box/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/swat-box/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/swat-box/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/datasheet/vel-key/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/vel-key/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/vel-key/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/datasheet/vel-key/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/datasheet/vel-key/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/datasheet/vel-key/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/werkinstructie/sleutelringen/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/werkinstructie/sleutelringen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/werkinstructie/sleutelringen/"/>
+  </url>
+  <url>
+    <loc>https://www.sleutelbeheersystemen.nl/en/werkinstructie/sleutelringen/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/werkinstructie/sleutelringen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/werkinstructie/sleutelringen/"/>
+  </url>
+</urlset>

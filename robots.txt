@@ -1,0 +1,12 @@
+# robots.txt — DELPHI Sleutelbeheersystemen
+# TESTOMGEVING op GitHub — indexeren volledig UITGESCHAKELD.
+#
+# Voor PRODUCTIE (live op eigen domein) vervangen door:
+#   User-agent: *
+#   Disallow: /stamboom/
+#   Allow: /
+#
+#   Sitemap: https://www.sleutelbeheersystemen.nl/sitemap.xml
+
+User-agent: *
+Disallow: /
