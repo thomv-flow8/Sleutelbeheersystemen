@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"../vendor/react/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"../vendor/react-dom/react-dom.production.min.js"};</script>
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stamboom Vink-Leeflang</title>
+<script>window.SVL_DATA = "data/";
+window.SVL_FOTO = "foto/";</script>
+<style>
+  section[id] { scroll-margin-top: 88px; }
+  @media (max-width: 899px) {
+    [data-svl-download] { position: static !important; margin: 18px 0 0 !important; flex: 1 1 100% !important; }
+  }
+  @media (max-width: 760px) {
+    [data-svl-burger] { display: flex !important; }
+    [data-svl-menu] { display: none !important; }
+    header[data-svl-menu-open] [data-svl-menu] { display: flex !important; flex-direction: column; align-items: stretch; width: 100%; padding-top: 4px; }
+    header[data-svl-menu-open] [data-svl-menu] a { width: 100%; }
+    [data-svl-uit] { display: none !important; }
+    header[data-svl-menu-open] [data-svl-uit] { display: block !important; width: 100%; order: 9; text-align: left; padding: 0 12px !important; }
+  }
+  @font-face { font-family: Inter; font-style: normal; font-weight: 100 900; font-display: swap;
+    src: url("../fonts/InterVariable.woff2") format("woff2"); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #eef1e9 url("foto/bos-stil.webp") center center / cover no-repeat fixed; color: #1d1d1f;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { color: #0071e3; text-decoration: underline; }
+  h1, h2, h3, p { margin: 0; padding: 0; }
+  @keyframes svlIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes svlLijn { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @keyframes svlStip { 0% { transform: scale(0); opacity: 0; } 60% { transform: scale(1.3); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+  @keyframes svlPuls { 0%, 100% { r: 4.2px; opacity: 0.85; } 50% { r: 6px; opacity: 1; } }
+  @keyframes svlRing { 0% { r: 5px; opacity: 0.55; stroke-width: 1.4px; } 100% { r: 15px; opacity: 0; stroke-width: 0.4px; } }
+  @keyframes svlZweef { 0% { transform: translate3d(0,0,0); } 25% { transform: translate3d(26px,-34px,0); } 50% { transform: translate3d(-18px,-62px,0); } 75% { transform: translate3d(22px,-30px,0); } 100% { transform: translate3d(0,0,0); } }
+  @keyframes svlGloed { 0%, 100% { opacity: 0; } 8% { opacity: 0.15; } 30% { opacity: 1; } 55% { opacity: 0.25; } 72% { opacity: 0.95; } 90% { opacity: 0.1; } }
+  @keyframes svlFlonker { from { filter: brightness(0.75); } to { filter: brightness(1.15); } }
+  @keyframes svlGroei { from { clip-path: inset(0 0 100% 0); opacity: .4; } to { clip-path: inset(0 0 0 0); opacity: 1; } }
+
+</style>
+</helmet>
+
+<div ref="{{ filmRef }}" aria-hidden="true" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:#1a2416">
+  <img ref="{{ stilRef }}" src="foto/bos-stil.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease;z-index:1">
+    <video ref="{{ videoRef }}" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" preload="auto" src="video/bos-vink-loop-klein.mp4" poster="foto/bos-stil.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%"></video>
+  <div ref="{{ nachtRef }}" style="position:absolute;inset:0;opacity:0;background:linear-gradient(to bottom, #23405f 0%, #1c3a52 50%, #1d3c44 100%);mix-blend-mode:multiply"></div>
+  <div ref="{{ nacht2Ref }}" style="position:absolute;inset:0;opacity:0;background:linear-gradient(to bottom, rgba(28,58,92,0.34), rgba(18,44,58,0.42));mix-blend-mode:screen"></div>
+  <div ref="{{ sterRef }}" style="position:absolute;inset:0;opacity:0;background-image:radial-gradient(1.4px 1.4px at 12% 18%, rgba(255,255,255,0.9), transparent 60%),radial-gradient(1.2px 1.2px at 27% 9%, rgba(255,255,255,0.75), transparent 60%),radial-gradient(1.6px 1.6px at 41% 24%, rgba(255,255,255,0.85), transparent 60%),radial-gradient(1.1px 1.1px at 58% 12%, rgba(255,255,255,0.7), transparent 60%),radial-gradient(1.5px 1.5px at 71% 27%, rgba(255,255,255,0.9), transparent 60%),radial-gradient(1.2px 1.2px at 84% 15%, rgba(255,255,255,0.8), transparent 60%),radial-gradient(1.3px 1.3px at 93% 33%, rgba(255,255,255,0.75), transparent 60%),radial-gradient(1.1px 1.1px at 19% 38%, rgba(255,255,255,0.6), transparent 60%),radial-gradient(1.4px 1.4px at 49% 41%, rgba(255,255,255,0.7), transparent 60%),radial-gradient(1.2px 1.2px at 64% 44%, rgba(255,255,255,0.6), transparent 60%);animation:svlFlonker 5.5s ease-in-out infinite alternate"></div>
+  <div ref="{{ vuurRef }}" style="position:absolute;inset:0;opacity:0;transition:opacity .5s linear"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 30% 40%, rgba(0,0,0,0) 45%, rgba(12,20,12,0.32) 100%)"></div>
+</div>
+
+<div style="position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column">
+
+  <div style="border-bottom:1px solid rgba(0,0,0,0.06);background:rgba(255,255,255,0.86);backdrop-filter:saturate(180%) blur(16px)">
+    <div style="max-width:900px;margin:0 auto;padding:10px 24px;font-size:13px;letter-spacing:0.2px;color:#5d5d61">Stamboom Vink-Leeflang</div>
+  </div>
+
+  <sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
+    <main style="flex:1;padding:clamp(40px,6vw,80px) 24px">
+      <div style="max-width:max(340px, min(600px, 56vw));margin:0 auto 0 0;background:#fbfaf5;border:1px solid rgba(35,45,25,0.10);border-radius:6px;padding:clamp(30px,4vw,52px);box-shadow:0 18px 44px rgba(20,32,16,0.18)">
+        <h1 style="font-size:clamp(32px,4.6vw,46px);line-height:1.08;font-weight:700;letter-spacing:-0.8px">Besloten familiepagina</h1>
+        <p style="margin-top:18px;font-size:17px;line-height:1.6;color:#707070;text-wrap:pretty">Om de inhoud van deze pagina te kunnen bekijken is het noodzakelijk dat u over het juiste wachtwoord beschikt. Deze maatregel is ingesteld om de privacy van de familiegegevens te waarborgen.</p>
+        <p style="margin-top:16px;font-size:17px;line-height:1.6;color:#707070;text-wrap:pretty">Hebt u nog geen toegang, maar wilt u die wel? Stuur dan een e-mail naar <a href="mailto:info@sleutelbeheersystemen.nl">info@sleutelbeheersystemen.nl</a> met uw volledige naam en uw band met de familie. Na goedkeuring ontvangt u het wachtwoord per e-mail.</p>
+
+        <form onSubmit="{{ onSubmit }}" style="margin-top:36px;display:flex;flex-direction:column;gap:14px;max-width:420px">
+          <label for="svl-ww" style="font-size:14px;font-weight:600;color:#1d1d1f">Wachtwoord</label>
+          <input id="svl-ww" type="password" autocomplete="current-password" value="{{ pw }}" onChange="{{ onPw }}" style="height:48px;padding:0 14px;font-family:inherit;font-size:17px;color:#1d1d1f;background:#ffffff;border:1px solid #d2d2d7;border-radius:12px;outline:none">
+          <label style="display:flex;align-items:center;gap:10px;min-height:44px;font-size:15px;color:#707070;cursor:pointer">
+            <input type="checkbox" checked="{{ remember }}" onChange="{{ onRemember }}" style="width:18px;height:18px;accent-color:#0071e3">
+            Aangemeld blijven op dit apparaat
+          </label>
+          <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+            <p role="alert" style="font-size:15px;line-height:1.5;color:#b3261e">{{ error }}</p>
+          </sc-if>
+          <button type="submit" disabled="{{ busy }}" style="align-self:flex-start;min-height:48px;display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-family:inherit;font-size:17px;padding:12px 26px;border:0;border-radius:980px;cursor:pointer" style-hover="background:#0077ed">{{ buttonLabel }}</button>
+        </form>
+
+        <p style="margin-top:40px;font-size:14px;line-height:1.6;color:#86868b">Vragen over het inloggen? Mail <a href="mailto:info@sleutelbeheersystemen.nl" style="color:#86868b;text-decoration:underline">info@sleutelbeheersystemen.nl</a>.</p>
+      </div>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1;display:flex;flex-direction:column">
+      <header style="position:sticky;top:0;z-index:20;background:rgba(255,255,255,0.92);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,0.06)">
+        <div style="max-width:900px;margin:0 auto;padding:12px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px">
+          <span style="font-size:15px;font-weight:600;letter-spacing:-0.2px;margin-right:auto">Familie Vink-Leeflang</span>
+          <button type="button" data-svl-burger="" onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpenTxt }}" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;margin-left:auto;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px">
+            <span style="display:block;width:22px;height:1.6px;background:#1d1d1f;border-radius:2px"></span>
+            <span style="display:block;width:22px;height:1.6px;background:#1d1d1f;border-radius:2px"></span>
+          </button>
+          <nav data-svl-menu="" style="display:flex;flex-wrap:wrap;align-items:center;gap:2px">
+            <a href="#voorwoord" data-svl-nav="voorwoord" onClick="{{ naarSectie }}" aria-current="{{ acvoorwoord }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:980px;font-size:16px;color:#1d1d1f;text-decoration:none;background:{{ bgvoorwoord }};font-weight:{{ fwvoorwoord }}" style-hover="background:#e8e8ed;text-decoration:none">Voorwoord</a>
+            <a href="#toelichting" data-svl-nav="toelichting" onClick="{{ naarSectie }}" aria-current="{{ actoelichting }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:980px;font-size:16px;color:#1d1d1f;text-decoration:none;background:{{ bgtoelichting }};font-weight:{{ fwtoelichting }}" style-hover="background:#e8e8ed;text-decoration:none">Toelichting</a>
+            <a href="#organogram" data-svl-nav="organogram" onClick="{{ naarSectie }}" aria-current="{{ acorganogram }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:980px;font-size:16px;color:#1d1d1f;text-decoration:none;background:{{ bgorganogram }};font-weight:{{ fworganogram }}" style-hover="background:#e8e8ed;text-decoration:none">Organogram</a>
+            <a href="#stamboom" data-svl-nav="stamboom" onClick="{{ naarSectie }}" aria-current="{{ acstamboom }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:980px;font-size:16px;color:#1d1d1f;text-decoration:none;background:{{ bgstamboom }};font-weight:{{ fwstamboom }}" style-hover="background:#e8e8ed;text-decoration:none">Stamboom</a>
+          </nav>
+          <button type="button" data-svl-uit="" onClick="{{ logout }}" style="min-height:44px;padding:0 12px;background:none;border:0;font-family:inherit;font-size:15px;color:#707070;cursor:pointer" style-hover="color:#0071e3">Afmelden</button>
+        </div>
+      </header>
+
+      <section id="top" style="padding:clamp(64px,13vh,150px) 24px clamp(28px,5vh,56px);text-align:center">
+        <p style="font-size:13px;letter-spacing:2.6px;text-transform:uppercase;color:#f2f4ec;text-shadow:0 1px 10px rgba(10,18,8,0.8)">Besloten familiearchief</p>
+        <h1 style="margin-top:14px;font-size:clamp(40px,7vw,86px);line-height:1.02;font-weight:700;letter-spacing:-2px;color:#ffffff;text-shadow:0 2px 26px rgba(10,18,8,0.6)">Vink <span style="font-weight:300">–</span> Leeflang</h1>
+        <p style="margin-top:16px;font-size:17px;line-height:1.6;color:#eef1e6;text-shadow:0 1px 12px rgba(10,18,8,0.8)">Veertien kinderen en hun nazaten</p>
+      </section>
+
+      <main ref="{{ mainRef }}" style="position:relative;flex:1;display:flex;flex-direction:column;gap:clamp(96px,16vh,190px);padding:clamp(24px,4vw,56px) 24px clamp(64px,8vw,110px)">
+        <svg ref="{{ svgRef }}" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0">
+          <path ref="{{ spoorRef }}" fill="none" stroke="rgba(232,236,221,0.22)" stroke-width="1.5" stroke-linecap="round"></path>
+          <path ref="{{ padRef }}" fill="none" stroke="rgba(240,244,230,0.9)" stroke-width="1.5" stroke-linecap="round"></path>
+          <path data-tak="A" ref="{{ takARef }}" fill="none" stroke="rgba(240,244,230,0.75)" stroke-width="1.3" stroke-linecap="round"></path>
+          <path data-tak="B" ref="{{ takBRef }}" fill="none" stroke="rgba(240,244,230,0.75)" stroke-width="1.3" stroke-linecap="round"></path>
+          <path data-tak="C" ref="{{ takCRef }}" fill="none" stroke="rgba(240,244,230,0.75)" stroke-width="1.3" stroke-linecap="round"></path>
+          <path ref="{{ splitsRef }}" fill="none" stroke="rgba(240,244,230,0.85)" stroke-width="1.5" stroke-linecap="round"></path>
+          <path ref="{{ takDRef }}" fill="none" stroke="rgba(240,244,230,0.75)" stroke-width="1.3" stroke-linecap="round"></path>
+          <path ref="{{ takERef }}" fill="none" stroke="rgba(240,244,230,0.75)" stroke-width="1.3" stroke-linecap="round"></path>
+          <g ref="{{ puntenRef }}"></g>
+          <circle ref="{{ startRef }}" r="9" fill="#f4f7ea" opacity="0" style="filter:drop-shadow(0 0 14px rgba(240,244,230,0.85))"></circle>
+          <circle ref="{{ eindRef }}" r="9" fill="#f4f7ea" opacity="0" style="filter:drop-shadow(0 0 14px rgba(240,244,230,0.85))"></circle>
+          <circle ref="{{ ringRef }}" r="5" fill="none" stroke="rgba(240,244,230,0.7)" style="animation:svlRing 2.4s ease-out infinite"></circle>
+          <circle ref="{{ stipRef }}" r="4.5" fill="#f4f7ea" style="filter:drop-shadow(0 0 7px rgba(240,244,230,0.8));animation:svlPuls 2.4s ease-in-out infinite"></circle>
+        </svg>
+
+        <section id="voorwoord" data-svl-op="" data-svl-kant="rechts" style="max-width:min(100%, max(340px, min(720px, 56vw)));margin:0 0 0 auto;background:#fbfaf5;border:1px solid rgba(35,45,25,0.10);border-radius:6px;padding:clamp(30px,4vw,56px);box-shadow:0 18px 44px rgba(20,32,16,0.18);animation:svlIn .6s cubic-bezier(.22,.61,.36,1) both;animation-play-state:paused">
+          <h2 style="font-size:clamp(28px,3.8vw,42px);line-height:1.1;font-weight:400;letter-spacing:-0.6px;text-wrap:balance;font-family:ui-serif,Georgia,"Times New Roman",serif">{{ titelVoorwoord }}</h2>
+          <div ref="{{ proseRef }}" style="margin-top:26px;max-width:64ch">{{ proseVoorwoord }}</div>
+        </section>
+
+
+        <section style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(20px,5.4vw,88px)">
+          <div id="toelichting" data-svl-op="" data-svl-kant="links" style="flex:1 1 420px;min-width:0;max-width:min(100%, max(340px, min(720px, 56vw)));background:#fbfaf5;border:1px solid rgba(35,45,25,0.10);border-radius:6px;padding:clamp(30px,4vw,56px);box-shadow:0 18px 44px rgba(20,32,16,0.18);animation:svlIn .6s cubic-bezier(.22,.61,.36,1) both;animation-play-state:paused">
+            <h2 style="font-size:clamp(28px,3.8vw,42px);line-height:1.1;font-weight:400;letter-spacing:-0.6px;text-wrap:balance;font-family:ui-serif,Georgia,"Times New Roman",serif">{{ titelToelichting }}</h2>
+            <div ref="{{ prose2Ref }}" style="margin-top:26px;max-width:64ch">{{ proseToelichting }}</div>
+          </div>
+        </section>
+
+
+        <section id="organogram" data-svl-op="" data-svl-kant="rechts" ref="{{ orgRef }}" style="width:100%;max-width:1180px;margin:0 auto;transition:max-width .45s cubic-bezier(.22,.61,.36,1);background:#fbfaf5;border:1px solid rgba(35,45,25,0.10);border-radius:6px;padding:clamp(30px,4vw,56px);box-shadow:0 18px 44px rgba(20,32,16,0.18);animation:svlIn .6s cubic-bezier(.22,.61,.36,1) both;animation-play-state:paused">
+          <h2 style="font-size:clamp(28px,3.8vw,42px);line-height:1.1;font-weight:400;letter-spacing:-0.6px;text-wrap:balance;font-family:ui-serif,Georgia,"Times New Roman",serif">Organogram</h2>
+          <p style="margin-top:20px;font-size:17px;line-height:1.65;color:#3a3a3c;max-width:64ch;text-wrap:pretty">De veertien kinderen van <strong>Wim Vink en Alida Leeflang</strong> met hun nazaten. Klik op een naam voor de gegevens; met <strong>+</strong> onder een naam klapt u de kinderen uit.</p>
+          <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+            <div style="display:flex;align-items:center;gap:9px;flex:1 1 200px;min-width:0;background:#f4f5ef;border:1px solid #dcdfd5;border-radius:10px;padding:9px 13px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5f6558" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:17px;height:17px;flex:0 0 auto"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.4 15.4 21 21"></path></svg>
+              <input type="search" placeholder="Zoek een naam" aria-label="Zoek een naam" value="{{ zoek }}" onChange="{{ onZoek }}" style="flex:1;min-width:0;border:0;outline:none;background:none;font-family:inherit;font-size:16px;color:#1d1d1f">
+            </div>
+            <button type="button" onClick="{{ allesOpen }}" style="min-height:44px;padding:0 16px;background:#eef0ea;border:0;border-radius:980px;font-family:inherit;font-size:15px;color:#1d1d1f;cursor:pointer" style-hover="background:#e4e7de">Alles openen</button>
+            <button type="button" onClick="{{ allesDicht }}" style="min-height:44px;padding:0 16px;background:#eef0ea;border:0;border-radius:980px;font-family:inherit;font-size:15px;color:#1d1d1f;cursor:pointer" style-hover="background:#e4e7de">Alles sluiten</button>
+          </div>
+          <div style="margin-top:26px">{{ boom }}</div>
+        </section>
+
+
+        <section id="stamboom" data-svl-op="" data-svl-kant="rechts" style="width:100%;max-width:min(100%, max(340px, min(720px, 56vw)));margin:0 0 0 auto;background:#fbfaf5;border:1px solid rgba(35,45,25,0.10);border-radius:6px;padding:clamp(30px,4vw,56px);box-shadow:0 18px 44px rgba(20,32,16,0.18);animation:svlIn .6s cubic-bezier(.22,.61,.36,1) both;animation-play-state:paused">
+          <h2 style="font-size:clamp(28px,3.8vw,42px);line-height:1.1;font-weight:400;letter-spacing:-0.6px;text-wrap:balance;font-family:ui-serif,Georgia,"Times New Roman",serif">{{ titelStamboom }}</h2>
+          <div ref="{{ prose3Ref }}" style="margin-top:26px;max-width:64ch">{{ proseStamboom }}</div>
+          <div style="margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:14px">
+            <button type="button" data-svl-knop="" onClick="{{ openPdf }}" disabled="{{ pdfBusy }}" style="min-height:48px;height:auto;display:inline-flex;align-items:center;justify-content:center;text-align:center;line-height:1.3;background:#0071e3;color:#ffffff;font-family:inherit;font-size:17px;padding:12px 26px;border:0;border-radius:26px;cursor:pointer" style-hover="background:#0077ed">{{ pdfLabel }}</button>
+          </div>
+          <sc-if value="{{ hasPdfError }}" hint-placeholder-val="{{ false }}">
+            <p role="alert" style="margin-top:14px;font-size:15px;color:#b3261e">{{ pdfError }}</p>
+          </sc-if>
+        </section>
+
+        <div aria-hidden="true" style="flex:0 0 auto;height:12vh;min-height:70px;pointer-events:none"></div>
+
+      </main>
+
+      <footer style="border-top:1px solid rgba(0,0,0,0.06);background:rgba(255,255,255,0.86);backdrop-filter:saturate(180%) blur(16px);padding:28px 24px">
+        <div style="max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:13px;color:#5d5d61">
+          <span>Stamboom Vink-Leeflang &middot; samengesteld door Kees (C.G.) Vink</span>
+          <span>Alleen voor familie &mdash; niet verder verspreiden</span>
+        </div>
+      </footer>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:820}}">
+class Component extends DCLogic {
+  state = {
+    menu: false, actief: 'voorwoord', unlocked: false, tab: 'voorwoord', pw: '', remember: true, busy: false, error: '', inhoud: null, pdfUrl: '', pdfBusy: false, pdfError: '', personen: null, open: {}, det: {}, zoek: '', orgError: '' };
+
+  KEY = 'svl-sleutel';
+  proseRef = React.createRef();
+  paneelRef = React.createRef();
+  prose2Ref = React.createRef();
+  prose3Ref = React.createRef();
+  mainRef = React.createRef();
+  svgRef = React.createRef();
+  padRef = React.createRef();
+  spoorRef = React.createRef();
+  stipRef = React.createRef();
+  ringRef = React.createRef();
+  takARef = React.createRef();
+  takBRef = React.createRef();
+  takCRef = React.createRef();
+  takDRef = React.createRef();
+  takERef = React.createRef();
+  splitsRef = React.createRef();
+  eindRef = React.createRef();
+  startRef = React.createRef();
+  puntenRef = React.createRef();
+  orgRef = React.createRef();
+  _vorigeTab = null;
+  filmRef = React.createRef();
+  stilRef = React.createRef();
+  videoRef = React.createRef();
+  nachtRef = React.createRef();
+  nacht2Ref = React.createRef();
+  sterRef = React.createRef();
+  vuurRef = React.createRef();
+
+  componentDidMount() {
+    let saved = null;
+    try { saved = localStorage.getItem(this.KEY); } catch (e) {}
+    if (saved) this.unlock(saved, false);
+    this.startFilm();
+  }
+
+  componentWillUnmount() {
+    if (this._lus) cancelAnimationFrame(this._lus);
+    this._scrollStap = null;
+    if (this._vignet) { this._vignet.remove(); this._vignet = null; }
+  }
+
+  startFilm() {
+    try { this.filmBouw(); } catch (err) { window.__svlFout = String(err && err.stack || err); }
+  }
+
+  videoLaden() {
+    const v = this.videoRef.current, st = this.stilRef.current;
+    if (!v) return;
+    const co = navigator.connection || {};
+    const zuinig = co.saveData || /2g/.test(co.effectiveType || '');
+    if (zuinig) { this.naarStil(); return; }
+    // mobiel de mini-versie; de src staat al in de markup zodat iOS direct kan starten
+    const breed = window.matchMedia('(min-width: 900px)').matches;
+    const bron = breed ? v.dataset.vsrc : (v.dataset.vsrcMini || v.dataset.vsrc);
+    if (bron && !/(^|\/)$/.test(bron) && v.getAttribute('src') !== bron) {
+      v.setAttribute('src', bron);
+      v.load();
+    }
+  }
+
+  naarStil() {
+    const st = this.stilRef.current, v = this.videoRef.current;
+    if (st) st.style.opacity = '1';
+    if (v) { v.style.opacity = '0'; try { v.pause(); } catch (e) {} }
+    this._stilAan = true;
+  }
+
+  naarVideo() {
+    if (!this._stilAan) return;
+    const st = this.stilRef.current, v = this.videoRef.current;
+    this._stilAan = false;
+    if (v) v.style.opacity = '';
+    if (st) st.style.opacity = '0';
+  }
+
+  filmBouw() {
+    this.videoLaden();
+    const host = this.filmRef.current, video = this.videoRef.current;
+    if (!host) return;
+    if (video) {
+      video.loop = true;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      const aan = () => { const pr = video.play(); if (pr && pr.catch) pr.catch(() => {}); };
+      if (video.paused) aan();
+      if (!video.dataset.svlGebaar) {
+        video.dataset.svlGebaar = '1';
+        const eerste = () => {
+          aan();
+          if (!video.paused) {
+            ['touchstart', 'pointerdown', 'scroll'].forEach((n) => window.removeEventListener(n, eerste));
+          }
+        };
+        ['touchstart', 'pointerdown', 'scroll'].forEach((n) => window.addEventListener(n, eerste, { passive: true }));
+        video.addEventListener('loadeddata', aan);
+        video.addEventListener('canplay', aan);
+        // terugval naar de foto als de video niet wil spelen, en terug zodra hij toch loopt
+        video.addEventListener('error', () => this.naarStil());
+        video.addEventListener('stalled', () => { if (video.readyState < 2) this.naarStil(); });
+        video.addEventListener('playing', () => this.naarVideo());
+        video.addEventListener('timeupdate', () => { if (video.currentTime > 0.15) this.naarVideo(); });
+        const val = () => { if (video.paused || video.readyState < 2 || video.currentTime < 0.05) this.naarStil(); };
+        setTimeout(val, 2600);
+        setTimeout(val, 6000);
+      }
+      if (!video.dataset.svlLus) {
+        video.dataset.svlLus = '1';
+        video.addEventListener('ended', () => { video.currentTime = 0; aan(); });
+        video.addEventListener('pause', () => { if (!this._rustig) setTimeout(aan, 80); });
+        document.addEventListener('visibilitychange', () => { if (!document.hidden && !this._rustig) aan(); });
+      }
+    }
+    const nacht = this.nachtRef.current, nacht2 = this.nacht2Ref.current, ster = this.sterRef.current, vuur = this.vuurRef.current;
+    if (vuur && !vuur.dataset.svlVuur) {
+      vuur.dataset.svlVuur = '1';
+      const grof = window.matchMedia('(pointer: coarse)').matches;
+      const aantal = grof ? 12 : 24;
+      for (let i = 0; i < aantal; i++) {
+        const x = 4 + Math.random() * 92, y = 34 + Math.random() * 62;
+        const gr = (2.4 + Math.random() * 2.6).toFixed(1);
+        const zw = (14 + Math.random() * 16).toFixed(1), gl = (3.2 + Math.random() * 3.4).toFixed(1);
+        const d1 = (-Math.random() * 20).toFixed(1), d2 = (-Math.random() * 7).toFixed(1);
+        const v = document.createElement('span');
+        v.style.cssText = 'position:absolute;left:' + x.toFixed(2) + '%;top:' + y.toFixed(2) + '%;width:' + gr + 'px;height:' + gr + 'px;border-radius:50%;background:#f2ffb0;box-shadow:0 0 6px 2px rgba(226,255,140,0.55),0 0 16px 6px rgba(190,236,96,0.22);animation:svlZweef ' + zw + 's ease-in-out ' + d1 + 's infinite, svlGloed ' + gl + 's ease-in-out ' + d2 + 's infinite;will-change:transform,opacity';
+        vuur.appendChild(v);
+      }
+    }
+    const rustig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._rustig = rustig;
+    let vorige = -1;
+    this._scrollStap = () => {
+      const doc = document.documentElement;
+      const y = window.scrollY || doc.scrollTop || document.body.scrollTop || 0;
+      const reik = Math.max(1, (doc.scrollHeight - window.innerHeight) * 0.55);
+      const p = Math.min(1, y / reik);
+      if (Math.abs(p - vorige) < 0.002) return;
+      vorige = p;
+      const zacht = p * p * (3 - 2 * p);
+      host.style.filter = 'saturate(' + (1 - zacht * 0.3).toFixed(3) + ') brightness(' + (1 - zacht * 0.36).toFixed(3) + ') contrast(' + (1 + zacht * 0.05).toFixed(3) + ')';
+      if (nacht) nacht.style.opacity = (zacht * 0.82).toFixed(3);
+      if (nacht2) nacht2.style.opacity = (zacht * 0.5).toFixed(3);
+      if (ster) ster.style.opacity = Math.max(0, (zacht - 0.35) / 0.65).toFixed(3);
+      if (vuur) vuur.style.opacity = rustig ? '0' : Math.max(0, (zacht - 0.28) / 0.72).toFixed(3);
+    };
+    this._scrollStap();
+    if (this._onScroll) { window.removeEventListener('scroll', this._onScroll); document.removeEventListener('scroll', this._onScroll, true); }
+    this._onScroll = () => { if (this._scrollStap) this._scrollStap(); this.feitenStap(); };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    document.addEventListener('scroll', this._onScroll, { passive: true, capture: true });
+    if (rustig && video) video.pause();
+    const lus = () => { if (this._scrollStap) this._scrollStap(); this._lus = requestAnimationFrame(lus); };
+    if (this._lus) cancelAnimationFrame(this._lus);
+    this._lus = requestAnimationFrame(lus);
+  }
+
+  bouwLijn() {
+    const main = this.mainRef.current, pad = this.padRef.current, spoor = this.spoorRef.current;
+    if (!main || !pad) return;
+    const panelen = Array.from(main.querySelectorAll('[data-svl-kant]'));
+    if (!panelen.length) return;
+    const m = main.getBoundingClientRect();
+    if (!m.height || panelen.some(el => el.getBoundingClientRect().height < 40)) {
+      clearTimeout(this._herbouw);
+      this._herbouw = setTimeout(() => this.bouwLijn(), 250);
+      return;
+    }
+    const marge = window.matchMedia('(min-width: 760px)').matches ? 26 : 12;
+    let d = '';
+    panelen.forEach((el, i) => {
+      el.style.position = 'relative';
+      el.style.zIndex = '1';
+      const r = el.getBoundingClientRect();
+      const rechts = el.dataset.svlKant === 'rechts';
+      const x = rechts ? (r.left - m.left - marge) : (r.right - m.left + marge);
+      const top = r.top - m.top, bot = r.bottom - m.top;
+      if (i === 0) d += 'M' + x + ',' + (top + r.height / 2).toFixed(1);
+      else {
+        const vorig = panelen[i - 1].getBoundingClientRect();
+        const vx = panelen[i - 1].dataset.svlKant === 'rechts' ? (vorig.left - m.left - marge) : (vorig.right - m.left + marge);
+        const vy = vorig.bottom - m.top;
+        const mid = (vy + top) / 2;
+        d += ' C' + vx + ',' + mid + ' ' + x + ',' + mid + ' ' + x + ',' + top;
+      }
+      d += ' L' + x + ',' + bot;
+    });
+    pad.setAttribute('d', d);
+    if (spoor) spoor.setAttribute('d', d);
+    this._len = pad.getTotalLength();
+    if (!isFinite(this._len) || this._len < 2) return;
+    pad.style.strokeDasharray = this._len;
+    this.tekenLijn();
+    this.feitenStap();
+  }
+
+  springNaar(el, extra) {
+    if (!el) return;
+    const doel = Math.max(0, window.scrollY + el.getBoundingClientRect().top - (extra || 96));
+    const start = window.scrollY, afstand = doel - start;
+    if (Math.abs(afstand) < 2) return;
+    const duur = Math.min(900, 260 + Math.abs(afstand) * 0.35), t0 = performance.now();
+    if (this._tweenT) { clearInterval(this._tweenT); this._tweenT = 0; }
+    const stap = () => {
+      const t = Math.min(1, (performance.now() - t0) / duur);
+      const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      window.scrollTo({ top: start + afstand * e, behavior: 'instant' });
+      if (t >= 1) { clearInterval(this._tweenT); this._tweenT = 0; }
+    };
+    this._tweenT = setInterval(stap, 16);
+    stap();
+    setTimeout(() => {
+      if (Math.abs(window.scrollY - doel) > 4) window.scrollTo({ top: doel, behavior: 'instant' });
+    }, duur + 120);
+  }
+
+  toggleMenu = () => {
+    const hd = document.querySelector('header');
+    const aan = !this.state.menu;
+    if (hd) { if (aan) hd.setAttribute('data-svl-menu-open', ''); else hd.removeAttribute('data-svl-menu-open'); }
+    this.setState({ menu: aan });
+  };
+
+  sluitMenu() {
+    const hd = document.querySelector('header[data-svl-menu-open]');
+    if (hd) hd.removeAttribute('data-svl-menu-open');
+    if (this.state.menu) this.setState({ menu: false });
+  }
+
+  naarSectie = (e) => {
+    const a = e.currentTarget, id = a && a.dataset ? a.dataset.svlNav : null;
+    const el = id ? document.getElementById(id) : null;
+    if (!el) return;
+    e.preventDefault();
+    this.springNaar(el, 88);
+    if (history.replaceState) history.replaceState(null, '', '#' + id);
+  };
+
+  feitenStap() {
+  }
+
+  zetPunt(id, x, y) {
+    const g = this.puntenRef.current;
+    if (!g || !isFinite(x) || !isFinite(y)) return;
+    let c = g.querySelector('[data-punt="' + id + '"]');
+    if (!c) {
+      c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('data-punt', id);
+      c.setAttribute('r', '3.4');
+      c.setAttribute('fill', '#eef2e2');
+      c.setAttribute('opacity', '0');
+      c.style.filter = 'drop-shadow(0 0 5px rgba(240,244,230,0.7))';
+      c.style.transition = 'opacity .4s ease';
+      g.appendChild(c);
+    }
+    c.setAttribute('cx', x.toFixed(1));
+    c.setAttribute('cy', y.toFixed(1));
+    c.setAttribute('opacity', '1');
+  }
+
+  xOpLijn(pad, y) {
+    let len = 0;
+    try { len = pad.getTotalLength(); } catch (e) { return NaN; }
+    if (!isFinite(len) || len < 2) return NaN;
+    let lo = 0, hi = len;
+    for (let i = 0; i < 22; i++) {
+      const mid = (lo + hi) / 2;
+      if (pad.getPointAtLength(mid).y < y) lo = mid; else hi = mid;
+    }
+    return pad.getPointAtLength((lo + hi) / 2).x;
+  }
+
+  splitsLijn() {
+    const main = this.mainRef.current, sp = this.splitsRef.current, sec = document.getElementById('organogram');
+    if (!main || !sp) return;
+    if (!sec || !window.matchMedia('(min-width: 900px)').matches) { sp.setAttribute('d', ''); this._streng = null; return; }
+    const m = main.getBoundingClientRect(), r = sec.getBoundingClientRect();
+    if (!r.height) { sp.setAttribute('d', ''); this._streng = null; return; }
+    const anker = window.innerHeight * 0.55;
+    const prog = Math.max(0, Math.min(1, (anker - (r.top - 60)) / Math.max(1, r.height * 0.85)));
+    const prog0 = prog;
+    const marge = 26;
+    const vorig = document.getElementById('toelichting'), volg = document.getElementById('stamboom');
+    const vr0 = vorig ? vorig.getBoundingClientRect() : null, vg0 = volg ? volg.getBoundingClientRect() : null;
+    // splitsen waar de lijn nog kaarsrecht is: langs het vorige blok
+    const yTop = vr0 ? Math.min(r.top - m.top - 40, vr0.bottom - m.top - 30) : r.top - m.top - 74;
+    // samenkomen waar de lijn weer recht is: langs het volgende blok
+    const yBot = vg0 ? Math.max(r.bottom - m.top + 40, vg0.top - m.top + 36) : r.bottom - m.top + 78;
+    const lijn = this.padRef.current;
+    const mTop = this.xOpLijn(lijn, yTop), mBot = this.xOpLijn(lijn, yBot);
+    const lx0 = r.left - m.left - marge;
+    const top = r.top - m.top, bot = r.bottom - m.top;
+    const lx = isFinite(mTop) ? mTop : lx0, ex = isFinite(mBot) ? mBot : lx0;
+    const rx = r.right - m.left + marge;
+    const ySp = yTop, yJoin = yBot, R = 10;
+    const d = 'M' + lx.toFixed(1) + ',' + ySp.toFixed(1) +
+      ' L' + (rx - R).toFixed(1) + ',' + ySp.toFixed(1) +
+      ' Q' + rx.toFixed(1) + ',' + ySp.toFixed(1) + ' ' + rx.toFixed(1) + ',' + (ySp + R).toFixed(1) +
+      ' L' + rx.toFixed(1) + ',' + (yJoin - R).toFixed(1) +
+      ' Q' + rx.toFixed(1) + ',' + yJoin.toFixed(1) + ' ' + (rx - R).toFixed(1) + ',' + yJoin.toFixed(1) +
+      ' L' + lx.toFixed(1) + ',' + yJoin.toFixed(1);
+    sp.setAttribute('d', d);
+    this._streng = { links: lx, rechts: rx };
+    if (prog0 > 0.05) this.zetPunt('split', lx, ySp + 0);
+    if (prog0 > 0.96) this.zetPunt('join', lx, yJoin);
+    const len = sp.getTotalLength();
+    if (!isFinite(len) || len < 2) return;
+    sp.style.strokeDasharray = len;
+    sp.style.strokeDashoffset = (len * (1 - prog)).toFixed(1);
+  }
+
+  tekenTak(tak, doel, vanaf, kant, fractie, vanX) {
+    const main = this.mainRef.current;
+    if (!tak) return;
+    if (!doel || !vanaf || !main || fractie <= 0.01 || !window.matchMedia('(min-width: 900px)').matches) { tak.setAttribute('d', ''); return; }
+    const m = main.getBoundingClientRect(), dr = doel.getBoundingClientRect(), vr = vanaf.getBoundingClientRect();
+    if (!dr.height) { tak.setAttribute('d', ''); return; }
+    const naarLinks = kant === 'links';
+    if (!isFinite(vanX)) {
+      const y0 = dr.top - m.top + Math.min(30, dr.height * 0.3);
+      const op = this.xOpLijn(this.padRef.current, y0);
+      if (isFinite(op)) vanX = op;
+    }
+    if (isFinite(vanX)) {
+      let kr2 = (naarLinks ? dr.right : dr.left) - m.left;
+      const grens = (naarLinks ? vr.left - 6 : vr.right + 6) - m.left;
+      if (naarLinks) kr2 = Math.min(kr2, grens); else kr2 = Math.max(kr2, grens);
+      const y2 = dr.top - m.top + Math.min(30, dr.height * 0.3);
+      const eind2 = vanX + (kr2 - vanX) * Math.max(0, Math.min(1, fractie));
+      if (Math.abs(kr2 - vanX) < 8) { tak.setAttribute('d', ''); return; }
+      tak.setAttribute('d', 'M' + vanX.toFixed(1) + ',' + y2.toFixed(1) + ' L' + eind2.toFixed(1) + ',' + y2.toFixed(1));
+      tak.setAttribute('opacity', Math.min(1, fractie * 1.4).toFixed(2));
+      if (fractie > 0.85 && tak.dataset) this.zetPunt(tak.dataset.tak || 'tak', vanX, y2);
+      return;
+    }
+    const rand = (naarLinks ? vr.left : vr.right) - m.left;
+    const kaartRand = (naarLinks ? dr.right : dr.left) - m.left;
+    const ruimte = Math.abs(kaartRand - rand);
+    const dir = naarLinks ? -1 : 1;
+    const ox = rand + dir * Math.min(16, ruimte * 0.22);
+    const tx = kaartRand - dir * 4;
+    const spanwijdte = tx - ox;
+    if (Math.abs(spanwijdte) < 6) { tak.setAttribute('d', ''); return; }
+    const y = dr.top - m.top + Math.min(38, dr.height * 0.34);
+    const knik = ox + Math.sign(spanwijdte) * Math.min(14, Math.abs(spanwijdte) * 0.35);
+    const eind = ox + spanwijdte * fractie;
+    if (Math.abs(eind - ox) < Math.abs(knik - ox)) { tak.setAttribute('d', 'M' + ox.toFixed(1) + ',' + (y - 20).toFixed(1) + ' Q' + ox.toFixed(1) + ',' + y.toFixed(1) + ' ' + eind.toFixed(1) + ',' + y.toFixed(1)); }
+    else { tak.setAttribute('d', 'M' + ox.toFixed(1) + ',' + (y - 20).toFixed(1) + ' Q' + ox.toFixed(1) + ',' + y.toFixed(1) + ' ' + knik.toFixed(1) + ',' + y.toFixed(1) + ' L' + eind.toFixed(1) + ',' + y.toFixed(1)); }
+    tak.setAttribute('opacity', Math.min(1, fractie * 1.4).toFixed(2));
+  }
+
+  stamboomTakken() {
+    const sec = document.getElementById('stamboom'), main = this.mainRef.current;
+    const takE = this.takERef.current, takD = this.takDRef.current;
+    if (!sec || !main) return;
+    const r = sec.getBoundingClientRect();
+    const knop = sec.querySelector('[data-svl-knop]');
+    const breed = window.matchMedia('(min-width: 900px)').matches;
+    // korte aftakking van de hoofdlijn naar de knop in het blok
+    if (takE) {
+      const p = r.height && breed && knop ? this.soepel((window.innerHeight * 0.8 - r.top) / (r.height * 0.6)) : 0;
+      if (p <= 0.01) takE.setAttribute('d', '');
+      else {
+        const m = main.getBoundingClientRect(), kr = knop.getBoundingClientRect();
+        const y = kr.top - m.top + kr.height / 2;
+        const lx = this.xOpLijn(this.padRef.current, y);
+        const ox = isFinite(lx) ? lx : (r.right - m.left + 26);
+        const tx = r.right - m.left - 6;
+        const eind = ox + (tx - ox) * p;
+        takE.setAttribute('d', 'M' + ox.toFixed(1) + ',' + y.toFixed(1) + ' L' + eind.toFixed(1) + ',' + y.toFixed(1));
+        takE.setAttribute('opacity', Math.min(1, p * 1.4).toFixed(2));
+        if (p > 0.85) this.zetPunt('knop', ox, y);
+      }
+    }
+    const kaart = document.querySelector('[data-svl-download]');
+    this.tekenTak(takD, kaart, sec, 'rechts', this._dlF || 0);
+  }
+
+  groeiDownloadTak() {
+    if (this._dlLoopt) return;
+    this._dlLoopt = true;
+    this._dlF = 0;
+    const t0 = performance.now();
+    const stap = () => {
+      const t = Math.min(1, (performance.now() - t0) / 700);
+      this._dlF = this.soepel(t);
+      this.stamboomTakken();
+      if (t >= 1) { clearInterval(this._dlT); this._dlT = 0; }
+    };
+    this._dlT = setInterval(stap, 16);
+    stap();
+  }
+
+  soepel(x) { const t = Math.max(0, Math.min(1, x)); return t * t * (3 - 2 * t); }
+
+  markeerMenu() {
+    const secties = Array.from(document.querySelectorAll('[data-svl-kant]'));
+    if (!secties.length) return;
+    const grens = window.innerHeight * 0.34;
+    let actief = null;
+    secties.forEach(s => { if (s.getBoundingClientRect().top <= grens) actief = s.id; });
+    if (!actief && secties[0].getBoundingClientRect().top < window.innerHeight * 0.8) actief = secties[0].id;
+    if (actief === this.state.actief) return;
+    this.setState({ actief: actief });
+  }
+
+  tekenLijn() {
+    this.markeerMenu();
+    this.feitenStap();
+    const pad = this.padRef.current, stip = this.stipRef.current, ring = this.ringRef.current, main = this.mainRef.current;
+    if (!pad || !main) return;
+    const m = main.getBoundingClientRect();
+    if (!isFinite(this._len) || this._len < 2 || !m.height) return;
+    // de stip volgt het scherm-midden; onderaan de pagina zakt het anker mee zodat het eindpunt bereikbaar is
+    const ih = window.innerHeight;
+    const doc = document.documentElement;
+    const restant = Math.max(0, (doc.scrollHeight - (window.scrollY + ih)));
+    const zak = 1 - Math.min(1, restant / (ih * 0.5));
+    const anker = ih * (0.5 + 0.4 * zak);
+    const doelY = anker - m.top;
+    let lo = 0, hi = this._len;
+    for (let i = 0; i < 22; i++) {
+      const mid = (lo + hi) / 2;
+      if (pad.getPointAtLength(mid).y < doelY) lo = mid; else hi = mid;
+    }
+    let p = ((lo + hi) / 2) / this._len;
+    if (pad.getPointAtLength(0).y > doelY) p = 0;
+    else if (pad.getPointAtLength(this._len).y < doelY) p = 1;
+    p = Math.max(0, Math.min(1, p));
+    pad.style.strokeDashoffset = this._len * (1 - p);
+    const bg = this.startRef.current;
+    if (bg) {
+      const ps = pad.getPointAtLength(0);
+      bg.setAttribute('cx', ps.x);
+      bg.setAttribute('cy', ps.y);
+      bg.setAttribute('opacity', p > 0.001 ? '1' : '0');
+    }
+    const eind = this.eindRef.current;
+    if (eind) {
+      const pe = pad.getPointAtLength(this._len);
+      eind.setAttribute('cx', pe.x);
+      eind.setAttribute('cy', pe.y);
+      eind.setAttribute('opacity', Math.max(0, Math.min(1, (p - 0.9) / 0.08)).toFixed(2));
+    }
+    if (stip) {
+      const uit = p <= 0.001 || p >= 0.999;
+      if (uit) { stip.style.display = 'none'; if (ring) ring.style.display = 'none'; this._stipY = p >= 0.999 ? 1e7 : -1e7; }
+      else {
+        const pt = pad.getPointAtLength(this._len * p);
+        this._stipY = pt.y;
+        stip.setAttribute('cx', pt.x);
+        stip.setAttribute('cy', pt.y);
+        stip.style.display = '';
+        if (ring) { ring.setAttribute('cx', pt.x); ring.setAttribute('cy', pt.y); ring.style.display = ''; }
+      }
+    }
+  }
+
+  opzetLijn() {
+    if (this._lijnOp) return;
+    this._lijnOp = true;
+    this._opScroll = () => {
+      this.markeerMenu();
+      this.feitenStap();
+      if (this._rf) return;
+      this._rf = requestAnimationFrame(() => { this._rf = 0; this.tekenLijn(); });
+    };
+    window.addEventListener('scroll', this._opScroll, { passive: true });
+    this._opResize = () => this.bouwLijn();
+    window.addEventListener('resize', this._opResize);
+    if (typeof ResizeObserver !== 'undefined' && this.mainRef.current) {
+      this._ro = new ResizeObserver(() => {
+        clearTimeout(this._roT);
+        this._roT = setTimeout(() => this.bouwLijn(), 120);
+      });
+      this._ro.observe(this.mainRef.current);
+    }
+    document.querySelectorAll('main img').forEach(img => {
+      if (!img.complete) img.addEventListener('load', () => { this.bouwLijn(); this.feitenStap(); }, { once: true });
+    });
+    [80, 600, 1600, 3000].forEach(t => setTimeout(() => { this.bouwLijn(); this.feitenStap(); }, t));
+  }
+
+  opzetOpkomen() {
+    const start = (el) => {
+      el.style.animationPlayState = 'running';
+      el.querySelectorAll('[style*="animation"]').forEach(k => { k.style.animationPlayState = 'running'; });
+    };
+    if (typeof IntersectionObserver === 'undefined') {
+      document.querySelectorAll('[data-svl-op]').forEach(start);
+      return;
+    }
+    if (!this._io) {
+      this._io = new IntersectionObserver((rijen) => {
+        rijen.forEach(r => { if (r.isIntersecting) { start(r.target); this._io.unobserve(r.target); } });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    }
+    document.querySelectorAll('[data-svl-op]:not([data-svl-zien])').forEach(el => {
+      el.dataset.svlZien = '1';
+      this._io.observe(el);
+    });
+    if (!this._vangnet) {
+      this._vangnet = setTimeout(() => {
+        document.querySelectorAll('[data-svl-op]').forEach(el => {
+          if (getComputedStyle(el).animationPlayState === 'paused') start(el);
+        });
+      }, 1200);
+    }
+  }
+
+  componentDidUpdate() {
+    this.styleProse();
+    this.zetOrgBreedte();
+        if (this.state.unlocked) { this.opzetOpkomen(); this.opzetLijn(); this.bouwLijn(); if (!this.state.personen && !this.state.orgError) this.laadPersonen(); }
+  }
+
+  base() { return (window.SVL_DATA || 'data/'); }
+
+  async derive(pw, salt) {
+    const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+    return crypto.subtle.deriveKey({ name: 'PBKDF2', salt, iterations: 250000, hash: 'SHA-256' }, km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+  }
+
+  async fetchAndDecrypt(naam, pw) {
+    const res = await fetch(this.base() + naam, { cache: 'no-store' });
+    if (!res.ok) throw new Error('bestand');
+    const buf = new Uint8Array(await res.arrayBuffer());
+    if (String.fromCharCode(buf[0], buf[1], buf[2], buf[3]) !== 'SVL1') throw new Error('bestand');
+    const salt = buf.slice(4, 20), iv = buf.slice(20, 32), ct = buf.slice(32);
+    const key = await this.derive(pw, salt);
+    return new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ct));
+  }
+
+  async unlock(pw, bewaar) {
+    if (!pw) { this.setState({ error: 'Vul het wachtwoord in.' }); return; }
+    if (!window.crypto || !crypto.subtle) { this.setState({ error: 'Deze browser ondersteunt de beveiliging niet. Gebruik een recente browser via https.' }); return; }
+    this.setState({ busy: true, error: '' });
+    try {
+      const plain = await this.fetchAndDecrypt('inhoud.enc', pw);
+      const inhoud = JSON.parse(new TextDecoder().decode(plain));
+      this._pw = pw;
+      if (bewaar) { try { localStorage.setItem(this.KEY, pw); } catch (e) {} }
+      this.setState({ unlocked: true, inhoud: inhoud, busy: false, pw: '', error: '' });
+    } catch (err) {
+      try { localStorage.removeItem(this.KEY); } catch (e) {}
+      this.setState({ busy: false, error: err && err.message === 'bestand' ? 'De beveiligde inhoud kon niet worden geladen. Probeer het later opnieuw.' : 'Dit wachtwoord is niet juist.' });
+    }
+  }
+
+  toonPdf(url) {
+    const w = this._pdfWin;
+    this._pdfWin = null;
+    if (w && !w.closed) {
+      try { w.location.replace(url); return; } catch (e) {}
+    }
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.download = 'Stamboom-Vink-Leeflang.pdf';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => a.remove(), 0);
+  }
+
+  openPdf = async () => {
+    // venster synchroon openen: anders blokkeert de browser het na het ontsleutelen
+    this._pdfWin = null;
+    try { this._pdfWin = window.open('', '_blank'); } catch (e) {}
+    if (this.state.pdfUrl) { this.toonPdf(this.state.pdfUrl); return; }
+    if (!this._pw) {
+      try { this._pw = localStorage.getItem(this.KEY) || null; } catch (e) {}
+    }
+    this.setState({ pdfBusy: true, pdfError: '' });
+    try {
+      const bytes = await this.fetchAndDecrypt('stamboom.enc', this._pw);
+      const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+      this.setState({ pdfUrl: url, pdfBusy: false });
+      this.toonPdf(url);
+    } catch (err) {
+      const w = this._pdfWin;
+      this._pdfWin = null;
+      if (w && !w.closed) { try { w.close(); } catch (e) {} }
+      this.setState({ pdfBusy: false, pdfError: 'De stamboom kon niet worden geopend. Meld u opnieuw aan en probeer het nogmaals.' });
+    }
+  };
+
+  logout = () => {
+    try { localStorage.removeItem(this.KEY); } catch (e) {}
+    if (this.state.pdfUrl) URL.revokeObjectURL(this.state.pdfUrl);
+    this._pw = null;
+    this.setState({ unlocked: false, inhoud: null, pdfUrl: '', tab: 'voorwoord', pw: '', error: '', personen: null, open: {}, det: {}, zoek: '' });
+  };
+
+  styleProse() {
+    [this.proseRef, this.prose2Ref, this.prose3Ref].forEach(r => this.styleEen(r.current));
+  }
+
+  styleEen(host) {
+    if (!host || host.dataset.svlStyled === '1' || !host.querySelector('p, h2, figure')) return;
+    host.dataset.svlStyled = '1';
+    host.querySelectorAll('p').forEach(function (p) {
+      p.style.cssText = 'margin:0 0 18px;font-size:17px;line-height:1.65;color:#3a3a3c;letter-spacing:-0.2px;text-wrap:pretty';
+    });
+    host.querySelectorAll('h2').forEach(function (h) {
+      h.style.cssText = 'margin:0 0 20px;font-size:clamp(30px,3.6vw,42px);line-height:1.1;font-weight:400;letter-spacing:-0.5px;font-family:ui-serif,Georgia,"Times New Roman",serif';
+    });
+    host.querySelectorAll('figure').forEach(function (f) {
+      f.style.cssText = 'margin:0 0 24px';
+      const img = f.querySelector('img');
+      if (img) {
+        img.style.cssText = 'display:block;width:100%;height:auto;border-radius:14px;background:#f5f5f7';
+        img.addEventListener('error', function () { f.style.display = 'none'; });
+      }
+      const cap = f.querySelector('figcaption');
+      if (cap) cap.style.cssText = 'margin-top:10px;font-size:14px;line-height:1.5;color:#86868b;font-family:ui-serif,Georgia,serif;font-style:italic';
+    });
+    host.querySelectorAll('a').forEach(function (a) { a.style.color = '#0066cc'; a.style.wordBreak = 'break-word'; });
+    host.querySelectorAll('sup').forEach(function (s) { s.style.fontSize = '0.7em'; });
+    const knop = host.querySelector('[data-knop]');
+    if (knop) knop.style.display = 'none';
+    if (window.matchMedia('(min-width: 760px)').matches) {
+      host.querySelectorAll('figure.rechts').forEach(function (f) {
+        f.style.cssText = 'margin:0 0 20px 28px;float:right;width:46%';
+      });
+    }
+  }
+
+  async laadPersonen() {
+    if (this.state.personen || this._laadt) return;
+    this._laadt = true;
+    try {
+      const bytes = await this.fetchAndDecrypt('personen.enc', this._pw);
+      this.setState({ personen: JSON.parse(new TextDecoder().decode(bytes)) });
+    } catch (err) {
+      this.setState({ orgError: 'De familiegegevens konden niet worden geladen.' });
+    }
+    this._laadt = false;
+  }
+
+  jaar(s) { const m = String(s || '').match(/\b(1[89]\d\d|20\d\d)\b/); return m ? m[1] : ''; }
+
+  cijfers() {
+    const data = this.state.personen;
+    if (!data) return { p: '–', g: '–', gz: '–', l: '–', o: '–', max: '–', lft: '–' };
+    let personen = 0, gezinnen = 0, leven = 0, overleden = 0, diep = 0, grootste = 0, lft = [], self = this;
+    const loop = (lijst, niveau) => {
+      (lijst || []).forEach(p => {
+        personen++;
+        if (niveau > diep) diep = niveau;
+        if (p.od) overleden++; else leven++;
+        (p.p || []).forEach(pt => { personen++; if (pt.od) overleden++; else leven++; });
+        if (p.l != null && p.od) lft.push(Number(p.l));
+        if (p.k && p.k.length) { gezinnen++; if (p.k.length > grootste) grootste = p.k.length; loop(p.k, niveau + 1); }
+      });
+    };
+    loop(data, 2);
+    const geldig = lft.filter(n => n > 0 && n < 120);
+    const gem = geldig.length ? Math.round(geldig.reduce((a, b) => a + b, 0) / geldig.length) : null;
+    return { p: personen, g: diep, gz: gezinnen, l: leven, o: overleden, max: grootste, lft: gem == null ? '–' : gem + ' jr' };
+  }
+
+  telNazaten(p) { return (p.k || []).reduce((n, k) => n + 1 + this.telNazaten(k), 0); }
+
+  toggleKind = (id) => this.setState(s => { const o = Object.assign({}, s.open); if (o[id]) delete o[id]; else o[id] = true; return { open: o }; });
+  toggleDetail = (id) => this.setState(s => { const d = Object.assign({}, s.det); if (d[id]) delete d[id]; else d[id] = true; return { det: d }; });
+
+  alleIds(lijst, prefix, uit) {
+    (lijst || []).forEach((p, i) => {
+      const id = prefix ? prefix + '.' + i : String(i);
+      if (p.k && p.k.length) { uit[id] = true; this.alleIds(p.k, id, uit); }
+    });
+    return uit;
+  }
+
+  platteLijst(lijst, prefix, pad, uit) {
+    (lijst || []).forEach((p, i) => {
+      const id = prefix ? prefix + '.' + i : String(i);
+      uit.push({ id: id, p: p, pad: pad });
+      if (p.k) this.platteLijst(p.k, id, pad.concat(p.n), uit);
+    });
+    return uit;
+  }
+
+  opendPad(id) {
+    const delen = id.split('.');
+    this.setState(s => {
+      const o = Object.assign({}, s.open), d = Object.assign({}, s.det);
+      for (let i = 1; i <= delen.length; i++) o[delen.slice(0, i).join('.')] = true;
+      d[id] = true;
+      return { open: o, det: d, zoek: '' };
+    }, () => {
+      setTimeout(() => {
+        const el = document.querySelector('[data-svl-id="' + id + '"]');
+        this.springNaar(el, 110);
+      }, 90);
+    });
+  }
+
+  veld(label, waarde) {
+    if (!waarde) return null;
+    const h = React.createElement;
+    return h('div', { key: label, style: { display: 'flex', flexWrap: 'wrap', gap: '4px 10px', margin: '0 0 6px' } }, [
+      h('span', { key: 'l', style: { flex: '0 0 118px', fontSize: '13px', color: '#6b6f65' } }, label),
+      h('span', { key: 'w', style: { flex: '1 1 180px', minWidth: 0, fontSize: '15px', lineHeight: '1.5', color: '#2c2f28' } }, waarde)
+    ]);
+  }
+
+  detailBlok(p) {
+    const h = React.createElement, r = [];
+    if (p.v && p.v !== p.n) r.push(this.veld('Volledige naam', p.v));
+    r.push(this.veld('Beroep', p.b));
+    r.push(this.veld('Geboren', [p.gb, p.gp].filter(Boolean).join(', ')));
+    if (p.od) r.push(this.veld('Overleden', [p.od, p.op].filter(Boolean).join(', ') + (p.l != null ? ' · ' + p.l + ' jaar' : '')));
+    r.push(this.veld('Woont in', p.wonen));
+    if (p.k && p.k.length) r.push(this.veld('Nazaten', p.k.length + (p.k.length === 1 ? ' kind' : ' kinderen') + ' · ' + this.telNazaten(p) + ' in totaal'));
+    if (p.p && p.p.length) {
+      r.push(h('div', { key: 'pk', style: { marginTop: '14px', paddingTop: '12px', borderTop: '1px solid #e6e9e0' } }, [
+        h('span', { key: 'k', style: { display: 'block', fontSize: '13px', color: '#6b6f65', marginBottom: '8px' } }, p.p.length > 1 ? 'Partners' : 'Partner'),
+        h('div', { key: 'l', style: { display: 'flex', flexDirection: 'column', gap: '10px' } }, p.p.map((q, i) => {
+          const extra = [q.v && q.v !== q.n ? q.v : null, q.b, q.gb ? 'geboren ' + q.gb : null, q.od ? 'overleden ' + q.od : null, q.note].filter(Boolean).join(' · ');
+          return h('div', { key: i }, [
+            h('span', { key: 'n', style: { display: 'block', fontSize: '15px', fontWeight: 600, color: '#2c2f28' } }, q.n),
+            extra ? h('span', { key: 'e', style: { display: 'block', fontSize: '14px', lineHeight: '1.5', color: '#6b6f65' } }, extra) : null
+          ]);
+        }))
+      ]));
+    }
+    return h('div', { style: { margin: '12px 0 0', padding: '14px 16px', background: '#f7f8f4', border: '1px solid #e6e9e0', borderRadius: '14px' } }, r.filter(Boolean));
+  }
+
+  roman(n) { return ['I','II','III','IV','V','VI','VII','VIII'][n - 1] || String(n); }
+
+  knoop(p, id, idx, gen) {
+    const h = React.createElement;
+    const open = !!this.state.open[id], det = !!this.state.det[id], hor = !!(this.state.hor || {})[id];
+    const kn = p.k || [];
+    const jaren = [this.jaar(p.gb), this.jaar(p.od)].filter(Boolean).join(' – ');
+    const sub = [jaren, p.b].filter(Boolean).join(' · ');
+    return h('li', { key: id, 'data-svl-id': id, style: { listStyle: 'none', margin: '0 0 12px', animation: 'svlIn .45s cubic-bezier(.22,.61,.36,1) both', animationDelay: Math.min((idx || 0) * 55, 550) + 'ms' } }, [
+      h('button', {
+        key: 'kop', type: 'button', onClick: () => this.toggleDetail(id), 'aria-expanded': det,
+        style: { display: 'block', width: '100%', textAlign: 'left', background: det ? '#f4f5ef' : 'transparent', border: '0', borderBottom: '1px solid ' + (det ? '#c8cfbc' : '#e6e9e0'), borderRadius: '0', padding: '11px 4px', minHeight: '52px', fontFamily: 'inherit', cursor: 'pointer' }
+      }, [
+        h('span', { key: 'n', style: { display: 'block', fontSize: '18px', fontWeight: 600, letterSpacing: '-0.3px', color: '#1d1d1f' } }, p.n),
+        sub ? h('span', { key: 's', style: { display: 'block', marginTop: '3px', fontSize: '13px', letterSpacing: '0.3px', color: '#5f6558' } }, sub) : null
+      ]),
+      det ? this.detailBlok(p) : null,
+      kn.length ? h('div', { key: 'tog', style: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4px 18px', padding: '8px 0 0 20px' } }, [
+        h('button', {
+          key: 'uit', type: 'button', onClick: () => this.toggleKind(id), 'aria-expanded': open,
+          style: { display: 'inline-flex', alignItems: 'center', gap: '8px', minHeight: '40px', padding: '0 2px', background: 'none', border: '0', fontFamily: 'inherit', fontSize: '14px', letterSpacing: '0.2px', color: '#5f6558', cursor: 'pointer' }
+        }, [
+          h('span', { key: 'i', style: { fontSize: '19px', lineHeight: 1, fontWeight: 600, color: '#0071e3', width: '12px', textAlign: 'center' } }, open ? '\u2013' : '+'),
+          h('span', { key: 'l' }, open ? 'kinderen verbergen' : kn.length + (kn.length === 1 ? ' kind' : ' kinderen'))
+        ]),
+        (gen || 2) === 2 ? h('button', {
+          key: 'hor', type: 'button', onClick: () => { if (!open) this.toggleKind(id); this.toggleHor(id); }, 'aria-pressed': hor,
+          style: { display: 'inline-flex', alignItems: 'center', gap: '7px', minHeight: '40px', padding: '0 12px', background: hor ? '#e4e7de' : 'none', border: '1px solid ' + (hor ? '#c8cfbc' : '#e2e5dc'), borderRadius: '980px', fontFamily: 'inherit', fontSize: '14px', color: '#5f6558', cursor: 'pointer' }
+        }, [
+          h('svg', { key: 'i', viewBox: '0 0 24 24', width: 15, height: 15, fill: 'none', stroke: '#5f6558', strokeWidth: 1.6, strokeLinecap: 'round', 'aria-hidden': 'true' }, [
+            h('path', { key: 'a', d: 'M4 12h5' }), h('path', { key: 'b', d: 'M9 6h4' }), h('path', { key: 'c', d: 'M9 18h4' }), h('path', { key: 'd', d: 'M9 6v12' }), h('path', { key: 'e', d: 'M13 6h6' }), h('path', { key: 'f', d: 'M13 12h6' }), h('path', { key: 'g', d: 'M13 18h6' })
+          ]),
+          h('span', { key: 'l' }, hor ? 'lijstweergave' : 'horizontale boom')
+        ]) : null
+      ].filter(Boolean)) : null,
+      open && kn.length && hor ? this.horBoom(p, id) : null,
+      open && kn.length && !hor ? h('div', { key: 'kids', style: { animation: 'svlGroei .55s ease both' } }, [
+        h('p', { key: 'gen', style: { margin: '14px 0 6px 20px', fontSize: '13px', letterSpacing: '1.6px', textTransform: 'uppercase', color: '#5f6558' } }, 'Generatie ' + this.roman((gen || 2) + 1)),
+        h('ul', { key: 'ul', style: { margin: '0 0 0 20px', padding: '0 0 0 18px', borderLeft: '1px solid #dde1d6' } }, kn.map((k, i) => this.knoop(k, id + '.' + i, i, (gen || 2) + 1)))
+      ]) : null
+    ]);
+  }
+
+  zetOrgBreedte() {
+    const el = this.orgRef.current;
+    if (el) el.style.maxWidth = Object.keys(this.state.hor || {}).length ? '1560px' : '1180px';
+  }
+
+  toggleHor = (id) => this.setState(s => { const o = Object.assign({}, s.hor || {}); if (o[id]) delete o[id]; else o[id] = true; return { hor: o }; });
+  zetZoom = (z) => this.setState({ zoom: z });
+  zetHover = (id) => { if (this._hoverId === id) return; this._hoverId = id; this.setState({ hoverId: id }); };
+
+  diepte(p) { return 1 + (p.k || []).reduce((m, k) => Math.max(m, this.diepte(k)), 0); }
+
+  horVak(p, id, gen) {
+    const h = React.createElement;
+    const det = !!this.state.det[id];
+    const hv = this.state.hoverId;
+    const inTak = !hv || hv === id || hv.indexOf(id + '.') === 0 || id.indexOf(hv + '.') === 0;
+    const jaren = [this.jaar(p.gb), this.jaar(p.od)].filter(Boolean).join(' \u2013 ');
+    const leeft = !p.od;
+    const nz = this.telNazaten(p);
+    const partner = (p.p || []).map(q => q.n).join(', ');
+    return h('div', {
+      key: 'vak', 'data-svl-id': id,
+      onMouseEnter: () => this.zetHover(id), onMouseLeave: () => this.zetHover(null),
+      style: {
+        flex: '0 0 210px', width: '210px', alignSelf: 'center', boxSizing: 'border-box',
+        background: '#ffffff', border: '1px solid ' + (det ? '#8f9a80' : (hv === id ? '#a9b39a' : '#d2d8c8')),
+        borderRadius: '10px', padding: '10px 12px',
+        boxShadow: hv === id ? '0 6px 18px rgba(20,32,16,0.14)' : '0 1px 2px rgba(20,32,16,0.06)',
+        opacity: inTak ? 1 : 0.42, transition: 'opacity .18s ease, box-shadow .18s ease, border-color .18s ease'
+      }
+    }, [
+      h('button', {
+        key: 'b', type: 'button', onClick: () => this.toggleDetail(id), 'aria-expanded': det,
+        style: { display: 'block', width: '100%', textAlign: 'left', background: 'none', border: 0, padding: 0, fontFamily: 'inherit', cursor: 'pointer' }
+      }, [
+        h('span', { key: 'n', style: { display: 'flex', alignItems: 'center', gap: '7px' } }, [
+          h('span', { key: 'd', title: leeft ? 'in leven' : 'overleden', style: { flex: '0 0 auto', width: '6px', height: '6px', borderRadius: '50%', background: leeft ? '#5b8a3c' : '#c2c9b6' } }),
+          h('span', { key: 't', style: { fontSize: '15px', fontWeight: 600, letterSpacing: '-0.2px', color: leeft ? '#1d1d1f' : '#3f443a' } }, p.n)
+        ]),
+        jaren ? h('span', { key: 'j', style: { display: 'block', marginTop: '3px', fontSize: '12px', letterSpacing: '0.2px', color: '#5f6558' } }, jaren) : null,
+        partner ? h('span', { key: 'p', style: { display: 'block', marginTop: '2px', fontSize: '12px', lineHeight: 1.4, color: '#6d7563', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' } }, '\u2661 ' + partner) : null
+      ]),
+      nz ? h('span', { key: 'nz', style: { display: 'inline-block', marginTop: '7px', padding: '3px 9px', background: '#f1f3ec', borderRadius: '980px', fontSize: '11px', letterSpacing: '0.4px', color: '#5f6558', whiteSpace: 'nowrap' } }, nz + ' nazaten') : null,
+      det ? h('div', { key: 'd2', style: { marginTop: '9px', paddingTop: '9px', borderTop: '1px solid #e6e9e0', fontSize: '12.5px', lineHeight: 1.5, color: '#4a4f43' } }, [
+        p.v && p.v !== p.n ? h('span', { key: 'v', style: { display: 'block' } }, p.v) : null,
+        p.b ? h('span', { key: 'b', style: { display: 'block' } }, p.b) : null,
+        p.gb ? h('span', { key: 'g', style: { display: 'block' } }, 'geboren ' + [p.gb, p.gp].filter(Boolean).join(', ')) : null,
+        p.od ? h('span', { key: 'o', style: { display: 'block' } }, 'overleden ' + [p.od, p.op].filter(Boolean).join(', ') + (p.l != null ? ' \u00b7 ' + p.l + ' jaar' : '')) : null,
+        p.wonen ? h('span', { key: 'w', style: { display: 'block' } }, 'woont in ' + p.wonen) : null
+      ].filter(Boolean)) : null
+    ].filter(Boolean));
+  }
+
+  horKnoop(p, id, gen) {
+    const h = React.createElement;
+    const kn = p.k || [];
+    const lijn = '1px dotted #b3bca6';
+    return h('div', { key: id, style: { display: 'flex', alignItems: 'stretch' } }, [
+      this.horVak(p, id, gen),
+      kn.length ? h('div', { key: 'tak', style: { display: 'flex', alignItems: 'center' } }, [
+        h('div', { key: 'stub', style: { flex: '0 0 20px', height: 0, borderTop: lijn } }),
+        h('div', { key: 'kk', style: { display: 'flex', flexDirection: 'column' } }, kn.map((k, i) =>
+          h('div', { key: i, style: { display: 'flex', alignItems: 'stretch', padding: '9px 0' } }, [
+            h('div', { key: 'sp', style: { flex: '0 0 1px', display: 'flex', flexDirection: 'column' } }, [
+              h('div', { key: 'a', style: { flex: 1, width: 0, borderLeft: i === 0 ? 'none' : lijn } }),
+              h('div', { key: 'b', style: { flex: 1, width: 0, borderLeft: i === kn.length - 1 ? 'none' : lijn } })
+            ]),
+            h('div', { key: 'st', style: { flex: '0 0 20px', height: 0, alignSelf: 'center', borderTop: lijn } }),
+            this.horKnoop(k, id + '.' + i, (gen || 2) + 1)
+          ])
+        ))
+      ]) : null
+    ].filter(Boolean));
+  }
+
+  horBoom(p, id) {
+    const h = React.createElement;
+    const z = this.state.zoom || 1;
+    const kolommen = this.diepte(p);
+    const pitch = 251;
+    const knop = (label, waarde) => h('button', {
+      key: 'z' + label, type: 'button', onClick: () => this.zetZoom(waarde),
+      style: { minHeight: '34px', padding: '0 11px', background: z === waarde ? '#e4e7de' : 'none', border: '1px solid ' + (z === waarde ? '#c8cfbc' : '#e2e5dc'), borderRadius: '980px', fontFamily: 'inherit', fontSize: '13px', color: '#5f6558', cursor: 'pointer' }
+    }, label);
+    return h('div', { key: 'hb', style: { margin: '16px calc(-1 * clamp(30px,4vw,56px)) 0', padding: '0' } }, [
+      h('div', { key: 'bar', style: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', padding: '0 clamp(30px,4vw,56px) 10px' } }, [
+        h('span', { key: 'l', style: { flex: 1, minWidth: '120px', fontSize: '12px', letterSpacing: '1.4px', textTransform: 'uppercase', color: '#6d7563' } }, kolommen + ' generaties'),
+        knop('100%', 1), knop('75%', 0.75), knop('50%', 0.5)
+      ]),
+      h('div', { key: 'wrap', style: { position: 'relative' } }, [
+        h('div', { key: 'fadeL', 'aria-hidden': 'true', style: { position: 'absolute', left: 0, top: 0, bottom: 0, width: 'clamp(30px,4vw,56px)', background: 'linear-gradient(to right, #fbfaf5 55%, rgba(251,250,245,0))', pointerEvents: 'none', zIndex: 2 } }),
+        h('div', { key: 'fadeR', 'aria-hidden': 'true', style: { position: 'absolute', right: 0, top: 0, bottom: 0, width: 'clamp(30px,4vw,56px)', background: 'linear-gradient(to left, #fbfaf5 55%, rgba(251,250,245,0))', pointerEvents: 'none', zIndex: 2 } }),
+        h('div', { key: 'sc', style: { overflowX: 'auto', overflowY: 'hidden', padding: '2px clamp(30px,4vw,56px) 16px', WebkitOverflowScrolling: 'touch' } },
+          h('div', { style: { display: 'inline-block', zoom: z } }, [
+            h('div', { key: 'kop', style: { display: 'flex', marginBottom: '10px' } }, Array.from({ length: kolommen }, (_, i) =>
+              h('div', { key: i, style: { flex: '0 0 ' + pitch + 'px', width: pitch + 'px', fontSize: '11px', letterSpacing: '1.6px', textTransform: 'uppercase', color: '#6d7563', whiteSpace: 'nowrap' } }, 'Generatie ' + this.roman(2 + i))
+            )),
+            h('div', { key: 'tree', style: { display: 'inline-block', animation: 'svlIn .45s cubic-bezier(.22,.61,.36,1) both' } }, this.horKnoop(p, id, 2))
+          ])
+        )
+      ])
+    ]);
+  }
+
+  boom() {
+    const h = React.createElement;
+    if (this.state.orgError) return h('p', { style: { fontSize: '15px', color: '#b3261e' } }, this.state.orgError);
+    const data = this.state.personen;
+    if (!data) return h('p', { style: { fontSize: '16px', color: '#6b6f65' } }, 'Gegevens worden geladen…');
+    const q = (this.state.zoek || '').trim().toLowerCase();
+    if (q.length >= 2) {
+      const treffers = this.platteLijst(data, '', [], []).filter(o => ((o.p.n || '') + ' ' + (o.p.v || '')).toLowerCase().includes(q)).slice(0, 40);
+      if (!treffers.length) return h('p', { style: { fontSize: '16px', color: '#6b6f65' } }, 'Geen naam gevonden.');
+      return h('ul', { style: { margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' } }, treffers.map(o =>
+        h('li', { key: o.id, style: { listStyle: 'none' } },
+          h('button', {
+            type: 'button', onClick: () => this.opendPad(o.id),
+            style: { display: 'block', width: '100%', textAlign: 'left', background: '#ffffff', border: '1px solid #e2e5dc', borderRadius: '12px', padding: '11px 15px', minHeight: '48px', fontFamily: 'inherit', cursor: 'pointer' }
+          }, [
+            h('span', { key: 'n', style: { display: 'block', fontSize: '16px', fontWeight: 600, color: '#1d1d1f' } }, o.p.n),
+            h('span', { key: 'p', style: { display: 'block', marginTop: '2px', fontSize: '13px', color: '#6b6f65' } }, o.pad.length ? o.pad.join(' › ') : 'kind van Wim Vink en Alida Leeflang')
+          ])
+        )
+      ));
+    }
+    return h('div', null, [
+      h('p', { key: 'gen2', style: { margin: '0 0 8px', fontSize: '13px', letterSpacing: '1.6px', textTransform: 'uppercase', color: '#5f6558' } }, 'Generatie ' + this.roman(2)),
+      h('ul', { key: 'ul', style: { margin: 0, padding: 0 } }, data.map((p, i) => this.knoop(p, String(i), i, 2)))
+    ]);
+  }
+
+  renderVals() {
+    const inh = this.state.inhoud;
+    const deel = inh ? inh[this.state.tab] : null;
+    const tab = this.state.tab;
+    return {
+      locked: !this.state.unlocked,
+      open: this.state.unlocked,
+      pw: this.state.pw,
+      remember: this.state.remember,
+      busy: this.state.busy,
+      buttonLabel: this.state.busy ? 'Even geduld…' : 'Inloggen',
+      hasError: !!this.state.error,
+      error: this.state.error,
+      onPw: (e) => this.setState({ pw: e.target.value }),
+      onRemember: (e) => this.setState({ remember: e.target.checked }),
+      onSubmit: (e) => { e.preventDefault(); this.unlock(this.state.pw, this.state.remember); },
+      titelVoorwoord: inh && inh.voorwoord ? inh.voorwoord.titel : 'Voorwoord',
+      titelToelichting: inh && inh.toelichting ? inh.toelichting.titel : 'Toelichting',
+      titelStamboom: inh && inh.stamboom ? inh.stamboom.titel : 'Stamboom',
+      proseVoorwoord: inh && inh.voorwoord ? React.createElement('div', { dangerouslySetInnerHTML: { __html: inh.voorwoord.html } }) : null,
+      proseToelichting: inh && inh.toelichting ? React.createElement('div', { dangerouslySetInnerHTML: { __html: inh.toelichting.html } }) : null,
+      proseStamboom: inh && inh.stamboom ? React.createElement('div', { dangerouslySetInnerHTML: { __html: inh.stamboom.html } }) : null,
+      prose2Ref: this.prose2Ref,
+      prose3Ref: this.prose3Ref,
+      toOrganogram: () => { this.setState({ tab: 'organogram' }); this.laadPersonen(); },
+      naarSectie: this.naarSectie,
+      toggleMenu: this.toggleMenu,
+      menuOpenTxt: this.state.menu ? 'true' : 'false',
+      bgvoorwoord: this.state.actief === 'voorwoord' ? '#eaeee1' : 'transparent',
+      bgtoelichting: this.state.actief === 'toelichting' ? '#eaeee1' : 'transparent',
+      bgorganogram: this.state.actief === 'organogram' ? '#eaeee1' : 'transparent',
+      bgstamboom: this.state.actief === 'stamboom' ? '#eaeee1' : 'transparent',
+      fwvoorwoord: this.state.actief === 'voorwoord' ? '600' : '400',
+      fwtoelichting: this.state.actief === 'toelichting' ? '600' : '400',
+      fworganogram: this.state.actief === 'organogram' ? '600' : '400',
+      fwstamboom: this.state.actief === 'stamboom' ? '600' : '400',
+      acvoorwoord: this.state.actief === 'voorwoord' ? 'true' : 'false',
+      actoelichting: this.state.actief === 'toelichting' ? 'true' : 'false',
+      acorganogram: this.state.actief === 'organogram' ? 'true' : 'false',
+      acstamboom: this.state.actief === 'stamboom' ? 'true' : 'false',
+      cijferPersonen: this.cijfers().p,
+      cijferGeneraties: this.cijfers().g,
+      cijferGezinnen: this.cijfers().gz,
+      cijferLeven: this.cijfers().l,
+      cijferOverleden: this.cijfers().o,
+      cijferGrootste: this.cijfers().max,
+      cijferLeeftijd: this.cijfers().lft,
+      zoek: this.state.zoek,
+      onZoek: (e) => {
+        const v = e.target.value;
+        this.setState({ zoek: v });
+        clearTimeout(this._zoekSpring);
+        if ((v || '').trim().length >= 2) {
+          this._zoekSpring = setTimeout(() => {
+            const sec = document.getElementById('organogram');
+            if (!sec) return;
+            const boven = sec.getBoundingClientRect().top;
+            if (boven < 40 || boven > window.innerHeight * 0.5) this.springNaar(sec, 76);
+          }, 220);
+        }
+      },
+      allesOpen: () => this.setState(s => ({ open: this.alleIds(s.personen, '', {}) })),
+      allesDicht: () => this.setState({ open: {}, det: {}, hor: {}, hoverId: null }),
+      orgRef: this.orgRef,
+      boom: this.boom(),
+      proseRef: this.proseRef,
+      mainRef: this.mainRef,
+      svgRef: this.svgRef,
+      padRef: this.padRef,
+      spoorRef: this.spoorRef,
+      stipRef: this.stipRef,
+      ringRef: this.ringRef,
+      takARef: this.takARef,
+      takBRef: this.takBRef,
+      takCRef: this.takCRef,
+      takDRef: this.takDRef,
+      takERef: this.takERef,
+      splitsRef: this.splitsRef,
+      eindRef: this.eindRef,
+      startRef: this.startRef,
+      puntenRef: this.puntenRef,
+      paneelRef: this.paneelRef,
+      filmRef: this.filmRef,
+      stilRef: this.stilRef,
+      videoRef: this.videoRef,
+      nachtRef: this.nachtRef,
+      nacht2Ref: this.nacht2Ref,
+      sterRef: this.sterRef,
+      vuurRef: this.vuurRef,
+      toVoorwoord: () => this.setState({ tab: 'voorwoord' }),
+      toToelichting: () => this.setState({ tab: 'toelichting' }),
+      toStamboom: () => this.setState({ tab: 'stamboom' }),
+      openPdf: this.openPdf,
+      pdfBusy: this.state.pdfBusy,
+      pdfLabel: this.state.pdfBusy ? 'Ontsleutelen…' : 'Bekijk de stamboom van Vink-Leeflang',
+      hasPdf: !!this.state.pdfUrl,
+      pdfHref: this.state.pdfUrl || '#',
+      hasPdfError: !!this.state.pdfError,
+      pdfError: this.state.pdfError,
+      logout: this.logout
+    };
+  }
+}
+</script>
+</body>
+</html>

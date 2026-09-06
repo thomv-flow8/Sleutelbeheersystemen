@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"../../vendor/react/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"../../vendor/react-dom/react-dom.production.min.js"};</script>
+<script src="../../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stamboom hersleutelen</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ffffff; color: #1d1d1f; font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { color: #0071e3; text-decoration: underline; }
+  h1, h2, p { margin: 0; padding: 0; }
+</style>
+</helmet>
+
+<main style="max-width:680px;margin:0 auto;padding:clamp(40px,6vw,72px) 24px">
+  <p style="font-size:13px;letter-spacing:0.2px;color:#86868b">Beheer &middot; Stamboom Vink-Leeflang</p>
+  <h1 style="margin-top:10px;font-size:clamp(30px,4.4vw,42px);line-height:1.1;font-weight:700;letter-spacing:-0.8px">Wachtwoord wijzigen</h1>
+  <p style="margin-top:18px;font-size:17px;line-height:1.6;color:#707070;text-wrap:pretty">Kies de twee bronbestanden, vul een nieuw wachtwoord in en download de versleutelde bestanden. Zet die daarna in de map <strong>/stamboom/data/</strong> op de website. Het versleutelen gebeurt volledig in deze browser; er wordt niets verstuurd.</p>
+
+  <div style="margin-top:36px;display:flex;flex-direction:column;gap:26px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <label for="svl-json" style="font-size:15px;font-weight:600">1. Tekstbestand <span style="font-weight:400;color:#86868b">inhoud.json</span></label>
+      <input id="svl-json" type="file" accept=".json,application/json" onChange="{{ onJson }}" style="font-family:inherit;font-size:15px">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <label for="svl-pdf" style="font-size:15px;font-weight:600">2. Stamboom <span style="font-weight:400;color:#86868b">stamboom-vink.pdf</span></label>
+      <input id="svl-pdf" type="file" accept="application/pdf" onChange="{{ onPdf }}" style="font-family:inherit;font-size:15px">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <label for="svl-personen" style="font-size:15px;font-weight:600">3. Familiegegevens <span style="font-weight:400;color:#86868b">personen.json</span></label>
+      <input id="svl-personen" type="file" accept=".json,application/json" onChange="{{ onPersonen }}" style="font-family:inherit;font-size:15px">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:420px">
+      <label for="svl-nw" style="font-size:15px;font-weight:600">4. Nieuw familiewachtwoord</label>
+      <input id="svl-nw" type="text" autocomplete="off" spellcheck="false" value="{{ pw }}" onChange="{{ onPw }}" style="height:48px;padding:0 14px;font-family:inherit;font-size:17px;background:#ffffff;border:1px solid #d2d2d7;border-radius:12px;outline:none">
+      <p style="font-size:14px;line-height:1.5;color:#86868b">Minimaal 10 tekens. Deel het alleen met familieleden.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px">
+      <button type="button" onClick="{{ run }}" style="min-height:48px;display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-family:inherit;font-size:17px;padding:12px 26px;border:0;border-radius:980px;cursor:pointer" style-hover="background:#0077ed">Versleutel en download</button>
+      <span style="font-size:15px;color:{{ statusKleur }}">{{ status }}</span>
+    </div>
+  </div>
+
+  <p style="margin-top:44px;font-size:14px;line-height:1.6;color:#86868b">Bewaar de bronbestanden zelf niet op de website &mdash; alleen op uw eigen computer.</p>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:760}}">
+class Component extends DCLogic {
+  state = { pw: '', status: '', fout: false };
+
+  async pack(bytes, pw) {
+    const salt = crypto.getRandomValues(new Uint8Array(16));
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt, iterations: 250000, hash: 'SHA-256' }, km, { name: 'AES-GCM', length: 256 }, false, ['encrypt']);
+    const ct = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, bytes));
+    const out = new Uint8Array(32 + ct.length);
+    out.set(new TextEncoder().encode('SVL1'), 0); out.set(salt, 4); out.set(iv, 20); out.set(ct, 32);
+    return new Blob([out], { type: 'application/octet-stream' });
+  }
+
+  bewaar(blob, naam) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = naam; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+  }
+
+  run = async () => {
+    const pw = this.state.pw.trim();
+    if (pw.length < 10) { this.setState({ status: 'Kies een wachtwoord van minimaal 10 tekens.', fout: true }); return; }
+    if (!this._json && !this._pdf && !this._personen) { this.setState({ status: 'Kies eerst minstens één bronbestand.', fout: true }); return; }
+    this.setState({ status: 'Versleutelen…', fout: false });
+    try {
+      if (this._json) {
+        const tekst = await this._json.text();
+        JSON.parse(tekst);
+        this.bewaar(await this.pack(new TextEncoder().encode(tekst), pw), 'inhoud.enc');
+      }
+      if (this._personen) {
+        const tekst = await this._personen.text();
+        JSON.parse(tekst);
+        this.bewaar(await this.pack(new TextEncoder().encode(tekst), pw), 'personen.enc');
+      }
+      if (this._pdf) {
+        const bytes = new Uint8Array(await this._pdf.arrayBuffer());
+        this.bewaar(await this.pack(bytes, pw), 'stamboom.enc');
+      }
+      this.setState({ status: 'Klaar — bestanden gedownload.', fout: false });
+    } catch (err) {
+      this.setState({ status: 'Mislukt: ' + (err && err.message ? err.message : 'onbekende fout'), fout: true });
+    }
+  };
+
+  renderVals() {
+    return {
+      pw: this.state.pw,
+      onPw: (e) => this.setState({ pw: e.target.value }),
+      onJson: (e) => { this._json = e.target.files[0] || null; },
+      onPdf: (e) => { this._pdf = e.target.files[0] || null; },
+      onPersonen: (e) => { this._personen = e.target.files[0] || null; },
+      run: this.run,
+      status: this.state.status,
+      statusKleur: this.state.fout ? '#b3261e' : '#707070'
+    };
+  }
+}
+</script>
+</body>
+</html>
