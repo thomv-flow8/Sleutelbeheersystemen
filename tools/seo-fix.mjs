@@ -799,6 +799,47 @@ function lazyOpPrintpaginas(html, relPath) {
   return { html, changed: n };
 }
 
+/* Batch 14 — scrollpositie bij een stapwissel in het contactformulier.
+ *
+ * De drie stappen zitten in een sectie van ruim 2000px en worden getoond met
+ * display:flex / display:none. Bij het wisselen wordt de scrollpositie niet
+ * bijgesteld: op mobiel heb je naar beneden gescrold om uit de zes knoppen van
+ * stap 1 te kiezen, en dan verschijnt de kortere stap 2 boven je kijkvenster.
+ * Je kijkt dus onder het formulier en moet terug omhoog.
+ *
+ * De sectie heeft al scroll-margin-top:90px voor de plakkende navigatiebalk;
+ * scrollIntoView() houdt daar zelf rekening mee. */
+const STAP_ANKER = 'this._stap';
+
+const STAP_SCROLL = `
+    /* Bij een stapwissel de bovenkant van het formulier terugbrengen in beeld,
+     * maar alleen als die er niet al staat - anders spring je op desktop
+     * zonder reden. */
+    if (this._stap === undefined) this._stap = this.state.stap;
+    else if (this._stap !== this.state.stap) {
+      this._stap = this.state.stap;
+      const sec = document.getElementById('aanvraag');
+      if (sec) {
+        const marge = parseFloat(getComputedStyle(sec).scrollMarginTop) || 0;
+        const top = sec.getBoundingClientRect().top;
+        if (top < marge || top > window.innerHeight * 0.5) {
+          const rustig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          sec.scrollIntoView({ behavior: rustig ? 'auto' : 'smooth', block: 'start' });
+        }
+      }
+    }
+`;
+
+function stapScroll(html) {
+  if (html.includes(STAP_ANKER)) return { html, changed: 0 };
+  if (!html.includes('id="aanvraag"')) return { html, changed: 0 };
+
+  const doel = `    this._so = this.state.searchOpen;\n  }`;
+  if (!html.includes(doel)) return { html, changed: 0 };
+
+  return { html: html.replace(doel, `    this._so = this.state.searchOpen;\n${STAP_SCROLL}  }`), changed: 1 };
+}
+
 /* GEEN placeholder-herschrijving. Toegelicht omdat de verleiding groot is:
  *
  * De uitgeleverde HTML bevat href="{{ khHref }}" en aria-pressed="{{ ... }}".
@@ -821,7 +862,7 @@ function lazyOpPrintpaginas(html, relPath) {
 /* ------------------------------------------------------------------- main */
 
 const files = walk(ROOT);
-let totals = { hoisted: 0, charset: 0, extras: 0, meta: 0, a11y: 0, main: 0, offers: 0, fragment: 0, linkNames: 0, jsonld: 0, video: 0, lazy: 0, touched: 0 };
+let totals = { hoisted: 0, charset: 0, extras: 0, meta: 0, a11y: 0, main: 0, offers: 0, fragment: 0, linkNames: 0, jsonld: 0, video: 0, lazy: 0, stap: 0, touched: 0 };
 
 for (const file of files) {
   const rel = path.relative(ROOT, file).split(path.sep).join('/');
@@ -845,6 +886,7 @@ for (const file of files) {
   const u = tableNames(html); html = u.html;
   const w = htmlLang(html, rel); html = w.html;
   const x = lazyOpPrintpaginas(html, rel); html = x.html;
+  const y = stapScroll(html); html = y.html;
 
   if (html !== before) {
     fs.writeFileSync(file, html);
@@ -862,13 +904,14 @@ for (const file of files) {
     totals.video += v.changed;
     totals.a11y += t.changed + u.changed + w.changed;
     totals.lazy += x.changed;
+    totals.stap += y.changed;
     console.log(
       `${rel}  head+${a.moved}${b.changed ? ' charset' : ''}` +
       `${c.added ? ` extra:${c.added}` : ''}${d.added ? ` meta:${d.added}` : ''}` +
       `${e.changed + g.changed ? ` a11y:${e.changed + g.changed}` : ''}` +
       `${m.changed ? ' main' : ''}${o.changed ? ` offers:${o.changed}` : ''}` +
       `${p.changed ? ` fragment:${p.changed}` : ''}${q.changed ? ' paramlezer' : ''}` +
-      `${s.changed ? ` linknamen:${s.changed}` : ''}${j.changed ? ` jsonld:${j.changed}` : ''}${v.changed ? ' video' : ''}${t.changed ? ` tail:${t.changed}` : ''}${u.changed ? ` tabellen:${u.changed}` : ''}${w.changed ? ' lang' : ''}${x.changed ? ` lazy:${x.changed}` : ''}`
+      `${s.changed ? ` linknamen:${s.changed}` : ''}${j.changed ? ` jsonld:${j.changed}` : ''}${v.changed ? ' video' : ''}${t.changed ? ` tail:${t.changed}` : ''}${u.changed ? ` tabellen:${u.changed}` : ''}${w.changed ? ' lang' : ''}${x.changed ? ` lazy:${x.changed}` : ''}${y.changed ? ' stapscroll' : ''}`
     );
   }
 }
