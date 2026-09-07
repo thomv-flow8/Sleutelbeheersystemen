@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"../vendor/react/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"../vendor/react-dom/react-dom.production.min.js"};</script>
 <meta charset="utf-8">
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"../vendor/react/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"../vendor/react-dom/react-dom.production.min.js"};</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="../support.js"></script>
 <!-- Cookie-consent + GA4 (laadt GA4 alleen na toestemming) -->
@@ -62,14 +62,10 @@
   else showBanner();
 })();
 </script>
-</head>
-<body>
-<x-dc>
-<helmet>
-<script>window.DELPHI_BASIS = "../";</script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- seo-fix:start -->
 <title>Sleutelringen — RVS keyrings, Flex keyrings, Morse en Rivet | DELPHI</title>
-<meta name="description" content="Verzegelde sleutelringen: RVS keyrings en Flex keyrings met eigen serienummer, plus Morse, Rivet en flexibele ringen met coating. Vijf maten, uit voorraad leverbaar.">
+<meta name="description" content="Verzegelde sleutelringen: RVS en Flex keyrings met eigen serienummer, plus Morse, Rivet en flexibele ringen met coating. Vijf maten, uit voorraad.">
 <link rel="canonical" href="https://www.sleutelbeheersystemen.nl/sleutelringen/">
 <link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/sleutelringen/">
 <link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/sleutelringen/">
@@ -81,9 +77,22 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sleutelringen — RVS keyrings, Flex keyrings, Morse en Rivet | DELPHI">
-<meta name="twitter:description" content="Verzegelde sleutelringen: RVS keyrings en Flex keyrings met eigen serienummer, plus Morse, Rivet en flexibele ringen met coating. Vijf maten, uit voorraad leverbaar.">
+<meta name="twitter:description" content="Verzegelde sleutelringen: RVS en Flex keyrings met eigen serienummer, plus Morse, Rivet en flexibele ringen met coating. Vijf maten, uit voorraad.">
 <meta name="twitter:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
 <link rel="preload" href="../fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<!-- seo-fix:end -->
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../photos/icons/favicon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="../photos/icons/favicon-180.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sleutelringen — RVS keyrings, Flex keyrings, Morse en Rivet | DELPHI">
+<meta property="og:description" content="Verzegelde sleutelringen: RVS en Flex keyrings met eigen serienummer, plus Morse, Rivet en flexibele ringen met coating. Vijf maten, uit voorraad.">
+<style>.skip-link{position:absolute;left:-9999px;top:0;z-index:1000}.skip-link:focus{left:8px;top:8px;padding:10px 16px;background:#1d1d1f;color:#fff;border-radius:8px;font-size:15px;text-decoration:none}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script>window.DELPHI_BASIS = "../";</script>
 <style>
   @font-face { font-family: Inter; font-style: normal; font-weight: 100 900; font-display: swap;
     src: url("../fonts/InterVariable.woff2") format("woff2"); }
@@ -223,20 +232,16 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Sleutelringen",
-  "description": "Verzegelde sleutelringen: RVS keyrings en Flex keyrings met eigen serienummer, plus Morse, Rivet en flexibele ringen met coating. Vijf maten, uit voorraad leverbaar.",
-  "image": "https://www.sleutelbeheersystemen.nl/photos/ring-hero-serienummer.webp",
-  "category": "Sleutelbeheer",
-  "brand": { "@type": "Brand", "name": "DELPHI Sleutelbeheersystemen" },
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "url": "https://www.sleutelbeheersystemen.nl/sleutelringen/",
-    "seller": { "@type": "Organization", "name": "DELPHI Sleutelbeheersystemen" }
-  }
+ "@context": "https://schema.org",
+ "@type": "Product",
+ "name": "Sleutelringen",
+ "description": "Verzegelde sleutelringen: RVS keyrings en Flex keyrings met eigen serienummer, plus Morse, Rivet en flexibele ringen met coating. Vijf maten, uit voorraad leverbaar.",
+ "image": "https://www.sleutelbeheersystemen.nl/photos/ring-hero-serienummer.webp",
+ "category": "Sleutelbeheer",
+ "brand": {
+  "@type": "Brand",
+  "name": "DELPHI Sleutelbeheersystemen"
+ }
 }
 </script>
 <script type="application/ld+json">
@@ -267,6 +272,7 @@
 </helmet>
 
 <div style="min-height:100vh">
+<a class="skip-link" href="#hoofdinhoud">Naar hoofdinhoud</a>
 
 <nav onMouseLeave="{{ closeMenu }}" style="position:sticky;top:0;z-index:200;background:rgba(250,250,252,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid #d6d6d6">
   <div style="max-width:1200px;margin:0 auto;padding:18px 24px;min-height:72px;display:flex;flex-wrap:nowrap;align-items:center;gap:24px">
@@ -395,7 +401,7 @@
         <span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px">Zoeken</span>
         <div style="display:flex;align-items:center;gap:10px;max-width:560px;background:#ffffff;border:1px solid #d2d2d7;border-radius:12px;padding:10px 14px">
           <svg viewBox="0 0 24 24" fill="none" stroke="#86868b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="width:18px;height:18px;flex:0 0 auto"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
-          <input type="search" placeholder="Zoek een product of onderwerp" ref="{{ searchRef }}" onInput="{{ onSearch }}" style="flex:1;min-width:0;border:0;outline:none;background:none;font-size:17px;color:#1d1d1f">
+          <input type="search" placeholder="Zoek een product of onderwerp" ref="{{ searchRef }}" onInput="{{ onSearch }}" style="flex:1;min-width:0;border:0;outline:none;background:none;font-size:17px;color:#1d1d1f" aria-label="Zoek een product of onderwerp">
         </div>
         <ul style="display:flex;flex-direction:column;gap:12px">
           <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="4">
@@ -469,6 +475,7 @@
     </div>
   </div>
 </nav>
+<main id="hoofdinhoud">
 
 <section style="background:#ffffff;padding:clamp(40px,5vw,72px) 24px clamp(56px,7vw,88px)">
   <div style="max-width:1200px;margin:0 auto;text-align:center">
@@ -1338,6 +1345,7 @@
   </div>
 </section>
 
+</main>
 <footer style="margin-top:12px;background:#f5f5f7;padding:80px 24px 40px">
   <div style="max-width:1200px;margin:0 auto">
     <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:48px">
@@ -1397,7 +1405,7 @@
 <sc-if value="{{ mobileBar }}" hint-placeholder-val="{{ false }}">
   <div data-sticky-cta="1" style="position:fixed;left:0;right:0;bottom:0;z-index:180;background:rgba(250,250,252,0.94);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #d6d6d6;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;animation:barIn .25s ease both">
     <a href="../contact/?p=sleutelringen" style="flex:1 1 0;min-height:44px;display:flex;align-items:center;justify-content:center;background:#0071e3;color:#ffffff;font-size:16px;border-radius:980px;text-decoration:none" style-hover="text-decoration:none">Offerte aanvragen</a>
-    <a href="tel:+31183648851" aria-label="Bel +31 183 648851" style="flex:0 0 auto;min-height:44px;display:flex;align-items:center;justify-content:center;padding:0 18px;background:#ffffff;color:#0071e3;font-size:16px;border-radius:980px;border:1px solid #0071e3;text-decoration:none" style-hover="text-decoration:none">Bellen</a>
+    <a href="tel:+31183648851" aria-label="Bellen +31 183 648851" style="flex:0 0 auto;min-height:44px;display:flex;align-items:center;justify-content:center;padding:0 18px;background:#ffffff;color:#0071e3;font-size:16px;border-radius:980px;border:1px solid #0071e3;text-decoration:none" style-hover="text-decoration:none">Bellen</a>
   </div>
 </sc-if>
 

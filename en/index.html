@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"../vendor/react/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"../vendor/react-dom/react-dom.production.min.js"};</script>
 <meta charset="utf-8">
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"../vendor/react/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"../vendor/react-dom/react-dom.production.min.js"};</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="../support.js"></script>
 <!-- Cookie-consent + GA4 (laadt GA4 alleen na toestemming) -->
@@ -62,14 +62,10 @@
   else showBanner();
 })();
 </script>
-</head>
-<body>
-<x-dc>
-<helmet>
-<script>window.DELPHI_BASIS = "../";</script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- seo-fix:start -->
 <title>DELPHI Key Management Systems — systems and key cabinets</title>
-<meta name="description" content="DELPHI supplies electronic key management systems, key cabinets, lockers and tamper-proof key rings. Every issue recorded by name and time. Gorinchem, +31 (0)183 648851.">
+<meta name="description" content="DELPHI supplies electronic key management systems, key cabinets, lockers and tamper-proof key rings. Every issue recorded by name and time.">
 <link rel="canonical" href="https://www.sleutelbeheersystemen.nl/en/">
 <link rel="alternate" hreflang="nl" href="https://www.sleutelbeheersystemen.nl/">
 <link rel="alternate" hreflang="en" href="https://www.sleutelbeheersystemen.nl/en/">
@@ -81,12 +77,22 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="DELPHI Sleutelbeheersystemen — elektronisch sleutelbeheer en sleutelkasten">
-<meta name="twitter:description" content="DELPHI supplies electronic key management systems, key cabinets, lockers and tamper-proof key rings. Every issue recorded by name and time. Gorinchem, +31 (0)183 648851.">
+<meta name="twitter:description" content="DELPHI supplies electronic key management systems, key cabinets, lockers and tamper-proof key rings. Every issue recorded by name and time.">
 <meta name="twitter:image" content="https://www.sleutelbeheersystemen.nl/photos/og-image.webp">
 <meta property="og:title" content="DELPHI Sleutelbeheersystemen">
 <meta property="og:description" content="Elektronisch sleutelbeheer voor organisaties waar toegang niet ter discussie staat.">
 <meta property="og:type" content="website">
 <link rel="preload" href="../fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<!-- seo-fix:end -->
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../photos/icons/favicon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="../photos/icons/favicon-180.png">
+<style>.skip-link{position:absolute;left:-9999px;top:0;z-index:1000}.skip-link:focus{left:8px;top:8px;padding:10px 16px;background:#1d1d1f;color:#fff;border-radius:8px;font-size:15px;text-decoration:none}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script>window.DELPHI_BASIS = "../";</script>
 <style>
   @font-face { font-family: Inter; font-style: normal; font-weight: 100 900; font-display: swap;
     src: url("../fonts/InterVariable.woff2") format("woff2"); }
@@ -198,6 +204,7 @@
 </helmet>
 
 <div id="page-wrap" style="min-height:100vh">
+<a class="skip-link" href="#hoofdinhoud">Skip to main content</a>
 
 <nav onMouseLeave="{{ closeMenu }}" style="position:sticky;top:0;z-index:200;background:rgba(250,250,252,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid #d6d6d6">
   <div style="max-width:1200px;margin:0 auto;padding:18px 24px;min-height:72px;display:flex;flex-wrap:nowrap;align-items:center;gap:24px">
@@ -249,7 +256,7 @@
     <div style="min-height:0;overflow:hidden">
       <div style="background:#fafafc;border-top:1px solid #d6d6d6;box-shadow:0 18px 34px rgba(0,0,0,0.07)">
       <div style="max-width:1200px;margin:0 auto;width:100%;padding:clamp(28px,3.2vw,44px) 24px clamp(32px,3.6vw,52px);display:flex;flex-direction:column;gap:clamp(20px,2.2vw,28px)"><span style="font-size:12px;font-weight:500;color:#707070;letter-spacing:0.2px">Search</span>
-        <input type="search" value="{{ query }}" onInput="{{ onQuery }}" ref="{{ searchRef }}" placeholder="Search for a product or page" style="width:100%;max-width:560px;font-size:21px;padding:12px 16px;border:1px solid #d6d6d6;border-radius:12px;background:#ffffff;color:#1d1d1f;outline:none">
+        <input type="search" value="{{ query }}" onInput="{{ onQuery }}" ref="{{ searchRef }}" placeholder="Search for a product or page" style="width:100%;max-width:560px;font-size:21px;padding:12px 16px;border:1px solid #d6d6d6;border-radius:12px;background:#ffffff;color:#1d1d1f;outline:none" aria-label="Search for a product or page">
         <ul style="display:flex;flex-direction:column;gap:12px">
           <sc-for list="{{ results }}" as="r" hint-placeholder-count="4">
             <li><a href="{{ r.href }}" onClick="{{ closeSearch }}" style="display:flex;flex-direction:column;gap:2px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">
@@ -284,7 +291,7 @@
         <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
       <button type="button" onClick="{{ navBack }}" aria-label="Back" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
         <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
-        Terug
+        Back
       </button>
         <a href="../en/sam/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Security Asset Manager (SAM)</a>
         <a href="../en/keybox/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Keybox</a>
@@ -299,7 +306,7 @@
         <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
       <button type="button" onClick="{{ navBack }}" aria-label="Back" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
         <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
-        Terug
+        Back
       </button>
         <a href="../en/sam-lockers/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">SAM lockers</a>
         <a href="../en/oc-spray-station/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">OC Spray Station</a>
@@ -311,7 +318,7 @@
         <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
       <button type="button" onClick="{{ navBack }}" aria-label="Back" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
         <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
-        Terug
+        Back
       </button>
         <a href="../en/sleutelringen/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Stainless steel keyrings</a>
         <a href="../en/sleutelringen/#flex" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Flex keyrings</a>
@@ -324,7 +331,7 @@
         <div style="max-width:1200px;margin:0 auto;padding:12px 24px 56px;display:flex;flex-direction:column">
       <button type="button" onClick="{{ navBack }}" aria-label="Back" style="display:flex;align-items:center;gap:8px;padding:6px 0 14px;background:none;border:0;font-size:15px;color:#707070;cursor:pointer">
         <svg viewBox="0 0 12 20" fill="none" stroke="#707070" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:11px;height:18px"><path d="M10 2l-8 8 8 8"/></svg>
-        Terug
+        Back
       </button>
         <a href="../en/contact/" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Request a quote</a>
         <a href="../en/contact/#faq" onClick="{{ closeNav }}" style="display:block;padding:9px 0;font-size:22px;font-weight:600;letter-spacing:-0.3px;color:#1d1d1f;text-decoration:none">Frequently asked questions</a>
@@ -392,6 +399,7 @@
     </div>
   </div>
 </nav>
+<main id="hoofdinhoud">
 
 <section id="top" style="background:#ffffff;padding:clamp(48px,6vw,88px) 24px clamp(8px,1vw,16px)">
   <div style="max-width:1200px;margin:0 auto;text-align:center">
@@ -805,6 +813,7 @@
   </div>
 </section>
 
+</main>
 <footer style="margin-top:12px;background:#f5f5f7;padding:clamp(56px,7vw,80px) 24px 40px">
   <div style="max-width:1200px;margin:0 auto">
     <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:40px">
