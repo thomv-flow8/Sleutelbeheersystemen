@@ -31,7 +31,11 @@ function walk(dir, out = []) {
     const p = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       if (entry.name !== '.git' && entry.name !== 'tools' && entry.name !== 'node_modules') walk(p, out);
-    } else if (entry.name.endsWith('.html')) {
+    } else if (entry.name.endsWith('.html') && entry.name !== '404.html') {
+      /* 404.html blijft buiten schot. Die is met de hand gemaakt, komt niet
+       * uit Claude Design, en gebruikt bewust absolute paden omdat Apache hem
+       * ook toont op adressen als /producten/oud-artikel/ - waar een relatief
+       * pad naar het verkeerde bestand wijst. */
       out.push(p);
     }
   }
@@ -746,6 +750,55 @@ function tableNames(html) {
   return { html, changed: n };
 }
 
+/* Batch 12 — taalattribuut op de datasheet- en werkinstructiepagina's.
+ *
+ * Die komen uit Claude Design met een kaal <html> zonder lang. Een schermlezer
+ * weet dan niet in welke taal hij moet voorlezen en valt terug op de taal van
+ * het systeem: een Nederlandse datasheet wordt dan met een Engelse uitspraak
+ * voorgelezen, of andersom. */
+function htmlLang(html, relPath) {
+  if (/<html[^>]*\blang\s*=/i.test(html)) return { html, changed: 0 };
+  const taal = relPath.startsWith('en/') ? 'en' : 'nl';
+  const nieuw = html.replace(/<html(\s[^>]*)?>/i, (_m, rest) => `<html lang="${taal}"${rest ?? ''}>`);
+  return { html: nieuw, changed: nieuw === html ? 0 : 1 };
+}
+
+/* Batch 13 — lazy loading op de printpagina's.
+ *
+ * De datasheets en werkinstructies zijn lange documenten met tientallen
+ * hogeresolutiefoto's; vrijwel alles staat onder de vouw. De eerste twee
+ * afbeeldingen slaan we over, want die staan bovenaan en moeten juist meteen
+ * geladen worden. */
+function lazyOpPrintpaginas(html, relPath) {
+  if (!/^(en\/)?(datasheet|werkinstructie)\//.test(relPath)) return { html, changed: 0 };
+
+  /* Gemeten op een scherm van 900px hoog: op deze pagina's staan de eerste
+   * drie afbeeldingen nog in beeld (logo op 162px, en twee foto's op 376 en
+   * 681px). Vanaf de vierde is het onder de vouw. */
+  const BOVEN_DE_VOUW = 3;
+
+  let n = 0;
+  let gezien = 0;
+
+  html = html.replace(/<img\b[^>]*>/gi, (tag) => {
+    gezien++;
+
+    /* Zowel toevoegen als weghalen, zodat een bijgestelde drempel ook op al
+     * verwerkte bestanden landt. Alleen bij afwijking tellen we mee. */
+    if (gezien <= BOVEN_DE_VOUW) {
+      if (!/\bloading\s*=\s*"lazy"/i.test(tag)) return tag;
+      n++;
+      return tag.replace(/\s*loading\s*=\s*"lazy"/i, '');
+    }
+
+    if (/\bloading\s*=/i.test(tag)) return tag;
+    n++;
+    return tag.replace(/\s*\/?>$/, ' loading="lazy" decoding="async">');
+  });
+
+  return { html, changed: n };
+}
+
 /* GEEN placeholder-herschrijving. Toegelicht omdat de verleiding groot is:
  *
  * De uitgeleverde HTML bevat href="{{ khHref }}" en aria-pressed="{{ ... }}".
@@ -768,7 +821,7 @@ function tableNames(html) {
 /* ------------------------------------------------------------------- main */
 
 const files = walk(ROOT);
-let totals = { hoisted: 0, charset: 0, extras: 0, meta: 0, a11y: 0, main: 0, offers: 0, fragment: 0, linkNames: 0, jsonld: 0, video: 0, touched: 0 };
+let totals = { hoisted: 0, charset: 0, extras: 0, meta: 0, a11y: 0, main: 0, offers: 0, fragment: 0, linkNames: 0, jsonld: 0, video: 0, lazy: 0, touched: 0 };
 
 for (const file of files) {
   const rel = path.relative(ROOT, file).split(path.sep).join('/');
@@ -790,6 +843,8 @@ for (const file of files) {
   const v = videoSchema(html, rel); html = v.html;
   const t = a11yTail(html); html = t.html;
   const u = tableNames(html); html = u.html;
+  const w = htmlLang(html, rel); html = w.html;
+  const x = lazyOpPrintpaginas(html, rel); html = x.html;
 
   if (html !== before) {
     fs.writeFileSync(file, html);
@@ -805,14 +860,15 @@ for (const file of files) {
     totals.linkNames += s.changed;
     totals.jsonld += j.changed;
     totals.video += v.changed;
-    totals.a11y += t.changed + u.changed;
+    totals.a11y += t.changed + u.changed + w.changed;
+    totals.lazy += x.changed;
     console.log(
       `${rel}  head+${a.moved}${b.changed ? ' charset' : ''}` +
       `${c.added ? ` extra:${c.added}` : ''}${d.added ? ` meta:${d.added}` : ''}` +
       `${e.changed + g.changed ? ` a11y:${e.changed + g.changed}` : ''}` +
       `${m.changed ? ' main' : ''}${o.changed ? ` offers:${o.changed}` : ''}` +
       `${p.changed ? ` fragment:${p.changed}` : ''}${q.changed ? ' paramlezer' : ''}` +
-      `${s.changed ? ` linknamen:${s.changed}` : ''}${j.changed ? ` jsonld:${j.changed}` : ''}${v.changed ? ' video' : ''}${t.changed ? ` tail:${t.changed}` : ''}${u.changed ? ` tabellen:${u.changed}` : ''}`
+      `${s.changed ? ` linknamen:${s.changed}` : ''}${j.changed ? ` jsonld:${j.changed}` : ''}${v.changed ? ' video' : ''}${t.changed ? ` tail:${t.changed}` : ''}${u.changed ? ` tabellen:${u.changed}` : ''}${w.changed ? ' lang' : ''}${x.changed ? ` lazy:${x.changed}` : ''}`
     );
   }
 }

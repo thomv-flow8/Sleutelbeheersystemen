@@ -1,0 +1,178 @@
+# ==========================================================================
+# .htaccess — DELPHI Sleutelbeheersystemen
+# Versie 2 — aangevuld na controle van de werkelijk geïndexeerde pagina's
+#
+# HERNOEM DIT BESTAND NAAR:  .htaccess
+# (met een punt ervoor, zonder .txt erachter)
+# Plaats het in de webmap (httpdocs), naast index.html
+# ==========================================================================
+
+# --------------------------------------------------------------------------
+# 1. HTTPS en www afdwingen
+#    De oude site gebruikte sleutelbeheersystemen.nl zonder www, de nieuwe
+#    site gebruikt www. Alles gaat naar één versie, zodat Google niet twee
+#    afzonderlijke sites ziet.
+# --------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://www.sleutelbeheersystemen.nl/$1 [R=301,L]
+
+  RewriteCond %{HTTP_HOST} ^sleutelbeheersystemen\.nl$ [NC]
+  RewriteRule ^(.*)$ https://www.sleutelbeheersystemen.nl/$1 [R=301,L]
+</IfModule>
+
+# --------------------------------------------------------------------------
+# 2. Doorverwijzingen van de oude WordPress-site
+#
+#    LET OP DE VOLGORDE: specifieke regels staan boven, algemene vangnetten
+#    onderaan. Apache leest van boven naar beneden en stopt bij de eerste
+#    treffer; een vangnet bovenaan zou de specifieke regels overrulen.
+# --------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ==== NEDERLANDS — individuele productpagina's ====
+  RewriteRule ^producten/security-asset-manager/?$                            /sam/ [R=301,L]
+  RewriteRule ^producten/de-keybox-serie-keybox-valuebox-keycon-en-keyrack/?$ /keybox/ [R=301,L]
+  RewriteRule ^producten/keybox/?$                                            /keybox/ [R=301,L]
+  RewriteRule ^producten/keytracker/?$                                        /keytracker/ [R=301,L]
+  RewriteRule ^producten/keycontroller/?$                                     /keycontroller/ [R=301,L]
+  RewriteRule ^producten/safebox/?$                                           /safebox/ [R=301,L]
+  RewriteRule ^producten/swat-?box/?$                                         /swat-box/ [R=301,L]
+  RewriteRule ^producten/roestvrijstalen-keyrings-?2?/?$                      /sleutelringen/ [R=301,L]
+  RewriteRule ^producten/morse-?(watchman-)?keyrings?/?$                      /sleutelringen/ [R=301,L]
+  RewriteRule ^producten/rivet-?(sleutelringen|keyrings)/?$                   /sleutelringen/ [R=301,L]
+  RewriteRule ^producten/flexibele-sleutelringen-met-coating/?$               /sleutelringen/ [R=301,L]
+  RewriteRule ^producten/flexibele-sleutelringen(-van-staaldraad)?/?$         /sleutelringen/ [R=301,L]
+  RewriteRule ^producten/staaldraad-sleutelringen(set)?/?$                    /sleutelringen/ [R=301,L]
+  RewriteRule ^producten/lockers?/?$                                          /sam-lockers/ [R=301,L]
+  RewriteRule ^producten/vel-?key/?$                                          /vel-key/ [R=301,L]
+
+  # ==== NEDERLANDS — categoriepagina's ====
+  RewriteRule ^category/producten/1-sleutelbeheersystemen-nl/?$               /sam/ [R=301,L]
+  RewriteRule ^category/producten/2-keyrings-nl/?$                            /sleutelringen/ [R=301,L]
+  RewriteRule ^category/producten/3-opbergsystemen-nl/?$                      /sam-lockers/ [R=301,L]
+  RewriteRule ^category/producten/?$                                          / [R=301,L]
+  RewriteRule ^category/nieuws-nl/?$                                          / [R=301,L]
+
+  # ==== NEDERLANDS — vaste pagina's ====
+  RewriteRule ^klanten/?$                                                     /over/ [R=301,L]
+  RewriteRule ^referenties/?$                                                 /over/ [R=301,L]
+  RewriteRule ^over-ons/?$                                                    /over/ [R=301,L]
+  RewriteRule ^privacyverklaring/?$                                           /privacy/ [R=301,L]
+  RewriteRule ^privacy-policy/?$                                              /privacy/ [R=301,L]
+  RewriteRule ^dealership-?2?/?$                                              /contact/ [R=301,L]
+  RewriteRule ^dealerschap/?$                                                 /contact/ [R=301,L]
+  RewriteRule ^links/?$                                                       / [R=301,L]
+  RewriteRule ^downloads?/?$                                                  /documentatie/ [R=301,L]
+
+  # ==== NEDERLANDS — losse nieuwsberichten ====
+  RewriteRule ^smartplug-phono-jack-in-vergrendelde-uitvoering/?$             /sam/ [R=301,L]
+  RewriteRule ^hd-rvs-smartplug/?$                                            /sam/ [R=301,L]
+
+  # ==== ENGELS — let op: de oude site gebruikt /en/producten/ ====
+  RewriteRule ^en/producten/keycontroller-?2?/?$                              /en/keycontroller/ [R=301,L]
+  RewriteRule ^en/producten/security-asset-manager/?$                         /en/sam/ [R=301,L]
+  RewriteRule ^en/producten/keytracker.*$                                     /en/keytracker/ [R=301,L]
+  RewriteRule ^en/producten/keybox.*$                                         /en/keybox/ [R=301,L]
+  RewriteRule ^en/producten/safebox.*$                                        /en/safebox/ [R=301,L]
+  RewriteRule ^en/producten/swat-?box.*$                                      /en/swat-box/ [R=301,L]
+  RewriteRule ^en/producten/.*keyrings?.*$                                    /en/sleutelringen/ [R=301,L]
+
+  RewriteRule ^en/category/products/1-key-management-systems/?$               /en/sam/ [R=301,L]
+  RewriteRule ^en/category/products/2-keyrings-en/?$                          /en/sleutelringen/ [R=301,L]
+  RewriteRule ^en/category/products/3-.*$                                     /en/sam-lockers/ [R=301,L]
+  RewriteRule ^en/category/products/?$                                        /en/ [R=301,L]
+  RewriteRule ^en/category/.*$                                                /en/ [R=301,L]
+
+  RewriteRule ^en/customers/?$                                                /en/over/ [R=301,L]
+  RewriteRule ^en/references/?$                                               /en/over/ [R=301,L]
+  RewriteRule ^en/privacy-(policy|statement)/?$                              /en/privacy/ [R=301,L]
+  RewriteRule ^en/dealership-?2?/?$                                           /en/contact/ [R=301,L]
+  RewriteRule ^en/links/?$                                                    /en/ [R=301,L]
+
+  # ==== VANGNETTEN — voor alles wat hierboven niet is afgevangen ====
+  #      Deze staan bewust onderaan.
+  RewriteRule ^en/producten/.*$                                               /en/ [R=301,L]
+  RewriteRule ^en/products?/.*$                                               /en/ [R=301,L]
+  RewriteRule ^producten/.*$                                                  / [R=301,L]
+  RewriteRule ^category/.*$                                                   / [R=301,L]
+
+  # ==== WORDPRESS-RESTANTEN ====
+  RewriteRule ^wp-content/.*$                                                 / [R=301,L]
+  RewriteRule ^wp-includes/.*$                                                / [R=301,L]
+  RewriteRule ^wp-admin/?.*$                                                  / [R=301,L]
+  RewriteRule ^wp-login\.php$                                                 / [R=301,L]
+  RewriteRule ^wp-json/.*$                                                    - [G,L]
+  RewriteRule ^xmlrpc\.php$                                                   - [G,L]
+  RewriteRule ^feed/?$                                                        / [R=301,L]
+  RewriteRule ^comments/feed/?$                                               / [R=301,L]
+  RewriteRule ^author/.*$                                                     / [R=301,L]
+  RewriteRule ^tag/.*$                                                        / [R=301,L]
+  RewriteRule ^[0-9]{4}/[0-9]{2}/.*$                                          / [R=301,L]
+</IfModule>
+
+# --------------------------------------------------------------------------
+# 3. Caching
+#    PageSpeed klaagde over 10 minuten; dat was een beperking van GitHub
+#    Pages. Hier zetten we het fatsoenlijk.
+# --------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp             "access plus 1 year"
+  ExpiresByType image/jpeg             "access plus 1 year"
+  ExpiresByType image/png              "access plus 1 year"
+  ExpiresByType image/svg+xml          "access plus 1 year"
+  ExpiresByType image/x-icon           "access plus 1 year"
+  ExpiresByType video/mp4              "access plus 1 year"
+  ExpiresByType font/woff2             "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType text/css               "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript        "access plus 1 month"
+  ExpiresByType application/pdf        "access plus 1 week"
+  ExpiresByType text/html              "access plus 10 minutes"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(webp|jpg|jpeg|png|svg|ico|woff2|mp4)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# --------------------------------------------------------------------------
+# 4. Compressie
+# --------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# --------------------------------------------------------------------------
+# 5. Beveiliging
+# --------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+Options -Indexes
+
+# de versleutelde stamboomgegevens niet laten indexeren
+<FilesMatch "\.enc$">
+  <IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow"
+  </IfModule>
+</FilesMatch>
+
+# --------------------------------------------------------------------------
+# 6. Foutpagina
+#    404.html staat in de zip en gebruikt absolute paden, zodat hij ook klopt
+#    wanneer Apache hem toont op een adres als /producten/oud-artikel/.
+# --------------------------------------------------------------------------
+ErrorDocument 404 /404.html

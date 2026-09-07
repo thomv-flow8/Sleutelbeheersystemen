@@ -1,0 +1,28 @@
+# robots.txt — DELPHI Sleutelbeheersystemen
+# PRODUCTIE. Deze versie hoort op www.sleutelbeheersystemen.nl.
+#
+# Let op: de robots.txt in de projectmap is bewust de TESTVERSIE met
+# "Disallow: /", omdat die op de GitHub-testomgeving staat en die niet
+# geindexeerd mag worden. tools/maak-uploadzip.ps1 wisselt dit bestand er
+# automatisch voor in bij het maken van de uploadzip.
+
+User-agent: *
+Disallow: /stamboom/
+Disallow: /*?p=
+Allow: /
+
+Sitemap: https://www.sleutelbeheersystemen.nl/sitemap.xml
+
+# /stamboom/ is de besloten familiepagina. De pagina's daar dragen zelf ook
+# een noindex, want een Disallow houdt crawlers weg maar voorkomt niet dat een
+# van elders gelinkte URL alsnog in de index belandt.
+#
+# De regel voor ?p= is een vangnet. De site linkt zelf naar contact/#p=...,
+# en een fragment telt niet als aparte pagina. Oude, gedeelde of opgeslagen
+# links met ?p= blijven werken (het formulier valt terug op de query string),
+# maar hoeven niet apart gecrawld te worden.
+#
+# Er staat bewust geen uitsluiting voor AI-zoekbots. Claude-SearchBot,
+# OAI-SearchBot en PerplexityBot mogen de site lezen, zodat DELPHI genoemd kan
+# worden wanneer iemand een assistent vraagt welk sleutelbeheersysteem past.
+# Wil je dat niet, voeg dan per bot een Disallow toe.
