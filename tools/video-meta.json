@@ -1,0 +1,33 @@
+{
+  "_comment": "Gegevens voor het VideoObject-schema. De beschrijving, thumbnail en afmetingen leest seo-fix.mjs uit de <video>-tag zelf (aria-label, poster, width/height); alleen de titel en de duur staan hier, omdat die niet uit de markup te halen zijn. De duur is gemeten uit de bestanden. uploadDate komt uit de lastmod in sitemap.xml — pas hem aan als je de echte publicatiedatum weet.",
+
+  "uploadDate": "2026-09-04",
+
+  "videos": {
+    "sam-dual-credentials.mp4": {
+      "naam": "Security Asset Manager: uitgifte met pas en pincode",
+      "name": "Security Asset Manager: issuing a key with card and PIN",
+      "duur": "PT12S"
+    },
+    "sam-lockers.mp4": {
+      "naam": "SAM lockers: statusweergave per vak",
+      "name": "SAM lockers: per-compartment status display",
+      "duur": "PT21S"
+    },
+    "sleutelringen-serienummer.mp4": {
+      "naam": "Sleutelring met ingeslagen serienummer",
+      "name": "Key ring with a stamped serial number",
+      "duur": "PT5S"
+    },
+    "surface-vault-hero.mp4": {
+      "naam": "Surface Vault: vergrendelde sleutelkluis met statusled",
+      "name": "Surface Vault: locked key vault with status LED",
+      "duur": "PT19S"
+    },
+    "oc-spray-station.mp4": {
+      "naam": "OC Spray Station: identificatie, uitgifte en weging",
+      "name": "OC Spray Station: identification, issue and weighing",
+      "duur": "PT19S"
+    }
+  }
+}

@@ -593,6 +593,59 @@ function repairJsonLd(html) {
   return { html, changed: n };
 }
 
+/* Batch 10 — VideoObject-schema voor de pagina's met een video.
+ *
+ * Alles wat Google verplicht stelt staat al in de pagina: de omschrijving in
+ * het aria-label van de <video>, de thumbnail in het poster-attribuut, en de
+ * afmetingen op de tag zelf. Alleen de titel en de duur komen uit
+ * video-meta.json, plus een uploadDate (de lastmod uit sitemap.xml).
+ *
+ * Het blok wordt toegevoegd naast de bestaande JSON-LD; er verandert niets aan
+ * de pagina zelf. */
+const VIDEO_META = JSON.parse(fs.readFileSync(new URL('./video-meta.json', import.meta.url), 'utf8'));
+const VIDEO_MARKER = 'data-seo-fix="video"';
+
+function videoSchema(html, relPath) {
+  const video = html.match(/<video\b[^>]*>/i);
+  if (!video) return { html, changed: 0 };
+  if (html.includes(VIDEO_MARKER)) return { html, changed: 0 };
+
+  const tag = video[0];
+  const src = attr(tag, 'src');
+  const poster = attr(tag, 'poster');
+  const omschrijving = attr(tag, 'aria-label');
+  if (!src || !poster || !omschrijving) return { html, changed: 0 };
+
+  const bestand = src.split('/').pop();
+  const meta = VIDEO_META.videos[bestand];
+  if (!meta) return { html, changed: 0 };
+
+  const engels = relPath.startsWith('en/');
+  const absoluut = (p) => SITE + p.replace(/^(\.\.\/)+/, '');
+
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: engels ? meta.name : meta.naam,
+    description: omschrijving,
+    thumbnailUrl: absoluut(poster),
+    contentUrl: absoluut(src),
+    uploadDate: VIDEO_META.uploadDate,
+    duration: meta.duur,
+    width: Number(attr(tag, 'width')) || undefined,
+    height: Number(attr(tag, 'height')) || undefined,
+    isFamilyFriendly: true,
+    publisher: { '@type': 'Organization', name: 'DELPHI Sleutelbeheersystemen' },
+  };
+
+  const blok =
+    `<script type="application/ld+json" ${VIDEO_MARKER}>\n` +
+    JSON.stringify(data, null, 1) +
+    `\n</script>`;
+
+  return { html: html.replace(/<\/head>/i, `${blok}\n</head>`), changed: 1 };
+}
+
 /* GEEN placeholder-herschrijving. Toegelicht omdat de verleiding groot is:
  *
  * De uitgeleverde HTML bevat href="{{ khHref }}" en aria-pressed="{{ ... }}".
@@ -615,7 +668,7 @@ function repairJsonLd(html) {
 /* ------------------------------------------------------------------- main */
 
 const files = walk(ROOT);
-let totals = { hoisted: 0, charset: 0, extras: 0, meta: 0, a11y: 0, main: 0, offers: 0, fragment: 0, linkNames: 0, jsonld: 0, touched: 0 };
+let totals = { hoisted: 0, charset: 0, extras: 0, meta: 0, a11y: 0, main: 0, offers: 0, fragment: 0, linkNames: 0, jsonld: 0, video: 0, touched: 0 };
 
 for (const file of files) {
   const rel = path.relative(ROOT, file).split(path.sep).join('/');
@@ -634,6 +687,7 @@ for (const file of files) {
   const q = contactParamReader(html); html = q.html;
   const s = documentatieLinkNames(html, rel); html = s.html;
   const j = repairJsonLd(html); html = j.html;
+  const v = videoSchema(html, rel); html = v.html;
 
   if (html !== before) {
     fs.writeFileSync(file, html);
@@ -648,13 +702,14 @@ for (const file of files) {
     totals.fragment += p.changed + q.changed;
     totals.linkNames += s.changed;
     totals.jsonld += j.changed;
+    totals.video += v.changed;
     console.log(
       `${rel}  head+${a.moved}${b.changed ? ' charset' : ''}` +
       `${c.added ? ` extra:${c.added}` : ''}${d.added ? ` meta:${d.added}` : ''}` +
       `${e.changed + g.changed ? ` a11y:${e.changed + g.changed}` : ''}` +
       `${m.changed ? ' main' : ''}${o.changed ? ` offers:${o.changed}` : ''}` +
       `${p.changed ? ` fragment:${p.changed}` : ''}${q.changed ? ' paramlezer' : ''}` +
-      `${s.changed ? ` linknamen:${s.changed}` : ''}${j.changed ? ` jsonld:${j.changed}` : ''}`
+      `${s.changed ? ` linknamen:${s.changed}` : ''}${j.changed ? ` jsonld:${j.changed}` : ''}${v.changed ? ' video' : ''}`
     );
   }
 }
