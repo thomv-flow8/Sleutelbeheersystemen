@@ -848,13 +848,19 @@ const STAP_SCROLL = `
 function stapScroll(html) {
   if (!html.includes('id="aanvraag"')) return { html, changed: 0 };
 
-  // Een blok van een vorige run er eerst uit, zodat een verbetering doorkomt.
-  const oud = new RegExp(
+  /* Een blok van een vorige run er eerst uit, zodat een verbetering doorkomt.
+   * Twee vormen: mét markers (huidige versie) en zonder (de allereerste versie,
+   * die naar de sectie scrolde in plaats van naar het formulier). Die laatste
+   * moet expliciet weg: bleef hij staan, dan draaide hij als eerste, zette
+   * this._stap, en deed het nieuwe blok niets meer. Het oude gedrag won dan. */
+  const metMarkers = new RegExp(
     `\\n?\\s*${STAP_START.replace(/[*/]/g, '\\$&')}[\\s\\S]*?${STAP_EIND.replace(/[*/]/g, '\\$&')}\\n?`,
     'g'
   );
-  const had = oud.test(html);
-  if (had) html = html.replace(oud, '\n');
+  html = html.replace(metMarkers, '\n');
+
+  const zonderMarkers = /\n\s*\/\* Bij een stapwissel[\s\S]*?sec\.scrollIntoView\([^;]*;\s*\}\s*\}\s*\}\n/g;
+  html = html.replace(zonderMarkers, '\n');
 
   const doel = `    this._so = this.state.searchOpen;\n`;
   if (!html.includes(doel)) return { html, changed: 0 };

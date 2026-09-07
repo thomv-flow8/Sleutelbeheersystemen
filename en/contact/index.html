@@ -766,23 +766,6 @@ class Component extends DCLogic {
       }
     }
     /* einde seo-fix:stapscroll */
-
-    /* Bij een stapwissel de bovenkant van het formulier terugbrengen in beeld,
-     * maar alleen als die er niet al staat - anders spring je op desktop
-     * zonder reden. */
-    if (this._stap === undefined) this._stap = this.state.stap;
-    else if (this._stap !== this.state.stap) {
-      this._stap = this.state.stap;
-      const sec = document.getElementById('aanvraag');
-      if (sec) {
-        const marge = parseFloat(getComputedStyle(sec).scrollMarginTop) || 0;
-        const top = sec.getBoundingClientRect().top;
-        if (top < marge || top > window.innerHeight * 0.5) {
-          const rustig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          sec.scrollIntoView({ behavior: rustig ? 'auto' : 'smooth', block: 'start' });
-        }
-      }
-    }
   }
 
   // Productgegevens komen uit producten.js (één bron voor de hele site).
