@@ -15,9 +15,11 @@
 #    bewust de testversie met "Disallow: /", omdat de GitHub-testomgeving niet
 #    geindexeerd mag worden. Zou die versie op het echte domein belanden, dan
 #    blokkeer je Google op je eigen site.
-#  - Neemt het .htaccess NIET mee. Dat wordt los geplaatst en hernoemd, nadat
-#    WordPress is verwijderd, zodat de doorverwijzingen niet halverwege de
-#    verhuizing actief worden.
+#  - Neemt het .htaccess WEL mee, als kant-en-klaar .htaccess. Tijdens de
+#    verhuizing hoorde dat er nog niet in: de doorverwijzingen mochten pas
+#    ingaan nadat WordPress weg was. Nu de site live staat is dat voorbij, en
+#    scheelt het meeleveren een handmatige hernoemstap waarbij een spelfout
+#    (een enkele s, of .txt erachter) ongemerkt alle doorverwijzingen uitzet.
 
 $ErrorActionPreference = 'Stop'
 
@@ -50,7 +52,20 @@ if ($robots -match '(?m)^\s*Disallow:\s*/\s*$') {
 }
 if ($robots -notmatch 'Sitemap:') { throw "AFGEBROKEN: robots.txt mist de Sitemap-regel." }
 
-# 4. Controle: staat index.html in de wortel?
+# 4. Het .htaccess meeleveren, meteen onder de juiste naam.
+$htaccess = Join-Path $PSScriptRoot 'htaccess-productie.txt'
+if (-not (Test-Path $htaccess)) { throw "tools/htaccess-productie.txt ontbreekt" }
+Copy-Item -Path $htaccess -Destination (Join-Path $dist '.htaccess') -Force
+
+# Controle: de doorverwijslus mag er niet meer in zitten. Het patroon
+# ^en/privacy-?(policy|statement)?/?$ matchte ook en/privacy/ zelf, waardoor
+# die pagina naar zichzelf verwees en onbereikbaar was.
+$ht = Get-Content (Join-Path $dist '.htaccess') -Raw
+if ($ht -match 'en/privacy-\?\(policy\|statement\)\?') {
+  throw "AFGEBROKEN: .htaccess bevat nog het patroon dat /en/privacy/ naar zichzelf laat verwijzen."
+}
+
+# 5. Controle: staat index.html in de wortel?
 if (-not (Test-Path (Join-Path $dist 'index.html'))) { throw "AFGEBROKEN: index.html ontbreekt in de wortel." }
 if (-not (Test-Path (Join-Path $dist '404.html')))   { throw "AFGEBROKEN: 404.html ontbreekt." }
 
