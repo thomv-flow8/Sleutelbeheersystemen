@@ -380,7 +380,7 @@
           <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="4">
             <li>
               <a href="{{ r.u }}" onClick="{{ closeSearch }}" style="display:flex;flex-direction:column;gap:2px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#86868b">{{ r.g }}</span>
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#6e6e73">{{ r.g }}</span>
                 <span style="font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">{{ r.t }}</span>
                 <span style="font-size:14px;color:#707070">{{ r.s }}</span>
               </a>
@@ -531,7 +531,7 @@
           </div>
           <label style="display:flex;flex-direction:column;gap:8px">
             <span style="font-size:14px;font-weight:500;color:#474747;letter-spacing:-0.224px">Subject</span>
-            <input type="text" name="onderwerp" value="{{ onderwerp }}" onChange="{{ onSubject }}" placeholder="For example: 40 numbered key rings" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;width:100%;min-height:48px">
+            <input type="text" name="onderwerp" value="{{ onderwerp }}" onChange="{{ onSubject }}" placeholder="For example: 40 numbered key rings" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;width:100%;min-height:48px" enterkeyhint="next">
           </label>
           </div>
         </div>
@@ -547,7 +547,7 @@
           </div>
           <label style="display:flex;flex-direction:column;gap:8px">
             <span style="font-size:14px;font-weight:500;color:#474747;letter-spacing:-0.224px">Area covered and current activities <span style="color:#707070">(optional)</span></span>
-            <textarea name="dealerbericht" rows="4" placeholder="Which region do you cover, and what do you currently supply to your customers?" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;resize:vertical;width:100%"></textarea>
+            <textarea name="dealerbericht" rows="4" placeholder="Which region do you cover, and what do you currently supply to your customers?" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;resize:vertical;width:100%" enterkeyhint="send"></textarea>
           </label>
         </div>
 
@@ -562,7 +562,7 @@
           </div>
           <label style="display:flex;flex-direction:column;gap:8px">
             <span style="font-size:14px;font-weight:500;color:#474747;letter-spacing:-0.224px">{{ stap2Veldnaam }} <span style="color:#707070">{{ stap2Suffix }}</span></span>
-            <textarea name="bericht" rows="4" placeholder="{{ stap2Hint }}" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;resize:vertical;width:100%"></textarea>
+            <textarea name="bericht" rows="4" placeholder="{{ stap2Hint }}" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;resize:vertical;width:100%" enterkeyhint="send"></textarea>
           </label>
         </div>
 
@@ -570,19 +570,19 @@
           <span style="font-size:19px;font-weight:600;letter-spacing:-0.2px">How can we reach you?</span>
           <label style="display:flex;flex-direction:column;gap:8px">
             <span style="font-size:14px;font-weight:500;color:#474747;letter-spacing:-0.224px">Organisation</span>
-            <input type="text" name="org" required="{{ ja }}" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;width:100%;min-height:48px">
+            <input type="text" name="org" required="{{ ja }}" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;width:100%;min-height:48px" enterkeyhint="next" autocomplete="organization">
           </label>
           <label style="display:flex;flex-direction:column;gap:8px">
             <span style="font-size:14px;font-weight:500;color:#474747;letter-spacing:-0.224px">Name</span>
-            <input type="text" name="naam" required="{{ ja }}" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;width:100%;min-height:48px">
+            <input type="text" name="naam" required="{{ ja }}" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;width:100%;min-height:48px" enterkeyhint="next" autocomplete="name">
           </label>
           <label style="display:flex;flex-direction:column;gap:8px">
             <span style="font-size:14px;font-weight:500;color:#474747;letter-spacing:-0.224px">E-mail</span>
-            <input type="email" name="email" required="{{ ja }}" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;width:100%;min-height:48px">
+            <input type="email" name="email" required="{{ ja }}" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;width:100%;min-height:48px" autocomplete="email" enterkeyhint="next">
           </label>
           <label style="display:flex;flex-direction:column;gap:8px">
             <span style="font-size:14px;font-weight:500;color:#474747;letter-spacing:-0.224px">Telephone <span style="color:#707070">(optional)</span></span>
-            <input type="tel" name="telefoon" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;width:100%;min-height:48px">
+            <input type="tel" name="telefoon" style="border:1px solid #d6d6d6;background:#f5f5f7;border-radius:12px;padding:12px 14px;font-size:17px;font-family:inherit;color:#1d1d1f;width:100%;min-height:48px" enterkeyhint="next" autocomplete="tel">
           </label>
         </div>
 

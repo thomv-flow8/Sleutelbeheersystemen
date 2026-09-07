@@ -386,7 +386,7 @@
           <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="4">
             <li>
               <a href="{{ r.u }}" onClick="{{ closeSearch }}" style="display:flex;flex-direction:column;gap:2px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#86868b">{{ r.g }}</span>
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#6e6e73">{{ r.g }}</span>
                 <span style="font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">{{ r.t }}</span>
                 <span style="font-size:14px;color:#707070">{{ r.s }}</span>
               </a>
@@ -602,7 +602,7 @@
     <h2 style="font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;max-width:620px;text-wrap:pretty">Dimensions.</h2>
     <p style="margin-top:16px;max-width:560px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px">Compact enough to fit beside a door or in a vehicle. The round front covers the opening.</p>
     <div style="margin-top:clamp(32px,4vw,52px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,2.5vw,32px);align-items:start" data-2col>
-      <table style="width:100%;border-collapse:collapse;background:#ffffff;border-radius:18px">
+      <table style="width:100%;border-collapse:collapse;background:#ffffff;border-radius:18px" aria-label="Dimensions">
         <tbody>
           <tr>
             <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap">Width</th>
@@ -618,7 +618,7 @@
           </tr>
         </tbody>
       </table>
-      <table style="width:100%;border-collapse:collapse;background:#ffffff;border-radius:18px">
+      <table style="width:100%;border-collapse:collapse;background:#ffffff;border-radius:18px" aria-label="Dimensions — Front">
         <tbody>
           <tr>
             <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap">Front</th>

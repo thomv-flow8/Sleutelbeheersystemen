@@ -426,7 +426,7 @@
           <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="4">
             <li>
               <a href="{{ r.u }}" onClick="{{ closeSearch }}" style="display:flex;flex-direction:column;gap:2px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#86868b">{{ r.g }}</span>
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#6e6e73">{{ r.g }}</span>
                 <span style="font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">{{ r.t }}</span>
                 <span style="font-size:14px;color:#707070">{{ r.s }}</span>
               </a>
@@ -604,7 +604,7 @@
     <p style="margin-top:16px;max-width:560px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Alle vijf maten uit voorraad, per 10 stuks per maat.</p>
   </div>
   <div style="max-width:1200px;margin:clamp(32px,4vw,52px) auto 0;overflow-x:auto" data-table-scroll="1">
-    <table style="width:100%;min-width:520px;border-collapse:collapse;background:#ffffff;border-radius:18px">
+    <table style="width:100%;min-width:520px;border-collapse:collapse;background:#ffffff;border-radius:18px" aria-label="Maten en bestelcodes">
       <thead>
         <tr>
             <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Maat</th>
@@ -762,7 +762,7 @@
       <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Buigt mee, sluit even hard.</h2>
       <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Dezelfde vijf maten en hetzelfde serienummer, maar met een gevlochten staaldraad in plaats van een massieve beugel. Voor sleutels met een kleine opening.</p>
       <p style="margin-top:14px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Sluiten en openen gebeurt met het eigen gereedschap voor flex keyrings: <a href="#flexgereedschap" style="color:#0066cc;text-decoration:none">het felsgereedschap en de Knipex-kniptang</a>, beide hieronder. Het sluitgereedschap van de RVS keyring is hier niet nodig.</p>
-      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#ffffff;border-radius:18px">
+      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#ffffff;border-radius:18px" aria-label="Buigt mee, sluit even hard">
         <tbody>
           <tr>
             <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap">Kabel</th>
@@ -839,7 +839,7 @@
     <p style="max-width:520px;margin:clamp(10px,1.4vw,16px) auto 0;padding:0 24px;text-align:center;font-size:14px;line-height:1.47;color:#8a8a8e;letter-spacing:-0.08px">Aantal sleutels per ring, indicatief.</p>
   </div>
   <div style="max-width:1000px;margin:clamp(32px,4vw,52px) auto 0;padding:0 24px;overflow-x:auto" data-table-scroll="1">
-    <table style="width:100%;min-width:660px;border-collapse:collapse;background:#ffffff;border-radius:18px">
+    <table style="width:100%;min-width:660px;border-collapse:collapse;background:#ffffff;border-radius:18px" aria-label="Vijf vaste maten">
       <thead>
         <tr>
           <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Maat</th>
@@ -949,7 +949,7 @@
     <img width="1584" height="672" src="../photos/ring-morse-maten-v2.webp" alt="Vier Morse keyrings schaalgetrouw naast elkaar: drie U-modellen en het ronde model van 8,5 cm" style="width:100%;height:auto;display:block" loading="lazy">
   </div>
   <div style="max-width:1000px;margin:clamp(32px,4vw,52px) auto 0;overflow-x:auto" data-table-scroll="1">
-    <table style="width:100%;min-width:460px;border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+    <table style="width:100%;min-width:460px;border-collapse:collapse;background:#f5f5f7;border-radius:18px" aria-label="Vier modellen">
       <thead>
         <tr>
           <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Model</th>
@@ -1001,7 +1001,7 @@
       <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">Rivet keyrings</p>
       <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Dicht met een klinknagel.</h2>
       <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Verchroomd staal van 2,5&nbsp;mm. De uiteinden worden met een tang naar elkaar gedrukt tot de gaten in de platte einden boven elkaar liggen. Daar gaat een koperen klinknagel door, die u op een stevige ondergrond vastslaat met een hamer.</p>
-      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#f5f5f7;border-radius:18px" aria-label="Dicht met een klinknagel">
         <thead>
           <tr>
             <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Diameter</th>
@@ -1041,7 +1041,7 @@
       <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">Flexibel met coating</p>
       <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Dun, buigzaam, met een twist dicht.</h2>
       <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Staaldraad met een kunststof coating, voor situaties waarin een dunnere ring nodig is. Sluiten en heropenen gaat zonder gereedschap, met een draai. Moet de ring vast blijven, dan knijpt u de sluiting dicht met een tangetje.</p>
-      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#ffffff;border-radius:18px">
+      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#ffffff;border-radius:18px" aria-label="Dun, buigzaam, met een twist dicht">
         <tbody>
           <tr>
             <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap">Diameter</th>
@@ -1130,7 +1130,7 @@
       </div>
     </div>
     <div data-compare-table="1" style="margin-top:clamp(32px,4vw,52px);overflow-x:auto" data-table-scroll="1">
-      <table style="width:100%;min-width:860px;border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+      <table style="width:100%;min-width:860px;border-collapse:collapse;background:#f5f5f7;border-radius:18px" aria-label="Op aanvraag">
         <thead>
           <tr>
           <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Uitvoering</th>

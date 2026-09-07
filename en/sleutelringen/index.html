@@ -424,7 +424,7 @@
           <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="4">
             <li>
               <a href="{{ r.u }}" onClick="{{ closeSearch }}" style="display:flex;flex-direction:column;gap:2px;color:#1d1d1f;text-decoration:none" style-hover="color:#0071e3;text-decoration:none">
-                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#86868b">{{ r.g }}</span>
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#6e6e73">{{ r.g }}</span>
                 <span style="font-size:clamp(21px,2vw,28px);line-height:1.2;font-weight:600;letter-spacing:-0.3px">{{ r.t }}</span>
                 <span style="font-size:14px;color:#707070">{{ r.s }}</span>
               </a>
@@ -602,7 +602,7 @@
     <p style="margin-top:16px;max-width:560px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">All five sizes from stock, in packs of 10 per size.</p>
   </div>
   <div style="max-width:1200px;margin:clamp(32px,4vw,52px) auto 0;overflow-x:auto" data-table-scroll="1">
-    <table style="width:100%;min-width:520px;border-collapse:collapse;background:#ffffff;border-radius:18px">
+    <table style="width:100%;min-width:520px;border-collapse:collapse;background:#ffffff;border-radius:18px" aria-label="Sizes and order codes">
       <thead>
         <tr>
             <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Size</th>
@@ -760,7 +760,7 @@
       <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Flexes with you, closes just as hard.</h2>
       <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">The same five sizes and the same serial number, but with a braided steel wire instead of a solid bow. For keys with a small opening.</p>
       <p style="margin-top:14px;font-size:17px;line-height:1.47;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">The flex keyring is closed with the same crimping tool as the stainless steel keyring &mdash; the closing tool is not needed here.</p>
-      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#ffffff;border-radius:18px">
+      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#ffffff;border-radius:18px" aria-label="Flexes with you, closes just as hard">
         <tbody>
           <tr>
             <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap">Cable</th>
@@ -837,7 +837,7 @@
     <p style="max-width:520px;margin:clamp(10px,1.4vw,16px) auto 0;padding:0 24px;text-align:center;font-size:14px;line-height:1.47;color:#8a8a8e;letter-spacing:-0.08px">Number of keys per ring, indicative.</p>
   </div>
   <div style="max-width:1000px;margin:clamp(32px,4vw,52px) auto 0;padding:0 24px;overflow-x:auto" data-table-scroll="1">
-    <table style="width:100%;min-width:660px;border-collapse:collapse;background:#ffffff;border-radius:18px">
+    <table style="width:100%;min-width:660px;border-collapse:collapse;background:#ffffff;border-radius:18px" aria-label="Five fixed sizes">
       <thead>
         <tr>
           <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Size</th>
@@ -947,7 +947,7 @@
     <img width="1584" height="672" src="../../photos/ring-morse-maten-v2.webp" alt="Four Morse keyrings to scale side by side: three U-models and the round 8.5 cm model" style="width:100%;height:auto;display:block" loading="lazy">
   </div>
   <div style="max-width:1000px;margin:clamp(32px,4vw,52px) auto 0;overflow-x:auto" data-table-scroll="1">
-    <table style="width:100%;min-width:460px;border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+    <table style="width:100%;min-width:460px;border-collapse:collapse;background:#f5f5f7;border-radius:18px" aria-label="Four models">
       <thead>
         <tr>
           <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Model</th>
@@ -999,7 +999,7 @@
       <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">Rivet keyrings</p>
       <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Closed with a rivet.</h2>
       <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Chromed steel of 2.5&nbsp;mm. The ends are pressed together with pliers until the holes in the flat ends line up. A copper rivet goes through them, which you hammer tight on a solid surface.</p>
-      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#f5f5f7;border-radius:18px" aria-label="Closed with a rivet">
         <thead>
           <tr>
             <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Diameter</th>
@@ -1039,7 +1039,7 @@
       <p style="font-size:12px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:#707070">Flexible with coating</p>
       <h2 style="margin-top:12px;font-size:clamp(30px,3.4vw,40px);line-height:1.14;font-weight:600;letter-spacing:0.007em;text-wrap:balance">Thin, flexible, closed with a twist.</h2>
       <p style="margin-top:18px;font-size:19px;line-height:1.42;color:#707070;letter-spacing:-0.374px;text-wrap:pretty">Steel wire with a plastic coating, for situations where a thinner ring is needed. Closing and reopening is done without tools, with a twist. If the ring has to stay closed, squeeze the closure with a pair of pliers.</p>
-      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#ffffff;border-radius:18px">
+      <table style="width:100%;margin-top:clamp(24px,2.8vw,36px);border-collapse:collapse;background:#ffffff;border-radius:18px" aria-label="Thin, flexible, closed with a twist">
         <tbody>
           <tr>
             <th style="padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#1d1d1f;letter-spacing:-0.224px;white-space:nowrap">Diameter</th>
@@ -1128,7 +1128,7 @@
       </div>
     </div>
     <div data-compare-table="1" style="margin-top:clamp(32px,4vw,52px);overflow-x:auto" data-table-scroll="1">
-      <table style="width:100%;min-width:860px;border-collapse:collapse;background:#f5f5f7;border-radius:18px">
+      <table style="width:100%;min-width:860px;border-collapse:collapse;background:#f5f5f7;border-radius:18px" aria-label="On request">
         <thead>
           <tr>
           <th style="padding:16px 18px;text-align:left;font-size:14px;font-weight:600;color:#707070;letter-spacing:-0.224px;white-space:nowrap">Version</th>

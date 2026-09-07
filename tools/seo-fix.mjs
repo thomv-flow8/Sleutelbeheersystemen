@@ -542,13 +542,19 @@ function documentatieLinkNames(html, relPath) {
     const naam = (li.match(/<span[^>]*>([^<]+)<\/span>/) || [, ''])[1].trim();
     if (!naam) return li;
 
+    /* Een eerder gezet label van onszelf halen we eerst weg, zodat een
+     * verbeterde formulering ook op al verwerkte bestanden landt. */
+    li = li.replace(/\s*aria-label="(?:Bekijken|View)[^"]*"/g, '');
+
     return li.replace(
       /(<a\b(?![^>]*aria-label)[^>]*>)((?:Bekijken|View)(?:&nbsp;|\s)*&rsaquo;)/,
       (_m, open, tekst) => {
         n++;
         const woord = tekst.startsWith('View') ? 'View' : 'Bekijken';
-        const suffix = woord === 'View' ? 'datasheet' : 'datasheet';
-        return `${open.slice(0, -1)} aria-label="${woord}: ${naam} ${suffix}">${tekst}`;
+        /* Het label moet de zichtbare tekst letterlijk bevatten, chevron en al
+         * (WCAG 2.5.3, Label in Name). "Bekijken: ..." voldeed daar niet aan,
+         * omdat de zichtbare tekst "Bekijken ›" is. */
+        return `${open.slice(0, -1)} aria-label="${woord} › ${naam} datasheet">${tekst}`;
       }
     );
   });
@@ -646,6 +652,100 @@ function videoSchema(html, relPath) {
   return { html: html.replace(/<\/head>/i, `${blok}\n</head>`), changed: 1 };
 }
 
+/* Batch 11 — formulier- en tabeltoegankelijkheid, plus kleurcontrast. */
+function a11yTail(html) {
+  let n = 0;
+
+  /* Zonder autocomplete-token biedt de browser opgeslagen adressen niet aan.
+   * Dat kost iedereen tijd, en voor wie moeilijk typt is het een echte drempel. */
+  const TOKENS = [
+    [/\btype="email"/i, 'email'],
+    [/\btype="tel"/i, 'tel'],
+    [/\bname="(?:naam|name)"/i, 'name'],
+    [/\bname="(?:org|organisatie|organisation|company)"/i, 'organization'],
+  ];
+
+  html = html.replace(/<input\b(?![^>]*autocomplete)([^>]*)>/gi, (match, attrs) => {
+    const treffer = TOKENS.find(([re]) => re.test(attrs));
+    if (!treffer) return match;
+    n++;
+    return `<input${attrs} autocomplete="${treffer[1]}">`;
+  });
+
+  /* enterkeyhint bepaalt wat het mobiele toetsenbord op de enter-toets zet.
+   * Zonder token staat er "enter" in plaats van "volgende" of "verzenden". */
+  html = html.replace(/<input\b(?![^>]*enterkeyhint)([^>]*\btype="(?:text|email|tel)"[^>]*)>/gi, (_m, attrs) => {
+    n++;
+    return `<input${attrs} enterkeyhint="next">`;
+  });
+  html = html.replace(/<textarea\b(?![^>]*enterkeyhint)([^>]*)>/gi, (_m, attrs) => {
+    n++;
+    return `<textarea${attrs} enterkeyhint="send">`;
+  });
+
+  /* Lichtgrijze hoofdletterlabels van 11px halen 3,62:1 op wit, waar 4,5:1
+   * nodig is. #6e6e73 zit in dezelfde grijstint maar komt op 5,07:1. Alleen
+   * deze combinatie wordt geraakt; #86868b op grotere tekst blijft staan. */
+  const voor = html;
+  html = html.replaceAll(
+    'font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#86868b',
+    'font-size:11px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:#6e6e73'
+  );
+  if (html !== voor) n += (voor.split('color:#86868b').length - 1) - (html.split('color:#86868b').length - 1);
+
+  return { html, changed: n };
+}
+
+/* Tabellen zonder toegankelijke naam. Een schermlezer kondigt "tabel" aan
+ * zonder te zeggen waarover hij gaat; wie er met de cursor in springt weet dan
+ * niet waar hij is. Elke tabel heeft een kop vlak ervoor staan, en die nemen we
+ * over als aria-label. Een zichtbare <caption> zou die kop verdubbelen. */
+function tableNames(html) {
+  let n = 0;
+  const gebruikt = new Set();
+
+  // Namen die er al staan tellen mee, anders maken we alsnog duplicaten.
+  for (const m of html.matchAll(/<table\b[^>]*aria-label="([^"]*)"/gi)) gebruikt.add(m[1]);
+
+  /* De koppen zijn zinnen en eindigen op een punt; als tabelnaam leest dat
+   * raar wanneer een schermlezer hem aankondigt. */
+  const schoon = (s) => s.trim().replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').replace(/[.:,]+$/, '');
+
+  html = html.replace(/<table\b(?![^>]*aria-label)([^>]*)>/gi, (match, attrs, offset) => {
+    const ervoor = html.slice(0, offset);
+
+    /* Een echte kop heeft de voorkeur. Staat die er niet vlak voor, dan pakken
+     * we de dichtstbijzijnde kop hoger in het document: bij een reeks
+     * specificatietabellen onder één kop is dat de juiste context. */
+    const koppen = [...ervoor.matchAll(/<(h[1-4])\b[^>]*>([^<]{3,80})<\/\1>/gi)];
+    const dichtbij = [...ervoor.slice(-700).matchAll(/<span\b[^>]*>([^<]{3,70})<\/span>/gi)];
+
+    let basis = koppen.length ? schoon(koppen[koppen.length - 1][2]) : '';
+    if (!basis && dichtbij.length) basis = schoon(dichtbij[dichtbij.length - 1][1]);
+    if (!basis || /^[\d.,\s]+$/.test(basis)) return match;
+
+    /* Meerdere tabellen onder dezelfde kop zouden dezelfde naam krijgen, en
+     * dat is precies wat deze regel afkeurt. De eerste rijkop onderscheidt ze. */
+    let naam = basis;
+    if (gebruikt.has(naam)) {
+      const eersteTh = match.length && /<th\b/i.test(html.slice(offset, offset + 800))
+        ? schoon((html.slice(offset, offset + 800).match(/<th\b[^>]*>([^<]{2,50})</i) || [, ''])[1])
+        : '';
+      if (eersteTh) naam = `${basis} — ${eersteTh}`;
+    }
+
+    let uniek = naam;
+    let i = 2;
+    while (gebruikt.has(uniek)) uniek = `${naam} (${i++})`;
+    gebruikt.add(uniek);
+
+    n++;
+    return `<table${attrs} aria-label="${escapeAttr(uniek)}">`;
+  });
+
+  return { html, changed: n };
+}
+
 /* GEEN placeholder-herschrijving. Toegelicht omdat de verleiding groot is:
  *
  * De uitgeleverde HTML bevat href="{{ khHref }}" en aria-pressed="{{ ... }}".
@@ -688,6 +788,8 @@ for (const file of files) {
   const s = documentatieLinkNames(html, rel); html = s.html;
   const j = repairJsonLd(html); html = j.html;
   const v = videoSchema(html, rel); html = v.html;
+  const t = a11yTail(html); html = t.html;
+  const u = tableNames(html); html = u.html;
 
   if (html !== before) {
     fs.writeFileSync(file, html);
@@ -703,13 +805,14 @@ for (const file of files) {
     totals.linkNames += s.changed;
     totals.jsonld += j.changed;
     totals.video += v.changed;
+    totals.a11y += t.changed + u.changed;
     console.log(
       `${rel}  head+${a.moved}${b.changed ? ' charset' : ''}` +
       `${c.added ? ` extra:${c.added}` : ''}${d.added ? ` meta:${d.added}` : ''}` +
       `${e.changed + g.changed ? ` a11y:${e.changed + g.changed}` : ''}` +
       `${m.changed ? ' main' : ''}${o.changed ? ` offers:${o.changed}` : ''}` +
       `${p.changed ? ` fragment:${p.changed}` : ''}${q.changed ? ' paramlezer' : ''}` +
-      `${s.changed ? ` linknamen:${s.changed}` : ''}${j.changed ? ` jsonld:${j.changed}` : ''}${v.changed ? ' video' : ''}`
+      `${s.changed ? ` linknamen:${s.changed}` : ''}${j.changed ? ` jsonld:${j.changed}` : ''}${v.changed ? ' video' : ''}${t.changed ? ` tail:${t.changed}` : ''}${u.changed ? ` tabellen:${u.changed}` : ''}`
     );
   }
 }
