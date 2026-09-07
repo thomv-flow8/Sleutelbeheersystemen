@@ -761,7 +761,10 @@ class Component extends DCLogic {
       };
       setTimeout(spring, 60);
     }
-    const p = new URLSearchParams(location.search).get('p');
+    const leesParam = (naam) =>
+      new URLSearchParams(location.hash.slice(1)).get(naam) ??
+      new URLSearchParams(location.search).get(naam);
+    const p = leesParam('p');
     const src = p && Component.SOURCES[p];
     // src[2] = de categorie uit stap 1, zodat de juiste vervolgvraag verschijnt.
     // De productnaam blijft staan in het tekstveld 'Onderwerp'.
@@ -771,9 +774,9 @@ class Component extends DCLogic {
     // berichtveld is niet gebonden aan de state, dus we vullen het na het renderen.
     // De keuzehulp geeft ook de intentie mee, zodat stap 1 al is ingevuld.
     const INTENTIES = { kiezen: 'Een systeem kiezen', uitbreiden: 'Een bestaand systeem uitbreiden', prijs: 'Prijsopgave voor een bekend product', demo: 'Een demonstratie', techniek: 'Technische informatie' };
-    const iParam = new URLSearchParams(location.search).get('i');
+    const iParam = leesParam('i');
     if (iParam && INTENTIES[iParam]) this.setState({ intentie: INTENTIES[iParam] });
-    const kh = new URLSearchParams(location.search).get('kh');
+    const kh = leesParam('kh');
     if (kh) {
       const vul = () => {
         const veld = document.querySelector('textarea[name="bericht"]');

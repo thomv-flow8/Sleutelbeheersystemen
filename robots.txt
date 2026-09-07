@@ -4,9 +4,15 @@
 # Voor PRODUCTIE (live op eigen domein) vervangen door:
 #   User-agent: *
 #   Disallow: /stamboom/
+#   Disallow: /*?p=
 #   Allow: /
 #
 #   Sitemap: https://www.sleutelbeheersystemen.nl/sitemap.xml
+#
+# De regel voor ?p= is een vangnet. De site linkt zelf naar contact/#p=...,
+# en een fragment telt niet als aparte pagina. Oude, gedeelde of opgeslagen
+# links met ?p= blijven werken (het formulier valt terug op de query string),
+# maar hoeven niet apart gecrawld te worden.
 
 User-agent: *
 Disallow: /

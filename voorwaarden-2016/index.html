@@ -766,7 +766,10 @@ class Component extends DCLogic {
       };
       setTimeout(spring, 60);
     }
-    const p = new URLSearchParams(location.search).get('p');
+    const leesParam = (naam) =>
+      new URLSearchParams(location.hash.slice(1)).get(naam) ??
+      new URLSearchParams(location.search).get(naam);
+    const p = leesParam('p');
     const src = p && Component.SOURCES[p];
     if (src) this.setState({ subject: 'Aanvraag ' + src[0] });
     this._src = src || null;

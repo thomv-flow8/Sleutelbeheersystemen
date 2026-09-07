@@ -507,7 +507,7 @@
     <p style="margin:14px auto 0;max-width:560px;min-height:58px;font-size:21px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">From 8 to 96 positions per cabinet, expandable to 192. The same operation, the same registration.</p>
     <div data-card-cta="1" style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap">
       <a href="../en/sam/" style="display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none;white-space:nowrap" style-hover="background:#0077ed;text-decoration:none">More information</a>
-      <a href="../en/contact/?p=sam" style="display:inline-flex;align-items:center;background:#f5f5f7;color:#0071e3;font-size:17px;padding:10px 23px;border-radius:980px;border:1px solid #0071e3;text-decoration:none;white-space:nowrap" style-hover="background:#0071e3;color:#ffffff;border-color:#0071e3;text-decoration:none">Request a quote</a>
+      <a href="../en/contact/#p=sam" style="display:inline-flex;align-items:center;background:#f5f5f7;color:#0071e3;font-size:17px;padding:10px 23px;border-radius:980px;border:1px solid #0071e3;text-decoration:none;white-space:nowrap" style-hover="background:#0071e3;color:#ffffff;border-color:#0071e3;text-decoration:none">Request a quote</a>
     </div>
   </div>
   <div data-reveal style="margin:clamp(32px,4vw,52px) auto 0;max-width:1100px;height:min(28.9vw,328px);display:flex;align-items:flex-end;justify-content:center">
@@ -522,7 +522,7 @@
     <p style="margin:14px auto 0;max-width:640px;font-size:21px;line-height:1.38;color:#707070;letter-spacing:0.011em;text-wrap:pretty">Key cabinets in four series: on a code, with registration, with electronic key recognition or as an expansion.</p>
     <div style="position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap" data-card-cta="1">
       <a href="../en/keybox/" style="display:inline-flex;align-items:center;background:#0071e3;color:#ffffff;font-size:17px;padding:11px 24px;border-radius:980px;text-decoration:none;white-space:nowrap" style-hover="background:#0077ed;text-decoration:none">More information</a>
-      <a href="../en/contact/?p=keybox" style="display:inline-flex;align-items:center;background:#f5f5f7;color:#0071e3;font-size:17px;padding:10px 23px;border-radius:980px;border:1px solid #0071e3;text-decoration:none;white-space:nowrap" style-hover="background:#0071e3;color:#ffffff;border-color:#0071e3;text-decoration:none">Request a quote</a>
+      <a href="../en/contact/#p=keybox" style="display:inline-flex;align-items:center;background:#f5f5f7;color:#0071e3;font-size:17px;padding:10px 23px;border-radius:980px;border:1px solid #0071e3;text-decoration:none;white-space:nowrap" style-hover="background:#0071e3;color:#ffffff;border-color:#0071e3;text-decoration:none">Request a quote</a>
     </div>
   </div>
       <div data-card-photo="1" style="margin:clamp(28px,3vw,44px) auto 0;height:min(27.9vw,318px);width:100%;max-width:560px;display:flex;align-items:flex-end;justify-content:center">
@@ -992,7 +992,7 @@ class Component extends DCLogic {
       return {
         naam: P[k].naam, href: P[k].href, cta: P[k].cta, waarom: waarom,
         posities: OMVANG[kh.omvang] || '', punten: punten || [],
-        offerte: '../en/contact/?p=' + SLUG[k] + '&i=prijs&kh=' + encodeURIComponent(samenvatting),
+        offerte: '../en/contact/#p=' + SLUG[k] + '&i=prijs&kh=' + encodeURIComponent(samenvatting),
         img: P[k].img, imgAlt: P[k].alt, imgW: P[k].imgW, imgH: P[k].imgH,
         altNaam: P[alt].naam, altHref: P[alt].href, altWaarom: altWaarom
       };
@@ -1111,7 +1111,7 @@ class Component extends DCLogic {
         const uit = {
           khKlaar: !!a,
           khNaam: a ? a.naam : '', khWaarom: a ? a.waarom : '', khHref: a ? a.href : '#', khCta: a ? a.cta : '',
-          khPosities: a ? a.posities : '', khPunten: a ? a.punten : [], khOfferte: a ? a.offerte : '../en/contact/?p=keuzehulp',
+          khPosities: a ? a.posities : '', khPunten: a ? a.punten : [], khOfferte: a ? a.offerte : '../en/contact/#p=keuzehulp',
           // De foto wordt hier opgebouwd: een {{ hole }} in een src-attribuut laat de browser
           // tijdens het streamen een request doen naar de letterlijke tekst "{{ khImg }}".
           khFoto: a ? React.createElement('img', {

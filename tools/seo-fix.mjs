@@ -470,6 +470,129 @@ function dropEmptyOffers(html) {
   return { html, changed: n };
 }
 
+/* Batch 7 (optie A) — contactlinks van query string naar fragment.
+ *
+ * "contact/?p=keybox" preselecteert het product in het contactformulier, maar
+ * alles achter een "?" telt voor crawlers als een aparte pagina. Daardoor zag
+ * de audit /contact/, /contact/?p=keybox en /contact/?p=sam als drie pagina's
+ * met dezelfde titel en description. Alles achter een "#" wordt juist genegeerd,
+ * dus met een fragment vallen ze samen tot één URL.
+ *
+ * De canonical wees al naar /contact/, dus voor Google was dit al opgelost;
+ * dit ruimt het crawlen zelf op. */
+function contactFragmentLinks(html) {
+  const before = html;
+  html = html.replaceAll('contact/?p=', 'contact/#p=');
+  return { html, changed: html === before ? 0 : (before.split('contact/?p=').length - 1) };
+}
+
+/* De tegenhanger: het formulier moet de parameter nu uit de hash lezen. De
+ * terugval op de query string houdt oude, gedeelde of opgeslagen ?p=-links
+ * werkend. */
+const PARAM_HELPER =
+  `const leesParam = (naam) =>\n` +
+  `      new URLSearchParams(location.hash.slice(1)).get(naam) ??\n` +
+  `      new URLSearchParams(location.search).get(naam);\n    `;
+
+function contactParamReader(html) {
+  if (html.includes('const leesParam')) return { html, changed: 0 };
+  if (!html.includes("new URLSearchParams(location.search).get('p')")) return { html, changed: 0 };
+
+  let n = 0;
+
+  // De helper komt vlak voor het eerste gebruik te staan.
+  html = html.replace(
+    "const p = new URLSearchParams(location.search).get('p');",
+    `${PARAM_HELPER}const p = leesParam('p');`
+  );
+  n++;
+
+  for (const naam of ['i', 'kh']) {
+    const oud = `new URLSearchParams(location.search).get('${naam}')`;
+    if (html.includes(oud)) { html = html.replaceAll(oud, `leesParam('${naam}')`); n++; }
+  }
+
+  return { html, changed: n };
+}
+
+/* Batch 8 (optie B) — beschrijvende namen voor de "Bekijken"-links.
+ *
+ * De documentatiepagina heeft 14 rijen die elk eindigen op "Bekijken ›" (of
+ * "View ›"), naar 14 verschillende bestemmingen. Wie de pagina ziet leidt uit
+ * de rij af waar de link heen gaat; wie een schermlezer de links laat opsommen
+ * hoort veertien keer hetzelfde woord.
+ *
+ * De zichtbare tekst blijft staan, er komt alleen een aria-label bij. Dat label
+ * begint met die zichtbare tekst, zodat het voldoet aan WCAG 2.5.3 (Label in
+ * Name): de toegankelijke naam moet bevatten wat er staat, anders werkt
+ * spraakbediening niet meer.
+ *
+ * De PDF-links ("Nederlands 0,7 MB") laten we bewust met rust: hun zichtbare
+ * tekst is de samengetrokken string "nederlands0,7 mb", en een leesbaar label
+ * dat die letterlijk bevat bestaat niet. Een label eromheen zou de ene regel
+ * oplossen en 2.5.3 breken. */
+function documentatieLinkNames(html, relPath) {
+  if (!/^(en\/)?documentatie\/index\.html$/.test(relPath)) return { html, changed: 0 };
+
+  let n = 0;
+
+  html = html.replace(/<li\b[^>]*>[\s\S]*?<\/li>/g, (li) => {
+    if (!/>(?:Bekijken|View)(?:&nbsp;|\s)*&rsaquo;/.test(li)) return li;
+
+    const naam = (li.match(/<span[^>]*>([^<]+)<\/span>/) || [, ''])[1].trim();
+    if (!naam) return li;
+
+    return li.replace(
+      /(<a\b(?![^>]*aria-label)[^>]*>)((?:Bekijken|View)(?:&nbsp;|\s)*&rsaquo;)/,
+      (_m, open, tekst) => {
+        n++;
+        const woord = tekst.startsWith('View') ? 'View' : 'Bekijken';
+        const suffix = woord === 'View' ? 'datasheet' : 'datasheet';
+        return `${open.slice(0, -1)} aria-label="${woord}: ${naam} ${suffix}">${tekst}`;
+      }
+    );
+  });
+
+  return { html, changed: n };
+}
+
+/* Batch 9 — kapotte JSON-LD repareren.
+ *
+ * In het FAQ-schema op de sleutelringen-pagina's staat HTML binnen een
+ * JSON-tekst:
+ *
+ *     "text": "... de <a href="#rvs" style="color:#0066cc">RVS keyring</a> ..."
+ *
+ * Die href=" sluit de JSON-string voortijdig af, waardoor het hele blok
+ * ongeldig is en Google de complete FAQ negeert. De aanhalingstekens van de
+ * HTML-attributen moeten geescaped worden.
+ *
+ * De reparatie is aan beide kanten afgeschermd: we proberen alleen te
+ * repareren als het blok nu NIET parst, en we houden de reparatie alleen als
+ * het daarna WEL parst. Blokken die al goed zijn blijven onaangeraakt, en een
+ * andere soort fout laten we staan in plaats van hem te verergeren. */
+function repairJsonLd(html) {
+  let n = 0;
+
+  html = html.replace(
+    /(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g,
+    (match, open, body, close) => {
+      try { JSON.parse(body); return match; } catch { /* stuk, dus repareren */ }
+
+      /* Alleen `attribuut="waarde"` wordt geraakt. JSON-sleutels zien er anders
+       * uit ("@type": "Question" heeft een dubbele punt tussen de quotes), dus
+       * die vallen buiten dit patroon. */
+      const fixed = body.replace(/([a-zA-Z-]+)="([^"]*)"/g, (_m, naam, waarde) => `${naam}=\\"${waarde}\\"`);
+
+      try { JSON.parse(fixed); } catch { return match; }
+      n++;
+      return open + fixed + close;
+    }
+  );
+
+  return { html, changed: n };
+}
+
 /* GEEN placeholder-herschrijving. Toegelicht omdat de verleiding groot is:
  *
  * De uitgeleverde HTML bevat href="{{ khHref }}" en aria-pressed="{{ ... }}".
@@ -492,7 +615,7 @@ function dropEmptyOffers(html) {
 /* ------------------------------------------------------------------- main */
 
 const files = walk(ROOT);
-let totals = { hoisted: 0, charset: 0, extras: 0, meta: 0, a11y: 0, main: 0, offers: 0, touched: 0 };
+let totals = { hoisted: 0, charset: 0, extras: 0, meta: 0, a11y: 0, main: 0, offers: 0, fragment: 0, linkNames: 0, jsonld: 0, touched: 0 };
 
 for (const file of files) {
   const rel = path.relative(ROOT, file).split(path.sep).join('/');
@@ -507,6 +630,10 @@ for (const file of files) {
   const g = backButtonLanguage(html, rel); html = g.html;
   const m = mainLandmark(html, rel); html = m.html;
   const o = dropEmptyOffers(html); html = o.html;
+  const p = contactFragmentLinks(html); html = p.html;
+  const q = contactParamReader(html); html = q.html;
+  const s = documentatieLinkNames(html, rel); html = s.html;
+  const j = repairJsonLd(html); html = j.html;
 
   if (html !== before) {
     fs.writeFileSync(file, html);
@@ -518,11 +645,16 @@ for (const file of files) {
     totals.a11y += e.changed + g.changed;
     totals.main += m.changed;
     totals.offers += o.changed;
+    totals.fragment += p.changed + q.changed;
+    totals.linkNames += s.changed;
+    totals.jsonld += j.changed;
     console.log(
       `${rel}  head+${a.moved}${b.changed ? ' charset' : ''}` +
       `${c.added ? ` extra:${c.added}` : ''}${d.added ? ` meta:${d.added}` : ''}` +
       `${e.changed + g.changed ? ` a11y:${e.changed + g.changed}` : ''}` +
-      `${m.changed ? ' main' : ''}${o.changed ? ` offers:${o.changed}` : ''}`
+      `${m.changed ? ' main' : ''}${o.changed ? ` offers:${o.changed}` : ''}` +
+      `${p.changed ? ` fragment:${p.changed}` : ''}${q.changed ? ' paramlezer' : ''}` +
+      `${s.changed ? ` linknamen:${s.changed}` : ''}${j.changed ? ` jsonld:${j.changed}` : ''}`
     );
   }
 }
@@ -530,5 +662,5 @@ for (const file of files) {
 console.log(
   `\n${totals.touched}/${files.length} bestanden aangepast · ` +
   `${totals.hoisted} tags naar <head> · ${totals.charset}x charset vooraan · ` +
-  `${totals.main}x main+skip · ${totals.offers}x offers · ${totals.a11y} a11y-fixes · ${totals.extras} favicon|robots · ${totals.meta} SEO-tags bijgeplaatst`
+  `${totals.fragment} fragment-fixes · ${totals.linkNames} linknamen · ${totals.main}x main+skip · ${totals.offers}x offers · ${totals.a11y} a11y-fixes · ${totals.extras} favicon|robots · ${totals.meta} SEO-tags bijgeplaatst`
 );
