@@ -738,6 +738,35 @@ class Component extends DCLogic {
     if (this.state.searchOpen && !this._so && this.sRef.current) this.sRef.current.focus();
     this._so = this.state.searchOpen;
 
+    /* seo-fix:stapscroll */
+    /* Bij een stapwissel de bovenkant van het FORMULIER terugbrengen in beeld,
+     * maar alleen als die er niet al staat - anders spring je op desktop
+     * zonder reden.
+     *
+     * Let op: niet naar de sectie #aanvraag scrollen. Daar staan eerst de
+     * contactgegevens, de kaart en het dealership-blok in; de bovenkant
+     * daarvan ligt ruim 1100px boven het formulier, en dan lijkt het alsof je
+     * naar de top van de pagina springt. De scroll-margin van de sectie nemen
+     * we wel over, zodat de kop niet achter de plakkende navigatiebalk valt. */
+    if (this._stap === undefined) this._stap = this.state.stap;
+    else if (this._stap !== this.state.stap) {
+      this._stap = this.state.stap;
+      const sec = document.getElementById('aanvraag');
+      const form = sec && sec.querySelector('form');
+      if (form) {
+        const marge = parseFloat(getComputedStyle(sec).scrollMarginTop) || 0;
+        const top = form.getBoundingClientRect().top;
+        if (top < marge || top > window.innerHeight * 0.5) {
+          const rustig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({
+            top: Math.max(0, top + window.scrollY - marge),
+            behavior: rustig ? 'auto' : 'smooth'
+          });
+        }
+      }
+    }
+    /* einde seo-fix:stapscroll */
+
     /* Bij een stapwissel de bovenkant van het formulier terugbrengen in beeld,
      * maar alleen als die er niet al staat - anders spring je op desktop
      * zonder reden. */

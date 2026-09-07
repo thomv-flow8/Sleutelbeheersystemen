@@ -809,35 +809,58 @@ function lazyOpPrintpaginas(html, relPath) {
  *
  * De sectie heeft al scroll-margin-top:90px voor de plakkende navigatiebalk;
  * scrollIntoView() houdt daar zelf rekening mee. */
-const STAP_ANKER = 'this._stap';
+/* Markers, zodat een verbeterde versie ook op al verwerkte bestanden landt.
+ * Zonder die markers zou het script zijn eigen oude code laten staan. */
+const STAP_START = '/* seo-fix:stapscroll */';
+const STAP_EIND = '/* einde seo-fix:stapscroll */';
 
 const STAP_SCROLL = `
-    /* Bij een stapwissel de bovenkant van het formulier terugbrengen in beeld,
+    ${STAP_START}
+    /* Bij een stapwissel de bovenkant van het FORMULIER terugbrengen in beeld,
      * maar alleen als die er niet al staat - anders spring je op desktop
-     * zonder reden. */
+     * zonder reden.
+     *
+     * Let op: niet naar de sectie #aanvraag scrollen. Daar staan eerst de
+     * contactgegevens, de kaart en het dealership-blok in; de bovenkant
+     * daarvan ligt ruim 1100px boven het formulier, en dan lijkt het alsof je
+     * naar de top van de pagina springt. De scroll-margin van de sectie nemen
+     * we wel over, zodat de kop niet achter de plakkende navigatiebalk valt. */
     if (this._stap === undefined) this._stap = this.state.stap;
     else if (this._stap !== this.state.stap) {
       this._stap = this.state.stap;
       const sec = document.getElementById('aanvraag');
-      if (sec) {
+      const form = sec && sec.querySelector('form');
+      if (form) {
         const marge = parseFloat(getComputedStyle(sec).scrollMarginTop) || 0;
-        const top = sec.getBoundingClientRect().top;
+        const top = form.getBoundingClientRect().top;
         if (top < marge || top > window.innerHeight * 0.5) {
           const rustig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          sec.scrollIntoView({ behavior: rustig ? 'auto' : 'smooth', block: 'start' });
+          window.scrollTo({
+            top: Math.max(0, top + window.scrollY - marge),
+            behavior: rustig ? 'auto' : 'smooth'
+          });
         }
       }
     }
+    ${STAP_EIND}
 `;
 
 function stapScroll(html) {
-  if (html.includes(STAP_ANKER)) return { html, changed: 0 };
   if (!html.includes('id="aanvraag"')) return { html, changed: 0 };
 
-  const doel = `    this._so = this.state.searchOpen;\n  }`;
+  // Een blok van een vorige run er eerst uit, zodat een verbetering doorkomt.
+  const oud = new RegExp(
+    `\\n?\\s*${STAP_START.replace(/[*/]/g, '\\$&')}[\\s\\S]*?${STAP_EIND.replace(/[*/]/g, '\\$&')}\\n?`,
+    'g'
+  );
+  const had = oud.test(html);
+  if (had) html = html.replace(oud, '\n');
+
+  const doel = `    this._so = this.state.searchOpen;\n`;
   if (!html.includes(doel)) return { html, changed: 0 };
 
-  return { html: html.replace(doel, `    this._so = this.state.searchOpen;\n${STAP_SCROLL}  }`), changed: 1 };
+  const nieuw = html.replace(doel, `${doel}${STAP_SCROLL}`);
+  return { html: nieuw, changed: nieuw === html ? 0 : 1 };
 }
 
 /* GEEN placeholder-herschrijving. Toegelicht omdat de verleiding groot is:
