@@ -799,6 +799,23 @@ function lazyOpPrintpaginas(html, relPath) {
   return { html, changed: n };
 }
 
+/* Batch 15 — het GA4-meet-ID.
+ *
+ * De pagina's komen uit Claude Design met de placeholder G-XXXXXXXXXX. De
+ * cookiecode laadt Analytics bewust niet zolang die erin staat, dus een
+ * vergeten vervanging levert geen foutmelding op: je meting stopt gewoon,
+ * stilletjes, en dat merk je pas als je weken later naar lege grafieken kijkt.
+ *
+ * We vervangen alleen de placeholder, nooit een ID dat er al staat. */
+const GA_ID = 'G-JTWD3E5V1D';
+const GA_PLACEHOLDER = 'G-XXXXXXXXXX';
+
+function meetId(html) {
+  const n = html.split(GA_PLACEHOLDER).length - 1;
+  if (!n) return { html, changed: 0 };
+  return { html: html.split(GA_PLACEHOLDER).join(GA_ID), changed: n };
+}
+
 /* Batch 14 — scrollpositie bij een stapwissel in het contactformulier.
  *
  * De drie stappen zitten in een sectie van ruim 2000px en worden getoond met
@@ -891,7 +908,7 @@ function stapScroll(html) {
 /* ------------------------------------------------------------------- main */
 
 const files = walk(ROOT);
-let totals = { hoisted: 0, charset: 0, extras: 0, meta: 0, a11y: 0, main: 0, offers: 0, fragment: 0, linkNames: 0, jsonld: 0, video: 0, lazy: 0, stap: 0, touched: 0 };
+let totals = { hoisted: 0, charset: 0, extras: 0, meta: 0, a11y: 0, main: 0, offers: 0, fragment: 0, linkNames: 0, jsonld: 0, video: 0, lazy: 0, stap: 0, ga: 0, touched: 0 };
 
 for (const file of files) {
   const rel = path.relative(ROOT, file).split(path.sep).join('/');
@@ -916,6 +933,7 @@ for (const file of files) {
   const w = htmlLang(html, rel); html = w.html;
   const x = lazyOpPrintpaginas(html, rel); html = x.html;
   const y = stapScroll(html); html = y.html;
+  const ga = meetId(html); html = ga.html;
 
   if (html !== before) {
     fs.writeFileSync(file, html);
@@ -934,13 +952,14 @@ for (const file of files) {
     totals.a11y += t.changed + u.changed + w.changed;
     totals.lazy += x.changed;
     totals.stap += y.changed;
+    totals.ga += ga.changed;
     console.log(
       `${rel}  head+${a.moved}${b.changed ? ' charset' : ''}` +
       `${c.added ? ` extra:${c.added}` : ''}${d.added ? ` meta:${d.added}` : ''}` +
       `${e.changed + g.changed ? ` a11y:${e.changed + g.changed}` : ''}` +
       `${m.changed ? ' main' : ''}${o.changed ? ` offers:${o.changed}` : ''}` +
       `${p.changed ? ` fragment:${p.changed}` : ''}${q.changed ? ' paramlezer' : ''}` +
-      `${s.changed ? ` linknamen:${s.changed}` : ''}${j.changed ? ` jsonld:${j.changed}` : ''}${v.changed ? ' video' : ''}${t.changed ? ` tail:${t.changed}` : ''}${u.changed ? ` tabellen:${u.changed}` : ''}${w.changed ? ' lang' : ''}${x.changed ? ` lazy:${x.changed}` : ''}${y.changed ? ' stapscroll' : ''}`
+      `${s.changed ? ` linknamen:${s.changed}` : ''}${j.changed ? ` jsonld:${j.changed}` : ''}${v.changed ? ' video' : ''}${t.changed ? ` tail:${t.changed}` : ''}${u.changed ? ` tabellen:${u.changed}` : ''}${w.changed ? ' lang' : ''}${x.changed ? ` lazy:${x.changed}` : ''}${y.changed ? ' stapscroll' : ''}${ga.changed ? ' ga4' : ''}`
     );
   }
 }
